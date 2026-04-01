@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Deksmo IlacDB badge</title>
+  <desc id="desc">Portfolio badge for the DeksmoIlacDB project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#d95a2b"/>
+      <stop offset="100%" stop-color="#1d7a7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <rect x="12" y="12" width="104" height="104" rx="22" fill="none" stroke="rgba(255,255,255,0.28)"/>
+  <path d="M64 29c-7.18 0-13 5.82-13 13v9H42c-7.18 0-13 5.82-13 13s5.82 13 13 13h9v9c0 7.18 5.82 13 13 13s13-5.82 13-13v-9h9c7.18 0 13-5.82 13-13s-5.82-13-13-13h-9v-9c0-7.18-5.82-13-13-13Zm0 10c1.66 0 3 1.34 3 3v14a5 5 0 0 0 5 5h14c1.66 0 3 1.34 3 3s-1.34 3-3 3H72a5 5 0 0 0-5 5v14c0 1.66-1.34 3-3 3s-3-1.34-3-3V72a5 5 0 0 0-5-5H42c-1.66 0-3-1.34-3-3s1.34-3 3-3h14a5 5 0 0 0 5-5V42c0-1.66 1.34-3 3-3Z" fill="#fff7f0"/>
+  <text x="64" y="109" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#fff7f0">ILAC DB</text>
+</svg>
