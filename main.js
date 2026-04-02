@@ -16,36 +16,37 @@ const urls = {
 const content = {
   en: {
     meta: {
-      title: "Remilya | Creative Technologist",
+      title: "Remilya | Terminal & Library",
       description:
-        "Remilya is a creative technologist building AI systems, local-first tools, product surfaces, and digital experiences with a Deksmo-centered portfolio."
+        "Remilya's terminal: Umineko no Naku Koro ni And Re:Zero manga translator, system hacker, and anime aesthetics coder residing in the Deksmo ecosystem."
     },
     aria: {
-      brandLink: "Go to top",
-      primaryNav: "Primary navigation",
-      localeSwitcher: "Language switcher"
+      brandLink: "Return to surface",
+      primaryNav: "Main directory",
+      localeSwitcher: "System language"
     },
-    brandSubtitle: "Creative Technologist / Deksmo ecosystem",
+    brandSubtitle: "Otaku / Translator / System Hacker",
     nav: {
       about: "About",
       work: "Work",
+      translations: "Translations",
       capabilities: "Capabilities",
       experience: "Experience",
       contact: "Contact"
     },
     hero: {
       eyebrow: "SYSTEM READY / REMILYA",
-      role: "Creative Technologist",
-      title: "I build systems for messy digital worlds.",
+      role: "SYSTEM HACKER & TRANSLATOR",
+      title: "I dive into digital voids to extract truth and magic.",
       lead:
-        "I work across AI systems, frontend product surfaces, SEO-led web strategy, and localization-heavy workflows. The strongest thread is practical software: tools that operators can actually run, inspect, edit, and scale.",
-      ctaWork: "View projects",
+        "Whether it's deploying AI translation pipelines, typesetting manga, or hacking together local-first ecosystem tools like Deksmo. I bridge the gap between 2D worlds and running software.",
+      ctaWork: "Access archives",
       panelEyebrow: "Current signal",
-      panelTitle: "Freelance product work with Deksmo as the backbone.",
+      panelTitle: "Forging the Deksmo network.",
       signals: [
-        "Local-first AI tooling where OCR, rendering, exports, and state stay close to the user.",
-        "Frontend surfaces that translate dense workflows into usable operator interfaces.",
-        "Growth-minded delivery shaped by SEO, content structure, and localization experience."
+        "Local-first AI tools for manga OCR and translation.",
+        "System hacking to create beautiful anime interfaces.",
+        "Bringing Japanese stories to the surface through dedicated translation."
       ],
       liveLabel: "Live surface",
       liveStatus: "Online",
@@ -53,30 +54,30 @@ const content = {
         {
           label: "MODE_01",
           accent: "green",
-          title: "AI systems",
-          copy: "Local-first translation, OCR, RAG-ready data, and human-in-the-loop workflows."
+          title: "Manga Localization",
+          copy: "Full-stack translation: OCR, decoding, typesetting, and publishing."
         },
         {
           label: "MODE_02",
           accent: "cyan",
-          title: "Product surfaces",
-          copy: "React interfaces, desktop utilities, browser extensions, and operator dashboards."
+          title: "System Hacking",
+          copy: "Bending React, Python, and CSS to create ultraviolet, crystal-winged aesthetics."
         },
         {
           label: "MODE_03",
           accent: "magenta",
-          title: "Growth and localization",
-          copy: "SEO architecture, bilingual workflow thinking, content systems, and digital execution."
+          title: "AI Rituals",
+          copy: "Summoning local-first models and LLMs to automate the mundane and focus on the magic."
         }
       ]
     },
     about: {
-      eyebrow: "About / Identity",
-      title: "Creative technology with product, media, and growth literacy.",
+      eyebrow: "Identity / Profile",
+      title: "Otaku logic, translator's precision, and a hacker's workflow.",
       introLabel: "Remilya profile",
       introParagraphs: [
-        "Remilya is the public identity on this site. The work behind it combines software engineering, interface design, AI integration, SEO strategy, and localization-aware production. The goal is not novelty for its own sake. It is building systems that stay usable under real-world mess.",
-        "The portfolio leans heavily on the Deksmo ecosystem, but the surrounding skill set comes from client delivery, subtitle and media workflows, and a New Media and Communication background that informs how products are framed and communicated."
+        "Remilya is the public identity on this terminal. I am primarily a manga translator and computer enthusiast who got tired of bad systems, so I started building my own. The aesthetic draws from Umineko and Touhou, because flat web design is boring.",
+        "Most of the heavy lifting happens within the Deksmo ecosystem—a cluster of tools I wrote to make OCR, translation, and media editing feel less like a chore and more like magic."
       ],
       cards: [
         {
@@ -265,6 +266,36 @@ const content = {
           "Built the theoretical base for the portfolio through BA-level study, then layered it with training in AI applications, graphics, social media, communication, and web programming."
       }
     ],
+    translationsSection: {
+      eyebrow: "Translations / Manga",
+      title: "Umineko & Re:Zero",
+      copy: "Turkish manga translations for Umineko: When They Cry and Re:Zero \u2014 personally translated and published.",
+      readLabel: "Read",
+      roleLabel: "Translator"
+    },
+    translations: [
+      {
+        ep: "Episode 1",
+        title: "Legend of the Golden Witch",
+        subtitle: "\u30A6\u30DF\u30CD\u30B3\u306E\u30CA\u30AF\u9803\u306B",
+        cover: "assets/ep1-cover.webp",
+        href: "https://manga-tr.com/manga-umineko-no-naku-koro-ni-episode-1-legend-of-the-golden-witch.html"
+      },
+      {
+        ep: "Episode 2",
+        title: "Turn of the Golden Witch",
+        subtitle: "\u30A6\u30DF\u30CD\u30B3\u306E\u30CA\u30AF\u9803\u306B",
+        cover: "assets/ep2-cover.webp",
+        href: "https://manga-tr.com/manga-umineko-no-naku-koro-ni-episode-2-turn-of-the-golden-witch.html"
+      },
+      {
+        ep: "Arc 1",
+        title: "A Day in the Capital",
+        subtitle: "Re:\u30BC\u30ED\u304B\u3089\u59CB\u3081\u308B\u7570\u4E16\u754C\u751F\u6D3B",
+        cover: "assets/rezero-cover.jpg",
+        href: "https://manga-tr.com/manga-rezero-kara-hajimeru-isekai-seikatsu.html"
+      }
+    ],
     contact: {
       eyebrow: "Contact / Open channels",
       title: "If the work looks useful, the fastest path is direct.",
@@ -275,41 +306,41 @@ const content = {
       { label: "GitHub", href: urls.github },
       { label: "LinkedIn", href: urls.linkedin }
     ],
-    footer:
-      "Static portfolio for GitHub Pages. Built around real projects, client delivery, and operator-first systems."
+    footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   },
   tr: {
     meta: {
-      title: "Remilya | Yaratici Teknolog",
+      title: "Remilya | Terminal ve Kutuphane",
       description:
-        "Remilya, Deksmo merkezli portfoyunde yapay zeka sistemleri, yerel oncelikli araclar, urun yuzeyleri ve dijital deneyimler ureten bir yaratici teknologdur."
+        "Remilya web terminali: Deksmo ekosisteminde yasayan Manga cevirmeni, sistem hacker'i ve anime estetikli kodlayici."
     },
     aria: {
       brandLink: "Basa don",
       primaryNav: "Ana gezinme",
       localeSwitcher: "Dil secici"
     },
-    brandSubtitle: "Yaratici Teknolog / Deksmo ekosistemi",
+    brandSubtitle: "Otaku / Cevirmen / Sistem Hacker'i",
     nav: {
       about: "Hakkinda",
       work: "Isler",
+      translations: "Ceviriler",
       capabilities: "Yetenekler",
       experience: "Deneyim",
       contact: "Iletisim"
     },
     hero: {
       eyebrow: "SISTEM HAZIR / REMILYA",
-      role: "Yaratici Teknolog",
-      title: "Karmasik dijital akislara sistemler kuruyorum.",
+      role: "SISTEM HACKER'I VE CEVIRMEN",
+      title: "Gercekleri ve buyuyu bulmak icin dijital bosluga daliyorum.",
       lead:
-        "Yapay zeka sistemleri, urun arayuzleri, SEO odakli web stratejisi ve lokalizasyon agirlikli surecler uzerinde calisiyorum. Ana cizgi pratik yazilim: operatorlerin gercekten calistirabildigi, inceleyebildigi, duzenleyebildigi ve buyutebildigi araclar.",
-      ctaWork: "Projeleri gor",
+        "Yapay zeka ceviri hatlari kurmak, manga editlemek (typesetting) veya Deksmo gibi yerel oncelikli ekosistem araclari hacklemek... 2D dunyalar ile calisan yazilimlar arasindaki kopyu kuruyorum.",
+      ctaWork: "Arsivlere eris",
       panelEyebrow: "Guncel sinyal",
-      panelTitle: "Freelance urun teslimati; omurgada Deksmo.",
+      panelTitle: "Deksmo agini insa ediyorum.",
       signals: [
-        "OCR, render, disa aktarma ve durum yonetimini kullaniciya yakin tutan yerel oncelikli yapay zeka araclari.",
-        "Yogun is akislarini kullanilabilir operator arayuzlerine ceviren frontend yuzeyleri.",
-        "SEO, icerik yapisi ve lokalizasyon deneyimiyle sekillenen buyume odakli teslimat."
+        "Manga OCR ve cevirisi icin yerel oncelikli yapay zeka araclari.",
+        "Guzel estetikli anime arayuzleri yaratmak icin sistem hackleme.",
+        "Japonca hikayeleri adanmis cevirilerle yuzeye cikarmak."
       ],
       liveLabel: "Canli yuzey",
       liveStatus: "Aktif",
@@ -317,30 +348,30 @@ const content = {
         {
           label: "MOD_01",
           accent: "green",
-          title: "Yapay zeka sistemleri",
-          copy: "Yerel oncelikli ceviri, OCR, RAG hazir veri ve insan denetimli akislari kuruyorum."
+          title: "Manga Lokalizasyon",
+          copy: "Tam kapsamli ceviri: OCR, desifre, typesetting ve yayinlama."
         },
         {
           label: "MOD_02",
           accent: "cyan",
-          title: "Urun yuzeyleri",
-          copy: "React arayuzleri, masaustu araclari, tarayici eklentileri ve operator panelleri gelistiriyorum."
+          title: "Sistem Hackleme",
+          copy: "Ultraviyole ve kristal kanatli estetikler yaratmak icin React, Python ve CSS'i bukmek."
         },
         {
           label: "MOD_03",
           accent: "magenta",
-          title: "Buyume ve lokalizasyon",
-          copy: "SEO mimarisi, cift dilli dusunce, icerik sistemleri ve dijital uygulama tarafini birlestiriyorum."
+          title: "Yapay Zeka Ritueli",
+          copy: "Sikici isleri otomatiklestirip buyuye odaklanmak icin yerel oncelikli modelleri (LLM) cagirmak."
         }
       ]
     },
     about: {
-      eyebrow: "Hakkinda / Kimlik",
-      title: "Urun, medya ve buyume okuryazarligi ile birlesen yaratici teknoloji.",
+      eyebrow: "Kimlik / Profil",
+      title: "Otaku mantigi, cevirmen hassasiyeti ve hacker is akisi.",
       introLabel: "Remilya profili",
       introParagraphs: [
-        "Remilya bu sitedeki kamusal kimlik. Arkasindaki is; yazilim muhendisligi, arayuz tasarimi, yapay zeka entegrasyonu, SEO stratejisi ve lokalizasyon farkindalikli uretimi bir araya getiriyor. Hedef yenilik olsun diye yenilik degil. Gercek dunya karmasasinda kullanilabilir kalan sistemler kurmak.",
-        "Portfoyun omurgasi Deksmo ekosistemi, ancak cevresindeki yetenek seti musteri teslimatlarindan, altyazi ve medya sureclerinden, urunlerin nasil konumlandirildigini ve anlatildigini etkileyen Yeni Medya ve Iletisim altyapisindan geliyor."
+        "Remilya, bu terminaldeki herkese acik kimligim. Aslen kotu sistemlerden bikan ve kendi sistemlerini kurmaya baslayan bir bilgisayar tutkunu ve manga cevirmeniyim. Estetigimi Umineko ve Touhou'dan aliyorum cunku duz web tasarimi fazlasiyla sikici.",
+        "Agir islerin cogu Deksmo ekosisteminde gerceklesiyor \u2014 OCR, ceviri ve medya duzenlemeyi bir iskenceden ziyade buyu gibi hissettirmek icin yazdigim araclar kumesi."
       ],
       cards: [
         {
@@ -529,6 +560,36 @@ const content = {
           "Portfoyun teorik zemini lisans egitimiyle kuruldu; ardindan yapay zeka uygulamalari, grafik, sosyal medya, iletisim ve web programlama egitimleriyle derinlestirildi."
       }
     ],
+    translationsSection: {
+      eyebrow: "Ceviriler / Manga",
+      title: "Umineko ve Re:Zero",
+      copy: "Umineko: When They Cry ve Re:Zero manga serileri i\u00E7in ki\u015Fisel olarak yap\u0131lm\u0131\u015F T\u00FCrk\u00E7e \u00E7eviri.",
+      readLabel: "Oku",
+      roleLabel: "\u00C7evirmen"
+    },
+    translations: [
+      {
+        ep: "Episode 1",
+        title: "Legend of the Golden Witch",
+        subtitle: "\u30A6\u30DF\u30CD\u30B3\u306E\u30CA\u30AF\u9803\u306B",
+        cover: "assets/ep1-cover.webp",
+        href: "https://manga-tr.com/manga-umineko-no-naku-koro-ni-episode-1-legend-of-the-golden-witch.html"
+      },
+      {
+        ep: "Episode 2",
+        title: "Turn of the Golden Witch",
+        subtitle: "\u30A6\u30DF\u30CD\u30B3\u306E\u30CA\u30AF\u9803\u306B",
+        cover: "assets/ep2-cover.webp",
+        href: "https://manga-tr.com/manga-umineko-no-naku-koro-ni-episode-2-turn-of-the-golden-witch.html"
+      },
+      {
+        ep: "Arc 1",
+        title: "A Day in the Capital",
+        subtitle: "Re:\u30BC\u30ED\u304B\u3089\u59CB\u3081\u308B\u7570\u4E16\u754C\u751F\u6D3B",
+        cover: "assets/rezero-cover.jpg",
+        href: "https://manga-tr.com/manga-rezero-kara-hajimeru-isekai-seikatsu.html"
+      }
+    ],
     contact: {
       eyebrow: "Iletisim / Acik kanallar",
       title: "Is faydali gorunuyorsa en hizli yol dogrudan iletisim.",
@@ -539,8 +600,7 @@ const content = {
       { label: "GitHub", href: urls.github },
       { label: "LinkedIn", href: urls.linkedin }
     ],
-    footer:
-      "GitHub Pages icin statik portfoy. Gercek projeler, musteri teslimati ve operator oncelikli sistemler etrafinda kuruldu."
+    footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   }
 };
 
@@ -553,6 +613,7 @@ const elements = {
   brandSubtitle: document.querySelector("#brand-subtitle"),
   navAbout: document.querySelector("#nav-about"),
   navWork: document.querySelector("#nav-work"),
+  navTranslations: document.querySelector("#nav-translations"),
   navCapabilities: document.querySelector("#nav-capabilities"),
   navExperience: document.querySelector("#nav-experience"),
   navContact: document.querySelector("#nav-contact"),
@@ -580,6 +641,10 @@ const elements = {
   supportCopy: document.querySelector("#support-copy"),
   featuredProjects: document.querySelector("#featured-projects"),
   supportProjects: document.querySelector("#support-projects"),
+  translationsEyebrow: document.querySelector("#translations-eyebrow"),
+  translationsTitle: document.querySelector("#translations-title"),
+  translationsCopy: document.querySelector("#translations-copy"),
+  translationsGrid: document.querySelector("#translations-grid"),
   capabilitiesEyebrow: document.querySelector("#capabilities-eyebrow"),
   capabilitiesTitle: document.querySelector("#capabilities-title"),
   capabilityGrid: document.querySelector("#capability-grid"),
@@ -648,7 +713,7 @@ function renderHeroRail(items) {
   elements.heroRail.innerHTML = items
     .map(
       (item) => `
-        <article class="rail-card panel panel--${item.accent}">
+        <article class="rail-card">
           <span class="rail-label">${item.label}</span>
           <strong>${item.title}</strong>
           <p>${item.copy}</p>
@@ -666,7 +731,7 @@ function renderAboutCards(cards) {
   elements.aboutGrid.innerHTML = cards
     .map(
       (card) => `
-        <article class="about-card panel ${card.accent} reveal">
+        <article class="about-card reveal">
           <span class="about-card__index">${card.index}</span>
           <h3>${card.title}</h3>
           <p>${card.copy}</p>
@@ -796,6 +861,58 @@ function renderTrainingList(items) {
   if (elements.trainingList) {
     elements.trainingList.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
   }
+}
+
+function renderTranslations(localeData) {
+  if (!elements.translationsGrid) {
+    return;
+  }
+
+  elements.translationsGrid.innerHTML = localeData.translations
+    .map(
+      (translation) => `
+        <a class="translation-card reveal" href="${translation.href}" target="_blank" rel="noreferrer">
+          <div class="translation-cover">
+            <img src="${translation.cover}" alt="${translation.title} cover" loading="lazy" />
+          </div>
+          <span class="translation-card__ep">${translation.ep}</span>
+          <h3 class="translation-card__title">${translation.title}</h3>
+          <span class="translation-card__sub">${translation.subtitle}</span>
+          <span class="translation-card__role">${localeData.translationsSection.roleLabel}</span>
+        </a>
+      `
+    )
+    .join("");
+
+  init3DCards();
+}
+
+function init3DCards() {
+  const cards = document.querySelectorAll('.translation-card');
+  cards.forEach(card => {
+    if (!card.querySelector('.glossy-overlay')) {
+      const gloss = document.createElement('div');
+      gloss.className = 'glossy-overlay';
+      card.appendChild(gloss);
+    }
+    
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      
+      const xPct = (mouseX / rect.width) - 0.5;
+      const yPct = (mouseY / rect.height) - 0.5;
+      
+      const rotateY = xPct * 24; 
+      const rotateX = yPct * -24;
+      
+      card.style.setProperty('--rx', `${rotateX}deg`);
+      card.style.setProperty('--ry', `${rotateY}deg`);
+      card.style.setProperty('--mx', `${50 - rotateY * 3}%`);
+      card.style.setProperty('--my', `${50 - rotateX * 3}%`);
+    });
+  });
 }
 
 function renderSocialLinks(localeData) {
@@ -975,6 +1092,11 @@ function applyLocale(locale) {
   renderFeaturedProjects(localeData);
   renderSupportProjects(localeData);
 
+  setText(elements.translationsEyebrow, localeData.translationsSection.eyebrow);
+  setText(elements.translationsTitle, localeData.translationsSection.title);
+  setText(elements.translationsCopy, localeData.translationsSection.copy);
+  renderTranslations(localeData);
+
   setText(elements.capabilitiesEyebrow, localeData.capabilitiesSection.eyebrow);
   setText(elements.capabilitiesTitle, localeData.capabilitiesSection.title);
   renderCapabilities(localeData);
@@ -994,7 +1116,7 @@ function applyLocale(locale) {
   setText(elements.contactTitle, localeData.contact.title);
   setText(elements.contactCopy, localeData.contact.copy);
   renderSocialLinks(localeData);
-  setText(elements.footerCopy, localeData.footer);
+  elements.footerCopy.innerHTML = localeData.footer;
 
   updateLocaleButtons(currentLocale);
   refreshRevealAnimation();
@@ -1020,6 +1142,137 @@ function setupLocaleSwitcher() {
   });
 }
 
+/* ═══════════════════════════════════════════════════════
+   DANMAKU FLOATING PARTICLES
+   Touhou-inspired ambient particles rising through the page
+   ═══════════════════════════════════════════════════════ */
+
+function initDanmakuParticles() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const field = document.querySelector("#danmaku-field");
+  if (!field) return;
+
+  const PARTICLE_COUNT = 10;
+  const colors = [
+    "rgba(212, 168, 75, 0.2)",
+    "rgba(197, 56, 75, 0.15)",
+    "rgba(110, 92, 160, 0.15)",
+    "rgba(212, 168, 75, 0.12)",
+    "rgba(197, 56, 75, 0.1)"
+  ];
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const particle = document.createElement("div");
+    particle.classList.add("danmaku-particle");
+
+    const size = 2 + Math.random() * 4;
+    const left = Math.random() * 100;
+    const duration = 15 + Math.random() * 25;
+    const delay = Math.random() * duration;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    particle.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${left}%;
+      background: ${color};
+      box-shadow: 0 0 ${size * 2}px ${color};
+      animation-duration: ${duration}s;
+      animation-delay: -${delay}s;
+    `;
+
+    field.appendChild(particle);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   CURSOR TRAIL EFFECT
+   Violet/rose particles following the mouse
+   ═══════════════════════════════════════════════════════ */
+
+function initCursorTrail() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  // Skip on touch devices
+  if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+    return;
+  }
+
+  let lastX = 0;
+  let lastY = 0;
+  let throttleTimer = null;
+
+  document.addEventListener("mousemove", (e) => {
+    if (throttleTimer) return;
+
+    throttleTimer = setTimeout(() => {
+      throttleTimer = null;
+    }, 50);
+
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < 8) return;
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+
+    const particle = document.createElement("div");
+    particle.classList.add("cursor-particle");
+    particle.style.left = e.clientX - 3 + "px";
+    particle.style.top = e.clientY - 3 + "px";
+
+    document.body.appendChild(particle);
+
+    particle.addEventListener("animationend", () => {
+      particle.remove();
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   SPELL CIRCLE PARALLAX
+   Subtle parallax movement on scroll for the spell circle
+   ═══════════════════════════════════════════════════════ */
+
+function initSpellCircleParallax() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const spellCircle = document.querySelector(".spell-circle");
+  if (!spellCircle) return;
+
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const translateY = scrollY * 0.15;
+        const scale = 1 - Math.min(scrollY * 0.0003, 0.3);
+        spellCircle.style.transform = `translateY(${translateY}px) scale(${scale})`;
+        spellCircle.style.opacity = Math.max(0.12 - scrollY * 0.0001, 0.02);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   INITIALIZATION
+   ═══════════════════════════════════════════════════════ */
+
 setupLocaleSwitcher();
 applyLocale(getInitialLocale());
 setupActiveNavigation();
+initDanmakuParticles();
+initCursorTrail();
+initSpellCircleParallax();
