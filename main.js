@@ -16,16 +16,16 @@ const urls = {
 const content = {
   en: {
     meta: {
-      title: "Remilya | Terminal & Library",
+      title: "Remilya | Creative Technologist",
       description:
-        "Remilya's terminal: Umineko no Naku Koro ni And Re:Zero manga translator, system hacker, and anime aesthetics coder residing in the Deksmo ecosystem."
+        "Remilya is a creative technologist building AI systems, local-first tools, product surfaces, and localization workflows."
     },
     aria: {
       brandLink: "Return to surface",
       primaryNav: "Main directory",
       localeSwitcher: "System language"
     },
-    brandSubtitle: "Otaku / Translator / System Hacker",
+    brandSubtitle: "Creative Technologist / AI Systems / Localization",
     nav: {
       about: "About",
       work: "Work",
@@ -35,49 +35,49 @@ const content = {
       contact: "Contact"
     },
     hero: {
-      eyebrow: "SYSTEM READY / REMILYA",
-      role: "SYSTEM HACKER & TRANSLATOR",
-      title: "I dive into digital voids to extract truth and magic.",
+      eyebrow: "PORTFOLIO / REMILYA",
+      role: "CREATIVE TECHNOLOGIST",
+      title: "I build systems for messy digital workflows.",
       lead:
-        "Whether it's deploying AI translation pipelines, typesetting manga, or hacking together local-first ecosystem tools like Deksmo. I bridge the gap between 2D worlds and running software.",
-      ctaWork: "Access archives",
-      panelEyebrow: "Current signal",
-      panelTitle: "Forging the Deksmo network.",
+        "I work across AI systems, frontend product surfaces, localization-heavy workflows, and SEO-led delivery. The common thread is practical software: tools people can run, inspect, and improve.",
+      ctaWork: "View projects",
+      panelEyebrow: "Current focus",
+      panelTitle: "Freelance product work with Deksmo at the center.",
       signals: [
-        "Local-first AI tools for manga OCR and translation.",
-        "System hacking to create beautiful anime interfaces.",
-        "Bringing Japanese stories to the surface through dedicated translation."
+        "Local-first AI tooling for OCR, translation, and review workflows.",
+        "Frontend systems built for dense, operator-facing tasks.",
+        "Localization work shaped by real publishing and delivery constraints."
       ],
-      liveLabel: "Live surface",
+      liveLabel: "Live site",
       liveStatus: "Online",
       rail: [
         {
           label: "MODE_01",
           accent: "green",
-          title: "Manga Localization",
-          copy: "Full-stack translation: OCR, decoding, typesetting, and publishing."
+          title: "AI systems",
+          copy: "Local-first translation, OCR, structured data, and human-in-the-loop workflows."
         },
         {
           label: "MODE_02",
           accent: "cyan",
-          title: "System Hacking",
-          copy: "Bending React, Python, and CSS to create ultraviolet, crystal-winged aesthetics."
+          title: "Product surfaces",
+          copy: "React interfaces, desktop utilities, browser extensions, and maintainable operator UX."
         },
         {
           label: "MODE_03",
           accent: "magenta",
-          title: "AI Rituals",
-          copy: "Summoning local-first models and LLMs to automate the mundane and focus on the magic."
+          title: "Growth and localization",
+          copy: "SEO architecture, bilingual workflows, and content systems tied to practical delivery."
         }
       ]
     },
     about: {
       eyebrow: "Identity / Profile",
-      title: "Otaku logic, translator's precision, and a hacker's workflow.",
+      title: "Creative technology with product, media, and localization literacy.",
       introLabel: "Remilya profile",
       introParagraphs: [
-        "Remilya is the public identity on this terminal. I am primarily a manga translator and computer enthusiast who got tired of bad systems, so I started building my own. The aesthetic draws from Umineko and Touhou, because flat web design is boring.",
-        "Most of the heavy lifting happens within the Deksmo ecosystem—a cluster of tools I wrote to make OCR, translation, and media editing feel less like a chore and more like magic."
+        "Remilya is the public identity behind this portfolio. The work combines software engineering, interface design, AI integration, SEO strategy, and localization-aware production.",
+        "The portfolio is anchored by the Deksmo ecosystem, but the broader skill set comes from client delivery, subtitle and media workflows, and a New Media and Communication background."
       ],
       cards: [
         {
@@ -310,16 +310,16 @@ const content = {
   },
   tr: {
     meta: {
-      title: "Remilya | Terminal ve Kutuphane",
+      title: "Remilya | Portfolyo",
       description:
-        "Remilya web terminali: Deksmo ekosisteminde yasayan Manga cevirmeni, sistem hacker'i ve anime estetikli kodlayici."
+        "Remilya; yapay zeka destekli araclar, yerel oncelikli sistemler, urun arayuzleri ve lokalizasyon odakli is akislari gelistiren bir yazilim ureticisidir."
     },
     aria: {
       brandLink: "Basa don",
       primaryNav: "Ana gezinme",
       localeSwitcher: "Dil secici"
     },
-    brandSubtitle: "Otaku / Cevirmen / Sistem Hacker'i",
+    brandSubtitle: "Yazilim / YZ Sistemleri / Lokalizasyon",
     nav: {
       about: "Hakkinda",
       work: "Isler",
@@ -329,49 +329,49 @@ const content = {
       contact: "Iletisim"
     },
     hero: {
-      eyebrow: "SISTEM HAZIR / REMILYA",
-      role: "SISTEM HACKER'I VE CEVIRMEN",
-      title: "Gercekleri ve buyuyu bulmak icin dijital bosluga daliyorum.",
+      eyebrow: "PORTFOLYO / REMILYA",
+      role: "YAZILIM, YZ VE LOKALIZASYON",
+      title: "Karmasik dijital surecleri daha kullanilabilir hale getiren sistemler kuruyorum.",
       lead:
-        "Yapay zeka ceviri hatlari kurmak, manga editlemek (typesetting) veya Deksmo gibi yerel oncelikli ekosistem araclari hacklemek... 2D dunyalar ile calisan yazilimlar arasindaki kopyu kuruyorum.",
-      ctaWork: "Arsivlere eris",
-      panelEyebrow: "Guncel sinyal",
-      panelTitle: "Deksmo agini insa ediyorum.",
+        "Yapay zeka sistemleri, urun arayuzleri, lokalizasyon odakli is akislari ve SEO destekli web projeleri uzerinde calisiyorum. Benim icin iyi yazilim; kullanilabilen, izlenebilen ve gerektiginde mudahale edilebilen yazilimdir.",
+      ctaWork: "Projeleri incele",
+      panelEyebrow: "Guncel odak",
+      panelTitle: "Deksmo merkezli freelance urun ve sistem calismalari.",
       signals: [
-        "Manga OCR ve cevirisi icin yerel oncelikli yapay zeka araclari.",
-        "Guzel estetikli anime arayuzleri yaratmak icin sistem hackleme.",
-        "Japonca hikayeleri adanmis cevirilerle yuzeye cikarmak."
+        "OCR, ceviri ve inceleme surecleri icin yerel oncelikli araclar.",
+        "Yogun is akislarini sadelestiren urun arayuzleri.",
+        "Gercek yayin ve teslimat kosullarina dayanan lokalizasyon deneyimi."
       ],
-      liveLabel: "Canli yuzey",
+      liveLabel: "Canli site",
       liveStatus: "Aktif",
       rail: [
         {
           label: "MOD_01",
           accent: "green",
-          title: "Manga Lokalizasyon",
-          copy: "Tam kapsamli ceviri: OCR, desifre, typesetting ve yayinlama."
+          title: "YZ ve otomasyon",
+          copy: "Yerel oncelikli ceviri, OCR, yapisal veri ve insan denetimli is akisleri."
         },
         {
           label: "MOD_02",
           accent: "cyan",
-          title: "Sistem Hackleme",
-          copy: "Ultraviyole ve kristal kanatli estetikler yaratmak icin React, Python ve CSS'i bukmek."
+          title: "Urun arayuzleri",
+          copy: "React arayuzleri, masaustu araclari, tarayici eklentileri ve surdurulebilir kullanici deneyimi."
         },
         {
           label: "MOD_03",
           accent: "magenta",
-          title: "Yapay Zeka Ritueli",
-          copy: "Sikici isleri otomatiklestirip buyuye odaklanmak icin yerel oncelikli modelleri (LLM) cagirmak."
+          title: "Gorunurluk ve lokalizasyon",
+          copy: "SEO mimarisi, cift dilli is akislari ve gercek teslimat ihtiyaclarina bagli icerik yapilari."
         }
       ]
     },
     about: {
       eyebrow: "Kimlik / Profil",
-      title: "Otaku mantigi, cevirmen hassasiyeti ve hacker is akisi.",
+      title: "Yazilim, urun dusuncesi ve lokalizasyonu bir araya getiren bir profil.",
       introLabel: "Remilya profili",
       introParagraphs: [
-        "Remilya, bu terminaldeki herkese acik kimligim. Aslen kotu sistemlerden bikan ve kendi sistemlerini kurmaya baslayan bir bilgisayar tutkunu ve manga cevirmeniyim. Estetigimi Umineko ve Touhou'dan aliyorum cunku duz web tasarimi fazlasiyla sikici.",
-        "Agir islerin cogu Deksmo ekosisteminde gerceklesiyor \u2014 OCR, ceviri ve medya duzenlemeyi bir iskenceden ziyade buyu gibi hissettirmek icin yazdigim araclar kumesi."
+        "Remilya, bu portfolyoda kullandigim isim. Buradaki isler; yazilim gelistirme, arayuz tasarimi, yapay zeka entegrasyonu, SEO ve lokalizasyon odakli uretimin kesisiminde duruyor.",
+        "Portfolyonun merkezinde Deksmo ekosistemi var; ama bu birikim tek bir projeden gelmiyor. Musteri projeleri, altyazi ve medya surecleri ile Yeni Medya ve Iletisim altyapisi bu yapinin diger parcalarini olusturuyor."
       ],
       cards: [
         {
@@ -379,51 +379,51 @@ const content = {
           accent: "",
           title: "Yazilim ve yapay zeka",
           copy:
-            "Python, FastAPI, React, Node.js, OCR boru hatlari, Gemini tabanli akislari, REST API'ler, Firebase ve yerel oncelikli calisma mantigi."
+            "Python, FastAPI, React, Node.js, OCR hatlari, Gemini tabanli akislari, REST API'ler, Firebase ve yerel oncelikli sistem dusuncesi."
         },
         {
           index: "02",
           accent: "panel--cyan",
-          title: "Buyume ve yaratici uygulama",
+          title: "Buyume ve yaratici uretim",
           copy:
-            "SEO, icerik mimarisi, Google ve Meta Ads planlama, UI/UX yonu ve gorsel medya sureclerinde produksiyon destegi."
+            "SEO, icerik mimarisi, Google ve Meta Ads planlama, UI/UX yonlendirmesi ve gorsel medya sureclerinde uretim destegi."
         },
         {
           index: "03",
           accent: "panel--magenta",
           title: "Egitim ve iletisim",
           copy:
-            "Lisans seviyesinde Yeni Medya ve Iletisim egitimi, Ingilizce C1 yetkinligi ve yapay zeka uygulamalari, grafik, sosyal medya ve web programlama egitimleri."
+            "Yeni Medya ve Iletisim lisans egitimi, Ingilizce C1 yetkinligi ve yapay zeka uygulamalari, grafik, sosyal medya ve web programlama alanlarinda ek egitimler."
         }
       ]
     },
     work: {
       eyebrow: "Isler / Vaka calismalari",
-      title: "Amiral gemisi sistemler, ozel teslimatlar ve destekleyici urun dosyalari.",
+      title: "One cikan sistemler, ozel musteri isleri ve destekleyici projeler.",
       copy:
-        "Merkezde Deksmo var: lokalizasyon, duzenleme, yakalama ve alan odakli bilgi sistemleri etrafinda gelisen arac, runtime ve urun deneyleri kumesi.",
-      supportEyebrow: "Dosya / Destekleyici sistemler",
+        "Portfolyonun merkezinde Deksmo bulunuyor: lokalizasyon, duzenleme, yakalama ve alan odakli bilgi sistemleri etrafinda gelistirdigim araclar ve urun deneyleri.",
+      supportEyebrow: "Ek projeler / Destekleyici sistemler",
       supportCopy:
-        "Ekosistemin genisligini gosteren daha kucuk ama onemli yuzeyler: masaustu araclari, tarayici yakalama, alan odakli yapay zeka ve buyuk yapisal veri setleri.",
-      privateEngagementLabel: "Ozel musteri isi"
+        "Ekosistemin kapsamini gosteren daha kucuk ama onemli isler: masaustu araclari, tarayici eklentileri, alan odakli yapay zeka uygulamalari ve buyuk yapisal veri setleri.",
+      privateEngagementLabel: "Ozel musteri projesi"
     },
     featuredProjects: [
       {
         slug: "deksmo",
         title: "Deksmo",
-        label: "One cikan sistem / YZ manga lokalizasyon motoru",
+        label: "One cikan proje / YZ destekli manga lokalizasyon sistemi",
         serial: "SYS-01",
         summary:
-          "OCR, ceviri, kalite kontrol, typesetting ve bolum islemeyi kara kutu uretim yerine izlenebilir bir is akisina ceviren tam yigin bir lokalizasyon platformu.",
+          "OCR, ceviri, kalite kontrol, typesetting ve bolum islemeyi kara kutu bir uretim yerine izlenebilir bir is akisina donusturen tam yigin lokalizasyon platformu.",
         impact: [
-          "Gemini destekli otomasyonu; inceleme, duzenleme ve geri donus icin insan denetimli bir calisma alaniyla birlestiren bir hat kuruldu.",
-          "Sistem bolum yukleme, kitap modu ceviri, mobil uyumlu yuzeyler ve Firebase destekli kullanici akislarina kadar genisletildi.",
-          "Urun; rate limit, kuyruk durumlari, devam ettirilebilir projeler ve disa aktarma ihtiyaclari gibi operator gercekliklerine gore sekillendirildi."
+          "Gemini destekli otomasyonu; inceleme, duzenleme ve hata durumlarinda geri donus imkani veren insan denetimli bir calisma alaniyla birlestirdim.",
+          "Sistemi bolum yukleme, kitap modu ceviri, mobil uyumlu yuzeyler ve Firebase destekli kullanici akislarini kapsayacak sekilde genislettim.",
+          "Urunu; rate limit, kuyruk durumu, yarim kalan projeler ve disa aktarma ihtiyaclari gibi gercek kullanim senaryolarina gore sekillendirdim."
         ],
         stack: ["React 19", "Vite", "FastAPI", "Firebase", "Gemini", "Tailwind CSS"],
         links: [
           { label: "Repo", href: urls.repoDeksmo },
-          { label: "Canli yuzey", href: urls.deksmo }
+          { label: "Canli site", href: urls.deksmo }
         ],
         accent: "green",
         logo: "assets/logos/deksmo-core.png"
@@ -431,14 +431,14 @@ const content = {
       {
         slug: "legal-rebuild",
         title: "Hukuk Hizmetleri Platformu Yeniden Yapimi",
-        label: "One cikan is / Ozel musteri sistemi",
+        label: "One cikan musteri isi / Ozel sistem",
         serial: "SYS-02",
         summary:
-          "UI/UX, frontend teslimati, bilgi mimarisi ve teknik SEO katmanlarini kapsayan; hukuk hizmetleri markasi icin anonimlestirilmis freelance donusum projesi.",
+          "Bir hukuk hizmetleri markasi icin UI/UX, frontend gelistirme, bilgi mimarisi ve teknik SEO katmanlarini kapsayan anonimlestirilmis freelance donusum projesi.",
         impact: [
-          "Kamusal site sifirdan yeniden kurularak daha net bir hizmet anlatisi ve daha guclu bir guven yuzeyi olusturuldu.",
-          "Teknik ve icerik odakli SEO ile site, markali Google aramalarinda gorunmez durumdan ilk siraya tasindi.",
-          "Web sitesi bir brosur degil isleyen bir ticari yuzey olarak ele alinip urun dusuncesi buyume tarafiyla baglandi."
+          "Kamusal siteyi sifirdan yeniden kurarak daha net bir hizmet anlatimi ve daha guclu bir guven zemini olusturdum.",
+          "Teknik ve icerik odakli SEO ile siteyi markali Google aramalarinda gorunmez durumdan ilk siraya tasidim.",
+          "Web sitesini yalnizca bir brosur olarak degil, is ureten ticari bir yuzey olarak ele alip urun dusuncesiyle buyume tarafini birlestirdim."
         ],
         stack: ["UI/UX", "Frontend", "SEO", "Icerik stratejisi", "Performans"],
         links: [],
@@ -449,7 +449,7 @@ const content = {
     supportProjects: [
       {
         title: "Deksmo Vision",
-        type: "Yerel oncelikli ceviri tezgahi",
+        type: "Yerel oncelikli ceviri calisma alani",
         summary:
           "Yerel OCR, maskeleme, diskte tutulan proje durumu, saglayici profilleri ve secili balon duzenleme odakli React ve FastAPI editoru.",
         stack: ["React", "TypeScript", "FastAPI", "PaddleOCR"],
@@ -458,9 +458,9 @@ const content = {
       },
       {
         title: "DeksmoMedical",
-        type: "Alan odakli yapay zeka uygulamasi",
+        type: "Alan odakli YZ uygulamasi",
         summary:
-          "Turkce bilgi birikimini, yapay zeka tarif uretimini, ayarlanabilir veri saklamayi ve istege bagli yerel model gizliligini birlestiren tibbi bitki uygulamasi.",
+          "Turkce bilgi birikimini, yapay zeka destekli tarif uretimini, ayarlanabilir veri saklamayi ve istege bagli yerel model gizliligini bir araya getiren tibbi bitki uygulamasi.",
         stack: ["Next.js 15", "FastAPI", "SQLite", "Supabase"],
         links: [{ label: "Repo", href: urls.repoMedical }],
         logo: "assets/logos/deksmo-medical.png"
@@ -469,25 +469,25 @@ const content = {
         title: "DeksmoILACDB",
         type: "Acik kaynak ilac veri seti",
         summary:
-          "Turkiye icin 31.5 binin uzerinde kayit, arsivlenmis HTML prospektus icerigi, temizlenmis metin ve kullanim gorselleri iceren yapisal ilac veritabani.",
+          "Turkiye icin 31.5 binin uzerinde kayit, arsivlenmis HTML prospektus icerigi, temizlenmis metin ve kullanim gorselleri iceren yapisal bir ilac veritabani.",
         stack: ["Python", "JSONL", "RAG hazir metin", "Gorsel veri seti"],
         links: [{ label: "Repo", href: urls.repoIlacdb }],
         logo: "assets/logos/deksmo-ilacdb.svg"
       },
       {
         title: "Watermark-Deksmo",
-        type: "Masaustu toplu is araci",
+        type: "Masaustu toplu isleme araci",
         summary:
-          "Genis manga ve cizgi roman partilerine sayfa bazli istisnalar ve onceleme odakli kontrollerle watermark uygulayan Python masaustu araci.",
+          "Genis manga ve cizgi roman arsivlerine sayfa bazli istisnalar ve onizleme odakli kontrollerle watermark uygulayan Python masaustu araci.",
         stack: ["Python", "CustomTkinter", "Pillow", "PyInstaller"],
         links: [{ label: "Repo", href: urls.repoWatermark }],
         logo: "assets/logos/watermark-deksmo.png"
       },
       {
         title: "Deksmo WebGrab",
-        type: "Tarayici yakalama ve disa aktarma",
+        type: "Tarayici yakalama ve aktarma araci",
         summary:
-          "Gorsel agirlikli web kaynaklarini toplayip ardindan inceleme, yeniden siralama ve PDF ya da ZIP paketlerine aktarma imkani veren Manifest V3 eklentisi.",
+          "Gorsel agirlikli web kaynaklarini toplayip sonrasinda inceleme, yeniden siralama ve PDF ya da ZIP paketlerine aktarma imkani sunan Manifest V3 eklentisi.",
         stack: ["JavaScript", "Manifest V3", "PDF disa aktarma", "ZIP disa aktarma"],
         links: [{ label: "Repo", href: urls.repoScrap }],
         logo: "assets/logos/deksmo-webgrab.png"
@@ -495,41 +495,41 @@ const content = {
     ],
     capabilitiesSection: {
       eyebrow: "Yetenekler / Stack",
-      title: "Kurabildigim, yayina alabildigim ve gelistirebildigim seyler."
+      title: "Kurabildigim, yayina alabildigim ve iyilestirebildigim sistemler."
     },
     capabilities: [
       {
         title: "Yapay zeka sistemleri ve yerel oncelikli araclar",
         meta: "Yetenek 01",
         copy:
-          "Operator kontrolunu gorunur tutan yapay zeka destekli surecler kuruyorum: OCR, kuyruk mantigi, proje kaliciligi, disa aktarma yuzeyleri ve korlemesine guvenmek yerine denetlenebilen model destekli araclar.",
+          "Kullanici kontrolunu gorunur tutan yapay zeka destekli surecler kuruyorum: OCR, kuyruk yonetimi, proje kaliciligi, disa aktarma yuzeyleri ve korlemesine guvenmek yerine denetlenebilen model destekli araclar.",
         tags: ["OCR", "LLM entegrasyonu", "Kuyruk mantigi", "Yerel runtime"]
       },
       {
-        title: "Frontend urun yuzeyleri",
+        title: "Frontend urun arayuzleri",
         meta: "Yetenek 02",
         copy:
-          "Web uygulamalari, tarayici eklentileri ve masaustu araclari icin yogun is akislarina uygun arayuzler tasarlayip yayina aliyorum; odak noktalari hiyerarsi, responsive yapilar ve bakimi kolay etkilesim kaliplari.",
-        tags: ["React", "UI sistemleri", "Responsive duzen", "Operator UX"]
+          "Web uygulamalari, tarayici eklentileri ve masaustu araclari icin yogun is akislarina uygun arayuzler tasarlayip gelistiriyorum; odak noktam hiyerarsi, responsive duzen ve bakimi kolay etkilesim kaliplari.",
+        tags: ["React", "UI sistemleri", "Responsive duzen", "Kullanici deneyimi"]
       },
       {
-        title: "Buyume, lokalizasyon ve icerik sistemleri",
+        title: "Buyume, lokalizasyon ve icerik yapilari",
         meta: "Yetenek 03",
         copy:
-          "Urun teslimatini gorunurluk ve iletisimle baglayabiliyorum: SEO mimarisi, cift dilli is akis dusuncesi, altyazi ve lokalizasyon surecleri ve kesif ile guveni destekleyen icerik sistemleri.",
+          "Urun teslimatini gorunurluk ve iletisimle baglayabiliyorum: SEO mimarisi, cift dilli is akis dusuncesi, altyazi ve lokalizasyon surecleri ile kesfi ve guveni destekleyen icerik yapilari.",
         tags: ["SEO", "Lokalizasyon", "Icerik stratejisi", "Dijital uygulama"]
       }
     ],
     stack: {
-      eyebrow: "Teknoloji izi",
-      copy: "Portfoy boyunca tekrar eden teknolojiler."
+      eyebrow: "Kullandigim teknolojiler",
+      copy: "Portfolyo boyunca tekrar eden temel teknolojiler."
     },
     experience: {
       eyebrow: "Deneyim / Zaman cizgisi",
-      title: "Teslimat, produksiyon ve sistem dusuncesini birlestiren kariyer hatti.",
+      title: "Teslimat, uretim ve sistem dusuncesini birlestiren kariyer yolu.",
       terminalTitle: "kariyer.log",
-      trainingEyebrow: "Secilmis egitimler",
-      trainingTitle: "Egitim ve destekleyici yetkinlikler",
+      trainingEyebrow: "Egitimler",
+      trainingTitle: "Egitim ve destekleyici birikim",
       trainingList: [
         "Yalova Universitesi - Yeni Medya ve Iletisim, 2021-2025",
         "Yapay zeka uygulamalari ve temel yapay zeka egitimleri",
@@ -541,31 +541,31 @@ const content = {
       {
         period: "2025 - Gunumuz",
         title: "Freelance Dijital Proje Yonetimi",
-        kind: "Musteri sistemleri / SEO / web teslimati",
+        kind: "Musteri projeleri / SEO / web gelistirme",
         summary:
-          "Hizmet markalari icin UI/UX calismalari, frontend uygulamasi, teknik SEO ve buyume odakli icerik yapisi uzerinden web deneyimleri kurup gelistiriyorum."
+          "Hizmet markalari icin UI/UX, frontend gelistirme, teknik SEO ve buyume odakli icerik kurgusu uzerinden web deneyimleri kurup gelistiriyorum."
       },
       {
         period: "2024 - 2025",
         title: "Produksiyon ve Altyazi Stajyeri",
         kind: "Post-produksiyon / lokalizasyon",
         summary:
-          "Kurumsal post-produksiyon sureclerine destek verirken Ingilizceden Turkceye altyazi ve lokalizasyon gorevleri ustlendim; bu surec medya boru hattinda disiplin kazandirdi."
+          "Kurumsal post-produksiyon sureclerine destek verirken Ingilizceden Turkceye altyazi ve lokalizasyon gorevleri ustlendim; bu surec bana medya operasyonlarinda disiplin kazandirdi."
       },
       {
         period: "2021 - 2025",
-        title: "Yeni Medya ve Iletisim",
+        title: "Yeni Medya ve Iletisim Lisansi",
         kind: "Egitim / temel",
         summary:
-          "Portfoyun teorik zemini lisans egitimiyle kuruldu; ardindan yapay zeka uygulamalari, grafik, sosyal medya, iletisim ve web programlama egitimleriyle derinlestirildi."
+          "Portfolyonun teorik zemini lisans egitimiyle kuruldu; ardindan yapay zeka uygulamalari, grafik, sosyal medya, iletisim ve web programlama egitimleriyle derinlestirildi."
       }
     ],
     translationsSection: {
       eyebrow: "Ceviriler / Manga",
       title: "Umineko ve Re:Zero",
-      copy: "Umineko: When They Cry ve Re:Zero manga serileri i\u00E7in ki\u015Fisel olarak yap\u0131lm\u0131\u015F T\u00FCrk\u00E7e \u00E7eviri.",
+      copy: "Umineko: When They Cry ve Re:Zero serileri icin hazirladigim Turkce manga cevirileri.",
       readLabel: "Oku",
-      roleLabel: "\u00C7evirmen"
+      roleLabel: "Cevirmen"
     },
     translations: [
       {
@@ -592,9 +592,9 @@ const content = {
     ],
     contact: {
       eyebrow: "Iletisim / Acik kanallar",
-      title: "Is faydali gorunuyorsa en hizli yol dogrudan iletisim.",
+      title: "Yaptigim is sizin icin uygunsa en hizli yol dogrudan iletisim.",
       copy:
-        "Site bilerek yalniz tutuldu: iletisim formu yok, spam daveti yok, kamusal PDF yok. Isi incelemek icin GitHub'i, profesyonel yuzey icin LinkedIn'i kullan."
+        "Siteyi bilerek sade tuttum: iletisim formu yok, gereksiz yonlendirme yok, herkese acik bir PDF de yok. Isleri incelemek icin GitHub'a, profesyonel baglanti icin LinkedIn'e bakabilirsiniz."
     },
     socialLinks: [
       { label: "GitHub", href: urls.github },
