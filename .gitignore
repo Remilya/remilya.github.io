@@ -1,5 +1,36 @@
-references/
-tmp/
-Liquid glass info/
-Thumbs.db
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build
+dist/
+build/
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Development/References
+tmp/
+temp/
+references/
+"Liquid glass info"/
+*.mp4
+*.bak
+*.swp
+*.old
