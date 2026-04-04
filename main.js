@@ -57,7 +57,10 @@ const content = {
         loading: "Calibrating frame lattice",
         ready: "Sequence online",
         fallback: "Static plate engaged",
-        frameLabel: "FRAME"
+        frameLabel: "FRAME",
+        titleKicker: "Welcome To",
+        titlePrimary: "Remilya",
+        titleAccent: ".dev"
       },
       rail: [
         {
@@ -360,7 +363,10 @@ const content = {
         loading: "Kare dizisi hazırlanıyor",
         ready: "Sekans hazır",
         fallback: "Statik görünüm aktif",
-        frameLabel: "KARE"
+        frameLabel: "KARE",
+        titleKicker: "Remilya.dev'e",
+        titlePrimary: "Hoş ",
+        titleAccent: "Geldiniz"
       },
       rail: [
         {
@@ -650,10 +656,9 @@ const elements = {
   heroSequenceInstruction: document.querySelector("#hero-sequence-instruction"),
   heroSequenceState: document.querySelector("#hero-sequence-state"),
   heroSequenceProgress: document.querySelector("#hero-sequence-progress"),
-  heroSequenceLoader: document.querySelector("#hero-sequence-loader"),
-  heroSequenceLoaderLabel: document.querySelector("#hero-sequence-loader-label"),
-  heroSequenceLoaderFill: document.querySelector("#hero-sequence-loader-fill"),
-  heroSequenceLoaderValue: document.querySelector("#hero-sequence-loader-value"),
+  heroSequenceTitleKicker: document.querySelector("#hero-sequence-title-kicker"),
+  heroSequenceTitlePrimary: document.querySelector("#hero-sequence-title-primary"),
+  heroSequenceTitleAccent: document.querySelector("#hero-sequence-title-accent"),
   heroRail: document.querySelector("#hero-rail"),
   aboutEyebrow: document.querySelector("#about-eyebrow"),
   aboutTitle: document.querySelector("#about-title"),
@@ -711,6 +716,10 @@ function padFrame(value, digits = 3) {
 }
 
 function syncHeroSequenceStatus() {
+  if (!elements.heroSequenceState && !elements.heroSequenceProgress) {
+    return;
+  }
+
   const localeData = content[currentLocale] || content.en;
   const sequenceData = localeData.hero.sequence;
   const total = heroSequenceState.total || Number(elements.heroSequence?.dataset.frameCount || 0);
@@ -724,19 +733,13 @@ function syncHeroSequenceStatus() {
   }
 }
 
-function syncHeroSequenceLoader(progress = 0) {
+function syncHeroSequenceTitle() {
   const localeData = content[currentLocale] || content.en;
-  const clamped = Math.max(0, Math.min(100, Math.round(progress)));
+  const sequenceData = localeData.hero.sequence;
 
-  setText(elements.heroSequenceLoaderLabel, localeData.hero.sequence.loader);
-
-  if (elements.heroSequenceLoaderFill) {
-    elements.heroSequenceLoaderFill.style.width = `${clamped}%`;
-  }
-
-  if (elements.heroSequenceLoaderValue) {
-    elements.heroSequenceLoaderValue.textContent = `${clamped}%`;
-  }
+  setText(elements.heroSequenceTitleKicker, sequenceData.titleKicker || "");
+  setText(elements.heroSequenceTitlePrimary, sequenceData.titlePrimary || "");
+  setText(elements.heroSequenceTitleAccent, sequenceData.titleAccent || "");
 }
 
 function renderTags(items) {
@@ -1142,10 +1145,8 @@ function applyLocale(locale) {
   setText(elements.heroLiveStatus, localeData.hero.liveStatus);
   setText(elements.heroSequenceEyebrow, localeData.hero.sequence.eyebrow);
   setText(elements.heroSequenceInstruction, localeData.hero.sequence.instruction);
+  syncHeroSequenceTitle();
   syncHeroSequenceStatus();
-  syncHeroSequenceLoader(
-    Number(elements.heroSequenceLoaderValue?.textContent?.replace("%", "") || 0)
-  );
   renderHeroRail(localeData.hero.rail);
 
   setText(elements.aboutEyebrow, localeData.about.eyebrow);
@@ -1316,31 +1317,16 @@ function initHeroSequence() {
   const root = elements.heroSequence;
   const canvas = document.querySelector("#hero-sequence-canvas");
   const fallbackImage = document.querySelector("#hero-sequence-fallback");
-  const loader = elements.heroSequenceLoader;
   const gsapLib = window.gsap;
   const scrollTriggerLib = window.ScrollTrigger;
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   heroSequenceState.total = Number(root?.dataset.frameCount || 0);
   heroSequenceState.frame = 1;
   heroSequenceState.mode = "loading";
   syncHeroSequenceStatus();
-  syncHeroSequenceLoader(0);
 
-  if (!root || !canvas || !fallbackImage || !loader) {
-    return;
-  }
-
-  const sequenceDisabled =
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-    window.matchMedia("(max-width: 820px)").matches;
-
-  if (sequenceDisabled) {
-    document.body.classList.remove("sequence-loading");
-    root.classList.remove("is-loading", "is-ready");
-    root.classList.add("is-fallback");
-    heroSequenceState.mode = "fallback";
-    syncHeroSequenceStatus();
-    syncHeroSequenceLoader(100);
+  if (!root || !canvas || !fallbackImage) {
     return;
   }
 
@@ -1360,25 +1346,39 @@ function initHeroSequence() {
   };
   const posterSrc = root.dataset.posterSrc || defaultFramePath(0);
 
-  if (!context || !sequenceDir || frameCount < 2) {
-    document.body.classList.remove("sequence-loading");
-    root.classList.remove("is-loading", "is-ready");
+  function activateFallback(sequenceMode) {
+    root.dataset.sequenceMode = sequenceMode;
+    root.classList.remove("is-loading", "is-ready", "is-started");
     root.classList.add("is-fallback");
+    fallbackImage.src = posterSrc;
     heroSequenceState.mode = "fallback";
     syncHeroSequenceStatus();
-    syncHeroSequenceLoader(100);
+  }
+
+  if (reducedMotionQuery.matches) {
+    activateFallback("reduced-motion-fallback");
+    return;
+  }
+
+  if (!context || !sequenceDir || frameCount < 2) {
+    activateFallback("load-failure-fallback");
+    return;
+  }
+
+  if (!gsapLib || !scrollTriggerLib) {
+    activateFallback("load-failure-fallback");
     return;
   }
 
   fallbackImage.src = posterSrc;
+  root.dataset.sequenceMode = "desktop-sequence";
+  root.classList.remove("is-fallback", "is-started");
   root.classList.add("is-loading");
-  document.body.classList.add("sequence-loading");
 
   const frameUrls = Array.from({ length: frameCount }, (_, index) => defaultFramePath(index));
 
   const frames = new Array(frameCount).fill(null);
   const framePromises = new Map();
-  let initialLoadedCount = 0;
   let targetFrame = 0;
   let renderedFrame = -1;
   let ready = false;
@@ -1403,11 +1403,6 @@ function initHeroSequence() {
       image.onload = () => {
         frames[index] = image;
         framePromises.delete(index);
-
-        if (index < initialBatch) {
-          initialLoadedCount += 1;
-          syncHeroSequenceLoader((initialLoadedCount / initialBatch) * 100);
-        }
 
         if (ready && Math.abs(index - targetFrame) <= 2) {
           renderFrame(targetFrame);
@@ -1497,30 +1492,7 @@ function initHeroSequence() {
       resizeFrame = 0;
       renderedFrame = -1;
       renderFrame(targetFrame);
-
-      if (gsapLib && scrollTriggerLib) {
-        scrollTriggerLib.refresh();
-      } else {
-        updateFrameFromScroll();
-      }
-    });
-  }
-
-  function updateFrameFromScroll() {
-    const scrollSpan = Math.max(root.offsetHeight - window.innerHeight, 1);
-    const progress = Math.min(Math.max(-root.getBoundingClientRect().top / scrollSpan, 0), 1);
-    targetFrame = Math.round(progress * (frameCount - 1));
-    renderFrame(targetFrame);
-  }
-
-  let scrollFrame = 0;
-
-  function queueScrollUpdate() {
-    if (scrollFrame) return;
-
-    scrollFrame = window.requestAnimationFrame(() => {
-      scrollFrame = 0;
-      updateFrameFromScroll();
+      scrollTriggerLib.refresh();
     });
   }
 
@@ -1556,17 +1528,11 @@ function initHeroSequence() {
     Array.from({ length: initialBatch }, (_, index) => loadFrame(index))
   ).then((loadedFrames) => {
     if (!frames[0] || !loadedFrames.filter(Boolean).length) {
-      document.body.classList.remove("sequence-loading");
-      root.classList.remove("is-loading");
-      root.classList.add("is-fallback");
-      heroSequenceState.mode = "fallback";
-      syncHeroSequenceStatus();
-      syncHeroSequenceLoader(100);
+      activateFallback("load-failure-fallback");
       return;
     }
 
     ready = true;
-    syncHeroSequenceLoader(100);
     root.classList.remove("is-loading", "is-fallback");
     root.classList.add("is-ready");
     heroSequenceState.mode = "ready";
@@ -1575,36 +1541,31 @@ function initHeroSequence() {
 
     window.setTimeout(() => {
       root.classList.add("is-started");
-      document.body.classList.remove("sequence-loading");
     }, 220);
+    gsapLib.registerPlugin(scrollTriggerLib);
 
-    if (gsapLib && scrollTriggerLib) {
-      gsapLib.registerPlugin(scrollTriggerLib);
-
-      const scrubFrame = { value: 0 };
-      gsapLib.to(scrubFrame, {
-        value: frameCount - 1,
-        ease: "none",
-        onUpdate: () => {
-          targetFrame = Math.round(scrubFrame.value);
-          renderFrame(targetFrame);
-        },
-        scrollTrigger: {
-          trigger: root,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-    } else {
-      window.addEventListener("scroll", queueScrollUpdate, { passive: true });
-      updateFrameFromScroll();
-    }
+    const scrubFrame = { value: 0 };
+    gsapLib.to(scrubFrame, {
+      value: frameCount - 1,
+      ease: "none",
+      onUpdate: () => {
+        targetFrame = Math.round(scrubFrame.value);
+        renderFrame(targetFrame);
+      },
+      scrollTrigger: {
+        trigger: root,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+        invalidateOnRefresh: true
+      }
+    });
 
     window.addEventListener("resize", queueResize);
     window.addEventListener("orientationchange", queueResize);
     preloadRemainingFrames();
+  }).catch(() => {
+    activateFallback("load-failure-fallback");
   });
 }
 
