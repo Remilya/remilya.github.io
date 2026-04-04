@@ -40,7 +40,7 @@ const content = {
       title: "I build systems for messy digital workflows.",
       lead:
         "I work across AI systems, frontend product surfaces, localization-heavy workflows, and SEO-led delivery. The common thread is practical software: tools people can run, inspect, and improve.",
-      ctaWork: "View projects",
+      ctaWork: "View sequence",
       panelEyebrow: "Current focus",
       panelTitle: "Freelance product work with Deksmo at the center.",
       signals: [
@@ -50,6 +50,15 @@ const content = {
       ],
       liveLabel: "Live site",
       liveStatus: "Online",
+      sequence: {
+        eyebrow: "ARCHIVE SEQUENCE / CATHEDRAL",
+        instruction: "Scroll to descend into the ultraviolet archive.",
+        loader: "Initializing sequence",
+        loading: "Calibrating frame lattice",
+        ready: "Sequence online",
+        fallback: "Static plate engaged",
+        frameLabel: "FRAME"
+      },
       rail: [
         {
           label: "MODE_01",
@@ -334,7 +343,7 @@ const content = {
       title: "Karmaşık dijital süreçleri daha kullanılabilir hale getiren sistemler kuruyorum.",
       lead:
         "Yapay zeka sistemleri, ürün arayüzleri, lokalizasyon odaklı iş akışları ve SEO destekli web projeleri üzerinde çalışıyorum. Benim için iyi yazılım; kullanılabilen, izlenebilen ve gerektiğinde müdahale edilebilen yazılımdır.",
-      ctaWork: "Projeleri İncele",
+      ctaWork: "Sekansi Gor",
       panelEyebrow: "Güncel odak",
       panelTitle: "Deksmo merkezli freelance ürün ve sistem çalışmaları.",
       signals: [
@@ -344,6 +353,15 @@ const content = {
       ],
       liveLabel: "Canlı site",
       liveStatus: "Aktif",
+      sequence: {
+        eyebrow: "ARŞİV SEKANSI / KATEDRAL",
+        instruction: "Morötesi arşivin içine inmek için kaydır.",
+        loader: "Sekans hazırlanıyor",
+        loading: "Kare dizisi hazırlanıyor",
+        ready: "Sekans hazır",
+        fallback: "Statik görünüm aktif",
+        frameLabel: "KARE"
+      },
       rail: [
         {
           label: "MOD_01",
@@ -627,6 +645,15 @@ const elements = {
   heroSignalList: document.querySelector("#hero-signal-list"),
   heroLiveLabel: document.querySelector("#hero-live-label"),
   heroLiveStatus: document.querySelector("#hero-live-status"),
+  heroSequence: document.querySelector("#hero-sequence"),
+  heroSequenceEyebrow: document.querySelector("#hero-sequence-eyebrow"),
+  heroSequenceInstruction: document.querySelector("#hero-sequence-instruction"),
+  heroSequenceState: document.querySelector("#hero-sequence-state"),
+  heroSequenceProgress: document.querySelector("#hero-sequence-progress"),
+  heroSequenceLoader: document.querySelector("#hero-sequence-loader"),
+  heroSequenceLoaderLabel: document.querySelector("#hero-sequence-loader-label"),
+  heroSequenceLoaderFill: document.querySelector("#hero-sequence-loader-fill"),
+  heroSequenceLoaderValue: document.querySelector("#hero-sequence-loader-value"),
   heroRail: document.querySelector("#hero-rail"),
   aboutEyebrow: document.querySelector("#about-eyebrow"),
   aboutTitle: document.querySelector("#about-title"),
@@ -667,10 +694,48 @@ const elements = {
 
 let currentLocale = "en";
 let revealObserver = null;
+const heroSequenceState = {
+  mode: "loading",
+  frame: 1,
+  total: 0
+};
 
 function setText(element, value) {
   if (element) {
     element.textContent = value;
+  }
+}
+
+function padFrame(value, digits = 3) {
+  return String(value).padStart(digits, "0");
+}
+
+function syncHeroSequenceStatus() {
+  const localeData = content[currentLocale] || content.en;
+  const sequenceData = localeData.hero.sequence;
+  const total = heroSequenceState.total || Number(elements.heroSequence?.dataset.frameCount || 0);
+  const frame = Math.min(Math.max(heroSequenceState.frame || 1, 1), Math.max(total, 1));
+  const statusLabel = sequenceData[heroSequenceState.mode] || sequenceData.loading;
+
+  setText(elements.heroSequenceState, statusLabel);
+
+  if (elements.heroSequenceProgress) {
+    elements.heroSequenceProgress.textContent = `${sequenceData.frameLabel} ${padFrame(frame)} / ${padFrame(Math.max(total, 1))}`;
+  }
+}
+
+function syncHeroSequenceLoader(progress = 0) {
+  const localeData = content[currentLocale] || content.en;
+  const clamped = Math.max(0, Math.min(100, Math.round(progress)));
+
+  setText(elements.heroSequenceLoaderLabel, localeData.hero.sequence.loader);
+
+  if (elements.heroSequenceLoaderFill) {
+    elements.heroSequenceLoaderFill.style.width = `${clamped}%`;
+  }
+
+  if (elements.heroSequenceLoaderValue) {
+    elements.heroSequenceLoaderValue.textContent = `${clamped}%`;
   }
 }
 
@@ -1075,6 +1140,12 @@ function applyLocale(locale) {
   renderHeroSignalList(localeData.hero.signals);
   setText(elements.heroLiveLabel, localeData.hero.liveLabel);
   setText(elements.heroLiveStatus, localeData.hero.liveStatus);
+  setText(elements.heroSequenceEyebrow, localeData.hero.sequence.eyebrow);
+  setText(elements.heroSequenceInstruction, localeData.hero.sequence.instruction);
+  syncHeroSequenceStatus();
+  syncHeroSequenceLoader(
+    Number(elements.heroSequenceLoaderValue?.textContent?.replace("%", "") || 0)
+  );
   renderHeroRail(localeData.hero.rail);
 
   setText(elements.aboutEyebrow, localeData.about.eyebrow);
@@ -1241,6 +1312,302 @@ function initCursorTrail() {
    Subtle parallax movement on scroll for the spell circle
    ═══════════════════════════════════════════════════════ */
 
+function initHeroSequence() {
+  const root = elements.heroSequence;
+  const canvas = document.querySelector("#hero-sequence-canvas");
+  const fallbackImage = document.querySelector("#hero-sequence-fallback");
+  const loader = elements.heroSequenceLoader;
+  const gsapLib = window.gsap;
+  const scrollTriggerLib = window.ScrollTrigger;
+
+  heroSequenceState.total = Number(root?.dataset.frameCount || 0);
+  heroSequenceState.frame = 1;
+  heroSequenceState.mode = "loading";
+  syncHeroSequenceStatus();
+  syncHeroSequenceLoader(0);
+
+  if (!root || !canvas || !fallbackImage || !loader) {
+    return;
+  }
+
+  const sequenceDisabled =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    window.matchMedia("(max-width: 820px)").matches;
+
+  if (sequenceDisabled) {
+    document.body.classList.remove("sequence-loading");
+    root.classList.remove("is-loading", "is-ready");
+    root.classList.add("is-fallback");
+    heroSequenceState.mode = "fallback";
+    syncHeroSequenceStatus();
+    syncHeroSequenceLoader(100);
+    return;
+  }
+
+  const context = canvas.getContext("2d");
+  const frameCount = Number(root.dataset.frameCount || 0);
+  const frameDigits = Number(root.dataset.framePad || 3);
+  const frameExtension = root.dataset.frameExt || "jpg";
+  const frameTemplate = root.dataset.frameTemplate || "";
+  const initialBatch = Math.max(1, Math.min(frameCount, Number(root.dataset.initialBatch || 12)));
+  const sequenceDir = root.dataset.sequenceDir;
+  const defaultFramePath = (index) => {
+    const frameNumber = padFrame(index + 1, frameDigits);
+    if (frameTemplate) {
+      return `${sequenceDir}/${frameTemplate.replace("{n}", frameNumber)}`;
+    }
+    return `${sequenceDir}/frame-${frameNumber}.${frameExtension}`;
+  };
+  const posterSrc = root.dataset.posterSrc || defaultFramePath(0);
+
+  if (!context || !sequenceDir || frameCount < 2) {
+    document.body.classList.remove("sequence-loading");
+    root.classList.remove("is-loading", "is-ready");
+    root.classList.add("is-fallback");
+    heroSequenceState.mode = "fallback";
+    syncHeroSequenceStatus();
+    syncHeroSequenceLoader(100);
+    return;
+  }
+
+  fallbackImage.src = posterSrc;
+  root.classList.add("is-loading");
+  document.body.classList.add("sequence-loading");
+
+  const frameUrls = Array.from({ length: frameCount }, (_, index) => defaultFramePath(index));
+
+  const frames = new Array(frameCount).fill(null);
+  const framePromises = new Map();
+  let initialLoadedCount = 0;
+  let targetFrame = 0;
+  let renderedFrame = -1;
+  let ready = false;
+  let resizeFrame = 0;
+
+  function loadFrame(index) {
+    if (index < 0 || index >= frameCount) {
+      return Promise.resolve(null);
+    }
+
+    if (frames[index]) {
+      return Promise.resolve(frames[index]);
+    }
+
+    if (framePromises.has(index)) {
+      return framePromises.get(index);
+    }
+
+    const promise = new Promise((resolve) => {
+      const image = new Image();
+      image.decoding = "async";
+      image.onload = () => {
+        frames[index] = image;
+        framePromises.delete(index);
+
+        if (index < initialBatch) {
+          initialLoadedCount += 1;
+          syncHeroSequenceLoader((initialLoadedCount / initialBatch) * 100);
+        }
+
+        if (ready && Math.abs(index - targetFrame) <= 2) {
+          renderFrame(targetFrame);
+        }
+
+        resolve(image);
+      };
+      image.onerror = () => {
+        framePromises.delete(index);
+        resolve(null);
+      };
+      image.src = frameUrls[index];
+    });
+
+    framePromises.set(index, promise);
+    return promise;
+  }
+
+  function findNearestLoadedFrame(index) {
+    if (frames[index]) {
+      return index;
+    }
+
+    for (let offset = 1; offset < frameCount; offset += 1) {
+      const forward = index + offset;
+      const backward = index - offset;
+
+      if (forward < frameCount && frames[forward]) {
+        return forward;
+      }
+
+      if (backward >= 0 && frames[backward]) {
+        return backward;
+      }
+    }
+
+    return frames[0] ? 0 : -1;
+  }
+
+  function renderFrame(requestedIndex) {
+    const frameIndex = findNearestLoadedFrame(requestedIndex);
+    const image = frames[frameIndex];
+    if (frameIndex < 0 || !image || renderedFrame === frameIndex) {
+      return;
+    }
+
+    const bounds = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const width = Math.max(1, Math.round(bounds.width * dpr));
+    const height = Math.max(1, Math.round(bounds.height * dpr));
+
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    const canvasRatio = canvas.width / canvas.height;
+    const imageRatio = image.naturalWidth / image.naturalHeight;
+    let drawWidth = canvas.width;
+    let drawHeight = canvas.height;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    if (imageRatio > canvasRatio) {
+      drawHeight = canvas.height;
+      drawWidth = drawHeight * imageRatio;
+      offsetX = (canvas.width - drawWidth) / 2;
+    } else {
+      drawWidth = canvas.width;
+      drawHeight = drawWidth / imageRatio;
+      offsetY = (canvas.height - drawHeight) / 2;
+    }
+
+    context.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
+    renderedFrame = frameIndex;
+    heroSequenceState.frame = frameIndex + 1;
+    syncHeroSequenceStatus();
+  }
+
+  function queueResize() {
+    if (resizeFrame) return;
+
+    resizeFrame = window.requestAnimationFrame(() => {
+      resizeFrame = 0;
+      renderedFrame = -1;
+      renderFrame(targetFrame);
+
+      if (gsapLib && scrollTriggerLib) {
+        scrollTriggerLib.refresh();
+      } else {
+        updateFrameFromScroll();
+      }
+    });
+  }
+
+  function updateFrameFromScroll() {
+    const scrollSpan = Math.max(root.offsetHeight - window.innerHeight, 1);
+    const progress = Math.min(Math.max(-root.getBoundingClientRect().top / scrollSpan, 0), 1);
+    targetFrame = Math.round(progress * (frameCount - 1));
+    renderFrame(targetFrame);
+  }
+
+  let scrollFrame = 0;
+
+  function queueScrollUpdate() {
+    if (scrollFrame) return;
+
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateFrameFromScroll();
+    });
+  }
+
+  function preloadRemainingFrames() {
+    let nextIndex = initialBatch;
+
+    const pump = (deadline) => {
+      let budget = 0;
+
+      while (nextIndex < frameCount && budget < 4) {
+        loadFrame(nextIndex);
+        nextIndex += 1;
+        budget += 1;
+
+        if (deadline && typeof deadline.timeRemaining === "function" && deadline.timeRemaining() < 8) {
+          break;
+        }
+      }
+
+      if (nextIndex < frameCount) {
+        if (typeof window.requestIdleCallback === "function") {
+          window.requestIdleCallback(pump);
+        } else {
+          window.setTimeout(() => pump(), 80);
+        }
+      }
+    };
+
+    pump();
+  }
+
+  Promise.all(
+    Array.from({ length: initialBatch }, (_, index) => loadFrame(index))
+  ).then((loadedFrames) => {
+    if (!frames[0] || !loadedFrames.filter(Boolean).length) {
+      document.body.classList.remove("sequence-loading");
+      root.classList.remove("is-loading");
+      root.classList.add("is-fallback");
+      heroSequenceState.mode = "fallback";
+      syncHeroSequenceStatus();
+      syncHeroSequenceLoader(100);
+      return;
+    }
+
+    ready = true;
+    syncHeroSequenceLoader(100);
+    root.classList.remove("is-loading", "is-fallback");
+    root.classList.add("is-ready");
+    heroSequenceState.mode = "ready";
+    syncHeroSequenceStatus();
+    renderFrame(0);
+
+    window.setTimeout(() => {
+      root.classList.add("is-started");
+      document.body.classList.remove("sequence-loading");
+    }, 220);
+
+    if (gsapLib && scrollTriggerLib) {
+      gsapLib.registerPlugin(scrollTriggerLib);
+
+      const scrubFrame = { value: 0 };
+      gsapLib.to(scrubFrame, {
+        value: frameCount - 1,
+        ease: "none",
+        onUpdate: () => {
+          targetFrame = Math.round(scrubFrame.value);
+          renderFrame(targetFrame);
+        },
+        scrollTrigger: {
+          trigger: root,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      });
+    } else {
+      window.addEventListener("scroll", queueScrollUpdate, { passive: true });
+      updateFrameFromScroll();
+    }
+
+    window.addEventListener("resize", queueResize);
+    window.addEventListener("orientationchange", queueResize);
+    preloadRemainingFrames();
+  });
+}
+
 function initSpellCircleParallax() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     return;
@@ -1272,6 +1639,7 @@ function initSpellCircleParallax() {
 
 setupLocaleSwitcher();
 applyLocale(getInitialLocale());
+initHeroSequence();
 setupActiveNavigation();
 initDanmakuParticles();
 initCursorTrail();

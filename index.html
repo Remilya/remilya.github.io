@@ -13,8 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260403f" />
-    <script src="main.js?v=20260403a" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260404b" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <script src="main.js?v=20260404b" defer></script>
   </head>
   <body>
     <div class="atmosphere" aria-hidden="true"></div>
@@ -70,7 +72,7 @@
               </p>
 
               <div class="hero-actions">
-                <a class="cyber-button cyber-button--primary" href="#work" id="hero-cta-work">View projects</a>
+                <a class="cyber-button cyber-button--primary" href="#sequence" id="hero-cta-work">View sequence</a>
                 <a class="cyber-button" href="https://github.com/Remilya" target="_blank" rel="noreferrer">GitHub</a>
                 <a class="cyber-button" href="https://www.linkedin.com/in/ilker-agirkaya/" target="_blank" rel="noreferrer">LinkedIn</a>
               </div>
@@ -111,6 +113,43 @@
               <strong>Growth and localization</strong>
               <p>SEO architecture, bilingual workflow thinking, content systems, and digital execution.</p>
             </article>
+          </div>
+        </section>
+
+        <section class="section section--sequence" id="sequence">
+          <div
+            class="hero-sequence"
+            id="hero-sequence"
+            data-sequence-dir="assets/sequences/1080p"
+            data-frame-count="96"
+            data-frame-ext="jpg"
+            data-frame-pad="3"
+            data-frame-template="frame-{n}_W2xEX_1920x1080_2n.jpg"
+            data-initial-batch="12"
+            data-poster-src="assets/sequences/1080p/frame-001_W2xEX_1920x1080_2n.jpg"
+          >
+            <div class="hero-sequence__sticky">
+              <canvas class="hero-sequence__canvas" id="hero-sequence-canvas" width="1280" height="720" aria-hidden="true"></canvas>
+              <img
+                class="hero-sequence__fallback"
+                id="hero-sequence-fallback"
+                src="assets/sequences/1080p/frame-001_W2xEX_1920x1080_2n.jpg"
+                alt=""
+                loading="eager"
+              />
+              <div class="hero-sequence__loader" id="hero-sequence-loader" aria-hidden="true">
+                <p class="hero-sequence__loader-label" id="hero-sequence-loader-label">Initializing sequence</p>
+                <div class="hero-sequence__loader-track">
+                  <span class="hero-sequence__loader-fill" id="hero-sequence-loader-fill"></span>
+                </div>
+                <p class="hero-sequence__loader-value" id="hero-sequence-loader-value">0%</p>
+              </div>
+              <div class="hero-sequence__veil" aria-hidden="true"></div>
+              <div class="hero-sequence__title" aria-hidden="true">
+                <p class="hero-sequence__title-kicker">Welcome To</p>
+                <h1 class="hero-sequence__title-main">Remilya<span>.dev</span></h1>
+              </div>
+            </div>
           </div>
         </section>
 
