@@ -245,14 +245,21 @@ const content = {
     experience: {
       eyebrow: "Experience / Timeline",
       title: "A career path that blends delivery, production, and systems thinking.",
-      terminalTitle: "career.log",
-      trainingEyebrow: "Selected training",
-      trainingTitle: "Education and supporting credentials",
+      workEyebrow: "Work experience",
+      workTitle: "Client delivery and production roles",
+      terminalTitle: "work.log",
+      trainingEyebrow: "Education / Training",
+      trainingTitle: "Supporting training and certificates",
       trainingList: [
-        "Yalova University - New Media and Communication, 2021-2025",
         "AI applications and foundational AI training",
-        "Web programming, advanced graphics, and social media specialization",
-        "English C1, communication training, and media publishing coursework"
+        "Local LLM workflows and practical AI experimentation",
+        "Web programming and frontend development",
+        "Advanced graphic design production",
+        "Social media and digital communication",
+        "Media and press publishing",
+        "Diction and effective speaking",
+        "KVKK and digital compliance basics",
+        "English C1"
       ]
     },
     timeline: [
@@ -270,13 +277,6 @@ const content = {
         summary:
           "Supported corporate post-production workflows while handling English-to-Turkish subtitle and localization tasks that sharpened media-pipeline discipline."
       },
-      {
-        period: "2021 - 2025",
-        title: "New Media and Communication",
-        kind: "Education / foundation",
-        summary:
-          "Built the theoretical base for the portfolio through BA-level study, then layered it with training in AI applications, graphics, social media, communication, and web programming."
-      }
     ],
     translationsSection: {
       eyebrow: "Translations / Manga",
@@ -309,14 +309,13 @@ const content = {
       }
     ],
     contact: {
-      eyebrow: "Contact / Open channels",
-      title: "If the work looks useful, the fastest path is direct.",
-      copy:
-        "This site stays intentionally lean: no contact form, no inbox spam bait, no public PDF. Use GitHub to inspect the work and LinkedIn for the professional surface."
+      eyebrow: "Profiles / Links",
+      title: "",
+      copy: ""
     },
     socialLinks: [
-      { label: "GitHub", href: urls.github },
-      { label: "LinkedIn", href: urls.linkedin }
+      { label: "GitHub", href: urls.github, icon: "bi-github" },
+      { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" }
     ],
     footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   },
@@ -551,14 +550,21 @@ const content = {
     experience: {
       eyebrow: "Deneyim / Zaman çizgisi",
       title: "Teslimat, üretim ve sistem düşüncesini birleştiren kariyer yolu.",
-      terminalTitle: "kariyer.log",
+      workEyebrow: "İş deneyimi",
+      workTitle: "Müşteri teslimatı ve prodüksiyon rolleri",
+      terminalTitle: "is.log",
       trainingEyebrow: "Eğitimler",
-      trainingTitle: "Eğitim ve destekleyici birikim",
+      trainingTitle: "Destekleyici eğitimler ve sertifikalar",
       trainingList: [
-        "Yalova Üniversitesi - Yeni Medya ve İletişim, 2021-2025",
         "Yapay zeka uygulamaları ve temel yapay zeka eğitimleri",
-        "Web programlama, ileri grafik ve sosyal medya uzmanlaşması",
-        "İngilizce C1, iletişim eğitimleri ve medya yayıncılığı dersleri"
+        "Yerel LLM'ler ve pratik yapay zeka çalışmaları",
+        "Web programlama ve frontend geliştirme",
+        "İleri düzey grafik tasarım üretimi",
+        "Sosyal medya ve dijital iletişim",
+        "Medya ve basın yayıncılığı",
+        "Diksiyon ve etkili konuşma",
+        "KVKK ve dijital uyum temelleri",
+        "İngilizce C1"
       ]
     },
     timeline: [
@@ -576,13 +582,6 @@ const content = {
         summary:
           "Kurumsal post-produksiyon süreçlerine destek verirken İngilizceden Türkçeye altyazı ve lokalizasyon görevleri üstlendim; bu süreç bana medya operasyonlarında disiplin kazandırdı."
       },
-      {
-        period: "2021 - 2025",
-        title: "Yeni Medya ve İletişim Lisansı",
-        kind: "Eğitim / temel",
-        summary:
-          "Portfolyonun teorik zemini lisans eğitimiyle kuruldu; ardından yapay zeka uygulamaları, grafik, sosyal medya, iletişim ve web programlama eğitimleriyle derinleştirildi."
-      }
     ],
     translationsSection: {
       eyebrow: "Çeviriler / Manga",
@@ -615,14 +614,13 @@ const content = {
       }
     ],
     contact: {
-      eyebrow: "İletişim / Açık kanallar",
-      title: "Yaptığım iş sizin için uygunsa en hızlı yol doğrudan iletişim.",
-      copy:
-        "Siteyi bilerek sade tuttum: iletişim formu yok, gereksiz yönlendirme yok, herkese açık bir PDF de yok. İşleri incelemek için GitHub'a, profesyonel bağlantı için LinkedIn'e bakabilirsiniz."
+      eyebrow: "Profiller / Linkler",
+      title: "",
+      copy: ""
     },
     socialLinks: [
-      { label: "GitHub", href: urls.github },
-      { label: "LinkedIn", href: urls.linkedin }
+      { label: "GitHub", href: urls.github, icon: "bi-github" },
+      { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" }
     ],
     footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   }
@@ -685,6 +683,8 @@ const elements = {
   stackCloud: document.querySelector("#stack-cloud"),
   experienceEyebrow: document.querySelector("#experience-eyebrow"),
   experienceTitle: document.querySelector("#experience-title"),
+  workExperienceEyebrow: document.querySelector("#work-experience-eyebrow"),
+  workExperienceTitle: document.querySelector("#work-experience-title"),
   terminalTitle: document.querySelector("#terminal-title"),
   trainingEyebrow: document.querySelector("#training-eyebrow"),
   trainingTitle: document.querySelector("#training-title"),
@@ -991,8 +991,9 @@ function renderSocialLinks(localeData) {
   elements.socialLinks.innerHTML = localeData.socialLinks
     .map(
       (link, index) => `
-        <a class="cyber-button${index === 0 ? " cyber-button--primary" : ""}" href="${link.href}" target="_blank" rel="noreferrer">
-          ${link.label}
+        <a class="social-link${index === 0 ? " social-link--primary" : ""}" href="${link.href}" target="_blank" rel="noreferrer" aria-label="${link.label}">
+          <i class="bi ${link.icon}" aria-hidden="true"></i>
+          <span>${link.label}</span>
         </a>
       `
     )
@@ -1127,6 +1128,7 @@ function applyLocale(locale) {
   setText(elements.brandSubtitle, localeData.brandSubtitle);
   setText(elements.navAbout, localeData.nav.about);
   setText(elements.navWork, localeData.nav.work);
+  setText(elements.navTranslations, localeData.nav.translations);
   setText(elements.navCapabilities, localeData.nav.capabilities);
   setText(elements.navExperience, localeData.nav.experience);
   setText(elements.navContact, localeData.nav.contact);
@@ -1178,6 +1180,8 @@ function applyLocale(locale) {
 
   setText(elements.experienceEyebrow, localeData.experience.eyebrow);
   setText(elements.experienceTitle, localeData.experience.title);
+  setText(elements.workExperienceEyebrow, localeData.experience.workEyebrow);
+  setText(elements.workExperienceTitle, localeData.experience.workTitle);
   setText(elements.terminalTitle, localeData.experience.terminalTitle);
   setText(elements.trainingEyebrow, localeData.experience.trainingEyebrow);
   setText(elements.trainingTitle, localeData.experience.trainingTitle);
@@ -1317,8 +1321,7 @@ function initHeroSequence() {
   const root = elements.heroSequence;
   const canvas = document.querySelector("#hero-sequence-canvas");
   const fallbackImage = document.querySelector("#hero-sequence-fallback");
-  const gsapLib = window.gsap;
-  const scrollTriggerLib = window.ScrollTrigger;
+  const titleLayer = document.querySelector(".hero-sequence__title");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   heroSequenceState.total = Number(root?.dataset.frameCount || 0);
@@ -1326,7 +1329,7 @@ function initHeroSequence() {
   heroSequenceState.mode = "loading";
   syncHeroSequenceStatus();
 
-  if (!root || !canvas || !fallbackImage) {
+  if (!root || !canvas || !fallbackImage || !titleLayer) {
     return;
   }
 
@@ -1351,6 +1354,8 @@ function initHeroSequence() {
     root.classList.remove("is-loading", "is-ready", "is-started");
     root.classList.add("is-fallback");
     fallbackImage.src = posterSrc;
+    titleLayer.style.opacity = "1";
+    titleLayer.style.transform = "translate3d(0, 0, 0) scale(1)";
     heroSequenceState.mode = "fallback";
     syncHeroSequenceStatus();
   }
@@ -1365,13 +1370,8 @@ function initHeroSequence() {
     return;
   }
 
-  if (!gsapLib || !scrollTriggerLib) {
-    activateFallback("load-failure-fallback");
-    return;
-  }
-
   fallbackImage.src = posterSrc;
-  root.dataset.sequenceMode = "desktop-sequence";
+  root.dataset.sequenceMode = "scroll-sequence";
   root.classList.remove("is-fallback", "is-started");
   root.classList.add("is-loading");
 
@@ -1383,6 +1383,17 @@ function initHeroSequence() {
   let renderedFrame = -1;
   let ready = false;
   let resizeFrame = 0;
+  let scrollFrame = 0;
+
+  function updateTitleVisibility(progress) {
+    const fadeProgress = Math.min(Math.max(progress / 0.18, 0), 1);
+    const opacity = 1 - fadeProgress;
+    const translateY = fadeProgress * 36;
+    const scale = 1 - fadeProgress * 0.08;
+
+    titleLayer.style.opacity = opacity.toFixed(3);
+    titleLayer.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
+  }
 
   function loadFrame(index) {
     if (index < 0 || index >= frameCount) {
@@ -1492,32 +1503,42 @@ function initHeroSequence() {
       resizeFrame = 0;
       renderedFrame = -1;
       renderFrame(targetFrame);
-      scrollTriggerLib.refresh();
+      updateFrameFromScroll();
+    });
+  }
+
+  function updateFrameFromScroll() {
+    const viewportHeight = window.visualViewport?.height || window.innerHeight || 1;
+    const scrollSpan = Math.max(root.offsetHeight - viewportHeight, 1);
+    const progress = Math.min(Math.max(-root.getBoundingClientRect().top / scrollSpan, 0), 1);
+    targetFrame = Math.round(progress * (frameCount - 1));
+    updateTitleVisibility(progress);
+    renderFrame(targetFrame);
+  }
+
+  function queueScrollUpdate() {
+    if (scrollFrame) return;
+
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateFrameFromScroll();
     });
   }
 
   function preloadRemainingFrames() {
     let nextIndex = initialBatch;
 
-    const pump = (deadline) => {
+    const pump = () => {
       let budget = 0;
 
-      while (nextIndex < frameCount && budget < 4) {
+      while (nextIndex < frameCount && budget < 6) {
         loadFrame(nextIndex);
         nextIndex += 1;
         budget += 1;
-
-        if (deadline && typeof deadline.timeRemaining === "function" && deadline.timeRemaining() < 8) {
-          break;
-        }
       }
 
       if (nextIndex < frameCount) {
-        if (typeof window.requestIdleCallback === "function") {
-          window.requestIdleCallback(pump);
-        } else {
-          window.setTimeout(() => pump(), 80);
-        }
+        window.setTimeout(pump, 24);
       }
     };
 
@@ -1537,29 +1558,18 @@ function initHeroSequence() {
     root.classList.add("is-ready");
     heroSequenceState.mode = "ready";
     syncHeroSequenceStatus();
+    updateTitleVisibility(0);
     renderFrame(0);
 
     window.setTimeout(() => {
       root.classList.add("is-started");
     }, 220);
-    gsapLib.registerPlugin(scrollTriggerLib);
-
-    const scrubFrame = { value: 0 };
-    gsapLib.to(scrubFrame, {
-      value: frameCount - 1,
-      ease: "none",
-      onUpdate: () => {
-        targetFrame = Math.round(scrubFrame.value);
-        renderFrame(targetFrame);
-      },
-      scrollTrigger: {
-        trigger: root,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        invalidateOnRefresh: true
-      }
-    });
+    updateFrameFromScroll();
+    window.addEventListener("scroll", queueScrollUpdate, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", queueResize);
+      window.visualViewport.addEventListener("scroll", queueScrollUpdate);
+    }
 
     window.addEventListener("resize", queueResize);
     window.addEventListener("orientationchange", queueResize);

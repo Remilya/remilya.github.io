@@ -12,11 +12,12 @@
     <meta name="theme-color" content="#0a0612" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=20260404b" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="styles.css?v=20260405d" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-    <script src="main.js?v=20260404b" defer></script>
+    <script src="main.js?v=20260405d" defer></script>
   </head>
   <body>
     <div class="atmosphere" aria-hidden="true"></div>
@@ -262,24 +263,36 @@
           </div>
 
           <div class="experience-layout">
-            <div class="terminal-shell reveal">
-              <div class="terminal-shell__top">
-                <span class="terminal-dot"></span>
-                <span class="terminal-dot"></span>
-                <span class="terminal-dot"></span>
-                <p id="terminal-title">career.log</p>
+            <div class="experience-column experience-column--work reveal">
+              <div class="experience-column__header">
+                <p class="eyebrow" id="work-experience-eyebrow">WORK EXPERIENCE</p>
+                <h3 id="work-experience-title">Client delivery and production roles</h3>
               </div>
-              <div class="terminal-shell__body" id="timeline-list" aria-live="polite"></div>
+
+              <div class="terminal-shell">
+                <div class="terminal-shell__top">
+                  <span class="terminal-dot"></span>
+                  <span class="terminal-dot"></span>
+                  <span class="terminal-dot"></span>
+                  <p id="terminal-title">work.log</p>
+                </div>
+                <div class="terminal-shell__body" id="timeline-list" aria-live="polite"></div>
+              </div>
             </div>
 
             <aside class="experience-side reveal">
-              <p class="eyebrow" id="training-eyebrow">SELECTED TRAINING</p>
-              <h3 id="training-title">Education and supporting credentials</h3>
+              <p class="eyebrow" id="training-eyebrow">EDUCATION / TRAINING</p>
+              <h3 id="training-title">Supporting training and certificates</h3>
               <ul class="training-list" id="training-list">
-                <li>Yalova University - New Media and Communication, 2021-2025</li>
                 <li>AI applications and foundational AI training</li>
-                <li>Web programming, advanced graphics, and social media specialization</li>
-                <li>English C1, communication training, and media publishing coursework</li>
+                <li>Local LLM workflows and practical AI experimentation</li>
+                <li>Web programming and frontend development</li>
+                <li>Advanced graphic design production</li>
+                <li>Social media and digital communication</li>
+                <li>Media and press publishing</li>
+                <li>Diction and effective speaking</li>
+                <li>KVKK and digital compliance basics</li>
+                <li>English C1</li>
               </ul>
             </aside>
           </div>
@@ -289,12 +302,7 @@
 
         <section id="contact" class="section section--contact">
           <div class="contact-panel reveal">
-            <p class="eyebrow" id="contact-eyebrow">CONTACT / OPEN CHANNELS</p>
-            <h2 id="contact-title">If the work looks useful, the fastest path is direct.</h2>
-            <p id="contact-copy">
-              This site stays intentionally lean: no contact form, no inbox spam bait, no public PDF.
-              Use GitHub to inspect the work and LinkedIn for the professional surface.
-            </p>
+            <p class="eyebrow" id="contact-eyebrow">PROFILES / LINKS</p>
             <div class="social-links" id="social-links" aria-live="polite"></div>
           </div>
         </section>
