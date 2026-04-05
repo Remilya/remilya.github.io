@@ -110,5 +110,4 @@ That includes:
 
 ## Notes
 
-- `site.txt` is a local reference file and not part of the deployed site.
 - The repo may also include local generation or reference files that are not meant for production.
