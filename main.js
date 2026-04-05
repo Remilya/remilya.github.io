@@ -3,7 +3,7 @@ const SUPPORTED_LOCALES = ["en", "tr"];
 
 const urls = {
   github: "https://github.com/Remilya",
-  linkedin: "https://www.linkedin.com/in/ilker-agirkaya/",
+  linkedin: "https://tr.linkedin.com/in/ilker-agirkaya",
   deksmo: "https://deksmo.com",
   repoDeksmo: "https://github.com/Remilya/Deksmo",
   repoVision: "https://github.com/Remilya/Deksmo-Vision",
