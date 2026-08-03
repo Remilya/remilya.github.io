@@ -26,6 +26,7 @@ yarn-error.log*
 Thumbs.db
 
 # Development/References
+frontend/
 tmp/
 temp/
 references/

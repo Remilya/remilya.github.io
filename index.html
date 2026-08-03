@@ -3,23 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Remilya | Creative Technologist</title>
+    <title>Remilya | Operator-focused AI &amp; Localization Tools</title>
     <meta
       id="meta-description"
       name="description"
-      content="Remilya is a creative technologist building AI systems, local-first tools, product surfaces, and digital experiences with a Deksmo-centered portfolio."
+      content="Remilya builds operator-focused AI and localization tools for OCR, translation, review, capture, and practical production workflows."
     />
     <meta name="theme-color" content="#0a0612" />
+    <link rel="canonical" href="https://remilya.dev/" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Remilya.dev" />
+    <meta property="og:title" content="Remilya | Operator-focused AI &amp; Localization Tools" />
+    <meta property="og:description" content="Practical AI, OCR, translation, review, capture, and localization workflows built for operators." />
+    <meta property="og:url" content="https://remilya.dev/" />
+    <meta property="og:image" content="https://remilya.dev/assets/remilya-social.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Remilya.dev gothic archive artwork" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Remilya | Operator-focused AI &amp; Localization Tools" />
+    <meta name="twitter:description" content="Practical AI and localization workflows built for operators." />
+    <meta name="twitter:image" content="https://remilya.dev/assets/remilya-social.jpg" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="styles.css?v=20260405d" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-    <script src="main.js?v=20260405d" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260802g" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Remilya",
+        "url": "https://remilya.dev/",
+        "image": "https://github.com/Remilya.png",
+        "sameAs": ["https://github.com/Remilya", "https://tr.linkedin.com/in/ilker-agirkaya"],
+        "knowsAbout": ["Artificial intelligence", "Optical character recognition", "Localization", "Translation workflows", "Operator tools"]
+      }
+    </script>
+    <script src="main.js?v=20260802g" defer></script>
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
-  <body>
+  <body id="top">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <p class="visually-hidden" id="locale-status" aria-live="polite" aria-atomic="true"></p>
     <div class="atmosphere" aria-hidden="true"></div>
     <div class="danmaku-field" id="danmaku-field" aria-hidden="true"></div>
 
@@ -50,106 +78,203 @@
         </div>
       </header>
 
-      <main id="top">
-        <section class="section section--hero">
-          <div class="spell-circle" aria-hidden="true">
-            <img src="assets/spell-circle.png" alt="" loading="eager" />
-          </div>
-
-          <div class="hero-layout">
-            <div class="hero-copy reveal">
-              <p class="eyebrow" id="hero-eyebrow">
-                SYSTEM READY / REMILYA
-                <span class="cursor" aria-hidden="true"></span>
-              </p>
-              <p class="hero-role" id="hero-role">CREATIVE TECHNOLOGIST</p>
-              <h1 class="glitch-title" id="hero-title" data-text="I build systems for messy digital worlds.">
-                I build systems for messy digital worlds.
-              </h1>
-              <p class="lead" id="hero-lead">
-                I work across AI systems, frontend product surfaces, SEO-led web strategy,
-                and localization-heavy workflows. The strongest thread is practical software:
-                tools that operators can actually run, inspect, edit, and scale.
-              </p>
-
-              <div class="hero-actions">
-                <a class="cyber-button cyber-button--primary" href="#sequence" id="hero-cta-work">View sequence</a>
-                <a class="cyber-button" href="https://github.com/Remilya" target="_blank" rel="noreferrer">GitHub</a>
-                <a class="cyber-button" href="https://tr.linkedin.com/in/ilker-agirkaya" target="_blank" rel="noreferrer">LinkedIn</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hidden panel — content fed by JS for locale but visually removed -->
-          <aside class="hero-panel" style="display:none" aria-hidden="true">
-            <p class="eyebrow" id="hero-panel-eyebrow">CURRENT SIGNAL</p>
-            <h2 id="hero-panel-title">Freelance product work with Deksmo as the backbone.</h2>
-            <ul class="signal-list" id="hero-signal-list">
-              <li>Local-first AI tooling where OCR, rendering, exports, and state stay close to the user.</li>
-              <li>Frontend surfaces that translate dense workflows into usable operator interfaces.</li>
-              <li>Growth-minded delivery shaped by SEO, content structure, and localization experience.</li>
-            </ul>
-            <div class="signal-panel">
-              <div>
-                <span class="signal-label" id="hero-live-label">LIVE SURFACE</span>
-                <a href="https://deksmo.com" target="_blank" rel="noreferrer">deksmo.com</a>
-              </div>
-              <span class="signal-status" id="hero-live-status">ONLINE</span>
-            </div>
-          </aside>
-
-          <div class="hero-rail reveal" id="hero-rail" aria-label="Operating focus">
-            <article class="rail-card">
-              <span class="rail-label">MODE_01</span>
-              <strong>AI systems</strong>
-              <p>Local-first translation, OCR, RAG-ready data, and human-in-the-loop workflows.</p>
-            </article>
-            <article class="rail-card">
-              <span class="rail-label">MODE_02</span>
-              <strong>Product surfaces</strong>
-              <p>React interfaces, desktop utilities, browser extensions, and operator dashboards.</p>
-            </article>
-            <article class="rail-card">
-              <span class="rail-label">MODE_03</span>
-              <strong>Growth and localization</strong>
-              <p>SEO architecture, bilingual workflow thinking, content systems, and digital execution.</p>
-            </article>
-          </div>
-        </section>
-
+      <main id="main-content">
         <section class="section section--sequence" id="sequence">
           <div
             class="hero-sequence"
             id="hero-sequence"
-            data-sequence-dir="assets/sequences/1080p"
-            data-frame-count="96"
-            data-frame-ext="jpg"
+            data-sequence-desktop-dir="assets/sequences/desktop"
+            data-sequence-mobile-dir="assets/sequences/mobile"
+            data-sequence-breakpoint="720"
+            data-frame-count="48"
+            data-frame-ext="webp"
             data-frame-pad="3"
-            data-frame-template="frame-{n}_W2xEX_1920x1080_2n.jpg"
-            data-initial-batch="12"
-            data-poster-src="assets/sequences/1080p/frame-001_W2xEX_1920x1080_2n.jpg"
+            data-frame-template="frame-{n}.webp"
+            data-sequence-version="20260802g"
+            data-initial-batch="6"
+            data-poster-desktop-src="assets/sequences/desktop/frame-001.webp?v=20260802g"
+            data-poster-mobile-src="assets/sequences/mobile/frame-001.webp?v=20260802g"
           >
             <div class="hero-sequence__sticky">
-              <canvas class="hero-sequence__canvas" id="hero-sequence-canvas" width="1280" height="720" aria-hidden="true"></canvas>
-              <img
-                class="hero-sequence__fallback"
-                id="hero-sequence-fallback"
-                src="assets/sequences/1080p/frame-001_W2xEX_1920x1080_2n.jpg"
-                alt=""
-                loading="eager"
-              />
+              <canvas class="hero-sequence__canvas" id="hero-sequence-canvas" width="1920" height="1080" aria-hidden="true"></canvas>
+              <picture class="hero-sequence__fallback">
+                <source media="(max-width: 720px)" srcset="assets/sequences/mobile/frame-001.webp?v=20260802g" />
+                <img
+                  id="hero-sequence-fallback"
+                  src="assets/sequences/desktop/frame-001.webp?v=20260802g"
+                  width="1920"
+                  height="1080"
+                  alt=""
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </picture>
               <div class="hero-sequence__veil" aria-hidden="true"></div>
-              <div class="hero-sequence__title" aria-hidden="true">
-                <p class="hero-sequence__title-kicker" id="hero-sequence-title-kicker">Welcome To</p>
-                <h1 class="hero-sequence__title-main">
-                  <span id="hero-sequence-title-primary">Remilya</span><span id="hero-sequence-title-accent">.dev</span>
-                </h1>
+              <div class="hero-sequence__content" id="hero-sequence-content">
+                <h1 id="hero-title">Welcome to Remilya.dev.</h1>
+                <div class="hero-sequence__actions">
+                  <a class="cyber-button cyber-button--primary" href="#deksmo-archive" id="hero-cta-work" data-open-archive>Enter the archive</a>
+                  <a class="cyber-button" href="#contact" id="hero-cta-contact">Contact</a>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         <div class="section-divider" aria-hidden="true">❧</div>
+
+        <section id="deksmo-archive" class="section section--archive">
+          <div class="archive-intro reveal">
+            <div>
+              <p class="eyebrow" id="archive-eyebrow" data-archive-text="eyebrow">RECOVERED SYSTEM / DEKSMO 1.6.1</p>
+              <h2 id="archive-title" data-archive-text="title">A localization workbench, preserved as it was.</h2>
+            </div>
+            <div class="archive-intro__copy">
+              <p class="archive-status" id="archive-status" data-archive-text="status">ARCHIVED PRODUCT · INTERACTIVE SIMULATION</p>
+              <p id="archive-copy" data-archive-text="copy">Deksmo combined OCR, translation, cleanup, typesetting, and operator review in one editor. The original service was retired after its underlying third-party APIs were discontinued. This client-side exhibit recreates the workflow; no processing is sent to a backend.</p>
+              <button class="cyber-button cyber-button--primary archive-launch" type="button" data-open-archive>
+                <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+                <span data-archive-text="openSimulation">Open interactive simulation</span>
+              </button>
+            </div>
+          </div>
+
+          <dialog class="archive-dialog" id="deksmo-archive-dialog" aria-labelledby="archive-dialog-title">
+            <div class="archive-dialog__frame">
+              <button class="archive-dialog__close" type="button" data-close-archive data-archive-aria="closeSimulation" aria-label="Close simulation">
+                <i class="bi bi-x-lg" aria-hidden="true"></i>
+                <span class="visually-hidden" data-archive-text="closeSimulation">Close simulation</span>
+              </button>
+          <div class="archive-console" id="deksmo-simulator" data-active-tab="editor" data-result-variant="colorized">
+            <header class="archive-console__header">
+              <div class="archive-console__identity">
+                <span class="archive-signal" aria-hidden="true"></span>
+                <div>
+                  <strong id="archive-dialog-title">DEKSMO // EDITOR</strong>
+                  <small data-archive-text="productVersion">Recovered interface · Version 1.6.1</small>
+                </div>
+              </div>
+              <span class="archive-console__state" data-archive-text="productStatus">ARCHIVED / OFFLINE</span>
+            </header>
+
+            <div class="archive-console__nav">
+              <div class="archive-tabs" role="tablist" aria-label="Deksmo simulation views" data-archive-aria="tabsLabel">
+                <button class="archive-tab is-active" id="archive-tab-editor" type="button" role="tab" aria-selected="true" aria-controls="archive-panel-editor" data-archive-tab="editor" data-archive-text="tabEditor">Editor</button>
+                <button class="archive-tab" id="archive-tab-settings" type="button" role="tab" aria-selected="false" aria-controls="archive-panel-settings" tabindex="-1" data-archive-tab="settings" data-archive-text="tabSettings">Settings</button>
+                <button class="archive-tab" id="archive-tab-console" type="button" role="tab" aria-selected="false" aria-controls="archive-panel-console" tabindex="-1" data-archive-tab="console" data-archive-text="tabConsole">Console</button>
+              </div>
+              <span class="archive-language-pair"><i class="bi bi-translate" aria-hidden="true"></i> <span data-archive-text="languagePair">EN → TR</span></span>
+            </div>
+
+            <div class="archive-panel" id="archive-panel-editor" role="tabpanel" aria-labelledby="archive-tab-editor" tabindex="0" data-archive-panel="editor">
+              <div class="archive-editor">
+                <aside class="archive-toolbar" aria-label="Archived editor tools" data-archive-aria="toolbarLabel">
+                  <button class="archive-tool" type="button" data-archive-tool="select" data-archive-aria="toolSelect" aria-label="Select text element"><i class="bi bi-cursor" aria-hidden="true"></i><span data-archive-text="toolSelectShort">Select</span></button>
+                  <button class="archive-tool is-active" type="button" data-archive-tool="compare" data-archive-aria="toolCompare" aria-label="Reset comparison"><i class="bi bi-layout-split" aria-hidden="true"></i><span data-archive-text="toolCompareShort">Compare</span></button>
+                  <button class="archive-tool" type="button" data-archive-tool="color" data-archive-aria="toolColor" aria-label="Show color preview"><i class="bi bi-palette" aria-hidden="true"></i><span data-archive-text="toolColorShort">Color</span></button>
+                </aside>
+
+                <div class="archive-workstage">
+                  <div class="archive-workstage__bar">
+                    <div class="archive-variants" aria-label="Result preview" data-archive-aria="variantsLabel">
+                      <button type="button" data-archive-variant="raw" aria-pressed="false" data-archive-text="variantRaw">Raw</button>
+                      <button type="button" data-archive-variant="translated" aria-pressed="false" data-archive-text="variantTranslated">Translated</button>
+                      <button class="is-active" type="button" data-archive-variant="colorized" aria-pressed="true" data-archive-text="variantColorized">Colorized</button>
+                    </div>
+                    <span class="archive-sample-badge" data-archive-text="sampleBadge">ARCHIVE SAMPLE</span>
+                  </div>
+
+                  <figure class="archive-compare" id="archive-compare" style="--split: 50%; --archive-zoom: 1;">
+                    <div class="archive-compare__viewport">
+                      <img class="archive-compare__image archive-compare__result" id="archive-result-image" src="assets/deksmo-archive/colorized.webp" width="840" height="1252" alt="Colorized Turkish result from the archived Deksmo simulation" loading="lazy" decoding="async" />
+                      <img class="archive-compare__image archive-compare__base" id="archive-base-image" src="assets/deksmo-archive/translated.webp" width="840" height="1252" alt="Turkish translated result from the archived Deksmo simulation" loading="lazy" decoding="async" />
+                      <span class="archive-compare__line" aria-hidden="true"><span><i class="bi bi-chevron-left"></i><i class="bi bi-chevron-right"></i></span></span>
+                    </div>
+                    <figcaption>
+                      <span id="archive-base-label" data-archive-text="translatedLabel">TRANSLATED / TR</span>
+                      <span id="archive-result-label" data-archive-text="colorizedLabel">COLORIZED / TR</span>
+                    </figcaption>
+                  </figure>
+
+                  <div class="archive-compare-controls">
+                    <label for="archive-comparison-range" data-archive-text="comparisonLabel">Comparison position</label>
+                    <input id="archive-comparison-range" type="range" min="0" max="100" value="50" aria-label="Comparison position" data-archive-aria="comparisonLabel" />
+                    <div class="archive-zoom-controls">
+                      <button type="button" data-archive-zoom="out" aria-label="Zoom out" data-archive-aria="zoomOut"><i class="bi bi-zoom-out" aria-hidden="true"></i></button>
+                      <output id="archive-zoom-value">100%</output>
+                      <button type="button" data-archive-zoom="in" aria-label="Zoom in" data-archive-aria="zoomIn"><i class="bi bi-zoom-in" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </div>
+
+                <aside class="archive-inspector">
+                  <div class="archive-inspector__heading">
+                    <span data-archive-text="textElements">TEXT ELEMENTS</span>
+                    <strong>7</strong>
+                  </div>
+                  <div class="archive-text-list" id="archive-text-list">
+                    <button class="archive-text-item is-selected" type="button" data-archive-text-index="0" aria-pressed="true"><span>01</span><span><small>“...AS IF.”</small><strong>...SANKİ.</strong></span></button>
+                    <button class="archive-text-item" type="button" data-archive-text-index="1" aria-pressed="false"><span>02</span><span><small>“IT'S IMPOSSIBLE FOR THIS TO BE TRUE.”</small><strong>BUNUN DOĞRU OLMASI MÜMKÜN DEĞİL.</strong></span></button>
+                    <button class="archive-text-item" type="button" data-archive-text-index="2" aria-pressed="false"><span>03</span><span><small>“DON'T ENTER THE FOREST! THERE'S A WITCH~!!”</small><strong>ORMANA GİRMEYİN! CADI VAR~!!</strong></span></button>
+                    <button class="archive-text-item" type="button" data-archive-text-index="3" aria-pressed="false"><span>04</span><span><small>“THE WITCH'S EYES ARE GLOWING OVER THERE~!!”</small><strong>CADININ GÖZLERİ ORADA PARLIYOR~!!</strong></span></button>
+                    <button class="archive-text-item" type="button" data-archive-text-index="4" aria-pressed="false"><span>05</span><span><small>“WHEN I WAS LITTLE, MY FAMILY SCARED ME UNTIL I TREMBLED.”</small><strong>KÜÇÜKKEN AİLEM BENİ TİTREYENE KADAR KORKUTTU.</strong></span></button>
+                    <button class="archive-text-item" type="button" data-archive-text-index="5" aria-pressed="false"><span>06</span><span><small>“FOR SOMETHING AS OMINOUS AS A WITCH TO EXIST...”</small><strong>CADI GİBİ TEKİNSİZ BİR ŞEYİN VAR OLMASI...</strong></span></button>
+                    <button class="archive-text-item" type="button" data-archive-text-index="6" aria-pressed="false"><span>07</span><span><small>“...IS IMPOSSIBLE.”</small><strong>...MÜMKÜN DEĞİL.</strong></span></button>
+                  </div>
+
+                  <div class="archive-selection">
+                    <div class="archive-selection__meta"><span id="archive-selected-number">01</span><span data-archive-text="elementType">SPEECH BUBBLE</span></div>
+                    <p><small data-archive-text="sourceLabel">SOURCE</small><span id="archive-selected-source">...AS IF.</span></p>
+                    <p><small data-archive-text="targetLabel">TARGET</small><strong id="archive-selected-target">...SANKİ.</strong></p>
+                  </div>
+
+                  <div class="archive-api-actions">
+                    <button type="button" data-archive-simulated="aiFill"><i class="bi bi-stars" aria-hidden="true"></i><span data-archive-text="aiFill">AI Fill · Simulation</span></button>
+                    <button type="button" data-archive-simulated="clean"><i class="bi bi-magic" aria-hidden="true"></i><span data-archive-text="cleanApply">Clean + Apply Text · Simulation</span></button>
+                  </div>
+
+                  <div class="archive-history">
+                    <p data-archive-text="history">HISTORY</p>
+                    <button type="button" data-archive-history="raw"><i class="bi bi-folder2-open" aria-hidden="true"></i><span data-archive-text="historyOpen">Opened raw page</span></button>
+                    <button type="button" data-archive-history="translated"><i class="bi bi-translate" aria-hidden="true"></i><span data-archive-text="historyTranslated">Translation preview</span></button>
+                    <button type="button" data-archive-history="colorized"><i class="bi bi-palette" aria-hidden="true"></i><span data-archive-text="historyColorized">Color preview</span></button>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <div class="archive-panel archive-panel--settings" id="archive-panel-settings" role="tabpanel" aria-labelledby="archive-tab-settings" tabindex="0" data-archive-panel="settings" hidden>
+              <div class="archive-panel__heading">
+                <p class="eyebrow" data-archive-text="settingsEyebrow">ARCHIVED CONFIGURATION</p>
+                <h3 data-archive-text="settingsHeading">Last recovered workspace settings</h3>
+              </div>
+              <dl class="archive-settings-grid">
+                <div><dt data-archive-text="sourceLanguage">Source language</dt><dd>English</dd></div>
+                <div><dt data-archive-text="targetLanguage">Target language</dt><dd>Türkçe</dd></div>
+                <div><dt data-archive-text="resolution">Image resolution</dt><dd>1K</dd></div>
+                <div><dt data-archive-text="preciseOcr">Precise OCR</dt><dd data-archive-text="enabled">Enabled</dd></div>
+                <div class="archive-settings-grid__wide"><dt data-archive-text="provider">Processing provider</dt><dd class="is-offline" data-archive-text="offline">Offline · API discontinued</dd></div>
+              </dl>
+            </div>
+
+            <div class="archive-panel archive-panel--console" id="archive-panel-console" role="tabpanel" aria-labelledby="archive-tab-console" tabindex="0" data-archive-panel="console" hidden>
+              <div class="archive-log"><span>[ARCHIVE]</span><p data-archive-text="logArchive">Recovered Deksmo interface loaded locally.</p></div>
+              <div class="archive-log"><span>[MEDIA]</span><p data-archive-text="logAssets">Three historical preview assets are ready.</p></div>
+              <div class="archive-log"><span>[EDITOR]</span><p data-archive-text="logElements">Seven text elements restored for inspection.</p></div>
+              <div class="archive-log is-warning"><span>[BACKEND]</span><p data-archive-text="logBackend">Unavailable. No network processing will be attempted.</p></div>
+              <span class="archive-console-caret" aria-hidden="true"></span>
+            </div>
+
+            <footer class="archive-console__footer">
+              <span><i class="bi bi-shield-slash" aria-hidden="true"></i> <span data-archive-text="offlineFootnote">CLIENT-ONLY ARCHIVE · ZERO API REQUESTS</span></span>
+              <p id="archive-status-message" tabindex="-1" data-archive-text="readyMessage">Archive ready. Explore the recovered interface.</p>
+            </footer>
+          </div>
+            </div>
+          </dialog>
+        </section>
+
+        <div class="section-divider" aria-hidden="true">⌁</div>
 
         <section id="about" class="section section--about">
           <div class="section-heading reveal">
@@ -208,7 +333,48 @@
             </p>
           </div>
 
-          <div class="featured-grid" id="featured-projects" aria-live="polite"></div>
+          <div class="featured-grid" id="featured-projects">
+            <article class="featured-case reveal is-visible" data-accent="green">
+              <div class="case-head">
+                <div class="case-mark">
+                  <img class="case-logo" src="assets/logos/deksmo-core.png" alt="Deksmo logo" loading="lazy" />
+                  <div>
+                    <p class="case-label">Featured system / Archived manga localization workbench</p>
+                    <h3>Deksmo</h3>
+                  </div>
+                </div>
+                <span class="case-serial">SYS-01</span>
+              </div>
+              <p class="case-summary">A full-stack localization workbench that combined OCR, translation, cleanup, typesetting, quality control, and chapter processing in an inspectable operator workflow.</p>
+              <ul class="case-impact">
+                <li>Paired AI-assisted processing with human review, editing, and recovery controls.</li>
+                <li>Covered resumable project states, queues, exports, and mobile-friendly workflows.</li>
+              </ul>
+              <div class="tag-list"><span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">OCR</span><span class="tag">Gemini</span></div>
+              <p class="project-status">Archived product · Interactive simulation</p>
+              <div class="case-links"><a class="cyber-button" href="#deksmo-archive" data-open-archive>Open simulation</a></div>
+            </article>
+
+            <article class="featured-case reveal is-visible" data-accent="magenta">
+              <div class="case-head">
+                <div class="case-mark">
+                  <span class="case-glyph" aria-hidden="true">PRV</span>
+                  <div>
+                    <p class="case-label">Featured engagement / Private client system</p>
+                    <h3>Legal Services Platform Rebuild</h3>
+                  </div>
+                </div>
+                <span class="case-serial">SYS-02</span>
+              </div>
+              <p class="case-summary">An anonymized freelance transformation covering UI/UX, frontend delivery, information architecture, and technical SEO.</p>
+              <ul class="case-impact">
+                <li>Rebuilt the public site around a clearer service narrative and stronger trust signals.</li>
+                <li>Moved branded Google search visibility from unranked to first position.</li>
+              </ul>
+              <div class="tag-list"><span class="tag">UI/UX</span><span class="tag">Frontend</span><span class="tag">SEO</span></div>
+              <p class="project-status">Private engagement</p>
+            </article>
+          </div>
 
           <div class="support-heading reveal">
             <p class="eyebrow" id="support-eyebrow">DOSSIER / SUPPORTING SYSTEMS</p>
@@ -218,7 +384,7 @@
             </p>
           </div>
 
-          <div class="support-grid" id="support-projects" aria-live="polite"></div>
+          <div class="support-grid" id="support-projects"></div>
         </section>
 
         <div class="section-divider" aria-hidden="true">❧</div>
@@ -232,7 +398,7 @@
             </p>
           </div>
 
-          <div class="translations-grid" id="translations-grid" aria-live="polite"></div>
+          <div class="translations-grid" id="translations-grid"></div>
         </section>
 
         <div class="section-divider" aria-hidden="true">✦</div>
@@ -243,14 +409,14 @@
             <h2 id="capabilities-title">What I can build, ship, and refine.</h2>
           </div>
 
-          <div class="capability-grid" id="capability-grid" aria-live="polite"></div>
+          <div class="capability-grid" id="capability-grid"></div>
 
           <div class="stack-block reveal">
             <div class="stack-block__header">
               <p class="eyebrow" id="stack-eyebrow">STACK TRACE</p>
               <p id="stack-copy">Technologies already showing up across the portfolio.</p>
             </div>
-            <div class="stack-cloud" id="stack-cloud" aria-live="polite"></div>
+            <div class="stack-cloud" id="stack-cloud"></div>
           </div>
         </section>
 
@@ -276,7 +442,7 @@
                   <span class="terminal-dot"></span>
                   <p id="terminal-title">work.log</p>
                 </div>
-                <div class="terminal-shell__body" id="timeline-list" aria-live="polite"></div>
+                <div class="terminal-shell__body" id="timeline-list"></div>
               </div>
             </div>
 
@@ -303,9 +469,30 @@
         <section id="contact" class="section section--contact">
           <div class="contact-panel reveal">
             <p class="eyebrow" id="contact-eyebrow">PROFILES / LINKS</p>
-            <div class="social-links" id="social-links" aria-live="polite"></div>
+            <h2 id="contact-title">Let’s build something practical.</h2>
+            <p id="contact-copy">Working on an AI workflow, operator tool, or localization product? Send a short brief on LinkedIn and I’ll reply with fit and next steps.</p>
+            <div class="social-links" id="social-links">
+              <a class="social-link social-link--primary" href="https://tr.linkedin.com/in/ilker-agirkaya" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <i class="bi bi-linkedin" aria-hidden="true"></i><span>LinkedIn</span>
+              </a>
+              <a class="social-link" href="https://github.com/Remilya" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <i class="bi bi-github" aria-hidden="true"></i><span>GitHub</span>
+              </a>
+            </div>
           </div>
         </section>
+
+        <noscript>
+          <section class="section noscript-panel" aria-labelledby="noscript-title">
+            <p class="eyebrow">REMILYA / STATIC PROFILE</p>
+            <h2 id="noscript-title">Operator-focused AI and localization tools.</h2>
+            <p>Remilya builds practical OCR, translation, review, capture, and operator workflows. JavaScript is only used for animation and language switching; the core portfolio remains available above.</p>
+            <div class="hero-sequence__actions">
+              <a class="cyber-button cyber-button--primary" href="https://tr.linkedin.com/in/ilker-agirkaya">LinkedIn</a>
+              <a class="cyber-button" href="https://github.com/Remilya">GitHub</a>
+            </div>
+          </section>
+        </noscript>
       </main>
 
       <footer class="site-footer">

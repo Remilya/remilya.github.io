@@ -4,26 +4,56 @@ const SUPPORTED_LOCALES = ["en", "tr"];
 const urls = {
   github: "https://github.com/Remilya",
   linkedin: "https://tr.linkedin.com/in/ilker-agirkaya",
-  deksmo: "https://deksmo.com",
-  repoDeksmo: "https://github.com/Remilya/Deksmo",
-  repoVision: "https://github.com/Remilya/Deksmo-Vision",
-  repoMedical: "https://github.com/Remilya/DeksmoMedical",
-  repoIlacdb: "https://github.com/Remilya/DeksmoILACDB",
   repoWatermark: "https://github.com/Remilya/Watermark-Deksmo",
   repoScrap: "https://github.com/Remilya/DeksmoScrap"
+};
+
+const archiveTextElements = [
+  { source: "...AS IF.", target: "...SANKİ." },
+  { source: "IT'S IMPOSSIBLE FOR THIS TO BE TRUE.", target: "BUNUN DOĞRU OLMASI MÜMKÜN DEĞİL." },
+  { source: "DON'T ENTER THE FOREST! THERE'S A WITCH~!!", target: "ORMANA GİRMEYİN! CADI VAR~!!" },
+  { source: "THE WITCH'S EYES ARE GLOWING OVER THERE~!!", target: "CADININ GÖZLERİ ORADA PARLIYOR~!!" },
+  { source: "WHEN I WAS LITTLE, MY FAMILY SCARED ME UNTIL I TREMBLED.", target: "KÜÇÜKKEN AİLEM BENİ TİTREYENE KADAR KORKUTTU." },
+  { source: "FOR SOMETHING AS OMINOUS AS A WITCH TO EXIST...", target: "CADI GİBİ TEKİNSİZ BİR ŞEYİN VAR OLMASI..." },
+  { source: "...IS IMPOSSIBLE.", target: "...MÜMKÜN DEĞİL." }
+];
+
+const archiveMedia = {
+  raw: {
+    src: "assets/deksmo-archive/raw.webp",
+    width: 840,
+    height: 1200,
+    labelKey: "rawLabel",
+    altKey: "rawAlt"
+  },
+  translated: {
+    src: "assets/deksmo-archive/translated.webp",
+    width: 840,
+    height: 1252,
+    labelKey: "translatedLabel",
+    altKey: "translatedAlt"
+  },
+  colorized: {
+    src: "assets/deksmo-archive/colorized.webp",
+    width: 840,
+    height: 1252,
+    labelKey: "colorizedLabel",
+    altKey: "colorizedAlt"
+  }
 };
 
 const content = {
   en: {
     meta: {
-      title: "Remilya | Creative Technologist",
+      title: "Remilya | Operator-focused AI & Localization Tools",
       description:
-        "Remilya is a creative technologist building AI systems, local-first tools, product surfaces, and localization workflows."
+        "Remilya builds operator-focused AI and localization tools for OCR, translation, review, capture, and practical production workflows."
     },
     aria: {
       brandLink: "Return to surface",
       primaryNav: "Main directory",
-      localeSwitcher: "System language"
+      localeSwitcher: "System language",
+      languageChanged: "Language changed to English"
     },
     brandSubtitle: "Creative Technologist / AI Systems / Localization",
     nav: {
@@ -35,53 +65,79 @@ const content = {
       contact: "Contact"
     },
     hero: {
-      eyebrow: "PORTFOLIO / REMILYA",
-      role: "CREATIVE TECHNOLOGIST",
-      title: "I build systems for messy digital workflows.",
-      lead:
-        "I work across AI systems, frontend product surfaces, localization-heavy workflows, and SEO-led delivery. The common thread is practical software: tools people can run, inspect, and improve.",
-      ctaWork: "View sequence",
-      panelEyebrow: "Current focus",
-      panelTitle: "Freelance product work with Deksmo at the center.",
-      signals: [
-        "Local-first AI tooling for OCR, translation, and review workflows.",
-        "Frontend systems built for dense, operator-facing tasks.",
-        "Localization work shaped by real publishing and delivery constraints."
-      ],
-      liveLabel: "Live site",
-      liveStatus: "Online",
-      sequence: {
-        eyebrow: "ARCHIVE SEQUENCE / CATHEDRAL",
-        instruction: "Scroll to descend into the ultraviolet archive.",
-        loader: "Initializing sequence",
-        loading: "Calibrating frame lattice",
-        ready: "Sequence online",
-        fallback: "Static plate engaged",
-        frameLabel: "FRAME",
-        titleKicker: "Welcome To",
-        titlePrimary: "Remilya",
-        titleAccent: ".dev"
-      },
-      rail: [
-        {
-          label: "MODE_01",
-          accent: "green",
-          title: "AI systems",
-          copy: "Local-first translation, OCR, structured data, and human-in-the-loop workflows."
-        },
-        {
-          label: "MODE_02",
-          accent: "cyan",
-          title: "Product surfaces",
-          copy: "React interfaces, desktop utilities, browser extensions, and maintainable operator UX."
-        },
-        {
-          label: "MODE_03",
-          accent: "magenta",
-          title: "Growth and localization",
-          copy: "SEO architecture, bilingual workflows, and content systems tied to practical delivery."
-        }
-      ]
+      title: "Welcome to Remilya.dev.",
+      ctaWork: "Enter the archive",
+      ctaContact: "Contact"
+    },
+    deksmoArchive: {
+      eyebrow: "RECOVERED SYSTEM / DEKSMO 1.6.1",
+      status: "ARCHIVED PRODUCT · INTERACTIVE SIMULATION",
+      title: "A localization workbench, preserved as it was.",
+      copy:
+        "Deksmo combined OCR, translation, cleanup, typesetting, and operator review in one editor. The original service was retired after its underlying third-party APIs were discontinued. This client-side exhibit recreates the workflow; no processing is sent to a backend.",
+      openSimulation: "Open interactive simulation",
+      closeSimulation: "Close simulation",
+      productVersion: "Recovered interface · Version 1.6.1",
+      productStatus: "ARCHIVED / OFFLINE",
+      tabsLabel: "Deksmo simulation views",
+      tabEditor: "Editor",
+      tabSettings: "Settings",
+      tabConsole: "Console",
+      languagePair: "EN → TR",
+      toolbarLabel: "Archived editor tools",
+      toolSelect: "Select text element",
+      toolCompare: "Reset comparison",
+      toolColor: "Show color preview",
+      toolSelectShort: "Select",
+      toolCompareShort: "Compare",
+      toolColorShort: "Color",
+      variantsLabel: "Result preview",
+      variantRaw: "Raw",
+      variantTranslated: "Translated",
+      variantColorized: "Colorized",
+      sampleBadge: "ARCHIVE SAMPLE",
+      comparisonLabel: "Typeset / color comparison",
+      rawLabel: "RAW / EN",
+      translatedLabel: "TRANSLATED / TR",
+      colorizedLabel: "COLORIZED / TR",
+      rawAlt: "Raw English manga page used in the archived Deksmo simulation",
+      translatedAlt: "Turkish translated result from the archived Deksmo simulation",
+      colorizedAlt: "Colorized Turkish result from the archived Deksmo simulation",
+      zoomOut: "Zoom out",
+      zoomIn: "Zoom in",
+      textElements: "TEXT ELEMENTS",
+      elementType: "SPEECH BUBBLE",
+      sourceLabel: "SOURCE",
+      targetLabel: "TARGET",
+      aiFill: "AI Fill · Simulation",
+      cleanApply: "Clean + Apply Text · Simulation",
+      history: "HISTORY",
+      historyOpen: "Opened raw page",
+      historyTranslated: "Translation preview",
+      historyColorized: "Color preview",
+      settingsEyebrow: "ARCHIVED CONFIGURATION",
+      settingsHeading: "Last recovered workspace settings",
+      sourceLanguage: "Source language",
+      targetLanguage: "Target language",
+      resolution: "Image resolution",
+      preciseOcr: "Precise OCR",
+      enabled: "Enabled",
+      provider: "Processing provider",
+      offline: "Offline · API discontinued",
+      logArchive: "Recovered Deksmo interface loaded locally.",
+      logAssets: "Three historical preview assets are ready.",
+      logElements: "Seven text elements restored for inspection.",
+      logBackend: "Unavailable. No network processing will be attempted.",
+      offlineFootnote: "CLIENT-ONLY ARCHIVE · ZERO API REQUESTS",
+      readyMessage: "Archive ready. Explore the recovered interface.",
+      offlineActionMessage: "Archived simulation — this action required the retired Deksmo API.",
+      selectionMessage: "Selection tool active. Choose a recovered text element.",
+      comparisonMessage: "Comparison reset to the aligned translated and colorized views.",
+      colorMessage: "Colorized archive preview selected.",
+      rawMessage: "Raw source page selected.",
+      translatedMessage: "Translated archive preview selected.",
+      colorizedMessage: "Colorized archive preview selected.",
+      textSelectedMessage: "Text element {number} selected."
     },
     about: {
       eyebrow: "Identity / Profile",
@@ -122,27 +178,24 @@ const content = {
         "The centerpiece is Deksmo: a cluster of tools, runtimes, and product experiments around localization, editing, capture, and specialized knowledge systems.",
       supportEyebrow: "Dossier / Supporting systems",
       supportCopy:
-        "Smaller but important surfaces that show the breadth of the ecosystem: desktop tooling, browser capture, domain AI, and large structured datasets.",
-      privateEngagementLabel: "Private engagement"
+        "Smaller but important surfaces that show the breadth of the ecosystem: desktop tooling, browser capture, domain AI, and large structured datasets."
     },
     featuredProjects: [
       {
         slug: "deksmo",
         title: "Deksmo",
-        label: "Featured system / AI manga localization engine",
+        label: "Featured system / Archived manga localization workbench",
         serial: "SYS-01",
         summary:
-          "A full-stack localization platform that turns OCR, translation, QA, typesetting, and chapter processing into an inspectable workflow rather than a black-box generation pass.",
+          "A full-stack localization workbench that combined OCR, translation, cleanup, typesetting, quality control, and chapter processing in an inspectable operator workflow.",
         impact: [
-          "Built a pipeline that pairs Gemini-driven automation with a human-in-the-loop workbench for review, editing, and recovery.",
-          "Extended the system across chapter uploads, book-mode translation, mobile-friendly surfaces, and Firebase-backed user workflows.",
-          "Shaped the product around operator realities: rate limits, queue states, resumable projects, and downstream export needs."
+          "Paired AI-assisted processing with a human-in-the-loop workbench for review, editing, and recovery.",
+          "Covered chapter uploads, book-mode translation, mobile-friendly surfaces, and persistent project workflows.",
+          "Handled operator realities including rate limits, queue states, resumable projects, and downstream export needs."
         ],
         stack: ["React 19", "Vite", "FastAPI", "Firebase", "Gemini", "Tailwind CSS"],
-        links: [
-          { label: "Repository", href: urls.repoDeksmo },
-          { label: "Live surface", href: urls.deksmo }
-        ],
+        status: "Archived product · Interactive simulation",
+        links: [{ label: "Open simulation", href: "#deksmo-archive", external: false, action: "openArchive" }],
         accent: "green",
         logo: "assets/logos/deksmo-core.png"
       },
@@ -159,6 +212,7 @@ const content = {
           "Connected product thinking with growth execution by treating the website as an operating business surface, not a brochure."
         ],
         stack: ["UI/UX", "Frontend", "SEO", "Content Strategy", "Performance"],
+        status: "Private engagement",
         links: [],
         accent: "magenta",
         logo: ""
@@ -171,7 +225,8 @@ const content = {
         summary:
           "A React and FastAPI editor focused on local OCR, masking, disk-backed project state, provider profiles, and selected-bubble editing.",
         stack: ["React", "TypeScript", "FastAPI", "PaddleOCR"],
-        links: [{ label: "Repository", href: urls.repoVision }],
+        status: "Private repository · Details available on request",
+        links: [],
         logo: "assets/logos/deksmo-vision.png"
       },
       {
@@ -180,7 +235,8 @@ const content = {
         summary:
           "A medicinal-herb application combining Turkish knowledge, AI recipe generation, configurable data storage, and optional local-model privacy mode.",
         stack: ["Next.js 15", "FastAPI", "SQLite", "Supabase"],
-        links: [{ label: "Repository", href: urls.repoMedical }],
+        status: "Private repository · Details available on request",
+        links: [],
         logo: "assets/logos/deksmo-medical.png"
       },
       {
@@ -189,7 +245,8 @@ const content = {
         summary:
           "A structured medicine database for Turkey with 31.5k+ records, archived HTML prospectus content, cleaned text, and usage imagery for offline retrieval.",
         stack: ["Python", "JSONL", "RAG-ready text", "Image dataset"],
-        links: [{ label: "Repository", href: urls.repoIlacdb }],
+        status: "Private repository · Details available on request",
+        links: [],
         logo: "assets/logos/deksmo-ilacdb.svg"
       },
       {
@@ -310,12 +367,12 @@ const content = {
     ],
     contact: {
       eyebrow: "Profiles / Links",
-      title: "",
-      copy: ""
+      title: "Let’s build something practical.",
+      copy: "Working on an AI workflow, operator tool, or localization product? Send a short brief on LinkedIn and I’ll reply with fit and next steps."
     },
     socialLinks: [
-      { label: "GitHub", href: urls.github, icon: "bi-github" },
-      { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" }
+      { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" },
+      { label: "GitHub", href: urls.github, icon: "bi-github" }
     ],
     footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   },
@@ -328,7 +385,8 @@ const content = {
     aria: {
       brandLink: "Başa dön",
       primaryNav: "Ana gezinme",
-      localeSwitcher: "Dil seçici"
+      localeSwitcher: "Dil seçici",
+      languageChanged: "Dil Türkçe olarak değiştirildi"
     },
     brandSubtitle: "Yazılım / YZ Sistemleri / Lokalizasyon",
     nav: {
@@ -340,53 +398,79 @@ const content = {
       contact: "İletişim"
     },
     hero: {
-      eyebrow: "Portfolyo / Remilya",
-      role: "Yazılım, YZ ve lokalizasyon",
-      title: "Karmaşık dijital süreçleri daha kullanılabilir hale getiren sistemler kuruyorum.",
-      lead:
-        "Yapay zeka sistemleri, ürün arayüzleri, lokalizasyon odaklı iş akışları ve SEO destekli web projeleri üzerinde çalışıyorum. Benim için iyi yazılım; kullanılabilen, izlenebilen ve gerektiğinde müdahale edilebilen yazılımdır.",
-      ctaWork: "Sekansi Gor",
-      panelEyebrow: "Güncel odak",
-      panelTitle: "Deksmo merkezli freelance ürün ve sistem çalışmaları.",
-      signals: [
-        "OCR, çeviri ve inceleme süreçleri için yerel öncelikli araçlar.",
-        "Yoğun iş akışlarını sadeleştiren ürün arayüzleri.",
-        "Gerçek yayın ve teslimat koşullarına dayanan lokalizasyon deneyimi."
-      ],
-      liveLabel: "Canlı site",
-      liveStatus: "Aktif",
-      sequence: {
-        eyebrow: "ARŞİV SEKANSI / KATEDRAL",
-        instruction: "Morötesi arşivin içine inmek için kaydır.",
-        loader: "Sekans hazırlanıyor",
-        loading: "Kare dizisi hazırlanıyor",
-        ready: "Sekans hazır",
-        fallback: "Statik görünüm aktif",
-        frameLabel: "KARE",
-        titleKicker: "Remilya.dev'e",
-        titlePrimary: "Hoş ",
-        titleAccent: "Geldiniz"
-      },
-      rail: [
-        {
-          label: "MOD_01",
-          accent: "green",
-          title: "YZ ve otomasyon",
-          copy: "Yerel öncelikli çeviri, OCR, yapısal veri ve insan denetimli iş akışları."
-        },
-        {
-          label: "MOD_02",
-          accent: "cyan",
-          title: "Ürün arayüzleri",
-          copy: "React arayüzleri, masaüstü araçları, tarayıcı eklentileri ve sürdürülebilir kullanıcı deneyimi."
-        },
-        {
-          label: "MOD_03",
-          accent: "magenta",
-          title: "Görünürlük ve lokalizasyon",
-          copy: "SEO mimarisi, çift dilli iş akışları ve gerçek teslimat ihtiyaçlarına bağlı içerik yapıları."
-        }
-      ]
+      title: "Remilya.dev’e hoş geldiniz.",
+      ctaWork: "Arşive gir",
+      ctaContact: "İletişim"
+    },
+    deksmoArchive: {
+      eyebrow: "KURTARILAN SİSTEM / DEKSMO 1.6.1",
+      status: "ARŞİVLENMİŞ ÜRÜN · ETKİLEŞİMLİ SİMÜLASYON",
+      title: "Bir lokalizasyon çalışma alanı, olduğu haliyle korundu.",
+      copy:
+        "Deksmo; OCR, çeviri, temizleme, dizgi ve operatör incelemesini tek editörde birleştiriyordu. Temelindeki üçüncü taraf API’ler sonlandırılınca özgün servis kullanımdan kaldırıldı. Bu istemci tarafı sergi iş akışını yeniden canlandırır; hiçbir işlem arka uca gönderilmez.",
+      openSimulation: "Etkileşimli simülasyonu aç",
+      closeSimulation: "Simülasyonu kapat",
+      productVersion: "Kurtarılan arayüz · Sürüm 1.6.1",
+      productStatus: "ARŞİVLENDİ / ÇEVRİMDIŞI",
+      tabsLabel: "Deksmo simülasyon görünümleri",
+      tabEditor: "Editör",
+      tabSettings: "Ayarlar",
+      tabConsole: "Konsol",
+      languagePair: "EN → TR",
+      toolbarLabel: "Arşivlenmiş editör araçları",
+      toolSelect: "Metin öğesi seç",
+      toolCompare: "Karşılaştırmayı sıfırla",
+      toolColor: "Renkli önizlemeyi göster",
+      toolSelectShort: "Seç",
+      toolCompareShort: "Karşılaştır",
+      toolColorShort: "Renk",
+      variantsLabel: "Sonuç önizlemesi",
+      variantRaw: "Ham",
+      variantTranslated: "Çevrilmiş",
+      variantColorized: "Renklendirilmiş",
+      sampleBadge: "ARŞİV ÖRNEĞİ",
+      comparisonLabel: "Dizgi / renk karşılaştırması",
+      rawLabel: "HAM / EN",
+      translatedLabel: "ÇEVRİLMİŞ / TR",
+      colorizedLabel: "RENKLENDİRİLMİŞ / TR",
+      rawAlt: "Arşivlenmiş Deksmo simülasyonunda kullanılan ham İngilizce manga sayfası",
+      translatedAlt: "Arşivlenmiş Deksmo simülasyonundaki Türkçe çeviri sonucu",
+      colorizedAlt: "Arşivlenmiş Deksmo simülasyonundaki renklendirilmiş Türkçe sonuç",
+      zoomOut: "Uzaklaştır",
+      zoomIn: "Yakınlaştır",
+      textElements: "METİN ÖĞELERİ",
+      elementType: "KONUŞMA BALONU",
+      sourceLabel: "KAYNAK",
+      targetLabel: "HEDEF",
+      aiFill: "YZ Dolgu · Simülasyon",
+      cleanApply: "Temizle + Metni Uygula · Simülasyon",
+      history: "GEÇMİŞ",
+      historyOpen: "Ham sayfa açıldı",
+      historyTranslated: "Çeviri önizlemesi",
+      historyColorized: "Renk önizlemesi",
+      settingsEyebrow: "ARŞİVLENMİŞ YAPILANDIRMA",
+      settingsHeading: "Kurtarılan son çalışma alanı ayarları",
+      sourceLanguage: "Kaynak dil",
+      targetLanguage: "Hedef dil",
+      resolution: "Görsel çözünürlüğü",
+      preciseOcr: "Hassas OCR",
+      enabled: "Etkin",
+      provider: "İşleme sağlayıcısı",
+      offline: "Çevrimdışı · API sonlandırıldı",
+      logArchive: "Kurtarılan Deksmo arayüzü yerel olarak yüklendi.",
+      logAssets: "Üç tarihî önizleme varlığı hazır.",
+      logElements: "İnceleme için yedi metin öğesi geri yüklendi.",
+      logBackend: "Kullanılamıyor. Ağ üzerinden işleme denenmeyecek.",
+      offlineFootnote: "YALNIZCA İSTEMCİ ARŞİVİ · SIFIR API İSTEĞİ",
+      readyMessage: "Arşiv hazır. Kurtarılan arayüzü inceleyin.",
+      offlineActionMessage: "Arşiv simülasyonu — bu işlem kullanımdan kaldırılan Deksmo API’sini gerektiriyordu.",
+      selectionMessage: "Seçim aracı etkin. Kurtarılan bir metin öğesi seçin.",
+      comparisonMessage: "Karşılaştırma hizalı çevrilmiş ve renklendirilmiş görünümlere sıfırlandı.",
+      colorMessage: "Renklendirilmiş arşiv önizlemesi seçildi.",
+      rawMessage: "Ham kaynak sayfa seçildi.",
+      translatedMessage: "Çevrilmiş arşiv önizlemesi seçildi.",
+      colorizedMessage: "Renklendirilmiş arşiv önizlemesi seçildi.",
+      textSelectedMessage: "{number} numaralı metin öğesi seçildi."
     },
     about: {
       eyebrow: "Kimlik / Profil",
@@ -427,27 +511,24 @@ const content = {
         "Portfolyonun merkezinde Deksmo bulunuyor: lokalizasyon, düzenleme, yakalama ve alan odaklı bilgi sistemleri etrafında geliştirdiğim araçlar ve ürün deneyleri.",
       supportEyebrow: "Ek projeler / Destekleyici sistemler",
       supportCopy:
-        "Ekosistemin kapsamını gösteren daha küçük ama önemli işler: masaüstü araçları, tarayıcı eklentileri, alan odaklı yapay zeka uygulamaları ve büyük yapısal veri setleri.",
-      privateEngagementLabel: "Özel müşteri projesi"
+        "Ekosistemin kapsamını gösteren daha küçük ama önemli işler: masaüstü araçları, tarayıcı eklentileri, alan odaklı yapay zeka uygulamaları ve büyük yapısal veri setleri."
     },
     featuredProjects: [
       {
         slug: "deksmo",
         title: "Deksmo",
-        label: "Öne çıkan proje / YZ destekli manga lokalizasyon sistemi",
+        label: "Öne çıkan sistem / Arşivlenmiş manga lokalizasyon çalışma alanı",
         serial: "SYS-01",
         summary:
-          "OCR, çeviri, kalite kontrol, typesetting ve bölüm işlemeyi kara kutu bir üretim yerine izlenebilir bir iş akışına dönüştüren tam yığın lokalizasyon platformu.",
+          "OCR, çeviri, temizleme, dizgi, kalite kontrol ve bölüm işlemeyi izlenebilir bir operatör akışında birleştiren tam yığın lokalizasyon çalışma alanıydı.",
         impact: [
-          "Gemini destekli otomasyonu; inceleme, düzenleme ve hata durumlarında geri dönüş imkanı veren insan denetimli bir çalışma alanıyla birleştirdim.",
-          "Sistemi bölüm yükleme, kitap modu çeviri, mobil uyumlu yüzeyler ve Firebase destekli kullanıcı akışlarını kapsayacak şekilde genişlettim.",
-          "Ürünü; rate limit, kuyruk durumu, yarım kalan projeler ve dışa aktarma ihtiyaçları gibi gerçek kullanım senaryolarına göre şekillendirdim."
+          "YZ destekli işlemeyi; inceleme, düzenleme ve kurtarma araçları sunan insan denetimli bir çalışma alanıyla birleştirdi.",
+          "Bölüm yükleme, kitap modu çeviri, mobil uyumlu yüzeyler ve kalıcı proje akışlarını kapsadı.",
+          "Rate limit, kuyruk durumu, sürdürülebilir projeler ve dışa aktarma ihtiyaçları gibi operatör gerçeklerini ele aldı."
         ],
         stack: ["React 19", "Vite", "FastAPI", "Firebase", "Gemini", "Tailwind CSS"],
-        links: [
-          { label: "Repo", href: urls.repoDeksmo },
-          { label: "Canlı site", href: urls.deksmo }
-        ],
+        status: "Arşivlenmiş ürün · Etkileşimli simülasyon",
+        links: [{ label: "Simülasyonu aç", href: "#deksmo-archive", external: false, action: "openArchive" }],
         accent: "green",
         logo: "assets/logos/deksmo-core.png"
       },
@@ -464,6 +545,7 @@ const content = {
           "Web sitesini yalnızca bir broşür olarak değil, iş üreten ticari bir yüzey olarak ele alıp ürün düşüncesiyle büyüme tarafını birleştirdim."
         ],
         stack: ["UI/UX", "Frontend", "SEO", "İçerik stratejisi", "Performans"],
+        status: "Özel müşteri projesi",
         links: [],
         accent: "magenta",
         logo: ""
@@ -476,7 +558,8 @@ const content = {
         summary:
           "Yerel OCR, maskeleme, diskte tutulan proje durumu, sağlayıcı profilleri ve seçili balon düzenleme odaklı React ve FastAPI editörü.",
         stack: ["React", "TypeScript", "FastAPI", "PaddleOCR"],
-        links: [{ label: "Repo", href: urls.repoVision }],
+        status: "Özel repo · Talep üzerine ayrıntı",
+        links: [],
         logo: "assets/logos/deksmo-vision.png"
       },
       {
@@ -485,7 +568,8 @@ const content = {
         summary:
           "Türkçe bilgi birikimini, yapay zeka destekli tarif üretimini, ayarlanabilir veri saklamayı ve isteğe bağlı yerel model gizliliğini bir araya getiren tıbbi bitki uygulaması.",
         stack: ["Next.js 15", "FastAPI", "SQLite", "Supabase"],
-        links: [{ label: "Repo", href: urls.repoMedical }],
+        status: "Özel repo · Talep üzerine ayrıntı",
+        links: [],
         logo: "assets/logos/deksmo-medical.png"
       },
       {
@@ -494,7 +578,8 @@ const content = {
         summary:
           "Türkiye için 31.5 binin üzerinde kayıt, arşivlenmiş HTML prospektüs içeriği, temizlenmiş metin ve kullanım görselleri içeren yapısal bir ilaç veritabanı.",
         stack: ["Python", "JSONL", "RAG hazır metin", "Görsel veri seti"],
-        links: [{ label: "Repo", href: urls.repoIlacdb }],
+        status: "Özel repo · Talep üzerine ayrıntı",
+        links: [],
         logo: "assets/logos/deksmo-ilacdb.svg"
       },
       {
@@ -615,12 +700,12 @@ const content = {
     ],
     contact: {
       eyebrow: "Profiller / Linkler",
-      title: "",
-      copy: ""
+      title: "Birlikte kullanışlı bir şey geliştirelim.",
+      copy: "Yapay zeka iş akışı, operasyon aracı veya lokalizasyon ürünü üzerinde mi çalışıyorsunuz? LinkedIn üzerinden kısa bir özet gönderin; uygunluk ve sonraki adımlarla dönüş yapayım."
     },
     socialLinks: [
-      { label: "GitHub", href: urls.github, icon: "bi-github" },
-      { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" }
+      { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" },
+      { label: "GitHub", href: urls.github, icon: "bi-github" }
     ],
     footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   }
@@ -632,6 +717,7 @@ const elements = {
   primaryNav: document.querySelector("#primary-nav"),
   localeSwitcher: document.querySelector("#locale-switcher"),
   localeButtons: [...document.querySelectorAll(".locale-button")],
+  localeStatus: document.querySelector("#locale-status"),
   brandSubtitle: document.querySelector("#brand-subtitle"),
   navAbout: document.querySelector("#nav-about"),
   navWork: document.querySelector("#nav-work"),
@@ -639,25 +725,23 @@ const elements = {
   navCapabilities: document.querySelector("#nav-capabilities"),
   navExperience: document.querySelector("#nav-experience"),
   navContact: document.querySelector("#nav-contact"),
-  heroEyebrow: document.querySelector("#hero-eyebrow"),
-  heroRole: document.querySelector("#hero-role"),
   heroTitle: document.querySelector("#hero-title"),
-  heroLead: document.querySelector("#hero-lead"),
   heroCtaWork: document.querySelector("#hero-cta-work"),
-  heroPanelEyebrow: document.querySelector("#hero-panel-eyebrow"),
-  heroPanelTitle: document.querySelector("#hero-panel-title"),
-  heroSignalList: document.querySelector("#hero-signal-list"),
-  heroLiveLabel: document.querySelector("#hero-live-label"),
-  heroLiveStatus: document.querySelector("#hero-live-status"),
+  heroCtaContact: document.querySelector("#hero-cta-contact"),
   heroSequence: document.querySelector("#hero-sequence"),
-  heroSequenceEyebrow: document.querySelector("#hero-sequence-eyebrow"),
-  heroSequenceInstruction: document.querySelector("#hero-sequence-instruction"),
-  heroSequenceState: document.querySelector("#hero-sequence-state"),
-  heroSequenceProgress: document.querySelector("#hero-sequence-progress"),
-  heroSequenceTitleKicker: document.querySelector("#hero-sequence-title-kicker"),
-  heroSequenceTitlePrimary: document.querySelector("#hero-sequence-title-primary"),
-  heroSequenceTitleAccent: document.querySelector("#hero-sequence-title-accent"),
-  heroRail: document.querySelector("#hero-rail"),
+  archiveDialog: document.querySelector("#deksmo-archive-dialog"),
+  archiveRoot: document.querySelector("#deksmo-simulator"),
+  archiveStatusMessage: document.querySelector("#archive-status-message"),
+  archiveCompare: document.querySelector("#archive-compare"),
+  archiveCompareRange: document.querySelector("#archive-comparison-range"),
+  archiveResultImage: document.querySelector("#archive-result-image"),
+  archiveBaseImage: document.querySelector("#archive-base-image"),
+  archiveBaseLabel: document.querySelector("#archive-base-label"),
+  archiveResultLabel: document.querySelector("#archive-result-label"),
+  archiveZoomValue: document.querySelector("#archive-zoom-value"),
+  archiveSelectedNumber: document.querySelector("#archive-selected-number"),
+  archiveSelectedSource: document.querySelector("#archive-selected-source"),
+  archiveSelectedTarget: document.querySelector("#archive-selected-target"),
   aboutEyebrow: document.querySelector("#about-eyebrow"),
   aboutTitle: document.querySelector("#about-title"),
   aboutIntroLabel: document.querySelector("#about-intro-label"),
@@ -699,10 +783,16 @@ const elements = {
 
 let currentLocale = "en";
 let revealObserver = null;
-const heroSequenceState = {
-  mode: "loading",
-  frame: 1,
-  total: 0
+const archiveState = {
+  activeTab: "editor",
+  activeTool: "compare",
+  resultVariant: "colorized",
+  comparisonPosition: 50,
+  selectedTextElement: 0,
+  zoom: 1,
+  statusKey: "readyMessage",
+  statusValues: {},
+  lastTrigger: null
 };
 
 function setText(element, value) {
@@ -715,80 +805,383 @@ function padFrame(value, digits = 3) {
   return String(value).padStart(digits, "0");
 }
 
-function syncHeroSequenceStatus() {
-  if (!elements.heroSequenceState && !elements.heroSequenceProgress) {
-    return;
-  }
-
-  const localeData = content[currentLocale] || content.en;
-  const sequenceData = localeData.hero.sequence;
-  const total = heroSequenceState.total || Number(elements.heroSequence?.dataset.frameCount || 0);
-  const frame = Math.min(Math.max(heroSequenceState.frame || 1, 1), Math.max(total, 1));
-  const statusLabel = sequenceData[heroSequenceState.mode] || sequenceData.loading;
-
-  setText(elements.heroSequenceState, statusLabel);
-
-  if (elements.heroSequenceProgress) {
-    elements.heroSequenceProgress.textContent = `${sequenceData.frameLabel} ${padFrame(frame)} / ${padFrame(Math.max(total, 1))}`;
-  }
-}
-
-function syncHeroSequenceTitle() {
-  const localeData = content[currentLocale] || content.en;
-  const sequenceData = localeData.hero.sequence;
-
-  setText(elements.heroSequenceTitleKicker, sequenceData.titleKicker || "");
-  setText(elements.heroSequenceTitlePrimary, sequenceData.titlePrimary || "");
-  setText(elements.heroSequenceTitleAccent, sequenceData.titleAccent || "");
-}
-
 function renderTags(items) {
   return items.map((item) => `<span class="tag">${item}</span>`).join("");
+}
+
+function renderLinkAttributes(link) {
+  return link.external === false ? "" : ' target="_blank" rel="noreferrer"';
+}
+
+function renderLinkAction(link) {
+  return link.action === "openArchive" ? " data-open-archive" : "";
 }
 
 function renderButtonLinks(links) {
   return links
     .map(
       (link) =>
-        `<a class="cyber-button" href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>`
+        `<a class="cyber-button" href="${link.href}"${renderLinkAttributes(link)}${renderLinkAction(link)}>${link.label}</a>`
     )
     .join("");
 }
 
 function renderSimpleLinks(links) {
   return links
-    .map((link) => `<a href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>`)
+    .map((link) => `<a href="${link.href}"${renderLinkAttributes(link)}${renderLinkAction(link)}>${link.label}</a>`)
     .join("");
 }
 
-function renderHeroSignalList(signals) {
-  if (elements.heroSignalList) {
-    elements.heroSignalList.innerHTML = signals.map((item) => `<li>${item}</li>`).join("");
+function renderProjectMedia(media, title) {
+  if (!media?.src) {
+    return "";
   }
+
+  const width = media.width ? ` width="${media.width}"` : "";
+  const height = media.height ? ` height="${media.height}"` : "";
+  const alt = media.alt || `${title} project preview`;
+  return `<figure class="case-media"><img src="${media.src}" alt="${alt}" loading="lazy"${width}${height} /></figure>`;
 }
 
-function renderHeroEyebrow(text) {
-  if (elements.heroEyebrow) {
-    elements.heroEyebrow.innerHTML = `${text} <span class="cursor" aria-hidden="true"></span>`;
-  }
+function getArchiveLocaleContent() {
+  return content[currentLocale]?.deksmoArchive || content.en.deksmoArchive;
 }
 
-function renderHeroRail(items) {
-  if (!elements.heroRail) {
+function formatArchiveMessage(template, values = {}) {
+  return Object.entries(values).reduce(
+    (message, [key, value]) => message.replaceAll(`{${key}}`, String(value)),
+    template
+  );
+}
+
+function updateArchiveStatus() {
+  if (!elements.archiveStatusMessage) {
     return;
   }
 
-  elements.heroRail.innerHTML = items
-    .map(
-      (item) => `
-        <article class="rail-card">
-          <span class="rail-label">${item.label}</span>
-          <strong>${item.title}</strong>
-          <p>${item.copy}</p>
-        </article>
-      `
-    )
-    .join("");
+  const archiveContent = getArchiveLocaleContent();
+  const template = archiveContent[archiveState.statusKey] || archiveContent.readyMessage;
+  setText(elements.archiveStatusMessage, formatArchiveMessage(template, archiveState.statusValues));
+}
+
+function setArchiveStatus(key, values = {}, focusMessage = false) {
+  archiveState.statusKey = key;
+  archiveState.statusValues = values;
+  updateArchiveStatus();
+
+  if (focusMessage) {
+    elements.archiveStatusMessage?.focus({ preventScroll: true });
+  }
+}
+
+function updateArchiveVariantPresentation(announce = false) {
+  if (!elements.archiveRoot || !elements.archiveResultImage) {
+    return;
+  }
+
+  const variant = archiveMedia[archiveState.resultVariant] ? archiveState.resultVariant : "colorized";
+  const media = archiveMedia[variant];
+  const archiveContent = getArchiveLocaleContent();
+
+  elements.archiveRoot.dataset.resultVariant = variant;
+  elements.archiveResultImage.src = media.src;
+  elements.archiveResultImage.width = media.width;
+  elements.archiveResultImage.height = media.height;
+  elements.archiveResultImage.alt = archiveContent[media.altKey];
+  if (elements.archiveBaseImage) {
+    elements.archiveBaseImage.alt = archiveContent.translatedAlt;
+  }
+
+  if (elements.archiveResultLabel) {
+    elements.archiveResultLabel.dataset.archiveText = media.labelKey;
+    setText(elements.archiveResultLabel, archiveContent[media.labelKey]);
+  }
+
+  const isComparison = variant === "colorized";
+  elements.archiveRoot.classList.toggle("is-comparison-preview", isComparison);
+  elements.archiveRoot.classList.toggle("is-single-preview", !isComparison);
+  if (elements.archiveCompareRange) {
+    elements.archiveCompareRange.disabled = !isComparison;
+  }
+
+  if (elements.archiveBaseLabel) {
+    elements.archiveBaseLabel.dataset.archiveText = "translatedLabel";
+    setText(elements.archiveBaseLabel, archiveContent.translatedLabel);
+  }
+
+  elements.archiveRoot.querySelectorAll("[data-archive-variant]").forEach((button) => {
+    const isActive = button.dataset.archiveVariant === variant;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  if (announce) {
+    const messageKey = variant === "raw" ? "rawMessage" : variant === "translated" ? "translatedMessage" : "colorizedMessage";
+    setArchiveStatus(messageKey);
+  }
+}
+
+function setArchiveVariant(variant, announce = true) {
+  if (!archiveMedia[variant]) {
+    return;
+  }
+
+  archiveState.resultVariant = variant;
+  updateArchiveVariantPresentation(announce);
+}
+
+function setArchiveActiveTool(toolName) {
+  archiveState.activeTool = toolName;
+  elements.archiveRoot?.querySelectorAll("[data-archive-tool]").forEach((tool) => {
+    tool.classList.toggle("is-active", tool.dataset.archiveTool === toolName);
+  });
+}
+
+function setArchiveComparison(value) {
+  const position = Math.min(100, Math.max(0, Number(value) || 0));
+  archiveState.comparisonPosition = position;
+  elements.archiveCompare?.style.setProperty("--split", `${position}%`);
+  if (elements.archiveCompareRange) {
+    elements.archiveCompareRange.value = String(position);
+  }
+}
+
+function setArchiveZoom(value) {
+  const zoom = Math.min(1.5, Math.max(0.75, Number(value) || 1));
+  archiveState.zoom = zoom;
+  elements.archiveCompare?.style.setProperty("--archive-zoom", String(zoom));
+  setText(elements.archiveZoomValue, `${Math.round(zoom * 100)}%`);
+}
+
+function selectArchiveText(index, announce = true) {
+  if (!Number.isInteger(index) || !archiveTextElements[index]) {
+    return;
+  }
+
+  archiveState.selectedTextElement = index;
+  const selected = archiveTextElements[index];
+  const number = String(index + 1).padStart(2, "0");
+
+  elements.archiveRoot?.querySelectorAll("[data-archive-text-index]").forEach((button) => {
+    const isSelected = Number(button.dataset.archiveTextIndex) === index;
+    button.classList.toggle("is-selected", isSelected);
+    button.setAttribute("aria-pressed", String(isSelected));
+  });
+
+  setText(elements.archiveSelectedNumber, number);
+  setText(elements.archiveSelectedSource, selected.source);
+  setText(elements.archiveSelectedTarget, selected.target);
+
+  if (announce) {
+    setArchiveStatus("textSelectedMessage", { number });
+  }
+}
+
+function setArchiveTab(tabName, focusTab = false) {
+  if (!elements.archiveRoot) {
+    return;
+  }
+
+  const tabs = [...elements.archiveRoot.querySelectorAll("[data-archive-tab]")];
+  const panels = [...elements.archiveRoot.querySelectorAll("[data-archive-panel]")];
+  const selectedTab = tabs.find((tab) => tab.dataset.archiveTab === tabName);
+
+  if (!selectedTab) {
+    return;
+  }
+
+  archiveState.activeTab = tabName;
+  elements.archiveRoot.dataset.activeTab = tabName;
+
+  tabs.forEach((tab) => {
+    const isActive = tab === selectedTab;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
+  });
+
+  panels.forEach((panel) => {
+    panel.hidden = panel.dataset.archivePanel !== tabName;
+  });
+
+  if (focusTab) {
+    selectedTab.focus();
+  }
+}
+
+function applyArchiveLocale(localeData) {
+  if (!elements.archiveRoot || !localeData.deksmoArchive) {
+    return;
+  }
+
+  const archiveContent = localeData.deksmoArchive;
+  document.querySelectorAll("[data-archive-text]").forEach((node) => {
+    const key = node.dataset.archiveText;
+    if (archiveContent[key] !== undefined) {
+      setText(node, archiveContent[key]);
+    }
+  });
+
+  document.querySelectorAll("[data-archive-aria]").forEach((node) => {
+    const key = node.dataset.archiveAria;
+    if (archiveContent[key] !== undefined) {
+      node.setAttribute("aria-label", archiveContent[key]);
+    }
+  });
+
+  updateArchiveVariantPresentation(false);
+  updateArchiveStatus();
+}
+
+function openArchiveDialog(trigger) {
+  if (!elements.archiveDialog) {
+    return;
+  }
+
+  archiveState.lastTrigger = trigger || null;
+  if (!elements.archiveDialog.open) {
+    if (typeof elements.archiveDialog.showModal === "function") {
+      elements.archiveDialog.showModal();
+    } else {
+      elements.archiveDialog.setAttribute("open", "");
+    }
+  }
+
+  document.body.classList.add("archive-dialog-open");
+  window.requestAnimationFrame(() => {
+    elements.archiveDialog.querySelector("[data-close-archive]")?.focus({ preventScroll: true });
+  });
+}
+
+function closeArchiveDialog() {
+  if (!elements.archiveDialog?.open) {
+    return;
+  }
+
+  if (typeof elements.archiveDialog.close === "function") {
+    elements.archiveDialog.close();
+  } else {
+    elements.archiveDialog.removeAttribute("open");
+    document.body.classList.remove("archive-dialog-open");
+    archiveState.lastTrigger?.focus?.({ preventScroll: true });
+    archiveState.lastTrigger = null;
+  }
+}
+
+function initArchiveSimulator() {
+  if (!elements.archiveRoot) {
+    return;
+  }
+
+  const tabs = [...elements.archiveRoot.querySelectorAll("[data-archive-tab]")];
+
+  document.addEventListener("click", (event) => {
+    const opener = event.target instanceof Element
+      ? event.target.closest("[data-open-archive]")
+      : null;
+    if (!opener) return;
+    event.preventDefault();
+    openArchiveDialog(opener);
+  });
+
+  elements.archiveDialog?.querySelector("[data-close-archive]")?.addEventListener("click", closeArchiveDialog);
+  elements.archiveDialog?.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeArchiveDialog();
+  });
+  elements.archiveDialog?.addEventListener("click", (event) => {
+    if (event.target === elements.archiveDialog) closeArchiveDialog();
+  });
+  elements.archiveDialog?.addEventListener("close", () => {
+    document.body.classList.remove("archive-dialog-open");
+    archiveState.lastTrigger?.focus?.({ preventScroll: true });
+    archiveState.lastTrigger = null;
+  });
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => setArchiveTab(tab.dataset.archiveTab));
+    tab.addEventListener("keydown", (event) => {
+      const currentIndex = tabs.indexOf(tab);
+      let nextIndex = currentIndex;
+
+      if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+      if (nextIndex === currentIndex) return;
+
+      event.preventDefault();
+      setArchiveTab(tabs[nextIndex].dataset.archiveTab, true);
+    });
+  });
+
+  elements.archiveRoot.querySelectorAll("[data-archive-variant]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const variant = button.dataset.archiveVariant;
+      setArchiveVariant(variant);
+      if (variant === "colorized") {
+        setArchiveComparison(0);
+        setArchiveActiveTool("color");
+      } else {
+        setArchiveActiveTool("select");
+      }
+    });
+  });
+
+  elements.archiveCompareRange?.addEventListener("input", (event) => {
+    setArchiveComparison(event.currentTarget.value);
+    setArchiveActiveTool("compare");
+  });
+
+  elements.archiveRoot.querySelectorAll("[data-archive-zoom]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.dataset.archiveZoom === "in" ? 1 : -1;
+      setArchiveZoom(archiveState.zoom + direction * 0.25);
+    });
+  });
+
+  elements.archiveRoot.querySelectorAll("[data-archive-text-index]").forEach((button) => {
+    button.addEventListener("click", () => selectArchiveText(Number(button.dataset.archiveTextIndex)));
+  });
+
+  elements.archiveRoot.querySelectorAll("[data-archive-simulated]").forEach((button) => {
+    button.addEventListener("click", () => setArchiveStatus("offlineActionMessage", {}, true));
+  });
+
+  elements.archiveRoot.querySelectorAll("[data-archive-history]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const variant = button.dataset.archiveHistory;
+      setArchiveVariant(variant);
+      setArchiveActiveTool(variant === "colorized" ? "color" : "select");
+      if (variant === "colorized") setArchiveComparison(0);
+    });
+  });
+
+  elements.archiveRoot.querySelectorAll("[data-archive-tool]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.dataset.archiveTool === "compare") {
+        setArchiveVariant("colorized", false);
+        setArchiveComparison(50);
+        setArchiveActiveTool("compare");
+        setArchiveStatus("comparisonMessage");
+      } else if (button.dataset.archiveTool === "color") {
+        setArchiveVariant("colorized", false);
+        setArchiveComparison(0);
+        setArchiveActiveTool("color");
+        setArchiveStatus("colorMessage");
+      } else {
+        setArchiveActiveTool("select");
+        setArchiveStatus("selectionMessage");
+      }
+    });
+  });
+
+  setArchiveTab(archiveState.activeTab);
+  setArchiveComparison(archiveState.comparisonPosition);
+  setArchiveZoom(archiveState.zoom);
+  setArchiveActiveTool(archiveState.activeTool);
+  selectArchiveText(archiveState.selectedTextElement, false);
+  updateArchiveVariantPresentation(false);
 }
 
 function renderAboutCards(cards) {
@@ -833,15 +1226,11 @@ function renderFeaturedProjects(localeData) {
             <span class="case-serial">${project.serial}</span>
           </div>
           <p class="case-summary">${project.summary}</p>
+          ${renderProjectMedia(project.media, project.title)}
           <ul class="case-impact">${project.impact.map((item) => `<li>${item}</li>`).join("")}</ul>
           <div class="tag-list">${renderTags(project.stack)}</div>
-          <div class="case-links">
-            ${
-              project.links.length
-                ? renderButtonLinks(project.links)
-                : `<span class="tag">${localeData.work.privateEngagementLabel}</span>`
-            }
-          </div>
+          ${project.status ? `<p class="project-status">${project.status}</p>` : ""}
+          ${project.links?.length ? `<div class="case-links">${renderButtonLinks(project.links)}</div>` : ""}
         </article>
       `;
     })
@@ -863,8 +1252,10 @@ function renderSupportProjects(localeData) {
             <h3>${project.title}</h3>
           </div>
           <p>${project.summary}</p>
+          ${renderProjectMedia(project.media, project.title)}
           <div class="tag-list">${renderTags(project.stack)}</div>
-          <div class="support-card__links">${renderSimpleLinks(project.links)}</div>
+          ${project.status ? `<p class="project-status">${project.status}</p>` : ""}
+          ${project.links?.length ? `<div class="support-card__links">${renderSimpleLinks(project.links)}</div>` : ""}
         </article>
       `
     )
@@ -939,7 +1330,7 @@ function renderTranslations(localeData) {
   elements.translationsGrid.innerHTML = localeData.translations
     .map(
       (translation) => `
-        <a class="translation-card reveal" href="${translation.href}" target="_blank" rel="noreferrer">
+        <a class="translation-card reveal" href="${translation.href}" target="_blank" rel="noreferrer" aria-label="${localeData.translationsSection.readLabel}: ${translation.title}">
           <div class="translation-cover">
             <img src="${translation.cover}" alt="${translation.title} cover" loading="lazy" />
           </div>
@@ -947,6 +1338,7 @@ function renderTranslations(localeData) {
           <h3 class="translation-card__title">${translation.title}</h3>
           <span class="translation-card__sub">${translation.subtitle}</span>
           <span class="translation-card__role">${localeData.translationsSection.roleLabel}</span>
+          <span class="translation-card__action" aria-hidden="true">${localeData.translationsSection.readLabel} →</span>
         </a>
       `
     )
@@ -956,6 +1348,10 @@ function renderTranslations(localeData) {
 }
 
 function init3DCards() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
   const cards = document.querySelectorAll('.translation-card');
   cards.forEach(card => {
     if (!card.querySelector('.glossy-overlay')) {
@@ -979,6 +1375,13 @@ function init3DCards() {
       card.style.setProperty('--ry', `${rotateY}deg`);
       card.style.setProperty('--mx', `${50 - rotateY * 3}%`);
       card.style.setProperty('--my', `${50 - rotateX * 3}%`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.removeProperty('--rx');
+      card.style.removeProperty('--ry');
+      card.style.removeProperty('--mx');
+      card.style.removeProperty('--my');
     });
   });
 }
@@ -1101,7 +1504,13 @@ function setupActiveNavigation() {
       }
 
       sections.forEach(({ link, target }) => {
-        link.classList.toggle("is-active", target === visible.target);
+        const isCurrent = target === visible.target;
+        link.classList.toggle("is-active", isCurrent);
+        if (isCurrent) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
       });
     },
     {
@@ -1132,24 +1541,10 @@ function applyLocale(locale) {
   setText(elements.navCapabilities, localeData.nav.capabilities);
   setText(elements.navExperience, localeData.nav.experience);
   setText(elements.navContact, localeData.nav.contact);
-  renderHeroEyebrow(localeData.hero.eyebrow);
-  setText(elements.heroRole, localeData.hero.role);
   setText(elements.heroTitle, localeData.hero.title);
-  if (elements.heroTitle) {
-    elements.heroTitle.dataset.text = localeData.hero.title;
-  }
-  setText(elements.heroLead, localeData.hero.lead);
   setText(elements.heroCtaWork, localeData.hero.ctaWork);
-  setText(elements.heroPanelEyebrow, localeData.hero.panelEyebrow);
-  setText(elements.heroPanelTitle, localeData.hero.panelTitle);
-  renderHeroSignalList(localeData.hero.signals);
-  setText(elements.heroLiveLabel, localeData.hero.liveLabel);
-  setText(elements.heroLiveStatus, localeData.hero.liveStatus);
-  setText(elements.heroSequenceEyebrow, localeData.hero.sequence.eyebrow);
-  setText(elements.heroSequenceInstruction, localeData.hero.sequence.instruction);
-  syncHeroSequenceTitle();
-  syncHeroSequenceStatus();
-  renderHeroRail(localeData.hero.rail);
+  setText(elements.heroCtaContact, localeData.hero.ctaContact);
+  applyArchiveLocale(localeData);
 
   setText(elements.aboutEyebrow, localeData.about.eyebrow);
   setText(elements.aboutTitle, localeData.about.title);
@@ -1204,6 +1599,7 @@ function setLocale(locale) {
     window.localStorage.setItem(STORAGE_KEY, safeLocale);
   } catch {}
   applyLocale(safeLocale);
+  setText(elements.localeStatus, content[safeLocale].aria.languageChanged);
 }
 
 function setupLocaleSwitcher() {
@@ -1312,24 +1708,15 @@ function initCursorTrail() {
   });
 }
 
-/* ═══════════════════════════════════════════════════════
-   SPELL CIRCLE PARALLAX
-   Subtle parallax movement on scroll for the spell circle
-   ═══════════════════════════════════════════════════════ */
-
 function initHeroSequence() {
   const root = elements.heroSequence;
   const canvas = document.querySelector("#hero-sequence-canvas");
   const fallbackImage = document.querySelector("#hero-sequence-fallback");
-  const titleLayer = document.querySelector(".hero-sequence__title");
+  const contentLayer = document.querySelector("#hero-sequence-content");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const saveData = Boolean(navigator.connection?.saveData);
 
-  heroSequenceState.total = Number(root?.dataset.frameCount || 0);
-  heroSequenceState.frame = 1;
-  heroSequenceState.mode = "loading";
-  syncHeroSequenceStatus();
-
-  if (!root || !canvas || !fallbackImage || !titleLayer) {
+  if (!root || !canvas || !fallbackImage || !contentLayer) {
     return;
   }
 
@@ -1338,30 +1725,39 @@ function initHeroSequence() {
   const frameDigits = Number(root.dataset.framePad || 3);
   const frameExtension = root.dataset.frameExt || "jpg";
   const frameTemplate = root.dataset.frameTemplate || "";
+  const sequenceVersion = root.dataset.sequenceVersion || "";
   const initialBatch = Math.max(1, Math.min(frameCount, Number(root.dataset.initialBatch || 12)));
-  const sequenceDir = root.dataset.sequenceDir;
+  const sequenceBreakpoint = Number(root.dataset.sequenceBreakpoint || 720);
+  const useMobileSequence = window.matchMedia(`(max-width: ${sequenceBreakpoint}px)`).matches;
+  const sequenceDir = useMobileSequence
+    ? root.dataset.sequenceMobileDir
+    : root.dataset.sequenceDesktopDir;
+  const posterSrc = useMobileSequence
+    ? root.dataset.posterMobileSrc
+    : root.dataset.posterDesktopSrc;
+  root.dataset.sequenceVariant = useMobileSequence ? "mobile" : "desktop";
   const defaultFramePath = (index) => {
     const frameNumber = padFrame(index + 1, frameDigits);
+    const versionSuffix = sequenceVersion ? `?v=${encodeURIComponent(sequenceVersion)}` : "";
     if (frameTemplate) {
-      return `${sequenceDir}/${frameTemplate.replace("{n}", frameNumber)}`;
+      return `${sequenceDir}/${frameTemplate.replace("{n}", frameNumber)}${versionSuffix}`;
     }
-    return `${sequenceDir}/frame-${frameNumber}.${frameExtension}`;
+    return `${sequenceDir}/frame-${frameNumber}.${frameExtension}${versionSuffix}`;
   };
-  const posterSrc = root.dataset.posterSrc || defaultFramePath(0);
+  const resolvedPosterSrc = posterSrc || defaultFramePath(0);
 
   function activateFallback(sequenceMode) {
     root.dataset.sequenceMode = sequenceMode;
     root.classList.remove("is-loading", "is-ready", "is-started");
     root.classList.add("is-fallback");
-    fallbackImage.src = posterSrc;
-    titleLayer.style.opacity = "1";
-    titleLayer.style.transform = "translate3d(0, 0, 0) scale(1)";
-    heroSequenceState.mode = "fallback";
-    syncHeroSequenceStatus();
+    fallbackImage.src = resolvedPosterSrc;
+    contentLayer.style.opacity = "1";
+    contentLayer.style.transform = "translate3d(0, 0, 0) scale(1)";
+    contentLayer.style.pointerEvents = "auto";
   }
 
-  if (reducedMotionQuery.matches) {
-    activateFallback("reduced-motion-fallback");
+  if (reducedMotionQuery.matches || saveData) {
+    activateFallback(saveData ? "data-saver-fallback" : "reduced-motion-fallback");
     return;
   }
 
@@ -1370,7 +1766,7 @@ function initHeroSequence() {
     return;
   }
 
-  fallbackImage.src = posterSrc;
+  fallbackImage.src = resolvedPosterSrc;
   root.dataset.sequenceMode = "scroll-sequence";
   root.classList.remove("is-fallback", "is-started");
   root.classList.add("is-loading");
@@ -1385,14 +1781,15 @@ function initHeroSequence() {
   let resizeFrame = 0;
   let scrollFrame = 0;
 
-  function updateTitleVisibility(progress) {
-    const fadeProgress = Math.min(Math.max(progress / 0.18, 0), 1);
+  function updateContentVisibility(progress) {
+    const fadeProgress = Math.min(Math.max(progress / 0.2, 0), 1);
     const opacity = 1 - fadeProgress;
     const translateY = fadeProgress * 36;
-    const scale = 1 - fadeProgress * 0.08;
+    const scale = 1 - fadeProgress * 0.04;
 
-    titleLayer.style.opacity = opacity.toFixed(3);
-    titleLayer.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
+    contentLayer.style.opacity = opacity.toFixed(3);
+    contentLayer.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
+    contentLayer.style.pointerEvents = fadeProgress >= 1 ? "none" : "auto";
   }
 
   function loadFrame(index) {
@@ -1492,8 +1889,6 @@ function initHeroSequence() {
 
     context.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
     renderedFrame = frameIndex;
-    heroSequenceState.frame = frameIndex + 1;
-    syncHeroSequenceStatus();
   }
 
   function queueResize() {
@@ -1512,7 +1907,7 @@ function initHeroSequence() {
     const scrollSpan = Math.max(root.offsetHeight - viewportHeight, 1);
     const progress = Math.min(Math.max(-root.getBoundingClientRect().top / scrollSpan, 0), 1);
     targetFrame = Math.round(progress * (frameCount - 1));
-    updateTitleVisibility(progress);
+    updateContentVisibility(progress);
     renderFrame(targetFrame);
   }
 
@@ -1556,9 +1951,7 @@ function initHeroSequence() {
     ready = true;
     root.classList.remove("is-loading", "is-fallback");
     root.classList.add("is-ready");
-    heroSequenceState.mode = "ready";
-    syncHeroSequenceStatus();
-    updateTitleVisibility(0);
+    updateContentVisibility(0);
     renderFrame(0);
 
     window.setTimeout(() => {
@@ -1579,39 +1972,14 @@ function initHeroSequence() {
   });
 }
 
-function initSpellCircleParallax() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return;
-  }
-
-  const spellCircle = document.querySelector(".spell-circle");
-  if (!spellCircle) return;
-
-  let ticking = false;
-
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        const translateY = scrollY * 0.15;
-        const scale = 1 - Math.min(scrollY * 0.0003, 0.3);
-        spellCircle.style.transform = `translateY(${translateY}px) scale(${scale})`;
-        spellCircle.style.opacity = Math.max(0.12 - scrollY * 0.0001, 0.02);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-}
-
 /* ═══════════════════════════════════════════════════════
    INITIALIZATION
    ═══════════════════════════════════════════════════════ */
 
 setupLocaleSwitcher();
 applyLocale(getInitialLocale());
+initArchiveSimulator();
 initHeroSequence();
 setupActiveNavigation();
 initDanmakuParticles();
 initCursorTrail();
-initSpellCircleParallax();
