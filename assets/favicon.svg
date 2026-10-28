@@ -1,13 +1,216 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title id="title">Remilya monogram</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">Remilya — Scarlet &amp; Flandre Crystal Emblem</title>
   <defs>
-    <linearGradient id="violet" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#d8b4fe" />
-      <stop offset="0.5" stop-color="#a78bfa" />
-      <stop offset="1" stop-color="#7c3aed" />
+    <radialGradient id="bg" cx="50%" cy="46%" r="62%">
+      <stop offset="0%" stop-color="#240e42" />
+      <stop offset="52%" stop-color="#0f071e" />
+      <stop offset="100%" stop-color="#06030c" />
+    </radialGradient>
+
+    <linearGradient id="frameGrad" x1="16" y1="16" x2="240" y2="240" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#e11d48" />
     </linearGradient>
+
+    <linearGradient id="moonGrad" x1="56" y1="42" x2="196" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fda4af" />
+      <stop offset="40%" stop-color="#e11d48" />
+      <stop offset="80%" stop-color="#9f1239" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+
+    <linearGradient id="spearLeft" x1="128" y1="18" x2="128" y2="238" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff1f2" />
+      <stop offset="32%" stop-color="#fb7185" />
+      <stop offset="70%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#881337" />
+    </linearGradient>
+
+    <linearGradient id="spearRight" x1="128" y1="18" x2="128" y2="238" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fecdd3" />
+      <stop offset="32%" stop-color="#e11d48" />
+      <stop offset="70%" stop-color="#9f1239" />
+      <stop offset="100%" stop-color="#4c0519" />
+    </linearGradient>
+
+    <linearGradient id="wingMetal" x1="0" y1="90" x2="256" y2="125" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="50%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#0a0612" />
-  <path d="M17 49V15h16.2c8.5 0 13.8 4.4 13.8 11.7 0 5-2.7 8.7-7.4 10.4L49 49H38.8l-7.9-10.6h-4.8V49H17Zm9.1-18.1h6.2c3.6 0 5.6-1.4 5.6-4.2 0-2.7-2-4.1-5.6-4.1h-6.2v8.3Z" fill="url(#violet)" />
-  <path d="M9 13V9h4M51 9h4v4M55 51v4h-4M13 55H9v-4" fill="none" stroke="#fb7185" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Obsidian Medallion Base -->
+  <rect width="256" height="256" rx="52" fill="url(#bg)" />
+  <rect x="8" y="8" width="240" height="240" rx="46" fill="none" stroke="url(#frameGrad)" stroke-width="3" opacity="0.92" />
+  <rect x="15" y="15" width="226" height="226" rx="40" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.32" />
+
+  <!-- Subtle Runic Astrolabe Rings -->
+  <circle cx="128" cy="128" r="96" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.24" />
+  <circle cx="128" cy="128" r="88" fill="none" stroke="#fb7185" stroke-width="1.2" stroke-dasharray="3 6" opacity="0.38" />
+  <polygon points="128,28 228,128 128,228 28,128" fill="none" stroke="#a855f7" stroke-width="0.9" opacity="0.22" />
+
+  <!-- Scarlet Blood Moon Crescent -->
+  <path
+    d="M 164 46 A 84 84 0 1 0 164 210 A 68 68 0 1 1 164 46 Z"
+    fill="url(#moonGrad)"
+    filter="url(#softGlow)"
+  />
+  <path
+    d="M 164 46 A 84 84 0 1 0 164 210 A 68 68 0 1 1 164 46 Z"
+    fill="none"
+    stroke="#fecdd3"
+    stroke-width="1.2"
+    opacity="0.65"
+  />
+
+  <!-- Flandre Scarlet Bent Metal Wing Frame (Authentic Crank Silhouette) -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outer dark shadow stroke -->
+    <path
+      d="M 16 112 L 66 122 L 88 98 L 128 116 L 168 98 L 190 122 L 240 112"
+      stroke="#1e1b4b"
+      stroke-width="8"
+    />
+    <!-- Metallic silver-violet bar -->
+    <path
+      d="M 16 112 L 66 122 L 88 98 L 128 116 L 168 98 L 190 122 L 240 112"
+      stroke="url(#wingMetal)"
+      stroke-width="4"
+    />
+    <!-- Joint rivets -->
+    <circle cx="66" cy="122" r="3.5" fill="#f8fafc" stroke="#475569" stroke-width="1.2" />
+    <circle cx="88" cy="98" r="3.5" fill="#f8fafc" stroke="#475569" stroke-width="1.2" />
+    <circle cx="168" cy="98" r="3.5" fill="#f8fafc" stroke="#475569" stroke-width="1.2" />
+    <circle cx="190" cy="122" r="3.5" fill="#f8fafc" stroke="#475569" stroke-width="1.2" />
+  </g>
+
+  <!-- 8 Faceted Crystal Prisms (4-Facet Cut Gemstones) -->
+  <g filter="url(#softGlow)" stroke-linejoin="round">
+    <!-- L1: Cyan Crystal (cx=26, cy=136, rx=13, ry=24) -->
+    <g>
+      <polygon points="26,112 13,136 26,136" fill="#a5f3fc" />
+      <polygon points="26,112 39,136 26,136" fill="#22d3ee" />
+      <polygon points="13,136 26,160 26,136" fill="#06b6d4" />
+      <polygon points="39,136 26,160 26,136" fill="#0e7490" />
+      <polygon points="26,112 39,136 26,160 13,136" fill="none" stroke="#ecfeff" stroke-width="1.4" />
+    </g>
+
+    <!-- L2: Sapphire Crystal (cx=54, cy=144, rx=13, ry=24) -->
+    <g>
+      <polygon points="54,120 41,144 54,144" fill="#bfdbfe" />
+      <polygon points="54,120 67,144 54,144" fill="#60a5fa" />
+      <polygon points="41,144 54,168 54,144" fill="#3b82f6" />
+      <polygon points="67,144 54,168 54,144" fill="#1d4ed8" />
+      <polygon points="54,120 67,144 54,168 41,144" fill="none" stroke="#eff6ff" stroke-width="1.4" />
+    </g>
+
+    <!-- L3: Ultraviolet Crystal (cx=82, cy=132, rx=13, ry=24) -->
+    <g>
+      <polygon points="82,108 69,132 82,132" fill="#e9d5ff" />
+      <polygon points="82,108 95,132 82,132" fill="#c084fc" />
+      <polygon points="69,132 82,156 82,132" fill="#9333ea" />
+      <polygon points="95,132 82,156 82,132" fill="#581c87" />
+      <polygon points="82,108 95,132 82,156 69,132" fill="none" stroke="#faf5ff" stroke-width="1.4" />
+    </g>
+
+    <!-- L4: Rose-Magenta Crystal (cx=106, cy=142, rx=12, ry=21) -->
+    <g>
+      <polygon points="106,121 94,142 106,142" fill="#fbcfe8" />
+      <polygon points="106,121 118,142 106,142" fill="#f472b6" />
+      <polygon points="94,142 106,163 106,142" fill="#db2777" />
+      <polygon points="118,142 106,163 106,142" fill="#831843" />
+      <polygon points="106,121 118,142 106,163 94,142" fill="none" stroke="#fdf2f8" stroke-width="1.4" />
+    </g>
+
+    <!-- R1: Crimson Crystal (cx=150, cy=142, rx=12, ry=21) -->
+    <g>
+      <polygon points="150,121 138,142 150,142" fill="#fecdd3" />
+      <polygon points="150,121 162,142 150,142" fill="#fb7185" />
+      <polygon points="138,142 150,163 150,142" fill="#e11d48" />
+      <polygon points="162,142 150,163 150,142" fill="#881337" />
+      <polygon points="150,121 162,142 150,163 138,142" fill="none" stroke="#fff1f2" stroke-width="1.4" />
+    </g>
+
+    <!-- R2: Amber-Orange Crystal (cx=174, cy=132, rx=13, ry=24) -->
+    <g>
+      <polygon points="174,108 161,132 174,132" fill="#fed7aa" />
+      <polygon points="174,108 187,132 174,132" fill="#fb923c" />
+      <polygon points="161,132 174,156 174,132" fill="#ea580c" />
+      <polygon points="187,132 174,156 174,132" fill="#7c2d12" />
+      <polygon points="174,108 187,132 174,156 161,132" fill="none" stroke="#fff7ed" stroke-width="1.4" />
+    </g>
+
+    <!-- R3: Golden Crystal (cx=202, cy=144, rx=13, ry=24) -->
+    <g>
+      <polygon points="202,120 189,144 202,144" fill="#fef08a" />
+      <polygon points="202,120 215,144 202,144" fill="#facc15" />
+      <polygon points="189,144 202,168 202,144" fill="#ca8a04" />
+      <polygon points="215,144 202,168 202,144" fill="#713f12" />
+      <polygon points="202,120 215,144 202,168 189,144" fill="none" stroke="#fefce8" stroke-width="1.4" />
+    </g>
+
+    <!-- R4: Emerald Crystal (cx=230, cy=136, rx=13, ry=24) -->
+    <g>
+      <polygon points="230,112 217,136 230,136" fill="#a7f3d0" />
+      <polygon points="230,112 243,136 230,136" fill="#34d399" />
+      <polygon points="217,136 230,160 230,136" fill="#059669" />
+      <polygon points="243,136 230,160 230,136" fill="#064e3b" />
+      <polygon points="230,112 243,136 230,160 217,136" fill="none" stroke="#ecfdf5" stroke-width="1.4" />
+    </g>
+  </g>
+
+  <!-- Central Scarlet Spear of Gungnir -->
+  <g filter="url(#softGlow)">
+    <!-- Spear Shaft (Split Facet) -->
+    <polygon points="128,72 122,72 124,224 128,224" fill="url(#spearLeft)" />
+    <polygon points="128,72 134,72 132,224 128,224" fill="url(#spearRight)" />
+
+    <!-- Gothic Crossguard Wings -->
+    <path
+      d="M 128 66 L 90 54 L 102 74 L 84 82 L 128 84 Z"
+      fill="#fb7185"
+      stroke="#ffe4e6"
+      stroke-width="1.4"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M 128 66 L 166 54 L 154 74 L 172 82 L 128 84 Z"
+      fill="#be123c"
+      stroke="#ffe4e6"
+      stroke-width="1.4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Main Spearhead Blade (Split Facet) -->
+    <polygon points="128,14 108,68 128,58" fill="#ffe4e6" stroke="#fecdd3" stroke-width="1.2" stroke-linejoin="round" />
+    <polygon points="128,14 148,68 128,58" fill="#e11d48" stroke="#fecdd3" stroke-width="1.2" stroke-linejoin="round" />
+
+    <!-- Inner Blood-Rune Core on Spearhead -->
+    <polygon points="128,28 120,60 128,54 136,60" fill="#881337" />
+
+    <!-- Central Heart Gem at Crossguard -->
+    <polygon points="128,62 138,76 128,90 118,76" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.6" />
+    <polygon points="128,66 134,76 128,86 122,76" fill="#e11d48" />
+
+    <!-- Center Grip Gem -->
+    <polygon points="128,104 137,116 128,128 119,116" fill="#e9d5ff" stroke="#a855f7" stroke-width="1.5" />
+
+    <!-- Bottom Finial Spike -->
+    <polygon points="128,242 117,214 128,222" fill="#fb7185" stroke="#ffe4e6" stroke-width="1.2" stroke-linejoin="round" />
+    <polygon points="128,242 139,214 128,222" fill="#9f1239" stroke="#ffe4e6" stroke-width="1.2" stroke-linejoin="round" />
+  </g>
+
+  <!-- 4 Cardinal Star Accents -->
+  <polygon points="34,30 37,37 44,40 37,43 34,50 31,43 24,40 31,37" fill="#fb7185" opacity="0.85" />
+  <polygon points="222,30 225,37 232,40 225,43 222,50 219,43 212,40 219,37" fill="#c084fc" opacity="0.85" />
 </svg>

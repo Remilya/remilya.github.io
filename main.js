@@ -4,50 +4,31 @@ const SUPPORTED_LOCALES = ["en", "tr"];
 const urls = {
   github: "https://github.com/Remilya",
   linkedin: "https://tr.linkedin.com/in/ilker-agirkaya",
+  twitter: "https://x.com/Remilya356",
+  gensokyoAtlas: "https://remilya.dev/Gensokyo/",
+  higurashiArchive: "https://remilya.dev/Higurashi/",
+  shortRaidou: "https://remilya.dev/Raidou/",
+  shortScarlet: "https://remilya.dev/ScarletSavior/",
+  shortVoicevox: "https://remilya.dev/Voicevox/",
+  shortScrollHero: "https://remilya.dev/ScrollHero/",
+  shortWatermark: "https://remilya.dev/Watermark/",
+  shortWebGrab: "https://remilya.dev/WebGrab/",
   repoWatermark: "https://github.com/Remilya/Watermark-Deksmo",
-  repoScrap: "https://github.com/Remilya/DeksmoScrap"
-};
-
-const archiveTextElements = [
-  { source: "...AS IF.", target: "...SANKİ." },
-  { source: "IT'S IMPOSSIBLE FOR THIS TO BE TRUE.", target: "BUNUN DOĞRU OLMASI MÜMKÜN DEĞİL." },
-  { source: "DON'T ENTER THE FOREST! THERE'S A WITCH~!!", target: "ORMANA GİRMEYİN! CADI VAR~!!" },
-  { source: "THE WITCH'S EYES ARE GLOWING OVER THERE~!!", target: "CADININ GÖZLERİ ORADA PARLIYOR~!!" },
-  { source: "WHEN I WAS LITTLE, MY FAMILY SCARED ME UNTIL I TREMBLED.", target: "KÜÇÜKKEN AİLEM BENİ TİTREYENE KADAR KORKUTTU." },
-  { source: "FOR SOMETHING AS OMINOUS AS A WITCH TO EXIST...", target: "CADI GİBİ TEKİNSİZ BİR ŞEYİN VAR OLMASI..." },
-  { source: "...IS IMPOSSIBLE.", target: "...MÜMKÜN DEĞİL." }
-];
-
-const archiveMedia = {
-  raw: {
-    src: "assets/deksmo-archive/raw.webp",
-    width: 840,
-    height: 1200,
-    labelKey: "rawLabel",
-    altKey: "rawAlt"
-  },
-  translated: {
-    src: "assets/deksmo-archive/translated.webp",
-    width: 840,
-    height: 1252,
-    labelKey: "translatedLabel",
-    altKey: "translatedAlt"
-  },
-  colorized: {
-    src: "assets/deksmo-archive/colorized.webp",
-    width: 840,
-    height: 1252,
-    labelKey: "colorizedLabel",
-    altKey: "colorizedAlt"
-  }
+  repoScrap: "https://github.com/Remilya/DeksmoScrap",
+  repoVoicevox: "https://github.com/Remilya/voicevox-expressive-tts",
+  repoScrollHero: "https://github.com/Remilya/scroll-hero",
+  itchScarlet: "https://remilya356.itch.io/scarlet-savior",
+  repoRaidou: "https://github.com/Remilya/raidou-remastered-tr",
+  repoHigurashi: "https://github.com/Remilya/higurashi-scripting-tr"
 };
 
 const content = {
   en: {
     meta: {
-      title: "Remilya | Operator-focused AI & Localization Tools",
+      title: "Remilya | AI Tools, Game & Manga Localization",
       description:
-        "Remilya builds operator-focused AI and localization tools for OCR, translation, review, capture, and practical production workflows."
+        "Remilya builds local-first AI tools, indie games, and Turkish game and manga localizations including Scarlet Savior, RAIDOU Remastered TR, Higurashi, and Umineko.",
+      ogLocale: "en_US"
     },
     aria: {
       brandLink: "Return to surface",
@@ -55,258 +36,193 @@ const content = {
       localeSwitcher: "System language",
       languageChanged: "Language changed to English"
     },
-    brandSubtitle: "Creative Technologist / AI Systems / Localization",
+    brandSubtitle: "Software · Games · Localization",
     nav: {
       about: "About",
-      work: "Work",
-      translations: "Translations",
-      capabilities: "Capabilities",
+      library: "Library",
+      work: "Programs",
+      translations: "Manga",
+      capabilities: "Focus",
       experience: "Experience",
       contact: "Contact"
     },
     hero: {
-      title: "Welcome to Remilya.dev.",
-      ctaWork: "Enter the archive",
-      ctaContact: "Contact"
-    },
-    deksmoArchive: {
-      eyebrow: "RECOVERED SYSTEM / DEKSMO 1.6.1",
-      status: "ARCHIVED PRODUCT · INTERACTIVE SIMULATION",
-      title: "A localization workbench, preserved as it was.",
-      copy:
-        "Deksmo combined OCR, translation, cleanup, typesetting, and operator review in one editor. The original service was retired after its underlying third-party APIs were discontinued. This client-side exhibit recreates the workflow; no processing is sent to a backend.",
-      openSimulation: "Open interactive simulation",
-      closeSimulation: "Close simulation",
-      productVersion: "Recovered interface · Version 1.6.1",
-      productStatus: "ARCHIVED / OFFLINE",
-      tabsLabel: "Deksmo simulation views",
-      tabEditor: "Editor",
-      tabSettings: "Settings",
-      tabConsole: "Console",
-      languagePair: "EN → TR",
-      toolbarLabel: "Archived editor tools",
-      toolSelect: "Select text element",
-      toolCompare: "Reset comparison",
-      toolColor: "Show color preview",
-      toolSelectShort: "Select",
-      toolCompareShort: "Compare",
-      toolColorShort: "Color",
-      variantsLabel: "Result preview",
-      variantRaw: "Raw",
-      variantTranslated: "Translated",
-      variantColorized: "Colorized",
-      sampleBadge: "ARCHIVE SAMPLE",
-      comparisonLabel: "Typeset / color comparison",
-      rawLabel: "RAW / EN",
-      translatedLabel: "TRANSLATED / TR",
-      colorizedLabel: "COLORIZED / TR",
-      rawAlt: "Raw English manga page used in the archived Deksmo simulation",
-      translatedAlt: "Turkish translated result from the archived Deksmo simulation",
-      colorizedAlt: "Colorized Turkish result from the archived Deksmo simulation",
-      zoomOut: "Zoom out",
-      zoomIn: "Zoom in",
-      textElements: "TEXT ELEMENTS",
-      elementType: "SPEECH BUBBLE",
-      sourceLabel: "SOURCE",
-      targetLabel: "TARGET",
-      aiFill: "AI Fill · Simulation",
-      cleanApply: "Clean + Apply Text · Simulation",
-      history: "HISTORY",
-      historyOpen: "Opened raw page",
-      historyTranslated: "Translation preview",
-      historyColorized: "Color preview",
-      settingsEyebrow: "ARCHIVED CONFIGURATION",
-      settingsHeading: "Last recovered workspace settings",
-      sourceLanguage: "Source language",
-      targetLanguage: "Target language",
-      resolution: "Image resolution",
-      preciseOcr: "Precise OCR",
-      enabled: "Enabled",
-      provider: "Processing provider",
-      offline: "Offline · API discontinued",
-      logArchive: "Recovered Deksmo interface loaded locally.",
-      logAssets: "Three historical preview assets are ready.",
-      logElements: "Seven text elements restored for inspection.",
-      logBackend: "Unavailable. No network processing will be attempted.",
-      offlineFootnote: "CLIENT-ONLY ARCHIVE · ZERO API REQUESTS",
-      readyMessage: "Archive ready. Explore the recovered interface.",
-      offlineActionMessage: "Archived simulation — this action required the retired Deksmo API.",
-      selectionMessage: "Selection tool active. Choose a recovered text element.",
-      comparisonMessage: "Comparison reset to the aligned translated and colorized views.",
-      colorMessage: "Colorized archive preview selected.",
-      rawMessage: "Raw source page selected.",
-      translatedMessage: "Translated archive preview selected.",
-      colorizedMessage: "Colorized archive preview selected.",
-      textSelectedMessage: "Text element {number} selected."
+      title: "Remilya.dev"
     },
     about: {
-      eyebrow: "Identity / Profile",
-      title: "Creative technology with product, media, and localization literacy.",
-      introLabel: "Remilya profile",
+      eyebrow: "About",
+      title: "Building tools, making games, and translating the series I love into Turkish.",
+      introLabel: "REMILYA",
       introParagraphs: [
-        "Remilya is the public identity behind this portfolio. The work combines software engineering, interface design, AI integration, SEO strategy, and localization-aware production.",
-        "The portfolio is anchored by the Deksmo ecosystem, but the broader skill set comes from client delivery, subtitle and media workflows, and a New Media and Communication background."
+        "I write desktop utilities, local AI tools, and browser extensions, while building Touhou fangames and translating visual novels and manga into Turkish.",
+        "With a background in New Media and Communication, this site is where I share the open-source tools and localization patches I build."
       ],
       cards: [
         {
           index: "01",
           accent: "",
-          title: "Software and AI",
+          title: "Software & Local AI",
           copy:
-            "Python, FastAPI, React, Node.js, OCR pipelines, Gemini-based workflows, REST APIs, Firebase, and local-first runtime thinking."
+            "Desktop tools and extensions built with Python, FastAPI, React, OCR pipelines, and local LLM/TTS models."
         },
         {
           index: "02",
           accent: "panel--cyan",
-          title: "Growth and creative execution",
+          title: "Games & Localization",
           copy:
-            "SEO, content architecture, Google and Meta Ads planning, UI/UX direction, and production support across visual media."
+            "Unpacking game archives to localize textures, fonts, and thousands of dialogue lines into Turkish, alongside indie game and 3D web projects."
         },
         {
           index: "03",
           accent: "panel--magenta",
-          title: "Education and communication",
+          title: "Web & Media",
           copy:
-            "BA-level New Media and Communication studies, English C1 proficiency, and training across AI applications, graphics, social media, and web programming."
+            "Frontend interfaces, technical SEO, subtitle and video workflows, and zero-dependency web components."
         }
       ]
     },
-    work: {
-      eyebrow: "Work / Case studies",
-      title: "Flagship systems, private delivery, and supporting product dossiers.",
-      copy:
-        "The centerpiece is Deksmo: a cluster of tools, runtimes, and product experiments around localization, editing, capture, and specialized knowledge systems.",
-      supportEyebrow: "Dossier / Supporting systems",
-      supportCopy:
-        "Smaller but important surfaces that show the breadth of the ecosystem: desktop tooling, browser capture, domain AI, and large structured datasets."
+    librarySection: {
+      eyebrow: "Library",
+      title: "Games, Atlas & Turkish Patches",
+      copy: "Select a card to launch the project or open the patch archive."
     },
-    featuredProjects: [
+    libraryItems: [
       {
-        slug: "deksmo",
-        title: "Deksmo",
-        label: "Featured system / Archived manga localization workbench",
-        serial: "SYS-01",
-        summary:
-          "A full-stack localization workbench that combined OCR, translation, cleanup, typesetting, quality control, and chapter processing in an inspectable operator workflow.",
-        impact: [
-          "Paired AI-assisted processing with a human-in-the-loop workbench for review, editing, and recovery.",
-          "Covered chapter uploads, book-mode translation, mobile-friendly surfaces, and persistent project workflows.",
-          "Handled operator realities including rate limits, queue states, resumable projects, and downstream export needs."
-        ],
-        stack: ["React 19", "Vite", "FastAPI", "Firebase", "Gemini", "Tailwind CSS"],
-        status: "Archived product · Interactive simulation",
-        links: [{ label: "Open simulation", href: "#deksmo-archive", external: false, action: "openArchive" }],
-        accent: "green",
-        logo: "assets/logos/deksmo-core.png"
+        title: "Gensokyo 1:1 Interactive Atlas",
+        badge: "REMILYA.DEV/GENSOKYO · 3D ATLAS",
+        desc: "1:1 scale interactive cartographic atlas and 3D world experience of Gensokyo.",
+        action: "Open remilya.dev/Gensokyo →",
+        cover: "assets/gensokyo-cover.webp",
+        width: 1024,
+        height: 683,
+        href: urls.gensokyoAtlas
       },
       {
-        slug: "legal-rebuild",
-        title: "Legal Services Platform Rebuild",
-        label: "Featured engagement / Private client system",
-        serial: "SYS-02",
-        summary:
-          "An anonymized freelance transformation for a legal-services brand covering UI/UX, frontend delivery, information architecture, and technical SEO.",
-        impact: [
-          "Rebuilt the public-facing site from zero to create a cleaner service narrative and a stronger trust surface.",
-          "Moved the site from not ranking to first place for branded Google search queries through technical and content-driven SEO.",
-          "Connected product thinking with growth execution by treating the website as an operating business surface, not a brochure."
-        ],
-        stack: ["UI/UX", "Frontend", "SEO", "Content Strategy", "Performance"],
-        status: "Private engagement",
-        links: [],
-        accent: "magenta",
-        logo: ""
+        title: "Higurashi When They Cry TR",
+        badge: "REMILYA.DEV/HIGURASHI · ARCHIVE",
+        desc: "Turkish localization patch, setup guide, and trilingual (TR/EN/JP) quote search archive for Higurashi Hou & Hou+.",
+        action: "Open remilya.dev/Higurashi →",
+        cover: "assets/higurashi-cover.webp",
+        width: 460,
+        height: 215,
+        href: urls.higurashiArchive
+      },
+      {
+        title: "Scarlet Savior",
+        badge: "TOUHOU FANGAME · PC",
+        desc: "2D Touhou action and bullet-hell fangame published on itch.io.",
+        action: "Play on itch.io →",
+        cover: "assets/scarlet-savior-cover.webp",
+        width: 315,
+        height: 250,
+        href: urls.itchScarlet
+      },
+      {
+        title: "RAIDOU Remastered TR",
+        badge: "TURKISH PATCH · 100%",
+        desc: "100% Turkish localization patch covering 20,183 dialogue lines and 103 in-game textures.",
+        action: "GitHub / Download →",
+        cover: "assets/raidou-cover.webp",
+        width: 460,
+        height: 215,
+        href: urls.repoRaidou
       }
     ],
+    work: {
+      eyebrow: "Programs / Open Source",
+      title: "Public tools on GitHub.",
+      copy:
+        "Each entry states what the program does — full documentation and source code live on GitHub."
+    },
     supportProjects: [
       {
-        title: "Deksmo Vision",
-        type: "Local-first translation workbench",
+        title: "VOICEVOX Expressive TTS",
+        type: "LOCAL AI · TTS",
         summary:
-          "A React and FastAPI editor focused on local OCR, masking, disk-backed project state, provider profiles, and selected-bubble editing.",
-        stack: ["React", "TypeScript", "FastAPI", "PaddleOCR"],
-        status: "Private repository · Details available on request",
-        links: [],
-        logo: "assets/logos/deksmo-vision.png"
+          "Local toolkit that turns VOICEVOX into an OpenAI-compatible TTS endpoint for AI companions and SillyTavern.",
+        stack: ["Python", "VOICEVOX", "OpenAI TTS API", "SillyTavern"],
+        links: [
+          { label: "GitHub →", href: urls.repoVoicevox },
+          { label: "/Voicevox", href: urls.shortVoicevox }
+        ],
+        glyph: "TTS"
       },
       {
-        title: "DeksmoMedical",
-        type: "Domain-specific AI application",
+        title: "Scroll-Hero",
+        type: "JAVASCRIPT · CANVAS ENGINE",
         summary:
-          "A medicinal-herb application combining Turkish knowledge, AI recipe generation, configurable data storage, and optional local-model privacy mode.",
-        stack: ["Next.js 15", "FastAPI", "SQLite", "Supabase"],
-        status: "Private repository · Details available on request",
-        links: [],
-        logo: "assets/logos/deksmo-medical.png"
-      },
-      {
-        title: "DeksmoILACDB",
-        type: "Open-source drug dataset",
-        summary:
-          "A structured medicine database for Turkey with 31.5k+ records, archived HTML prospectus content, cleaned text, and usage imagery for offline retrieval.",
-        stack: ["Python", "JSONL", "RAG-ready text", "Image dataset"],
-        status: "Private repository · Details available on request",
-        links: [],
-        logo: "assets/logos/deksmo-ilacdb.svg"
+          "Zero-dependency engine that turns a sequence of WebP video frames into a sticky, scroll-driven canvas hero banner.",
+        stack: ["JavaScript", "HTML5 Canvas", "WebP", "FFmpeg"],
+        links: [
+          { label: "GitHub →", href: urls.repoScrollHero },
+          { label: "/ScrollHero", href: urls.shortScrollHero }
+        ],
+        glyph: "SCR"
       },
       {
         title: "Watermark-Deksmo",
-        type: "Desktop batch utility",
+        type: "PYTHON · DESKTOP",
         summary:
-          "A Python desktop tool for applying watermarks across large manga and comic batches with page-level overrides and preview-first controls.",
+          "Python desktop utility for batch watermarking manga and image archives.",
         stack: ["Python", "CustomTkinter", "Pillow", "PyInstaller"],
-        links: [{ label: "Repository", href: urls.repoWatermark }],
+        links: [
+          { label: "GitHub →", href: urls.repoWatermark },
+          { label: "/Watermark", href: urls.shortWatermark }
+        ],
         logo: "assets/logos/watermark-deksmo.png"
       },
       {
         title: "Deksmo WebGrab",
-        type: "Browser capture and export",
+        type: "JAVASCRIPT · EXTENSION",
         summary:
-          "A Manifest V3 extension for grabbing image-heavy web sources, then reviewing, reordering, and exporting them into PDF or ZIP packages.",
+          "Browser extension for batch capturing web images and exporting them into PDF or ZIP packages.",
         stack: ["JavaScript", "Manifest V3", "PDF export", "ZIP export"],
-        links: [{ label: "Repository", href: urls.repoScrap }],
+        links: [
+          { label: "GitHub →", href: urls.repoScrap },
+          { label: "/WebGrab", href: urls.shortWebGrab }
+        ],
         logo: "assets/logos/deksmo-webgrab.png"
       }
     ],
     capabilitiesSection: {
-      eyebrow: "Capabilities / Stack",
-      title: "What I can build, ship, and refine."
+      eyebrow: "What I Do",
+      title: "Focus Areas"
     },
     capabilities: [
       {
-        title: "AI systems and local-first tooling",
-        meta: "Capability 01",
+        title: "Local AI & Automation",
+        meta: "01",
         copy:
-          "I build AI-assisted workflows that keep operator control visible: OCR, queue logic, project persistence, export surfaces, and model-backed tools that can be audited instead of blindly trusted.",
-        tags: ["OCR", "LLM integration", "Queue logic", "Local-first runtime"]
+          "OCR pipelines, local voice synthesis (VOICEVOX), and batch image/text processing utilities that run directly on your machine.",
+        tags: ["OCR", "Local LLMs", "VOICEVOX TTS", "Python"]
       },
       {
-        title: "Frontend product surfaces",
-        meta: "Capability 02",
+        title: "Web & Desktop Interfaces",
+        meta: "02",
         copy:
-          "I design and ship interfaces for dense workflows across web apps, browser extensions, and desktop tooling, with a focus on hierarchy, responsiveness, and maintainable interaction patterns.",
-        tags: ["React", "UI systems", "Responsive layouts", "Operator UX"]
+          "Fast static sites, browser extensions, interactive Canvas/WebGL scenes, and desktop tools.",
+        tags: ["React", "JavaScript", "WebGL / Canvas", "Desktop UI"]
       },
       {
-        title: "Growth, localization, and content systems",
-        meta: "Capability 03",
+        title: "Game & Manga Localization",
+        meta: "03",
         copy:
-          "I can connect product delivery to visibility and communication: SEO architecture, bilingual workflow thinking, subtitle and localization handling, and content systems that support discovery and trust.",
-        tags: ["SEO", "Localization", "Content strategy", "Digital execution"]
+          "Translating Japanese and English works into Turkish, editing in-game textures and fonts, and packaging patch installers.",
+        tags: ["Game Modding", "Localization", "Subtitles", "SEO"]
       }
     ],
     stack: {
-      eyebrow: "Stack trace",
-      copy: "Technologies already showing up across the portfolio."
+      eyebrow: "Tech Stack",
+      copy: "Languages and tools used across these projects."
     },
     experience: {
-      eyebrow: "Experience / Timeline",
-      title: "A career path that blends delivery, production, and systems thinking.",
-      workEyebrow: "Work experience",
-      workTitle: "Client delivery and production roles",
+      eyebrow: "Experience",
+      title: "Background & Education",
+      workEyebrow: "Work",
+      workTitle: "Experience",
       terminalTitle: "work.log",
-      trainingEyebrow: "Education / Training",
-      trainingTitle: "Supporting training and certificates",
+      trainingEyebrow: "Education",
+      trainingTitle: "Education & Certificates",
       trainingList: [
         "AI applications and foundational AI training",
         "Local LLM workflows and practical AI experimentation",
@@ -322,21 +238,21 @@ const content = {
     timeline: [
       {
         period: "2025 - Present",
-        title: "Freelance Digital Project Manager",
-        kind: "Client systems / SEO / web delivery",
+        title: "Freelance Web & Digital Project Manager",
+        kind: "Web development / SEO",
         summary:
-          "Building and refining web experiences for service brands through UI/UX work, frontend implementation, technical SEO, and growth-minded content structure."
+          "Building websites, designing interfaces, and handling technical SEO for client brands."
       },
       {
         period: "2024 - 2025",
         title: "Production and Subtitle Intern",
-        kind: "Post-production / localization",
+        kind: "Post-production / Localization",
         summary:
-          "Supported corporate post-production workflows while handling English-to-Turkish subtitle and localization tasks that sharpened media-pipeline discipline."
+          "Handled video post-production tasks and English-to-Turkish subtitle translations."
       },
     ],
     translationsSection: {
-      eyebrow: "Translations / Manga",
+      eyebrow: "Manga Translations",
       title: "Umineko & Re:Zero",
       copy: "Turkish manga translations for Umineko: When They Cry and Re:Zero \u2014 personally translated and published.",
       readLabel: "Read",
@@ -366,21 +282,23 @@ const content = {
       }
     ],
     contact: {
-      eyebrow: "Profiles / Links",
-      title: "Let’s build something practical.",
-      copy: "Working on an AI workflow, operator tool, or localization product? Send a short brief on LinkedIn and I’ll reply with fit and next steps."
+      eyebrow: "Contact",
+      title: "Get in Touch",
+      copy: "Reach out on any of the platforms below for projects, translations, or collaborations."
     },
     socialLinks: [
       { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" },
-      { label: "GitHub", href: urls.github, icon: "bi-github" }
+      { label: "GitHub", href: urls.github, icon: "bi-github" },
+      { label: "X / Twitter", href: urls.twitter, icon: "bi-twitter-x" }
     ],
     footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   },
   tr: {
     meta: {
-      title: "Remilya | Portfolyo",
+      title: "Remilya | YZ Araçları, Oyun & Manga Yerelleştirme",
       description:
-        "Remilya; yapay zeka destekli araçlar, yerel öncelikli sistemler, ürün arayüzleri ve lokalizasyon odaklı iş akışları geliştiren bir yazılım üreticisidir."
+        "Remilya; yerel öncelikli yapay zeka araçları, bağımsız oyunlar ve Scarlet Savior, RAIDOU Remastered TR, Higurashi, Umineko Türkçe çevirilerini geliştiren bir yazılım üreticisidir.",
+      ogLocale: "tr_TR"
     },
     aria: {
       brandLink: "Başa dön",
@@ -388,258 +306,193 @@ const content = {
       localeSwitcher: "Dil seçici",
       languageChanged: "Dil Türkçe olarak değiştirildi"
     },
-    brandSubtitle: "Yazılım / YZ Sistemleri / Lokalizasyon",
+    brandSubtitle: "Yazılım · Oyun · Çeviri",
     nav: {
-      about: "Hakkında",
-      work: "İşler",
-      translations: "Çeviriler",
-      capabilities: "Yetenekler",
+      about: "Hakkımda",
+      library: "Kitaplık",
+      work: "Programlar",
+      translations: "Manga",
+      capabilities: "Uğraşlar",
       experience: "Deneyim",
       contact: "İletişim"
     },
     hero: {
-      title: "Remilya.dev’e hoş geldiniz.",
-      ctaWork: "Arşive gir",
-      ctaContact: "İletişim"
-    },
-    deksmoArchive: {
-      eyebrow: "KURTARILAN SİSTEM / DEKSMO 1.6.1",
-      status: "ARŞİVLENMİŞ ÜRÜN · ETKİLEŞİMLİ SİMÜLASYON",
-      title: "Bir lokalizasyon çalışma alanı, olduğu haliyle korundu.",
-      copy:
-        "Deksmo; OCR, çeviri, temizleme, dizgi ve operatör incelemesini tek editörde birleştiriyordu. Temelindeki üçüncü taraf API’ler sonlandırılınca özgün servis kullanımdan kaldırıldı. Bu istemci tarafı sergi iş akışını yeniden canlandırır; hiçbir işlem arka uca gönderilmez.",
-      openSimulation: "Etkileşimli simülasyonu aç",
-      closeSimulation: "Simülasyonu kapat",
-      productVersion: "Kurtarılan arayüz · Sürüm 1.6.1",
-      productStatus: "ARŞİVLENDİ / ÇEVRİMDIŞI",
-      tabsLabel: "Deksmo simülasyon görünümleri",
-      tabEditor: "Editör",
-      tabSettings: "Ayarlar",
-      tabConsole: "Konsol",
-      languagePair: "EN → TR",
-      toolbarLabel: "Arşivlenmiş editör araçları",
-      toolSelect: "Metin öğesi seç",
-      toolCompare: "Karşılaştırmayı sıfırla",
-      toolColor: "Renkli önizlemeyi göster",
-      toolSelectShort: "Seç",
-      toolCompareShort: "Karşılaştır",
-      toolColorShort: "Renk",
-      variantsLabel: "Sonuç önizlemesi",
-      variantRaw: "Ham",
-      variantTranslated: "Çevrilmiş",
-      variantColorized: "Renklendirilmiş",
-      sampleBadge: "ARŞİV ÖRNEĞİ",
-      comparisonLabel: "Dizgi / renk karşılaştırması",
-      rawLabel: "HAM / EN",
-      translatedLabel: "ÇEVRİLMİŞ / TR",
-      colorizedLabel: "RENKLENDİRİLMİŞ / TR",
-      rawAlt: "Arşivlenmiş Deksmo simülasyonunda kullanılan ham İngilizce manga sayfası",
-      translatedAlt: "Arşivlenmiş Deksmo simülasyonundaki Türkçe çeviri sonucu",
-      colorizedAlt: "Arşivlenmiş Deksmo simülasyonundaki renklendirilmiş Türkçe sonuç",
-      zoomOut: "Uzaklaştır",
-      zoomIn: "Yakınlaştır",
-      textElements: "METİN ÖĞELERİ",
-      elementType: "KONUŞMA BALONU",
-      sourceLabel: "KAYNAK",
-      targetLabel: "HEDEF",
-      aiFill: "YZ Dolgu · Simülasyon",
-      cleanApply: "Temizle + Metni Uygula · Simülasyon",
-      history: "GEÇMİŞ",
-      historyOpen: "Ham sayfa açıldı",
-      historyTranslated: "Çeviri önizlemesi",
-      historyColorized: "Renk önizlemesi",
-      settingsEyebrow: "ARŞİVLENMİŞ YAPILANDIRMA",
-      settingsHeading: "Kurtarılan son çalışma alanı ayarları",
-      sourceLanguage: "Kaynak dil",
-      targetLanguage: "Hedef dil",
-      resolution: "Görsel çözünürlüğü",
-      preciseOcr: "Hassas OCR",
-      enabled: "Etkin",
-      provider: "İşleme sağlayıcısı",
-      offline: "Çevrimdışı · API sonlandırıldı",
-      logArchive: "Kurtarılan Deksmo arayüzü yerel olarak yüklendi.",
-      logAssets: "Üç tarihî önizleme varlığı hazır.",
-      logElements: "İnceleme için yedi metin öğesi geri yüklendi.",
-      logBackend: "Kullanılamıyor. Ağ üzerinden işleme denenmeyecek.",
-      offlineFootnote: "YALNIZCA İSTEMCİ ARŞİVİ · SIFIR API İSTEĞİ",
-      readyMessage: "Arşiv hazır. Kurtarılan arayüzü inceleyin.",
-      offlineActionMessage: "Arşiv simülasyonu — bu işlem kullanımdan kaldırılan Deksmo API’sini gerektiriyordu.",
-      selectionMessage: "Seçim aracı etkin. Kurtarılan bir metin öğesi seçin.",
-      comparisonMessage: "Karşılaştırma hizalı çevrilmiş ve renklendirilmiş görünümlere sıfırlandı.",
-      colorMessage: "Renklendirilmiş arşiv önizlemesi seçildi.",
-      rawMessage: "Ham kaynak sayfa seçildi.",
-      translatedMessage: "Çevrilmiş arşiv önizlemesi seçildi.",
-      colorizedMessage: "Renklendirilmiş arşiv önizlemesi seçildi.",
-      textSelectedMessage: "{number} numaralı metin öğesi seçildi."
+      title: "Remilya.dev"
     },
     about: {
-      eyebrow: "Kimlik / Profil",
-      title: "Yazılım, ürün düşüncesi ve lokalizasyonu bir araya getiren bir profil.",
-      introLabel: "Remilya profili",
+      eyebrow: "Hakkımda",
+      title: "Araçlar geliştiriyor, oyun yapıyor ve sevdiğim serileri Türkçeye çeviriyorum.",
+      introLabel: "REMILYA",
       introParagraphs: [
-        "Remilya, bu portfolyoda kullandığım isim. Buradaki işler; yazılım geliştirme, arayüz tasarımı, yapay zeka entegrasyonu, SEO ve lokalizasyon odaklı üretimin kesişiminde duruyor.",
-        "Portfolyonun merkezinde Deksmo ekosistemi var; ama bu birikim tek bir projeden gelmiyor. Müşteri projeleri, altyazı ve medya süreçleri ile Yeni Medya ve İletişim altyapısı bu yapının diğer parçalarını oluşturuyor."
+        "Masaüstü programları, yerel yapay zeka araçları ve tarayıcı eklentileri yazıyorum; boş vaktimde Touhou oyunları yapıyor, görsel roman ve mangaları Türkçeye çeviriyorum.",
+        "Yeni Medya ve İletişim mezunuyum. Kendi işimi kolaylaştırmak için yazdığım açık kaynak araçları ve tamamladığım çeviri yamalarını burada paylaşıyorum."
       ],
       cards: [
         {
           index: "01",
           accent: "",
-          title: "Yazılım ve yapay zeka",
+          title: "Yazılım & Yerel YZ",
           copy:
-            "Python, FastAPI, React, Node.js, OCR hatları, Gemini tabanlı akışlar, REST API'ler, Firebase ve yerel öncelikli sistem düşüncesi."
+            "Python, FastAPI, React, OCR, yerel LLM ve ses (TTS) modelleriyle doğrudan bilgisayarda çalışan pratik araçlar."
         },
         {
           index: "02",
           accent: "panel--cyan",
-          title: "Büyüme ve yaratıcı üretim",
+          title: "Oyun & Çeviri Yamaları",
           copy:
-            "SEO, içerik mimarisi, Google ve Meta Ads planlama, UI/UX yönlendirmesi ve görsel medya süreçlerinde üretim desteği."
+            "Oyun dosyalarını açıp doku, font ve binlerce satır diyaloğu Türkçeye aktarma; bağımsız oyun ve 3D web haritası geliştirme."
         },
         {
           index: "03",
           accent: "panel--magenta",
-          title: "Eğitim ve iletişim",
+          title: "Web & Medya",
           copy:
-            "Yeni Medya ve İletişim lisans eğitimi, İngilizce C1 yetkinliği ve yapay zeka uygulamaları, grafik, sosyal medya ve web programlama alanlarında ek eğitimler."
+            "Arayüz tasarımı, teknik SEO, video/altyazı kurgusu ve sıfır bağımlılıklı web bileşenleri."
         }
       ]
     },
-    work: {
-      eyebrow: "İşler / Vaka çalışmaları",
-      title: "Öne çıkan sistemler, özel müşteri işleri ve destekleyici projeler.",
-      copy:
-        "Portfolyonun merkezinde Deksmo bulunuyor: lokalizasyon, düzenleme, yakalama ve alan odaklı bilgi sistemleri etrafında geliştirdiğim araçlar ve ürün deneyleri.",
-      supportEyebrow: "Ek projeler / Destekleyici sistemler",
-      supportCopy:
-        "Ekosistemin kapsamını gösteren daha küçük ama önemli işler: masaüstü araçları, tarayıcı eklentileri, alan odaklı yapay zeka uygulamaları ve büyük yapısal veri setleri."
+    librarySection: {
+      eyebrow: "Kitaplık",
+      title: "Oyunlar, Atlas ve Türkçe Yamalar",
+      copy: "Projeyi açmak veya yama arşivine gitmek için bir kart seç."
     },
-    featuredProjects: [
+    libraryItems: [
       {
-        slug: "deksmo",
-        title: "Deksmo",
-        label: "Öne çıkan sistem / Arşivlenmiş manga lokalizasyon çalışma alanı",
-        serial: "SYS-01",
-        summary:
-          "OCR, çeviri, temizleme, dizgi, kalite kontrol ve bölüm işlemeyi izlenebilir bir operatör akışında birleştiren tam yığın lokalizasyon çalışma alanıydı.",
-        impact: [
-          "YZ destekli işlemeyi; inceleme, düzenleme ve kurtarma araçları sunan insan denetimli bir çalışma alanıyla birleştirdi.",
-          "Bölüm yükleme, kitap modu çeviri, mobil uyumlu yüzeyler ve kalıcı proje akışlarını kapsadı.",
-          "Rate limit, kuyruk durumu, sürdürülebilir projeler ve dışa aktarma ihtiyaçları gibi operatör gerçeklerini ele aldı."
-        ],
-        stack: ["React 19", "Vite", "FastAPI", "Firebase", "Gemini", "Tailwind CSS"],
-        status: "Arşivlenmiş ürün · Etkileşimli simülasyon",
-        links: [{ label: "Simülasyonu aç", href: "#deksmo-archive", external: false, action: "openArchive" }],
-        accent: "green",
-        logo: "assets/logos/deksmo-core.png"
+        title: "Gensokyo 1:1 Interactive Atlas",
+        badge: "REMILYA.DEV/GENSOKYO · 3D ATLAS",
+        desc: "Gensokyo'nun 1:1 ölçekli interaktif kartografik atlası ve 3D dünya deneyimi.",
+        action: "remilya.dev/Gensokyo →",
+        cover: "assets/gensokyo-cover.webp",
+        width: 1024,
+        height: 683,
+        href: urls.gensokyoAtlas
       },
       {
-        slug: "legal-rebuild",
-        title: "Hukuk Hizmetleri Platformu Yeniden Yapımı",
-        label: "Öne çıkan müşteri işi / Özel sistem",
-        serial: "SYS-02",
-        summary:
-          "Bir hukuk hizmetleri markası için UI/UX, frontend geliştirme, bilgi mimarisi ve teknik SEO katmanlarını kapsayan anonimleştirilmiş freelance dönüşüm projesi.",
-        impact: [
-          "Kamusal siteyi sıfırdan yeniden kurarak daha net bir hizmet anlatımı ve daha güçlü bir güven zemini oluşturdum.",
-          "Teknik ve içerik odaklı SEO ile siteyi markalı Google aramalarında görünmez durumdan ilk sıraya taşıdım.",
-          "Web sitesini yalnızca bir broşür olarak değil, iş üreten ticari bir yüzey olarak ele alıp ürün düşüncesiyle büyüme tarafını birleştirdim."
-        ],
-        stack: ["UI/UX", "Frontend", "SEO", "İçerik stratejisi", "Performans"],
-        status: "Özel müşteri projesi",
-        links: [],
-        accent: "magenta",
-        logo: ""
+        title: "Higurashi When They Cry TR",
+        badge: "REMILYA.DEV/HIGURASHI · ARŞİV",
+        desc: "Higurashi Hou ve Hou+ Türkçe yerelleştirme yaması, kurulum rehberi ve üç dilli (TR/EN/JP) replik arama arşivi.",
+        action: "remilya.dev/Higurashi →",
+        cover: "assets/higurashi-cover.webp",
+        width: 460,
+        height: 215,
+        href: urls.higurashiArchive
+      },
+      {
+        title: "Scarlet Savior",
+        badge: "TOUHOU FANGAME · PC",
+        desc: "itch.io üzerinde yayınlanan iki boyutlu Touhou aksiyon ve bullet-hell oyunu.",
+        action: "itch.io'da Oyna →",
+        cover: "assets/scarlet-savior-cover.webp",
+        width: 315,
+        height: 250,
+        href: urls.itchScarlet
+      },
+      {
+        title: "RAIDOU Remastered TR",
+        badge: "TÜRKÇE YAMA · %100",
+        desc: "20.183 satır diyalog/metin ve 103 oyun içi dokuyu kapsayan %100 Türkçe yama.",
+        action: "GitHub / İndir →",
+        cover: "assets/raidou-cover.webp",
+        width: 460,
+        height: 215,
+        href: urls.repoRaidou
       }
     ],
+    work: {
+      eyebrow: "Programlar / Açık Kaynak",
+      title: "GitHub'daki açık kaynak araçlar.",
+      copy:
+        "Her kart sadece programın ne yaptığını yazar — detaylar ve kaynak kodları GitHub'da."
+    },
     supportProjects: [
       {
-        title: "Deksmo Vision",
-        type: "Yerel öncelikli çeviri çalışma alanı",
+        title: "VOICEVOX Expressive TTS",
+        type: "YEREL YZ · TTS",
         summary:
-          "Yerel OCR, maskeleme, diskte tutulan proje durumu, sağlayıcı profilleri ve seçili balon düzenleme odaklı React ve FastAPI editörü.",
-        stack: ["React", "TypeScript", "FastAPI", "PaddleOCR"],
-        status: "Özel repo · Talep üzerine ayrıntı",
-        links: [],
-        logo: "assets/logos/deksmo-vision.png"
+          "VOICEVOX ses motorunu yapay zeka karakterleri ve SillyTavern için OpenAI uyumlu yerel TTS servisine dönüştüren araç.",
+        stack: ["Python", "VOICEVOX", "OpenAI TTS API", "SillyTavern"],
+        links: [
+          { label: "GitHub →", href: urls.repoVoicevox },
+          { label: "/Voicevox", href: urls.shortVoicevox }
+        ],
+        glyph: "TTS"
       },
       {
-        title: "DeksmoMedical",
-        type: "Alan odaklı YZ uygulaması",
+        title: "Scroll-Hero",
+        type: "JAVASCRIPT · CANVAS MOTORU",
         summary:
-          "Türkçe bilgi birikimini, yapay zeka destekli tarif üretimini, ayarlanabilir veri saklamayı ve isteğe bağlı yerel model gizliliğini bir araya getiren tıbbi bitki uygulaması.",
-        stack: ["Next.js 15", "FastAPI", "SQLite", "Supabase"],
-        status: "Özel repo · Talep üzerine ayrıntı",
-        links: [],
-        logo: "assets/logos/deksmo-medical.png"
-      },
-      {
-        title: "DeksmoILACDB",
-        type: "Açık kaynak ilaç veri seti",
-        summary:
-          "Türkiye için 31.5 binin üzerinde kayıt, arşivlenmiş HTML prospektüs içeriği, temizlenmiş metin ve kullanım görselleri içeren yapısal bir ilaç veritabanı.",
-        stack: ["Python", "JSONL", "RAG hazır metin", "Görsel veri seti"],
-        status: "Özel repo · Talep üzerine ayrıntı",
-        links: [],
-        logo: "assets/logos/deksmo-ilacdb.svg"
+          "Videodan çıkarılan WebP karelerini sıfır bağımlılıkla kaydırma odaklı (scroll-driven) canvas hero animasyonuna dönüştüren açık kaynak paket.",
+        stack: ["JavaScript", "HTML5 Canvas", "WebP", "FFmpeg"],
+        links: [
+          { label: "GitHub →", href: urls.repoScrollHero },
+          { label: "/ScrollHero", href: urls.shortScrollHero }
+        ],
+        glyph: "SCR"
       },
       {
         title: "Watermark-Deksmo",
-        type: "Masaüstü toplu işleme aracı",
+        type: "PYTHON · MASAÜSTÜ",
         summary:
-          "Geniş manga ve çizgi roman arşivlerine sayfa bazlı istisnalar ve önizleme odaklı kontrollerle watermark uygulayan Python masaüstü aracı.",
+          "Görsel ve manga arşivlerine toplu olarak filigran (watermark) ekleyen Python masaüstü aracı.",
         stack: ["Python", "CustomTkinter", "Pillow", "PyInstaller"],
-        links: [{ label: "Repo", href: urls.repoWatermark }],
+        links: [
+          { label: "GitHub →", href: urls.repoWatermark },
+          { label: "/Watermark", href: urls.shortWatermark }
+        ],
         logo: "assets/logos/watermark-deksmo.png"
       },
       {
         title: "Deksmo WebGrab",
-        type: "Tarayıcı yakalama ve aktarma aracı",
+        type: "JAVASCRIPT · EKLENTİ",
         summary:
-          "Görsel ağırlıklı web kaynaklarını toplayıp sonrasında inceleme, yeniden sıralama ve PDF ya da ZIP paketlerine aktarma imkanı sunan Manifest V3 eklentisi.",
+          "Web sitelerindeki görselleri topluca indirip sıralayarak PDF veya ZIP olarak dışa aktaran tarayıcı eklentisi.",
         stack: ["JavaScript", "Manifest V3", "PDF dışa aktarma", "ZIP dışa aktarma"],
-        links: [{ label: "Repo", href: urls.repoScrap }],
+        links: [
+          { label: "GitHub →", href: urls.repoScrap },
+          { label: "/WebGrab", href: urls.shortWebGrab }
+        ],
         logo: "assets/logos/deksmo-webgrab.png"
       }
     ],
     capabilitiesSection: {
-      eyebrow: "Yetenekler / Stack",
-      title: "Kurabildiğim, yayına alabildiğim ve iyileştirebildiğim sistemler."
+      eyebrow: "Neler Yapıyorum",
+      title: "Uğraştığım Alanlar"
     },
     capabilities: [
       {
-        title: "Yapay zeka sistemleri ve yerel öncelikli araçlar",
-        meta: "Yetenek 01",
+        title: "Yerel YZ ve Otomasyon",
+        meta: "01",
         copy:
-          "Kullanıcı kontrolünü görünür tutan yapay zeka destekli süreçler kuruyorum: OCR, kuyruk yönetimi, proje kalıcılığı, dışa aktarma yüzeyleri ve körlemesine güvenmek yerine denetlenebilen model destekli araçlar.",
-        tags: ["OCR", "LLM entegrasyonu", "Kuyruk mantığı", "Yerel runtime"]
+          "Görüntüden metin okuma (OCR), yerel ses sentezi (VOICEVOX) ve toplu görsel/metin işleme araçları.",
+        tags: ["OCR", "Yerel LLM", "VOICEVOX TTS", "Python"]
       },
       {
-        title: "Frontend ürün arayüzleri",
-        meta: "Yetenek 02",
+        title: "Web ve Masaüstü Arayüzleri",
+        meta: "02",
         copy:
-          "Web uygulamaları, tarayıcı eklentileri ve masaüstü araçları için yoğun iş akışlarına uygun arayüzler tasarlayıp geliştiriyorum; odak noktam hiyerarşi, responsive düzen ve bakımı kolay etkileşim kalıpları.",
-        tags: ["React", "UI sistemleri", "Responsive düzen", "Kullanıcı deneyimi"]
+          "Hızlı açılan statik siteler, tarayıcı eklentileri, Canvas/WebGL sahneleri ve masaüstü arayüzleri.",
+        tags: ["React", "JavaScript", "WebGL / Canvas", "Masaüstü UI"]
       },
       {
-        title: "Büyüme, lokalizasyon ve içerik yapıları",
-        meta: "Yetenek 03",
+        title: "Oyun & Manga Yerelleştirme",
+        meta: "03",
         copy:
-          "Ürün teslimatını görünürlük ve iletişimle bağlayabiliyorum: SEO mimarisi, çift dilli iş akış düşüncesi, altyazı ve lokalizasyon süreçleri ile keşfi ve güveni destekleyen içerik yapıları.",
-        tags: ["SEO", "Lokalizasyon", "İçerik stratejisi", "Dijital uygulama"]
+          "Japonca ve İngilizce eserlerin çevirisi, oyun içi doku/font düzenlemesi ve kurulum araçları.",
+        tags: ["Oyun Modlama", "Lokalizasyon", "Altyazı", "SEO"]
       }
     ],
     stack: {
-      eyebrow: "Kullandığım teknolojiler",
-      copy: "Portfolyo boyunca tekrar eden temel teknolojiler."
+      eyebrow: "Teknolojiler",
+      copy: "Projelerde kullandığım diller ve araçlar."
     },
     experience: {
-      eyebrow: "Deneyim / Zaman çizgisi",
-      title: "Teslimat, üretim ve sistem düşüncesini birleştiren kariyer yolu.",
-      workEyebrow: "İş deneyimi",
-      workTitle: "Müşteri teslimatı ve prodüksiyon rolleri",
+      eyebrow: "Deneyim",
+      title: "Geçmiş ve Eğitim",
+      workEyebrow: "Çalışmalar",
+      workTitle: "İş Deneyimi",
       terminalTitle: "is.log",
-      trainingEyebrow: "Eğitimler",
-      trainingTitle: "Destekleyici eğitimler ve sertifikalar",
+      trainingEyebrow: "Eğitim",
+      trainingTitle: "Eğitim ve Sertifikalar",
       trainingList: [
         "Yapay zeka uygulamaları ve temel yapay zeka eğitimleri",
         "Yerel LLM'ler ve pratik yapay zeka çalışmaları",
@@ -655,23 +508,23 @@ const content = {
     timeline: [
       {
         period: "2025 - Günümüz",
-        title: "Freelance Dijital Proje Yönetimi",
-        kind: "Müşteri projeleri / SEO / web geliştirme",
+        title: "Freelance Web & Dijital Proje Yöneticisi",
+        kind: "Web geliştirme / SEO",
         summary:
-          "Hizmet markaları için UI/UX, frontend geliştirme, teknik SEO ve büyüme odaklı içerik kurgusu üzerinden web deneyimleri kurup geliştiriyorum."
+          "Markalar için web siteleri kuruyor, arayüz tasarımı ve teknik SEO çalışmalarını yürütüyorum."
       },
       {
         period: "2024 - 2025",
         title: "Prodüksiyon ve Altyazı Stajyeri",
-        kind: "Post-produksiyon / lokalizasyon",
+        kind: "Post-prodüksiyon / Çeviri",
         summary:
-          "Kurumsal post-produksiyon süreçlerine destek verirken İngilizceden Türkçeye altyazı ve lokalizasyon görevleri üstlendim; bu süreç bana medya operasyonlarında disiplin kazandırdı."
+          "Kurumsal post-prodüksiyon süreçlerinde video kurgu desteği ve İngilizce-Türkçe altyazı çevirileri yaptım."
       },
     ],
     translationsSection: {
-      eyebrow: "Çeviriler / Manga",
-      title: "Umineko ve Re:Zero",
-      copy: "Umineko: When They Cry ve Re:Zero serileri için hazırladığım Türkçe manga çevirileri.",
+      eyebrow: "Manga Çevirileri",
+      title: "Umineko & Re:Zero",
+      copy: "Kendi çevirip yayına aldığım Umineko: When They Cry ve Re:Zero Türkçe manga serileri.",
       readLabel: "Oku",
       roleLabel: "Çevirmen"
     },
@@ -699,13 +552,14 @@ const content = {
       }
     ],
     contact: {
-      eyebrow: "Profiller / Linkler",
-      title: "Birlikte kullanışlı bir şey geliştirelim.",
-      copy: "Yapay zeka iş akışı, operasyon aracı veya lokalizasyon ürünü üzerinde mi çalışıyorsunuz? LinkedIn üzerinden kısa bir özet gönderin; uygunluk ve sonraki adımlarla dönüş yapayım."
+      eyebrow: "İletişim",
+      title: "Bana Ulaş",
+      copy: "Projeler, çeviriler veya ortak çalışmalar için aşağıdaki hesaplardan yazabilirsin."
     },
     socialLinks: [
       { label: "LinkedIn", href: urls.linkedin, icon: "bi-linkedin" },
-      { label: "GitHub", href: urls.github, icon: "bi-github" }
+      { label: "GitHub", href: urls.github, icon: "bi-github" },
+      { label: "X / Twitter", href: urls.twitter, icon: "bi-twitter-x" }
     ],
     footer: `<p class="site-footer-signature"><span>By </span><span class="site-footer-signature-brand">REMILYA</span></p>`
   }
@@ -713,6 +567,11 @@ const content = {
 
 const elements = {
   metaDescription: document.querySelector("#meta-description"),
+  ogLocale: document.querySelector("#og-locale"),
+  ogTitle: document.querySelector("#og-title"),
+  ogDescription: document.querySelector("#og-description"),
+  twitterTitle: document.querySelector("#twitter-title"),
+  twitterDescription: document.querySelector("#twitter-description"),
   brandLink: document.querySelector("#brand-link"),
   primaryNav: document.querySelector("#primary-nav"),
   localeSwitcher: document.querySelector("#locale-switcher"),
@@ -720,40 +579,26 @@ const elements = {
   localeStatus: document.querySelector("#locale-status"),
   brandSubtitle: document.querySelector("#brand-subtitle"),
   navAbout: document.querySelector("#nav-about"),
+  navLibrary: document.querySelector("#nav-library"),
   navWork: document.querySelector("#nav-work"),
   navTranslations: document.querySelector("#nav-translations"),
   navCapabilities: document.querySelector("#nav-capabilities"),
   navExperience: document.querySelector("#nav-experience"),
   navContact: document.querySelector("#nav-contact"),
   heroTitle: document.querySelector("#hero-title"),
-  heroCtaWork: document.querySelector("#hero-cta-work"),
-  heroCtaContact: document.querySelector("#hero-cta-contact"),
-  heroSequence: document.querySelector("#hero-sequence"),
-  archiveDialog: document.querySelector("#deksmo-archive-dialog"),
-  archiveRoot: document.querySelector("#deksmo-simulator"),
-  archiveStatusMessage: document.querySelector("#archive-status-message"),
-  archiveCompare: document.querySelector("#archive-compare"),
-  archiveCompareRange: document.querySelector("#archive-comparison-range"),
-  archiveResultImage: document.querySelector("#archive-result-image"),
-  archiveBaseImage: document.querySelector("#archive-base-image"),
-  archiveBaseLabel: document.querySelector("#archive-base-label"),
-  archiveResultLabel: document.querySelector("#archive-result-label"),
-  archiveZoomValue: document.querySelector("#archive-zoom-value"),
-  archiveSelectedNumber: document.querySelector("#archive-selected-number"),
-  archiveSelectedSource: document.querySelector("#archive-selected-source"),
-  archiveSelectedTarget: document.querySelector("#archive-selected-target"),
   aboutEyebrow: document.querySelector("#about-eyebrow"),
   aboutTitle: document.querySelector("#about-title"),
   aboutIntroLabel: document.querySelector("#about-intro-label"),
   aboutIntroP1: document.querySelector("#about-intro-p1"),
   aboutIntroP2: document.querySelector("#about-intro-p2"),
   aboutGrid: document.querySelector("#about-grid"),
+  libraryEyebrow: document.querySelector("#library-eyebrow"),
+  libraryTitle: document.querySelector("#library-title"),
+  libraryCopy: document.querySelector("#library-copy"),
+  libraryGrid: document.querySelector("#library-grid"),
   workEyebrow: document.querySelector("#work-eyebrow"),
   workTitle: document.querySelector("#work-title"),
   workCopy: document.querySelector("#work-copy"),
-  supportEyebrow: document.querySelector("#support-eyebrow"),
-  supportCopy: document.querySelector("#support-copy"),
-  featuredProjects: document.querySelector("#featured-projects"),
   supportProjects: document.querySelector("#support-projects"),
   translationsEyebrow: document.querySelector("#translations-eyebrow"),
   translationsTitle: document.querySelector("#translations-title"),
@@ -783,26 +628,11 @@ const elements = {
 
 let currentLocale = "en";
 let revealObserver = null;
-const archiveState = {
-  activeTab: "editor",
-  activeTool: "compare",
-  resultVariant: "colorized",
-  comparisonPosition: 50,
-  selectedTextElement: 0,
-  zoom: 1,
-  statusKey: "readyMessage",
-  statusValues: {},
-  lastTrigger: null
-};
 
 function setText(element, value) {
   if (element) {
     element.textContent = value;
   }
-}
-
-function padFrame(value, digits = 3) {
-  return String(value).padStart(digits, "0");
 }
 
 function renderTags(items) {
@@ -813,375 +643,10 @@ function renderLinkAttributes(link) {
   return link.external === false ? "" : ' target="_blank" rel="noreferrer"';
 }
 
-function renderLinkAction(link) {
-  return link.action === "openArchive" ? " data-open-archive" : "";
-}
-
-function renderButtonLinks(links) {
-  return links
-    .map(
-      (link) =>
-        `<a class="cyber-button" href="${link.href}"${renderLinkAttributes(link)}${renderLinkAction(link)}>${link.label}</a>`
-    )
-    .join("");
-}
-
 function renderSimpleLinks(links) {
   return links
-    .map((link) => `<a href="${link.href}"${renderLinkAttributes(link)}${renderLinkAction(link)}>${link.label}</a>`)
+    .map((link) => `<a href="${link.href}"${renderLinkAttributes(link)}>${link.label}</a>`)
     .join("");
-}
-
-function renderProjectMedia(media, title) {
-  if (!media?.src) {
-    return "";
-  }
-
-  const width = media.width ? ` width="${media.width}"` : "";
-  const height = media.height ? ` height="${media.height}"` : "";
-  const alt = media.alt || `${title} project preview`;
-  return `<figure class="case-media"><img src="${media.src}" alt="${alt}" loading="lazy"${width}${height} /></figure>`;
-}
-
-function getArchiveLocaleContent() {
-  return content[currentLocale]?.deksmoArchive || content.en.deksmoArchive;
-}
-
-function formatArchiveMessage(template, values = {}) {
-  return Object.entries(values).reduce(
-    (message, [key, value]) => message.replaceAll(`{${key}}`, String(value)),
-    template
-  );
-}
-
-function updateArchiveStatus() {
-  if (!elements.archiveStatusMessage) {
-    return;
-  }
-
-  const archiveContent = getArchiveLocaleContent();
-  const template = archiveContent[archiveState.statusKey] || archiveContent.readyMessage;
-  setText(elements.archiveStatusMessage, formatArchiveMessage(template, archiveState.statusValues));
-}
-
-function setArchiveStatus(key, values = {}, focusMessage = false) {
-  archiveState.statusKey = key;
-  archiveState.statusValues = values;
-  updateArchiveStatus();
-
-  if (focusMessage) {
-    elements.archiveStatusMessage?.focus({ preventScroll: true });
-  }
-}
-
-function updateArchiveVariantPresentation(announce = false) {
-  if (!elements.archiveRoot || !elements.archiveResultImage) {
-    return;
-  }
-
-  const variant = archiveMedia[archiveState.resultVariant] ? archiveState.resultVariant : "colorized";
-  const media = archiveMedia[variant];
-  const archiveContent = getArchiveLocaleContent();
-
-  elements.archiveRoot.dataset.resultVariant = variant;
-  elements.archiveResultImage.src = media.src;
-  elements.archiveResultImage.width = media.width;
-  elements.archiveResultImage.height = media.height;
-  elements.archiveResultImage.alt = archiveContent[media.altKey];
-  if (elements.archiveBaseImage) {
-    elements.archiveBaseImage.alt = archiveContent.translatedAlt;
-  }
-
-  if (elements.archiveResultLabel) {
-    elements.archiveResultLabel.dataset.archiveText = media.labelKey;
-    setText(elements.archiveResultLabel, archiveContent[media.labelKey]);
-  }
-
-  const isComparison = variant === "colorized";
-  elements.archiveRoot.classList.toggle("is-comparison-preview", isComparison);
-  elements.archiveRoot.classList.toggle("is-single-preview", !isComparison);
-  if (elements.archiveCompareRange) {
-    elements.archiveCompareRange.disabled = !isComparison;
-  }
-
-  if (elements.archiveBaseLabel) {
-    elements.archiveBaseLabel.dataset.archiveText = "translatedLabel";
-    setText(elements.archiveBaseLabel, archiveContent.translatedLabel);
-  }
-
-  elements.archiveRoot.querySelectorAll("[data-archive-variant]").forEach((button) => {
-    const isActive = button.dataset.archiveVariant === variant;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-
-  if (announce) {
-    const messageKey = variant === "raw" ? "rawMessage" : variant === "translated" ? "translatedMessage" : "colorizedMessage";
-    setArchiveStatus(messageKey);
-  }
-}
-
-function setArchiveVariant(variant, announce = true) {
-  if (!archiveMedia[variant]) {
-    return;
-  }
-
-  archiveState.resultVariant = variant;
-  updateArchiveVariantPresentation(announce);
-}
-
-function setArchiveActiveTool(toolName) {
-  archiveState.activeTool = toolName;
-  elements.archiveRoot?.querySelectorAll("[data-archive-tool]").forEach((tool) => {
-    tool.classList.toggle("is-active", tool.dataset.archiveTool === toolName);
-  });
-}
-
-function setArchiveComparison(value) {
-  const position = Math.min(100, Math.max(0, Number(value) || 0));
-  archiveState.comparisonPosition = position;
-  elements.archiveCompare?.style.setProperty("--split", `${position}%`);
-  if (elements.archiveCompareRange) {
-    elements.archiveCompareRange.value = String(position);
-  }
-}
-
-function setArchiveZoom(value) {
-  const zoom = Math.min(1.5, Math.max(0.75, Number(value) || 1));
-  archiveState.zoom = zoom;
-  elements.archiveCompare?.style.setProperty("--archive-zoom", String(zoom));
-  setText(elements.archiveZoomValue, `${Math.round(zoom * 100)}%`);
-}
-
-function selectArchiveText(index, announce = true) {
-  if (!Number.isInteger(index) || !archiveTextElements[index]) {
-    return;
-  }
-
-  archiveState.selectedTextElement = index;
-  const selected = archiveTextElements[index];
-  const number = String(index + 1).padStart(2, "0");
-
-  elements.archiveRoot?.querySelectorAll("[data-archive-text-index]").forEach((button) => {
-    const isSelected = Number(button.dataset.archiveTextIndex) === index;
-    button.classList.toggle("is-selected", isSelected);
-    button.setAttribute("aria-pressed", String(isSelected));
-  });
-
-  setText(elements.archiveSelectedNumber, number);
-  setText(elements.archiveSelectedSource, selected.source);
-  setText(elements.archiveSelectedTarget, selected.target);
-
-  if (announce) {
-    setArchiveStatus("textSelectedMessage", { number });
-  }
-}
-
-function setArchiveTab(tabName, focusTab = false) {
-  if (!elements.archiveRoot) {
-    return;
-  }
-
-  const tabs = [...elements.archiveRoot.querySelectorAll("[data-archive-tab]")];
-  const panels = [...elements.archiveRoot.querySelectorAll("[data-archive-panel]")];
-  const selectedTab = tabs.find((tab) => tab.dataset.archiveTab === tabName);
-
-  if (!selectedTab) {
-    return;
-  }
-
-  archiveState.activeTab = tabName;
-  elements.archiveRoot.dataset.activeTab = tabName;
-
-  tabs.forEach((tab) => {
-    const isActive = tab === selectedTab;
-    tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", String(isActive));
-    tab.tabIndex = isActive ? 0 : -1;
-  });
-
-  panels.forEach((panel) => {
-    panel.hidden = panel.dataset.archivePanel !== tabName;
-  });
-
-  if (focusTab) {
-    selectedTab.focus();
-  }
-}
-
-function applyArchiveLocale(localeData) {
-  if (!elements.archiveRoot || !localeData.deksmoArchive) {
-    return;
-  }
-
-  const archiveContent = localeData.deksmoArchive;
-  document.querySelectorAll("[data-archive-text]").forEach((node) => {
-    const key = node.dataset.archiveText;
-    if (archiveContent[key] !== undefined) {
-      setText(node, archiveContent[key]);
-    }
-  });
-
-  document.querySelectorAll("[data-archive-aria]").forEach((node) => {
-    const key = node.dataset.archiveAria;
-    if (archiveContent[key] !== undefined) {
-      node.setAttribute("aria-label", archiveContent[key]);
-    }
-  });
-
-  updateArchiveVariantPresentation(false);
-  updateArchiveStatus();
-}
-
-function openArchiveDialog(trigger) {
-  if (!elements.archiveDialog) {
-    return;
-  }
-
-  archiveState.lastTrigger = trigger || null;
-  if (!elements.archiveDialog.open) {
-    if (typeof elements.archiveDialog.showModal === "function") {
-      elements.archiveDialog.showModal();
-    } else {
-      elements.archiveDialog.setAttribute("open", "");
-    }
-  }
-
-  document.body.classList.add("archive-dialog-open");
-  window.requestAnimationFrame(() => {
-    elements.archiveDialog.querySelector("[data-close-archive]")?.focus({ preventScroll: true });
-  });
-}
-
-function closeArchiveDialog() {
-  if (!elements.archiveDialog?.open) {
-    return;
-  }
-
-  if (typeof elements.archiveDialog.close === "function") {
-    elements.archiveDialog.close();
-  } else {
-    elements.archiveDialog.removeAttribute("open");
-    document.body.classList.remove("archive-dialog-open");
-    archiveState.lastTrigger?.focus?.({ preventScroll: true });
-    archiveState.lastTrigger = null;
-  }
-}
-
-function initArchiveSimulator() {
-  if (!elements.archiveRoot) {
-    return;
-  }
-
-  const tabs = [...elements.archiveRoot.querySelectorAll("[data-archive-tab]")];
-
-  document.addEventListener("click", (event) => {
-    const opener = event.target instanceof Element
-      ? event.target.closest("[data-open-archive]")
-      : null;
-    if (!opener) return;
-    event.preventDefault();
-    openArchiveDialog(opener);
-  });
-
-  elements.archiveDialog?.querySelector("[data-close-archive]")?.addEventListener("click", closeArchiveDialog);
-  elements.archiveDialog?.addEventListener("cancel", (event) => {
-    event.preventDefault();
-    closeArchiveDialog();
-  });
-  elements.archiveDialog?.addEventListener("click", (event) => {
-    if (event.target === elements.archiveDialog) closeArchiveDialog();
-  });
-  elements.archiveDialog?.addEventListener("close", () => {
-    document.body.classList.remove("archive-dialog-open");
-    archiveState.lastTrigger?.focus?.({ preventScroll: true });
-    archiveState.lastTrigger = null;
-  });
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => setArchiveTab(tab.dataset.archiveTab));
-    tab.addEventListener("keydown", (event) => {
-      const currentIndex = tabs.indexOf(tab);
-      let nextIndex = currentIndex;
-
-      if (event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
-      if (event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-      if (event.key === "Home") nextIndex = 0;
-      if (event.key === "End") nextIndex = tabs.length - 1;
-      if (nextIndex === currentIndex) return;
-
-      event.preventDefault();
-      setArchiveTab(tabs[nextIndex].dataset.archiveTab, true);
-    });
-  });
-
-  elements.archiveRoot.querySelectorAll("[data-archive-variant]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const variant = button.dataset.archiveVariant;
-      setArchiveVariant(variant);
-      if (variant === "colorized") {
-        setArchiveComparison(0);
-        setArchiveActiveTool("color");
-      } else {
-        setArchiveActiveTool("select");
-      }
-    });
-  });
-
-  elements.archiveCompareRange?.addEventListener("input", (event) => {
-    setArchiveComparison(event.currentTarget.value);
-    setArchiveActiveTool("compare");
-  });
-
-  elements.archiveRoot.querySelectorAll("[data-archive-zoom]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const direction = button.dataset.archiveZoom === "in" ? 1 : -1;
-      setArchiveZoom(archiveState.zoom + direction * 0.25);
-    });
-  });
-
-  elements.archiveRoot.querySelectorAll("[data-archive-text-index]").forEach((button) => {
-    button.addEventListener("click", () => selectArchiveText(Number(button.dataset.archiveTextIndex)));
-  });
-
-  elements.archiveRoot.querySelectorAll("[data-archive-simulated]").forEach((button) => {
-    button.addEventListener("click", () => setArchiveStatus("offlineActionMessage", {}, true));
-  });
-
-  elements.archiveRoot.querySelectorAll("[data-archive-history]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const variant = button.dataset.archiveHistory;
-      setArchiveVariant(variant);
-      setArchiveActiveTool(variant === "colorized" ? "color" : "select");
-      if (variant === "colorized") setArchiveComparison(0);
-    });
-  });
-
-  elements.archiveRoot.querySelectorAll("[data-archive-tool]").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (button.dataset.archiveTool === "compare") {
-        setArchiveVariant("colorized", false);
-        setArchiveComparison(50);
-        setArchiveActiveTool("compare");
-        setArchiveStatus("comparisonMessage");
-      } else if (button.dataset.archiveTool === "color") {
-        setArchiveVariant("colorized", false);
-        setArchiveComparison(0);
-        setArchiveActiveTool("color");
-        setArchiveStatus("colorMessage");
-      } else {
-        setArchiveActiveTool("select");
-        setArchiveStatus("selectionMessage");
-      }
-    });
-  });
-
-  setArchiveTab(archiveState.activeTab);
-  setArchiveComparison(archiveState.comparisonPosition);
-  setArchiveZoom(archiveState.zoom);
-  setArchiveActiveTool(archiveState.activeTool);
-  selectArchiveText(archiveState.selectedTextElement, false);
-  updateArchiveVariantPresentation(false);
 }
 
 function renderAboutCards(cards) {
@@ -1202,38 +667,27 @@ function renderAboutCards(cards) {
     .join("");
 }
 
-function renderFeaturedProjects(localeData) {
-  if (!elements.featuredProjects) {
+function renderLibrary(localeData) {
+  if (!elements.libraryGrid) {
     return;
   }
 
-  elements.featuredProjects.innerHTML = localeData.featuredProjects
-    .map((project) => {
-      const mark = project.logo
-        ? `<img class="case-logo" src="${project.logo}" alt="${project.title} logo" loading="lazy" />`
-        : `<span class="case-glyph">PRV</span>`;
-
-      return `
-        <article class="featured-case reveal" data-accent="${project.accent}">
-          <div class="case-head">
-            <div class="case-mark">
-              ${mark}
-              <div>
-                <p class="case-label">${project.label}</p>
-                <h3>${project.title}</h3>
-              </div>
-            </div>
-            <span class="case-serial">${project.serial}</span>
+  elements.libraryGrid.innerHTML = localeData.libraryItems
+    .map(
+      (item) => `
+        <a class="wii-card reveal" href="${item.href}" target="_blank" rel="noreferrer" aria-label="${item.title}">
+          <div class="wii-card__screen">
+            <img src="${item.cover}" alt="${item.title} cover" width="${item.width || 460}" height="${item.height || 215}" loading="lazy" />
+            <span class="wii-card__badge">${item.badge}</span>
           </div>
-          <p class="case-summary">${project.summary}</p>
-          ${renderProjectMedia(project.media, project.title)}
-          <ul class="case-impact">${project.impact.map((item) => `<li>${item}</li>`).join("")}</ul>
-          <div class="tag-list">${renderTags(project.stack)}</div>
-          ${project.status ? `<p class="project-status">${project.status}</p>` : ""}
-          ${project.links?.length ? `<div class="case-links">${renderButtonLinks(project.links)}</div>` : ""}
-        </article>
-      `;
-    })
+          <div class="wii-card__body">
+            <h3 class="wii-card__title">${item.title}</h3>
+            <p class="wii-card__desc">${item.desc}</p>
+            <span class="wii-card__action" aria-hidden="true">${item.action}</span>
+          </div>
+        </a>
+      `
+    )
     .join("");
 }
 
@@ -1243,22 +697,23 @@ function renderSupportProjects(localeData) {
   }
 
   elements.supportProjects.innerHTML = localeData.supportProjects
-    .map(
-      (project, index) => `
+    .map((project) => {
+      const mark = project.logo
+        ? `<img class="case-logo" src="${project.logo}" alt="${project.title} logo" loading="lazy" />`
+        : `<span class="case-glyph" aria-hidden="true">${project.glyph || "GIT"}</span>`;
+
+      return `
         <article class="support-card reveal">
-          <p class="support-card__meta">SYS-0${index + 3} / ${project.type}</p>
+          <p class="support-card__meta">${project.type}</p>
           <div class="case-mark">
-            <img class="case-logo" src="${project.logo}" alt="${project.title} logo" loading="lazy" />
+            ${mark}
             <h3>${project.title}</h3>
           </div>
           <p>${project.summary}</p>
-          ${renderProjectMedia(project.media, project.title)}
-          <div class="tag-list">${renderTags(project.stack)}</div>
-          ${project.status ? `<p class="project-status">${project.status}</p>` : ""}
           ${project.links?.length ? `<div class="support-card__links">${renderSimpleLinks(project.links)}</div>` : ""}
         </article>
-      `
-    )
+      `;
+    })
     .join("");
 }
 
@@ -1288,7 +743,10 @@ function renderStackCloud(localeData) {
 
   const items = [
     ...new Set(
-      [...localeData.featuredProjects, ...localeData.supportProjects].flatMap((project) => project.stack)
+      [
+        ...localeData.supportProjects.flatMap((project) => project.stack || []),
+        ...localeData.capabilities.flatMap((cap) => cap.tags || [])
+      ]
     )
   ].sort((left, right) => left.localeCompare(right, currentLocale));
 
@@ -1332,9 +790,9 @@ function renderTranslations(localeData) {
       (translation) => `
         <a class="translation-card reveal" href="${translation.href}" target="_blank" rel="noreferrer" aria-label="${localeData.translationsSection.readLabel}: ${translation.title}">
           <div class="translation-cover">
-            <img src="${translation.cover}" alt="${translation.title} cover" loading="lazy" />
+            <img src="${translation.cover}" alt="${translation.title} cover" width="260" height="371" loading="lazy" />
           </div>
-          <span class="translation-card__ep">${translation.ep}</span>
+          <span class="translation-card__ep" lang="en">${translation.ep}</span>
           <h3 class="translation-card__title">${translation.title}</h3>
           <span class="translation-card__sub">${translation.subtitle}</span>
           <span class="translation-card__role">${localeData.translationsSection.roleLabel}</span>
@@ -1352,36 +810,55 @@ function init3DCards() {
     return;
   }
 
-  const cards = document.querySelectorAll('.translation-card');
-  cards.forEach(card => {
-    if (!card.querySelector('.glossy-overlay')) {
-      const gloss = document.createElement('div');
-      gloss.className = 'glossy-overlay';
+  const cards = document.querySelectorAll(".translation-card");
+  cards.forEach((card) => {
+    if (!card.querySelector(".glossy-overlay")) {
+      const gloss = document.createElement("div");
+      gloss.className = "glossy-overlay";
       card.appendChild(gloss);
     }
-    
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-      
-      const xPct = (mouseX / rect.width) - 0.5;
-      const yPct = (mouseY / rect.height) - 0.5;
-      
-      const rotateY = xPct * 24; 
-      const rotateX = yPct * -24;
-      
-      card.style.setProperty('--rx', `${rotateX}deg`);
-      card.style.setProperty('--ry', `${rotateY}deg`);
-      card.style.setProperty('--mx', `${50 - rotateY * 3}%`);
-      card.style.setProperty('--my', `${50 - rotateX * 3}%`);
+
+    let cachedRect = null;
+    let rafId = 0;
+
+    card.addEventListener("mouseenter", () => {
+      cachedRect = card.getBoundingClientRect();
     });
 
-    card.addEventListener('mouseleave', () => {
-      card.style.removeProperty('--rx');
-      card.style.removeProperty('--ry');
-      card.style.removeProperty('--mx');
-      card.style.removeProperty('--my');
+    card.addEventListener("mousemove", (e) => {
+      const rect = cachedRect || (cachedRect = card.getBoundingClientRect());
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+
+      rafId = requestAnimationFrame(() => {
+        const xPct = mouseX / rect.width - 0.5;
+        const yPct = mouseY / rect.height - 0.5;
+
+        const rotateY = xPct * 24;
+        const rotateX = yPct * -24;
+
+        card.style.setProperty("--rx", `${rotateX}deg`);
+        card.style.setProperty("--ry", `${rotateY}deg`);
+        card.style.setProperty("--mx", `${50 - rotateY * 3}%`);
+        card.style.setProperty("--my", `${50 - rotateX * 3}%`);
+        rafId = 0;
+      });
+    });
+
+    card.addEventListener("mouseleave", () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+      cachedRect = null;
+      card.style.removeProperty("--rx");
+      card.style.removeProperty("--ry");
+      card.style.removeProperty("--mx");
+      card.style.removeProperty("--my");
     });
   });
 }
@@ -1404,6 +881,14 @@ function renderSocialLinks(localeData) {
 }
 
 function getInitialLocale() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get("lang")?.toLowerCase();
+    if (queryLang && SUPPORTED_LOCALES.includes(queryLang)) {
+      return queryLang;
+    }
+  } catch {}
+
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (SUPPORTED_LOCALES.includes(stored)) {
@@ -1439,8 +924,8 @@ function initializeRevealObserver() {
       });
     },
     {
-      threshold: 0.12,
-      rootMargin: "0px 0px -40px 0px"
+      threshold: 0.01,
+      rootMargin: "0px 0px -12px 0px"
     }
   );
 }
@@ -1460,13 +945,17 @@ function refreshRevealAnimation() {
   initializeRevealObserver();
 
   revealItems.forEach((item) => {
-    if (item.dataset.revealBound === "true") {
+    const rect = item.getBoundingClientRect();
+    if (rect.top <= window.innerHeight * 0.96 && rect.bottom >= 0) {
+      item.classList.add("is-visible");
+      item.dataset.revealBound = "true";
+      if (revealObserver) {
+        revealObserver.unobserve(item);
+      }
       return;
     }
 
-    if (item.getBoundingClientRect().top <= window.innerHeight * 0.92) {
-      item.classList.add("is-visible");
-      item.dataset.revealBound = "true";
+    if (item.dataset.revealBound === "true") {
       return;
     }
 
@@ -1476,6 +965,7 @@ function refreshRevealAnimation() {
 }
 
 function setupActiveNavigation() {
+  const nav = document.querySelector(".site-nav");
   const links = [...document.querySelectorAll(".site-nav a")];
   const sections = links
     .map((link) => {
@@ -1493,11 +983,15 @@ function setupActiveNavigation() {
     return;
   }
 
+  // Mark the first section active by default on initial load
+  sections[0].link.classList.add("is-active");
+  sections[0].link.setAttribute("aria-current", "location");
+
   const observer = new IntersectionObserver(
     (entries) => {
       const visible = entries
         .filter((entry) => entry.isIntersecting)
-        .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+        .sort((left, right) => right.intersectionRect.height - left.intersectionRect.height)[0];
 
       if (!visible) {
         return;
@@ -1508,14 +1002,22 @@ function setupActiveNavigation() {
         link.classList.toggle("is-active", isCurrent);
         if (isCurrent) {
           link.setAttribute("aria-current", "location");
+          if (nav && nav.scrollWidth > nav.clientWidth) {
+            const targetScroll =
+              link.offsetLeft - nav.clientWidth / 2 + link.offsetWidth / 2;
+            nav.scrollTo({
+              left: Math.max(0, targetScroll),
+              behavior: "smooth"
+            });
+          }
         } else {
           link.removeAttribute("aria-current");
         }
       });
     },
     {
-      threshold: [0.2, 0.45, 0.7],
-      rootMargin: "-20% 0px -55% 0px"
+      threshold: [0.02, 0.1, 0.25, 0.5, 0.75],
+      rootMargin: "-18% 0px -52% 0px"
     }
   );
 
@@ -1530,21 +1032,24 @@ function applyLocale(locale) {
   document.documentElement.lang = currentLocale;
   document.title = localeData.meta.title;
   elements.metaDescription?.setAttribute("content", localeData.meta.description);
+  elements.ogLocale?.setAttribute("content", currentLocale === "tr" ? "tr_TR" : "en_US");
+  elements.ogTitle?.setAttribute("content", localeData.meta.title);
+  elements.ogDescription?.setAttribute("content", localeData.meta.description);
+  elements.twitterTitle?.setAttribute("content", localeData.meta.title);
+  elements.twitterDescription?.setAttribute("content", localeData.meta.description);
   elements.brandLink?.setAttribute("aria-label", localeData.aria.brandLink);
   elements.primaryNav?.setAttribute("aria-label", localeData.aria.primaryNav);
   elements.localeSwitcher?.setAttribute("aria-label", localeData.aria.localeSwitcher);
 
   setText(elements.brandSubtitle, localeData.brandSubtitle);
   setText(elements.navAbout, localeData.nav.about);
+  setText(elements.navLibrary, localeData.nav.library);
   setText(elements.navWork, localeData.nav.work);
   setText(elements.navTranslations, localeData.nav.translations);
   setText(elements.navCapabilities, localeData.nav.capabilities);
   setText(elements.navExperience, localeData.nav.experience);
   setText(elements.navContact, localeData.nav.contact);
   setText(elements.heroTitle, localeData.hero.title);
-  setText(elements.heroCtaWork, localeData.hero.ctaWork);
-  setText(elements.heroCtaContact, localeData.hero.ctaContact);
-  applyArchiveLocale(localeData);
 
   setText(elements.aboutEyebrow, localeData.about.eyebrow);
   setText(elements.aboutTitle, localeData.about.title);
@@ -1553,12 +1058,14 @@ function applyLocale(locale) {
   setText(elements.aboutIntroP2, localeData.about.introParagraphs[1]);
   renderAboutCards(localeData.about.cards);
 
+  setText(elements.libraryEyebrow, localeData.librarySection.eyebrow);
+  setText(elements.libraryTitle, localeData.librarySection.title);
+  setText(elements.libraryCopy, localeData.librarySection.copy);
+  renderLibrary(localeData);
+
   setText(elements.workEyebrow, localeData.work.eyebrow);
   setText(elements.workTitle, localeData.work.title);
   setText(elements.workCopy, localeData.work.copy);
-  setText(elements.supportEyebrow, localeData.work.supportEyebrow);
-  setText(elements.supportCopy, localeData.work.supportCopy);
-  renderFeaturedProjects(localeData);
   renderSupportProjects(localeData);
 
   setText(elements.translationsEyebrow, localeData.translationsSection.eyebrow);
@@ -1629,11 +1136,11 @@ function initDanmakuParticles() {
 
   const PARTICLE_COUNT = 10;
   const colors = [
-    "rgba(212, 168, 75, 0.2)",
-    "rgba(197, 56, 75, 0.15)",
-    "rgba(110, 92, 160, 0.15)",
-    "rgba(212, 168, 75, 0.12)",
-    "rgba(197, 56, 75, 0.1)"
+    "rgba(168, 85, 247, 0.22)",
+    "rgba(220, 38, 38, 0.16)",
+    "rgba(124, 58, 237, 0.18)",
+    "rgba(168, 85, 247, 0.14)",
+    "rgba(220, 38, 38, 0.12)"
   ];
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -1697,8 +1204,8 @@ function initCursorTrail() {
 
     const particle = document.createElement("div");
     particle.classList.add("cursor-particle");
-    particle.style.left = e.clientX - 3 + "px";
-    particle.style.top = e.clientY - 3 + "px";
+    particle.style.setProperty("--cx", `${e.clientX - 3}px`);
+    particle.style.setProperty("--cy", `${e.clientY - 3}px`);
 
     document.body.appendChild(particle);
 
@@ -1708,278 +1215,21 @@ function initCursorTrail() {
   });
 }
 
-function initHeroSequence() {
-  const root = elements.heroSequence;
-  const canvas = document.querySelector("#hero-sequence-canvas");
-  const fallbackImage = document.querySelector("#hero-sequence-fallback");
-  const contentLayer = document.querySelector("#hero-sequence-content");
-  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const saveData = Boolean(navigator.connection?.saveData);
-
-  if (!root || !canvas || !fallbackImage || !contentLayer) {
-    return;
-  }
-
-  const context = canvas.getContext("2d");
-  const frameCount = Number(root.dataset.frameCount || 0);
-  const frameDigits = Number(root.dataset.framePad || 3);
-  const frameExtension = root.dataset.frameExt || "jpg";
-  const frameTemplate = root.dataset.frameTemplate || "";
-  const sequenceVersion = root.dataset.sequenceVersion || "";
-  const initialBatch = Math.max(1, Math.min(frameCount, Number(root.dataset.initialBatch || 12)));
-  const sequenceBreakpoint = Number(root.dataset.sequenceBreakpoint || 720);
-  const useMobileSequence = window.matchMedia(`(max-width: ${sequenceBreakpoint}px)`).matches;
-  const sequenceDir = useMobileSequence
-    ? root.dataset.sequenceMobileDir
-    : root.dataset.sequenceDesktopDir;
-  const posterSrc = useMobileSequence
-    ? root.dataset.posterMobileSrc
-    : root.dataset.posterDesktopSrc;
-  root.dataset.sequenceVariant = useMobileSequence ? "mobile" : "desktop";
-  const defaultFramePath = (index) => {
-    const frameNumber = padFrame(index + 1, frameDigits);
-    const versionSuffix = sequenceVersion ? `?v=${encodeURIComponent(sequenceVersion)}` : "";
-    if (frameTemplate) {
-      return `${sequenceDir}/${frameTemplate.replace("{n}", frameNumber)}${versionSuffix}`;
-    }
-    return `${sequenceDir}/frame-${frameNumber}.${frameExtension}${versionSuffix}`;
-  };
-  const resolvedPosterSrc = posterSrc || defaultFramePath(0);
-
-  function activateFallback(sequenceMode) {
-    root.dataset.sequenceMode = sequenceMode;
-    root.classList.remove("is-loading", "is-ready", "is-started");
-    root.classList.add("is-fallback");
-    fallbackImage.src = resolvedPosterSrc;
-    contentLayer.style.opacity = "1";
-    contentLayer.style.transform = "translate3d(0, 0, 0) scale(1)";
-    contentLayer.style.pointerEvents = "auto";
-  }
-
-  if (reducedMotionQuery.matches || saveData) {
-    activateFallback(saveData ? "data-saver-fallback" : "reduced-motion-fallback");
-    return;
-  }
-
-  if (!context || !sequenceDir || frameCount < 2) {
-    activateFallback("load-failure-fallback");
-    return;
-  }
-
-  fallbackImage.src = resolvedPosterSrc;
-  root.dataset.sequenceMode = "scroll-sequence";
-  root.classList.remove("is-fallback", "is-started");
-  root.classList.add("is-loading");
-
-  const frameUrls = Array.from({ length: frameCount }, (_, index) => defaultFramePath(index));
-
-  const frames = new Array(frameCount).fill(null);
-  const framePromises = new Map();
-  let targetFrame = 0;
-  let renderedFrame = -1;
-  let ready = false;
-  let resizeFrame = 0;
-  let scrollFrame = 0;
-
-  function updateContentVisibility(progress) {
-    const fadeProgress = Math.min(Math.max(progress / 0.2, 0), 1);
-    const opacity = 1 - fadeProgress;
-    const translateY = fadeProgress * 36;
-    const scale = 1 - fadeProgress * 0.04;
-
-    contentLayer.style.opacity = opacity.toFixed(3);
-    contentLayer.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0) scale(${scale.toFixed(3)})`;
-    contentLayer.style.pointerEvents = fadeProgress >= 1 ? "none" : "auto";
-  }
-
-  function loadFrame(index) {
-    if (index < 0 || index >= frameCount) {
-      return Promise.resolve(null);
-    }
-
-    if (frames[index]) {
-      return Promise.resolve(frames[index]);
-    }
-
-    if (framePromises.has(index)) {
-      return framePromises.get(index);
-    }
-
-    const promise = new Promise((resolve) => {
-      const image = new Image();
-      image.decoding = "async";
-      image.onload = () => {
-        frames[index] = image;
-        framePromises.delete(index);
-
-        if (ready && Math.abs(index - targetFrame) <= 2) {
-          renderFrame(targetFrame);
-        }
-
-        resolve(image);
-      };
-      image.onerror = () => {
-        framePromises.delete(index);
-        resolve(null);
-      };
-      image.src = frameUrls[index];
-    });
-
-    framePromises.set(index, promise);
-    return promise;
-  }
-
-  function findNearestLoadedFrame(index) {
-    if (frames[index]) {
-      return index;
-    }
-
-    for (let offset = 1; offset < frameCount; offset += 1) {
-      const forward = index + offset;
-      const backward = index - offset;
-
-      if (forward < frameCount && frames[forward]) {
-        return forward;
-      }
-
-      if (backward >= 0 && frames[backward]) {
-        return backward;
-      }
-    }
-
-    return frames[0] ? 0 : -1;
-  }
-
-  function renderFrame(requestedIndex) {
-    const frameIndex = findNearestLoadedFrame(requestedIndex);
-    const image = frames[frameIndex];
-    if (frameIndex < 0 || !image || renderedFrame === frameIndex) {
-      return;
-    }
-
-    const bounds = canvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const width = Math.max(1, Math.round(bounds.width * dpr));
-    const height = Math.max(1, Math.round(bounds.height * dpr));
-
-    if (canvas.width !== width || canvas.height !== height) {
-      canvas.width = width;
-      canvas.height = height;
-    }
-
-    context.setTransform(1, 0, 0, 1, 0, 0);
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    const canvasRatio = canvas.width / canvas.height;
-    const imageRatio = image.naturalWidth / image.naturalHeight;
-    let drawWidth = canvas.width;
-    let drawHeight = canvas.height;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    if (imageRatio > canvasRatio) {
-      drawHeight = canvas.height;
-      drawWidth = drawHeight * imageRatio;
-      offsetX = (canvas.width - drawWidth) / 2;
-    } else {
-      drawWidth = canvas.width;
-      drawHeight = drawWidth / imageRatio;
-      offsetY = (canvas.height - drawHeight) / 2;
-    }
-
-    context.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
-    renderedFrame = frameIndex;
-  }
-
-  function queueResize() {
-    if (resizeFrame) return;
-
-    resizeFrame = window.requestAnimationFrame(() => {
-      resizeFrame = 0;
-      renderedFrame = -1;
-      renderFrame(targetFrame);
-      updateFrameFromScroll();
-    });
-  }
-
-  function updateFrameFromScroll() {
-    const viewportHeight = window.visualViewport?.height || window.innerHeight || 1;
-    const scrollSpan = Math.max(root.offsetHeight - viewportHeight, 1);
-    const progress = Math.min(Math.max(-root.getBoundingClientRect().top / scrollSpan, 0), 1);
-    targetFrame = Math.round(progress * (frameCount - 1));
-    updateContentVisibility(progress);
-    renderFrame(targetFrame);
-  }
-
-  function queueScrollUpdate() {
-    if (scrollFrame) return;
-
-    scrollFrame = window.requestAnimationFrame(() => {
-      scrollFrame = 0;
-      updateFrameFromScroll();
-    });
-  }
-
-  function preloadRemainingFrames() {
-    let nextIndex = initialBatch;
-
-    const pump = () => {
-      let budget = 0;
-
-      while (nextIndex < frameCount && budget < 6) {
-        loadFrame(nextIndex);
-        nextIndex += 1;
-        budget += 1;
-      }
-
-      if (nextIndex < frameCount) {
-        window.setTimeout(pump, 24);
-      }
-    };
-
-    pump();
-  }
-
-  Promise.all(
-    Array.from({ length: initialBatch }, (_, index) => loadFrame(index))
-  ).then((loadedFrames) => {
-    if (!frames[0] || !loadedFrames.filter(Boolean).length) {
-      activateFallback("load-failure-fallback");
-      return;
-    }
-
-    ready = true;
-    root.classList.remove("is-loading", "is-fallback");
-    root.classList.add("is-ready");
-    updateContentVisibility(0);
-    renderFrame(0);
-
-    window.setTimeout(() => {
-      root.classList.add("is-started");
-    }, 220);
-    updateFrameFromScroll();
-    window.addEventListener("scroll", queueScrollUpdate, { passive: true });
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", queueResize);
-      window.visualViewport.addEventListener("scroll", queueScrollUpdate);
-    }
-
-    window.addEventListener("resize", queueResize);
-    window.addEventListener("orientationchange", queueResize);
-    preloadRemainingFrames();
-  }).catch(() => {
-    activateFallback("load-failure-fallback");
-  });
-}
-
 /* ═══════════════════════════════════════════════════════
    INITIALIZATION
    ═══════════════════════════════════════════════════════ */
 
 setupLocaleSwitcher();
 applyLocale(getInitialLocale());
-initArchiveSimulator();
-initHeroSequence();
 setupActiveNavigation();
+if (window.location.hash && /^#[a-z0-9-]+$/i.test(window.location.hash)) {
+  const hashTarget = document.querySelector(window.location.hash);
+  if (hashTarget) {
+    hashTarget.classList.add("is-visible");
+    hashTarget.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+    hashTarget.scrollIntoView({ behavior: "instant" });
+    refreshRevealAnimation();
+  }
+}
 initDanmakuParticles();
 initCursorTrail();
