@@ -24,8 +24,19 @@ function Get-RelativeSitePath {
 
 Push-Location $siteRoot
 try {
-  & node --check "main.js"
-  Assert-SiteCondition ($LASTEXITCODE -eq 0) "main.js has a syntax error"
+  $jsModules = @(
+    "main.js",
+    "js/content.js",
+    "js/deck.js",
+    "js/slices.js",
+    "js/showcase.js"
+  )
+
+  foreach ($jsFile in $jsModules) {
+    Assert-SiteCondition (Test-Path -LiteralPath $jsFile -PathType Leaf) "missing required JS module: $jsFile"
+    & node --check $jsFile
+    Assert-SiteCondition ($LASTEXITCODE -eq 0) "$jsFile has a syntax error"
+  }
 
   $requiredFiles = @(
     "index.html",
@@ -33,11 +44,14 @@ try {
     "styles.css",
     "main.js",
     "DESIGN.md",
+    "README.md",
     "CNAME",
     "Raidou/index.html",
     "ScarletSavior/index.html",
+    "Scarlet-Savior/index.html",
     "Voicevox/index.html",
     "ScrollHero/index.html",
+    "Scroll-Hero/index.html",
     "Watermark/index.html",
     "WebGrab/index.html",
     "assets/favicon.svg",
@@ -46,14 +60,19 @@ try {
     "assets/gensokyo-cover.webp",
     "assets/scarlet-savior-cover.webp",
     "assets/raidou-cover.webp",
-    "assets/higurashi-cover.webp"
+    "assets/higurashi-cover.webp",
+    "assets/ep1-cover.webp",
+    "assets/ep2-cover.webp",
+    "assets/rezero-cover.jpg"
   )
 
   foreach ($relativePath in $requiredFiles) {
     Assert-SiteCondition (Test-Path -LiteralPath $relativePath -PathType Leaf) "missing required file: $relativePath"
   }
 
-  $sourceText = (Get-Content -LiteralPath "index.html" -Raw -Encoding utf8) + "`n" + (Get-Content -LiteralPath "main.js" -Raw -Encoding utf8) + "`n" + (Get-Content -LiteralPath "styles.css" -Raw -Encoding utf8)
+  $combinedJs = ($jsModules | ForEach-Object { Get-Content -LiteralPath $_ -Raw -Encoding utf8 }) -join "`n"
+  $sourceText = (Get-Content -LiteralPath "index.html" -Raw -Encoding utf8) + "`n" + $combinedJs + "`n" + (Get-Content -LiteralPath "styles.css" -Raw -Encoding utf8)
+
   $forbiddenPublicUrls = @(
     'https://deksmo.com',
     'https://github.com/Remilya/Deksmo"',
@@ -66,10 +85,11 @@ try {
     Assert-SiteCondition (-not $sourceText.Contains($url)) "unavailable public URL remains in rendered source: $url"
   }
   Assert-SiteCondition (-not $sourceText.Contains("hizliresim.com")) "archive media must not depend on the old third-party image host"
+  Assert-SiteCondition (-not $sourceText.Contains("bootstrap-icons")) "external Bootstrap Icons CDN must remain removed"
 
   $index = Get-Content -LiteralPath "index.html" -Raw -Encoding utf8
-  Assert-SiteCondition (([regex]::Matches($index, "<h1(?:\s|>)", "IgnoreCase")).Count -eq 1) "index.html must contain one H1"
-  Assert-SiteCondition (([regex]::Matches($index, "aria-live=", "IgnoreCase")).Count -eq 1) "only the language status may use aria-live"
+  Assert-SiteCondition (([regex]::Matches($index, "<h1(?:\s|>)", "IgnoreCase")).Count -eq 1) "index.html must contain exactly one H1"
+  Assert-SiteCondition (([regex]::Matches($index, "aria-live=", "IgnoreCase")).Count -eq 1) "only #locale-status may use aria-live"
   Assert-SiteCondition ($index.Contains('<link rel="canonical" href="https://remilya.dev/"')) "canonical URL is missing"
   Assert-SiteCondition ($index.Contains('property="og:image"')) "Open Graph image metadata is missing"
   Assert-SiteCondition ($index.Contains('name="twitter:card"')) "Twitter card metadata is missing"
@@ -101,7 +121,8 @@ try {
   Assert-SiteCondition ($script.Contains('link.external === false ? ""')) "internal project links are not handled without a new-tab target"
 
   $styles = Get-Content -LiteralPath "styles.css" -Raw -Encoding utf8
-  Assert-SiteCondition ($styles.Contains("wiiChannelGlow")) "Wii channel hover glow animation is missing"
+  Assert-SiteCondition ($styles.Contains(".slices-stage")) "Persona diagonal slice stage rules are missing"
+  Assert-SiteCondition ($styles.Contains("scroll-snap-type: y mandatory")) "Scroll-deck snap rules are missing"
 
   $ids = @{}
   foreach ($match in [regex]::Matches($index, 'id="([^"]+)"', "IgnoreCase")) {
@@ -142,6 +163,10 @@ try {
     "index.html",
     "styles.css",
     "main.js",
+    "js/content.js",
+    "js/deck.js",
+    "js/slices.js",
+    "js/showcase.js",
     "assets/favicon.svg",
     "assets/apple-touch-icon.png"
   )

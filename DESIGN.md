@@ -1,99 +1,46 @@
-# DESIGN.md — Remilya Portfolio (`Ultraviolet × Flandre Crystal`)
+# DESIGN.md - Remilya Portfolio (`Electric Ultraviolet // Rokkenjima Archive`)
 
 ## Overview
-Personal portfolio and archive for **Remilya (Kürşad)** — Creative Technologist, AI Systems builder, and game/manga localization creator.
-The visual language is **"Ultraviolet × Flandre Crystal — Witch Aristocrat"**: a dark obsidian editorial canvas with hairline (`0.8px`) borders, Cinzel serif display headers, interactive Wii-Channel game/patch cartridges, Flandre Scarlet crystal-wing 3D manga cards, and terminal timelines.
+Personal portfolio, localization archive, and open-source showcase for **Remilya (İlker Ağırkaya)** at `https://remilya.dev/`.
 
-- **Not a SaaS or corporate landing page**: Never use Bento grids, marketing KPI counters, fake testimonials, pricing cards, or rounded pill buttons.
+The visual system pairs **Remilya's OC mascot identity (`R / REMILYA` android catgirl emblem)** and an **Electric Ultraviolet dark color spectrum** with **Persona-style `15°` diagonal polygon stage choreography** and **full-screen `100svh` Scroll-Deck pacing**.
 
 ---
 
-## Colors
+## Core Visual Rules
+1. **Electric Ultraviolet Dark Series (Zero White Washout)**: Every stage and all four `15°` diagonal slices stay in deep, saturated Ultraviolet tones (`#5b21b6` -> `#2e1065` -> `#4c1d95` -> `#7e22ce`) separated by `8px` obsidian-black `#080312` diagonal cuts. Stark white backgrounds and pale pastel fills are avoided.
+2. **Opaque Graphic Surfaces & Crisp Cuts**: Never use blurry SaaS glassmorphism (`backdrop-filter: blur`). Surfaces use solid opaque fills, `2px-3px solid` ultraviolet borders (`#8b5cf6` / `#c4b5fd`), and `4px-10px` hard offset shadows.
+3. **Authentic Mascot Branding & Bespoke Vector Glyphs**: Hero centerpiece, navbar emblem, favicons (`favicon-64.png`, `favicon.svg`, `apple-touch-icon.png`), and OpenGraph card feature Remilya's custom OC mascot logo; UI icons live in an inline `<svg><symbol>` sprite (`#i-torii`, `#i-quill`, `#i-katana`, `#i-scarlet`, `#i-voice`, `#i-reel`).
+4. **Compositor-Friendly Motion**: Scroll-deck transitions, diagonal `clip-path: polygon(...)` sweeps, timeline line draws (`scaleX`), and `<canvas id="cursorFx">` electric ultraviolet butterflies respect `prefers-reduced-motion: reduce`.
 
-### Surface & Canvas Tokens
-| Token | Value | Role |
+---
+
+## Color Tokens
+
+| Token | Hex | Role |
 | :--- | :--- | :--- |
-| `--bg` | `#05040a` | Primary obsidian canvas background |
-| `--bg-elevated` | `#0a0814` | Elevated section background |
-| `--panel` | `rgba(12, 9, 24, 0.85)` | Primary card / panel fill |
-| `--panel-strong` | `rgba(18, 13, 34, 0.94)` | High-emphasis card / terminal fill |
-| `--panel-soft` | `rgba(255, 255, 255, 0.025)` | Subtle hover or tag fill |
-
-### Text Hierarchy
-| Token | Value | Role |
-| :--- | :--- | :--- |
-| `--text` | `#f0ecff` | Primary pale lavender-white copy |
-| `--muted` | `#9b91b8` | Secondary copy & descriptions |
-| `--subtle` | `#635985` | Eyebrow labels, indices, metadata |
-
-### Accent & Flandre Crystal Spectrum
-| Token | Value | Role |
-| :--- | :--- | :--- |
-| `--gold` | `#a855f7` | Primary Ultraviolet accent (historical token name, violet value) |
-| `--gold-bright` | `#c084fc` | Hover highlight & active violet glow |
-| `--rose` | `#dc2626` | Scarlet blood-crimson secondary accent |
-| `--rose-soft` | `#f87171` | Soft crimson highlight |
-| `--violet` | `#7c3aed` | Deep ultraviolet |
-| `--violet-bright` | `#a78bfa` | Soft violet |
-| `--flandre-red` / `--flandre-orange` / `--flandre-yellow` / `--flandre-green` / `--flandre-cyan` / `--flandre-blue` / `--flandre-purple` / `--flandre-pink` | `#ff2a54` / `#ff7b00` / `#ffea00` / `#00e676` / `#00e5ff` / `#2979ff` / `#aa00ff` / `#ff00aa` | 8-crystal Flandre Scarlet wing spectrum used on `#translations` cards (`:nth-child(1..8)`) |
-
-### Borders
-| Token | Value | Role |
-| :--- | :--- | :--- |
-| `--line` | `rgba(168, 85, 247, 0.14)` | Standard `0.8px` hairline cell divider |
-| `--line-strong` | `rgba(168, 85, 247, 0.32)` | Active / hovered border |
-| `--line-crimson` | `rgba(220, 38, 38, 0.25)` | Crimson accent hairline |
+| `--ink` | `#080312` | Primary Obsidian-Ultraviolet page canvas, `8px` diagonal slice seams, and hard dark buttons |
+| `--ink-raise` | `#110622` | Deep Ultraviolet raised cards and alternating stage canvas |
+| `--ink-panel` | `#1b0a36` | Elevated Ultraviolet panel frames and badge fills |
+| `--paper` / `--paper-pure` | `#ede9fe` / `#f5f3ff` | Soft Ultraviolet Mist & crisp display typography |
+| `--uv-core` | `#5b21b6` | **Slice 1 (`Gensokyo 1:1`)** Core Electric Violet fill |
+| `--uv-midnight` | `#2e1065` | **Slice 2 (`Higurashi TR`)** Midnight Ultraviolet fill |
+| `--uv-indigo` | `#4c1d95` | **Slice 3 (`RAIDOU TR`)** Royal Indigo Ultraviolet fill |
+| `--uv-electric` | `#7e22ce` | **Slice 4 (`Scarlet Savior`)** Vivid Electric Ultraviolet fill |
+| `--violet` / `--amethyst` | `#7c3aed` / `#9333ea` | Primary CTAs, active tabs, and hard offset shadows |
+| `--uv-border` / `--lavender` | `#8b5cf6` / `#c4b5fd` | Card borders, kickers, mono route pills, and `.cap` accents |
 
 ---
 
-## Typography
-- **Display (`--font-display`)**: `'Cinzel', Georgia, serif`
-  - Used for `.brand-title`, `.section-heading h2`, `.about-card h3`, `.wii-card__title`, `.support-card h3`, `.translation-card__title`.
-  - Always paired with `text-wrap: balance`.
-- **Body (`--font-sans`)**: `'Plus Jakarta Sans', sans-serif`
-  - Used for narrative paragraphs and descriptions (`max-width: 65ch`, `text-wrap: pretty`).
-- **Monospace (`--font-mono`)**: `'JetBrains Mono', monospace`
-  - Used for `.eyebrow`, `.tag`, `.wii-card__badge`, `.wii-card__action`, `.terminal-entry__period`, and `.support-card__links`.
-  - Always paired with `font-variant-numeric: tabular-nums`.
-
----
-
-## Elevation & Layout Architecture
-- **Container**: `width: min(calc(100% - 2rem), var(--max-width))` where `--max-width: 1200px`.
-- **Hairline Grid (`0.8px`)**: `.about-grid`, `.support-grid`, and `.capability-grid` use `gap: 0.8px; background: var(--line); border: 0.8px solid var(--line);` so cards form crisp editorial cells with `border-radius: 0px`.
-- **Shadow (`--shadow`)**: `0 28px 90px rgba(0, 0, 0, 0.72), 0 0 60px rgba(139, 92, 246, 0.05)`.
-
----
-
-## Core Components
-
-### 1. Ultraviolet Hero Stage (`.ultraviolet-stage`)
-- Minimal, atmospheric dark stage with `--hero-glow` radial gradients, subtle grid overlay, and screen-reader-only `h1`. No heavy 48-frame scroll-jacking canvas.
-
-### 2. Wii-Channel Game & Patch Library (`.wii-grid` / `.wii-card`)
-- Rounded cartridge screen (`border-radius: 14px`) exclusively for the `#library` section.
-- On `:hover` and `:focus-visible`: lifts via `translateY(-7px) scale(1.025)`, pulses `wiiChannelPulse`, and sweeps a GPU-composited diagonal glass sheen (`transform: translate3d(...) rotate(24deg)`).
-
-### 3. Public GitHub Programs (`.support-grid` / `.support-card`)
-- Flex column card (`display: flex; flex-direction: column`) inside the `0.8px` hairline grid.
-- Contains `.support-card__meta`, `.case-mark` (`img.case-logo` or `.case-glyph` + `h3`), a **single-sentence summary**, and bottom-aligned `.support-card__links` (`margin-top: auto`).
-
-### 4. Flandre Crystal Manga Cards (`.translations-grid` / `.translation-card`)
-- 3D perspective (`perspective: 1200px`) manga showcase cards with per-card crystal wing color variables (`--crystal-color`, `--crystal-glow`).
-- `init3DCards()` caches `getBoundingClientRect()` on `mouseenter` and batches `--rx`, `--ry`, `--mx`, `--my` writes inside `requestAnimationFrame`.
-
----
-
-## Do's and Don'ts
-
-### Do
-- Keep the **Ultraviolet (`#a855f7`) + Scarlet (`#dc2626`)** palette cohesive across all interactive states, particles, and borders.
-- Keep `#work` (Programs) strictly limited to **public repositories on `github.com/Remilya`** with a **1-sentence description** and a direct GitHub link.
-- Include explicit `width` and `height` attributes on all dynamic `<img>` elements (`renderLibrary`, `renderTranslations`, `renderSupportProjects`).
-- Animate only `transform` and `opacity` for 60fps compositor performance.
-
-### Don't
-- **Never** introduce SaaS/corporate/Bento patterns, startup marketing copy, or unrequested dashboard widgets.
-- **Never** list unpublished, local-only, or private tools in `#work`.
-- **Never** reintroduce legacy gold (`#d4a84b` / `rgba(212, 168, 75, ...)`) values that clash with the Ultraviolet palette.
-- **Never** call `getBoundingClientRect()` uncached inside `mousemove` or animate `left`/`top`.
+## Stage Architecture (`100svh` Scroll Deck)
+1. **`#top` - Hero**: Asymmetric two-column poster + Remilya OC Mascot (`assets/remilya-mascot.webp`) over a rotated ultraviolet Persona frame with project chips underneath.
+2. **`#library` - Featured Projects (`5-Stop Sticky 15° Polygon Stage`)**:
+   - **Stop 1 (`#5b21b6`)**: Gensokyo 1:1 Interactive Atlas (`remilya.dev/Gensokyo/`)
+   - **Stop 2 (`#2e1065`)**: Higurashi When They Cry TR (`remilya.dev/Higurashi/`) + embedded YouTube showcase video & live `TR / EN / 日本語` dialogue switcher
+   - **Stop 3 (`#4c1d95`)**: RAIDOU Remastered TR (`100%` PC Turkish patch)
+   - **Stop 4 (`#7e22ce`)**: Scarlet Savior (`itch.io` Ren'Py psychological horror visual novel)
+   - **Stop 5 (`is-comp`)**: Alternating `+15° / -15°` (`/ \ /`) 4-shard Electric Ultraviolet panorama; prior slices fold into clickable `.is-sliver` tabs on steps `2-4`.
+3. **`#work` - Open-Source Tools**: Crisp `2×2` graphic cards for `VOICEVOX Expressive TTS`, `Scroll-Hero`, `Watermark-Deksmo`, and `Deksmo WebGrab`.
+4. **`#translations` - Manga Translations**: Interactive 3-volume cover fan + active dossier for *Umineko Episode 1*, *Umineko Episode 2*, and *Re:Zero Arc 1*.
+5. **`#experience` - Background & Tools**: Connected 4-node graphic timeline + core technology strip.
+6. **`#contact` - Contact & Short Routes**: Social cards + permanent `remilya.dev` short-route index.

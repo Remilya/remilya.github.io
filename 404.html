@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Remilya | Route Resolver</title>
+    <title>Remilya | Portal Directory</title>
     <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <script>
       (function () {
@@ -47,94 +48,122 @@
     </script>
     <style>
       :root {
-        --void: #08050f;
-        --abyss: #0c0918;
-        --border: rgba(168, 85, 247, 0.28);
-        --violet: #a78bfa;
-        --scarlet: #fb7185;
-        --text: #f1ecff;
-        --muted: #9588aa;
+        --ink: #080312;
+        --ink-raise: #110622;
+        --ink-panel: #1b0a36;
+        --paper: #ede9fe;
+        --violet: #7c3aed;
+        --amethyst: #9333ea;
+        --lavender: #c4b5fd;
+        --uv-border: #8b5cf6;
       }
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        min-height: 100vh;
+        min-height: 100svh;
         display: grid;
         place-items: center;
-        background: radial-gradient(circle at 50% 25%, rgba(124, 58, 237, 0.16), transparent 60%), var(--void);
-        color: var(--text);
+        background: var(--ink);
+        color: var(--paper);
         font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
         padding: 1.5rem;
       }
       .card {
-        max-width: 540px;
+        max-width: 560px;
         width: 100%;
-        padding: 2.4rem 2rem;
-        background: var(--abyss);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.72), 0 0 40px rgba(168, 85, 247, 0.12);
+        padding: 2.2rem 2rem;
+        background: var(--ink-raise);
+        border: 3px solid var(--lavender);
+        border-radius: 20px;
+        box-shadow: 8px 8px 0 var(--violet);
+        text-align: left;
       }
-      .eyebrow {
-        margin: 0 0 0.75rem;
-        color: var(--scarlet);
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 2px;
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        margin-bottom: 0.9rem;
+      }
+      .head img {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+      }
+      .kicker {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--violet);
+        color: #fff;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
+        border-radius: 999px;
       }
       h1 {
-        margin: 0 0 0.75rem;
-        font-size: 1.6rem;
-        letter-spacing: 0.02em;
+        margin: 0 0 0.65rem;
+        font-size: clamp(1.75rem, 4vw, 2.3rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+      }
+      h1 span {
+        font-size: 1.25em;
+        text-shadow: 0.055em 0.055em 0 var(--amethyst);
       }
       p {
-        margin: 0 0 1.6rem;
-        color: var(--muted);
-        line-height: 1.6;
+        margin: 0 0 1.5rem;
+        color: rgba(243, 238, 255, 0.82);
+        line-height: 1.55;
       }
       .links {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.65rem;
+        gap: 0.6rem;
       }
       .links a {
         display: inline-flex;
         align-items: center;
-        padding: 0.55rem 1rem;
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        color: var(--violet);
+        min-height: 42px;
+        padding: 0.45rem 1rem;
+        border: 2px solid var(--uv-border);
+        border-radius: 999px;
+        color: var(--paper);
+        background: var(--ink-panel);
         text-decoration: none;
-        font-size: 0.78rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        background: rgba(168, 85, 247, 0.08);
-        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        font-size: 0.85rem;
+        font-weight: 800;
+        transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+      }
+      .links a.primary {
+        background: var(--violet);
+        border-color: var(--lavender);
+        color: #f5f3ff;
       }
       .links a:hover {
-        background: rgba(168, 85, 247, 0.22);
-        border-color: #f3e8ff;
-        color: #ffffff;
+        transform: translateY(-2px);
+        background: var(--amethyst);
+        border-color: #f5f3ff;
+        color: #f5f3ff;
       }
     </style>
   </head>
   <body>
     <main class="card">
-      <p class="eyebrow">REMILYA.DEV // PORTAL INDEX</p>
-      <h1>Route Not Found</h1>
-      <p>Select one of the permanent portals below or return to the main portfolio.</p>
+      <div class="head">
+        <img src="/assets/remilya-icon.png" alt="Remilya" width="54" height="54" />
+        <span class="kicker">404 · Sayfa Bulunamadı</span>
+      </div>
+      <h1><span>S</span>ayfa Bulunamadı</h1>
+      <p>Aradığın adres taşınmış veya hiç açılmamış olabilir. Aşağıdaki kısayollardan birini seçebilir ya da ana sayfaya dönebilirsin.</p>
       <div class="links">
-        <a href="https://remilya.dev/">Remilya.dev →</a>
-        <a href="https://remilya.dev/Gensokyo/">/Gensokyo ↗</a>
-        <a href="https://remilya.dev/Higurashi/">/Higurashi ↗</a>
-        <a href="https://remilya.dev/Raidou/">/Raidou ↗</a>
-        <a href="https://remilya.dev/ScarletSavior/">/ScarletSavior ↗</a>
-        <a href="https://remilya.dev/Voicevox/">/Voicevox ↗</a>
-        <a href="https://remilya.dev/ScrollHero/">/ScrollHero ↗</a>
+        <a class="primary" href="https://remilya.dev/">Remilya.dev</a>
+        <a href="https://remilya.dev/Gensokyo/">/Gensokyo</a>
+        <a href="https://remilya.dev/Higurashi/">/Higurashi</a>
+        <a href="https://remilya.dev/Raidou/">/Raidou</a>
+        <a href="https://remilya.dev/ScarletSavior/">/ScarletSavior</a>
+        <a href="https://remilya.dev/Voicevox/">/Voicevox</a>
+        <a href="https://remilya.dev/ScrollHero/">/ScrollHero</a>
       </div>
     </main>
   </body>
