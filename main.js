@@ -69,10 +69,13 @@ let deckApi = null;
 let slicesApi = null;
 let mangaApi = null;
 
-function applyLink(el, label, href, external) {
+function applyLink(el, label, href, external, ariaLabel) {
   if (!el) return;
   el.textContent = label;
   el.href = href;
+  if (ariaLabel) {
+    el.setAttribute("aria-label", ariaLabel);
+  }
   if (external === false) {
     el.removeAttribute("target");
     el.removeAttribute("rel");
@@ -108,6 +111,11 @@ function renderSlicesCopy(dict) {
   setText("#slices-sr-title", dict.slices.srTitle);
   setText("#slices-comp-banner", dict.slices.compBanner);
   setText("#higu-lang-label", dict.slices.higuLangLabel);
+
+  const ytBtn = $("#higu-yt-btn");
+  if (ytBtn && dict.slices.ytPlayAria) {
+    ytBtn.setAttribute("aria-label", dict.slices.ytPlayAria);
+  }
 
   dict.slices.items.forEach((item) => {
     const k = item.k;
@@ -150,7 +158,8 @@ function renderSlicesCopy(dict) {
       $(`#sl${k}-lab-cta`),
       dict.slices.compLaunch,
       item.primaryHref,
-      item.primaryExternal
+      item.primaryExternal,
+      `${dict.slices.compLaunchPrefix || "Open"} ${item.shortLabel}`
     );
   });
 }
@@ -169,7 +178,7 @@ function renderWorkSection(dict) {
   grid.innerHTML = dict.work.projects
     .map((proj) => {
       const mark = proj.logo
-        ? `<img class="tool-card__logo" src="${esc(proj.logo)}" alt="${esc(proj.title)} logo" width="44" height="44" loading="lazy" decoding="async" />`
+        ? `<img class="tool-card__logo" src="${esc(proj.logo)}" alt="${esc(proj.title)} logo" width="44" height="44" loading="lazy" decoding="async" fetchpriority="low" />`
         : proj.icon
           ? `<span class="tool-card__glyph" aria-hidden="true"><svg><use href="#${esc(proj.icon)}"/></svg></span>`
           : `<span class="tool-card__glyph" aria-hidden="true">${esc(proj.glyph || "OSS")}</span>`;
@@ -349,6 +358,12 @@ function applyLocale(locale, { announce = false, syncQuoteLang = false } = {}) {
   renderExperienceSection(dict);
   renderContactSection(dict);
 
+  // Sync panel data-label attributes before or after deck init
+  Object.entries(dict.panelLabels).forEach(([id, label]) => {
+    const panel = document.getElementById(id);
+    if (panel) panel.dataset.label = label;
+  });
+
   if (deckApi) {
     deckApi.updateDotLabels(dict.panelLabels);
     deckApi.refresh();
@@ -371,12 +386,21 @@ function applyLocale(locale, { announce = false, syncQuoteLang = false } = {}) {
 }
 
 function bootstrap() {
+  // Static cloud lists are already pre-rendered in index.html
+  const stackEl = $("#stack-cloud");
+  if (stackEl) stackEl.dataset.hydrated = "true";
+  const routesEl = $("#short-routes");
+  if (routesEl) routesEl.dataset.hydrated = "true";
+
+  // If initial locale differs from pre-rendered English, update text before measuring layout
+  if (currentLocale !== "en") {
+    applyLocale(currentLocale, { announce: false, syncQuoteLang: true });
+  }
+
   deckApi = initDeck({ slicesSectionId: "library", sliceSteps: 5 });
   slicesApi = initSlices(deckApi, currentLocale);
   mangaApi = initMangaShowcase(currentLocale);
   initAtmosphere();
-
-  applyLocale(currentLocale, { announce: false, syncQuoteLang: true });
 
   document.querySelectorAll(".locale-button").forEach((btn) => {
     btn.addEventListener("click", () => {

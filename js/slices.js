@@ -16,10 +16,14 @@ export function initSlices(deckApi, initialLocale = "en") {
   const HG = 4 / Math.cos(Math.PI / 12); // 8px perpendicular ink cut
   const GAP = 8;
 
+  const initialArea = deckApi.getSlicesAreaSize
+    ? deckApi.getSlicesAreaSize()
+    : { w: area.clientWidth, h: area.clientHeight };
+
   let step = -1;
-  let W = 0;
-  let H = 0;
-  let port = false;
+  let W = initialArea.w;
+  let H = initialArea.h;
+  let port = W < H;
 
   const f = (n) => `${Math.round(n * 10) / 10}px`;
   const poly = (pts) =>
@@ -284,7 +288,7 @@ export function initSlices(deckApi, initialLocale = "en") {
     el.style.setProperty("--bb", f(b.b));
   };
 
-  const render = () => {
+  const render = (nextW, nextH) => {
     if (deckApi.flatMQ.matches) {
       stage.classList.remove("is-comp");
       SL.forEach((el) => {
@@ -295,8 +299,16 @@ export function initSlices(deckApi, initialLocale = "en") {
       return;
     }
 
-    W = area.clientWidth;
-    H = area.clientHeight;
+    if (typeof nextW === "number" && typeof nextH === "number") {
+      W = nextW;
+      H = nextH;
+    } else if (!W || !H) {
+      const sz = deckApi.getSlicesAreaSize
+        ? deckApi.getSlicesAreaSize()
+        : { w: 0, h: 0 };
+      W = sz.w || area.clientWidth;
+      H = sz.h || area.clientHeight;
+    }
     if (!W || !H) return;
     port = W < H;
     stage.classList.toggle("m-port", port);
@@ -342,10 +354,10 @@ export function initSlices(deckApi, initialLocale = "en") {
     SL.forEach((el, i) => el.style.setProperty("--z", String(i + 1)));
   };
 
+  // Double-rAF keeps .no-tr active across the layout commit frame without forcing synchronous reflow
   const instant = (fn) => {
     stage.classList.add("no-tr");
     fn();
-    void stage.offsetWidth;
     requestAnimationFrame(() =>
       requestAnimationFrame(() => stage.classList.remove("no-tr"))
     );
@@ -373,7 +385,11 @@ export function initSlices(deckApi, initialLocale = "en") {
       return;
     }
 
-    if (st < panel.offsetTop - deckApi.DH() * 0.55) {
+    const panelTop = deckApi.getPanelTop
+      ? deckApi.getPanelTop(slicesPanelIdx)
+      : panel.offsetTop;
+
+    if (st < panelTop - deckApi.DH() * 0.55) {
       setStep(0);
       return;
     }
@@ -397,7 +413,12 @@ export function initSlices(deckApi, initialLocale = "en") {
   });
 
   if ("ResizeObserver" in window) {
-    new ResizeObserver(() => instant(render)).observe(area);
+    new ResizeObserver((entries) => {
+      const cr = entries[0]?.contentRect;
+      if (!cr) return;
+      if (Math.abs(cr.width - W) < 1 && Math.abs(cr.height - H) < 1) return;
+      instant(() => render(cr.width, cr.height));
+    }).observe(area);
   }
 
   // Click a folded sliver or a composite shard background to focus that slice
@@ -417,6 +438,40 @@ export function initSlices(deckApi, initialLocale = "en") {
   });
 
   deckApi.registerSlicesUpdater(updateFromScroll);
+
+  // Zero-cookie Lite YouTube Facade inside Slice 2 (#higu-yt-btn)
+  const ytBtn = document.querySelector("#higu-yt-btn");
+  if (ytBtn) {
+    let ytWarm = false;
+    const warmYoutube = () => {
+      if (ytWarm) return;
+      ytWarm = true;
+      const link = document.createElement("link");
+      link.rel = "preconnect";
+      link.href = "https://www.youtube-nocookie.com";
+      document.head.appendChild(link);
+    };
+
+    ytBtn.addEventListener("pointerenter", warmYoutube, { once: true });
+    ytBtn.addEventListener("focusin", warmYoutube, { once: true });
+
+    ytBtn.addEventListener("click", () => {
+      const vid = ytBtn.dataset.ytId;
+      const box = ytBtn.closest(".higu-video");
+      if (!vid || !box) return;
+      const iframe = document.createElement("iframe");
+      iframe.width = "560";
+      iframe.height = "315";
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(vid)}?autoplay=1&controls=0&rel=0`;
+      iframe.title =
+        ytBtn.dataset.ytTitle || "Higurashi When They Cry TR - YouTube video player";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+      box.replaceChildren(iframe);
+    });
+  }
 
   // Interactive Higurashi trilingual quote switcher inside Slice 2
   let siteLocale = initialLocale === "tr" ? "tr" : "en";
@@ -453,7 +508,9 @@ export function initSlices(deckApi, initialLocale = "en") {
     });
   });
 
-  paintQuote();
+  if (quoteLang !== "en") {
+    paintQuote();
+  }
 
   return {
     setLocale(nextLocale, syncQuoteLang = false) {
@@ -462,7 +519,7 @@ export function initSlices(deckApi, initialLocale = "en") {
         quoteLang = siteLocale;
       }
       paintQuote();
-      instant(render);
+      instant(() => render());
     }
   };
 }

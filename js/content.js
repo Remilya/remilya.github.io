@@ -130,6 +130,8 @@ export const content = {
       compBanner: "PROJECT OVERVIEW // PICK A SLICE",
       compInspect: "Open Slice",
       compLaunch: "Open ↗",
+      compLaunchPrefix: "Open",
+      ytPlayAria: "Higurashi When They Cry TR - Play YouTube video",
       higuLangLabel: "Script Language",
       items: [
         {
@@ -251,7 +253,7 @@ export const content = {
           summary:
             "Batch watermarking app for manga chapters and image folders. Place logos by clicking directly on the preview, browse pages with arrow keys, and save per-page scale overrides to JSON.",
           stack: ["Python 3.10+", "CustomTkinter", "Pillow", "PyInstaller"],
-          logo: "assets/logos/watermark-deksmo.png",
+          logo: "assets/logos/watermark-deksmo.webp",
           links: [
             { label: "GitHub →", href: urls.repoWatermark, external: true },
             { label: "/Watermark", href: urls.shortWatermark, external: false }
@@ -454,6 +456,8 @@ export const content = {
       compBanner: "TÜM PROJELER // BİR DİLİM SEÇ",
       compInspect: "Dilimi Aç",
       compLaunch: "Aç ↗",
+      compLaunchPrefix: "Aç:",
+      ytPlayAria: "Higurashi When They Cry TR - YouTube videosunu oynat",
       higuLangLabel: "Metin Dili",
       items: [
         {
@@ -575,7 +579,7 @@ export const content = {
           summary:
             "Manga bölümlerine ve kalabalık görsel klasörlerine toplu filigran ekleyen Python uygulaması. Önizleme üzerine tıklayarak konumu seçebilir, ok tuşlarıyla sayfaları gezip özel ölçek ayarlarını JSON'a kaydedebilirsin.",
           stack: ["Python 3.10+", "CustomTkinter", "Pillow", "PyInstaller"],
-          logo: "assets/logos/watermark-deksmo.png",
+          logo: "assets/logos/watermark-deksmo.webp",
           links: [
             { label: "GitHub →", href: urls.repoWatermark, external: true },
             { label: "/Watermark", href: urls.shortWatermark, external: false }

@@ -50,6 +50,8 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
 
   const panels = Array.from(deck.querySelectorAll(".panel"));
   const slicesPanel = document.getElementById(slicesSectionId);
+  const slicesIdx = panels.indexOf(slicesPanel);
+  const slicesArea = slicesPanel ? slicesPanel.querySelector("#slicesArea") : null;
   const dotsEl = document.querySelector("#dots");
   const navLinks = Array.from(document.querySelectorAll(".lnav nav a"));
 
@@ -59,8 +61,14 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
 
   const isReducedMotion = () => reduceMotionQuery.matches;
   const isTouch = () => touchQuery.matches;
-  const DH = () => deck.clientHeight || window.innerHeight;
 
+  let dhVal = window.innerHeight || 800;
+  let lastDeckW = 0;
+  let lastDeckH = 0;
+  let lastAreaW = 0;
+  let lastAreaH = 0;
+  let panelMetrics = [];
+  let doesFit = true;
   let stops = [];
   let slicesUpdater = null;
   let pending = null;
@@ -68,46 +76,121 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
   let cur = 0;
   let restT = 0;
   let activePanelIdx = -1;
+  let userScrolled = false;
 
-  const buildStops = () => {
-    document.documentElement.style.setProperty("--dh", `${DH()}px`);
-    stops = [];
+  const DH = () => dhVal;
+  const getPanelTop = (pi) => (panelMetrics[pi] ? panelMetrics[pi].top : 0);
+  const getSlicesAreaSize = () => ({ w: lastAreaW, h: lastAreaH });
+  const fits = () => doesFit;
+
+  // Read initial layout FIRST while First-Paint layout is clean (0ms forced reflow)
+  const dots = [];
+  if (isReducedMotion()) {
+    panels.forEach((p) => p.classList.add("is-in"));
+  }
+
+  // Batched Read -> Compute -> Write layout pass (zero forced synchronous reflow)
+  const measureLayout = () => {
+    const w = deck.clientWidth || window.innerWidth;
+    const h = deck.clientHeight || window.innerHeight;
+    const st = deck.scrollTop;
     const flat = flatMQ.matches;
+    const areaW = slicesArea ? slicesArea.clientWidth : 0;
+    const areaH = slicesArea ? slicesArea.clientHeight : 0;
 
-    panels.forEach((p, pi) => {
-      if (p === slicesPanel) {
-        const sl = Array.from(p.querySelectorAll(".sl"));
-        const snaps = Array.from(p.querySelectorAll(".slice-snap"));
-        const count = flat ? sl.length : sliceSteps;
-        for (let k = 1; k <= count; k++) {
-          const offset = flat
-            ? sl[k - 1]
-              ? sl[k - 1].offsetTop
-              : 0
-            : k > 1 && snaps[k - 2]
-              ? snaps[k - 2].offsetTop
-              : (k - 1) * DH();
-          stops.push({ pi, k, top: p.offsetTop + offset });
-        }
+    const metrics = panels.map((p) => ({
+      top: p.offsetTop,
+      height: p.offsetHeight
+    }));
+
+    const sliceOffsets = [];
+    if (slicesIdx >= 0 && slicesPanel) {
+      const sl = Array.from(slicesPanel.querySelectorAll(".sl"));
+      const snaps = Array.from(slicesPanel.querySelectorAll(".slice-snap"));
+      const count = flat ? sl.length : sliceSteps;
+      for (let k = 1; k <= count; k++) {
+        const offset = flat
+          ? sl[k - 1]
+            ? sl[k - 1].offsetTop
+            : 0
+          : k > 1 && snaps[k - 2]
+            ? snaps[k - 2].offsetTop
+            : (k - 1) * h;
+        sliceOffsets.push({ k, offset });
+      }
+    }
+
+    lastDeckW = w;
+    lastDeckH = h;
+    lastAreaW = areaW;
+    lastAreaH = areaH;
+    panelMetrics = metrics;
+
+    const nextStops = [];
+    panels.forEach((_, pi) => {
+      const baseTop = metrics[pi].top;
+      if (pi === slicesIdx) {
+        sliceOffsets.forEach(({ k, offset }) => {
+          nextStops.push({ pi, k, top: baseTop + offset });
+        });
       } else {
-        stops.push({ pi, k: 0, top: p.offsetTop });
+        nextStops.push({ pi, k: 0, top: baseTop });
       }
     });
+    stops = nextStops;
+
+    doesFit =
+      !flat &&
+      metrics.every((m, idx) => idx === slicesIdx || m.height <= h + 2);
+
+    if (Math.abs(h - dhVal) > 0.5) {
+      dhVal = h;
+      document.documentElement.style.setProperty("--dh", `${h}px`);
+    } else {
+      dhVal = h;
+    }
+
+    const wantFree = !isTouch() && !doesFit;
+    if (deck.classList.contains("is-free") !== wantFree) {
+      deck.classList.toggle("is-free", wantFree);
+    }
+
+    return st;
   };
 
-  buildStops();
+  let initialScrollTop = measureLayout();
 
-  const nearest = () => {
-    const st = deck.scrollTop;
+  // Build right-side stage dots AFTER initial geometry read (contained in .dots)
+  if (dotsEl) {
+    const frag = document.createDocumentFragment();
+    panels.forEach((p, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "dot";
+      const labelText = p.dataset.label || p.id;
+      btn.setAttribute("aria-label", `${i + 1}. ${labelText}`);
+      const span = document.createElement("span");
+      span.className = "dot-label";
+      span.textContent = labelText;
+      btn.appendChild(span);
+      btn.addEventListener("click", () => go(firstStop(i)));
+      frag.appendChild(btn);
+      dots.push(btn);
+    });
+    dotsEl.replaceChildren(frag);
+  }
+
+  const nearest = (stOverride) => {
+    const st = typeof stOverride === "number" ? stOverride : deck.scrollTop;
     let bi = 0;
     let bd = Infinity;
-    stops.forEach((s, i) => {
-      const d = Math.abs(s.top - st);
+    for (let i = 0; i < stops.length; i++) {
+      const d = Math.abs(stops[i].top - st);
       if (d < bd) {
         bd = d;
         bi = i;
       }
-    });
+    }
     return bi;
   };
 
@@ -123,6 +206,7 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
 
   const go = (i, instant = false) => {
     if (!stops.length) return;
+    userScrolled = true;
     const idx = clamp(0, i, stops.length - 1);
     pending = idx;
     pendingAt = performance.now();
@@ -134,34 +218,13 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
   };
 
   const goToSlice = (k) => {
-    const slicesPi = panels.indexOf(slicesPanel);
-    if (slicesPi < 0) return;
-    const to = stops.findIndex((s) => s.pi === slicesPi && s.k === k);
+    if (slicesIdx < 0) return;
+    const to = stops.findIndex((s) => s.pi === slicesIdx && s.k === k);
     if (to >= 0) go(to);
   };
 
   const base = () =>
     pending !== null && performance.now() - pendingAt < 900 ? pending : nearest();
-
-  // Build right-side stage dots
-  const dots = [];
-  if (dotsEl) {
-    dotsEl.innerHTML = "";
-    panels.forEach((p, i) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "dot";
-      const labelText = p.dataset.label || p.id;
-      btn.setAttribute("aria-label", `${i + 1}. ${labelText}`);
-      const span = document.createElement("span");
-      span.className = "dot-label";
-      span.textContent = labelText;
-      btn.appendChild(span);
-      btn.addEventListener("click", () => go(firstStop(i)));
-      dotsEl.appendChild(btn);
-      dots.push(btn);
-    });
-  }
 
   const updateDotLabels = (labelMap = {}) => {
     panels.forEach((p, i) => {
@@ -209,15 +272,6 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
     dy > 0
       ? el.scrollTop + el.clientHeight < el.scrollHeight - 1
       : el.scrollTop > 0;
-
-  const fits = () =>
-    !flatMQ.matches &&
-    panels.every((p) => p === slicesPanel || p.offsetHeight <= DH() + 2);
-
-  const loosen = () => {
-    deck.classList.toggle("is-free", !isTouch() && !fits());
-  };
-  loosen();
 
   // Keyboard navigation
   window.addEventListener("keydown", (e) => {
@@ -299,7 +353,7 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
     { passive: false }
   );
 
-  // Active section tracking & lazy image warming
+  // Active section tracking & post-scroll lazy image warming
   const near = new Set();
   const warm = (p) => {
     if (!p || near.has(p)) return;
@@ -328,7 +382,10 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
       }
     });
 
-    [i - 1, i, i + 1].forEach((k) => warm(panels[k]));
+    // Keep offscreen images strictly lazy on initial Hero load so Hero LCP gets 100% bandwidth
+    if (i > 0 || userScrolled) {
+      [i - 1, i, i + 1].forEach((k) => warm(panels[k]));
+    }
 
     const url =
       i === 0
@@ -353,10 +410,6 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
   );
   panels.forEach((p) => activeIO.observe(p));
 
-  if (isReducedMotion()) {
-    panels.forEach((p) => p.classList.add("is-in"));
-  }
-
   // Keyboard focus auto-alignment
   deck.addEventListener("focusin", (e) => {
     const t = e.target;
@@ -373,16 +426,13 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
     let to = -1;
     if (sl && slicesPanel && slicesPanel.contains(sl)) {
       const k = Number(sl.dataset.k);
-      // Do not jump away if stage is on step 5 composite and user tabs into shard links
       const stage = slicesPanel.querySelector(".slices-stage");
       if (stage && stage.classList.contains("is-comp") && t.closest(".lab")) {
         to = stops.findIndex(
-          (s) => s.pi === panels.indexOf(slicesPanel) && s.k === sliceSteps
+          (s) => s.pi === slicesIdx && s.k === sliceSteps
         );
       } else {
-        to = stops.findIndex(
-          (s) => s.pi === panels.indexOf(slicesPanel) && s.k === k
-        );
+        to = stops.findIndex((s) => s.pi === slicesIdx && s.k === k);
       }
     } else {
       const p = t.closest(".panel");
@@ -392,36 +442,50 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
     if (to >= 0 && to !== nearest()) go(to);
   });
 
-  // Scroll frame painter
+  // Scroll frame painter (uses cached panelMetrics -> zero offsetTop/offsetHeight layout reads)
   let ticking = false;
-  const paint = () => {
+  const paint = (stOverride) => {
     ticking = false;
-    const st = deck.scrollTop;
-    const h = DH();
+    const st = typeof stOverride === "number" ? stOverride : deck.scrollTop;
+    if (!userScrolled && st > 8) {
+      userScrolled = true;
+      if (activePanelIdx >= 0) {
+        [activePanelIdx - 1, activePanelIdx, activePanelIdx + 1].forEach((k) =>
+          warm(panels[k])
+        );
+      }
+    }
+
+    const h = dhVal;
     if (slicesUpdater) slicesUpdater(st);
 
     if (isReducedMotion()) return;
-    for (const p of panels) {
-      if (p === slicesPanel) continue;
-      const top = p.offsetTop - st;
-      const bottom = top + p.offsetHeight;
+    for (let i = 0; i < panels.length; i++) {
+      const p = panels[i];
+      if (i === slicesIdx) continue;
+      const m = panelMetrics[i];
+      if (!m) continue;
+      const top = m.top - st;
+      const bottom = top + m.height;
       const t = top > 0 ? top / h : bottom < h ? (bottom - h) / h : 0;
       if (t <= -1.5 || t >= 1.5) continue;
       p.style.setProperty("--ta", Math.min(1, Math.abs(t)).toFixed(4));
     }
   };
 
-  const rest = () => {
+  const rest = (stOverride) => {
     window.clearTimeout(restT);
-    paint();
-    cur = nearest();
-    const st = deck.scrollTop;
-    const h = DH();
-    panels.forEach((p) => {
-      const top = p.offsetTop - st;
-      const seen = Math.min(h, top + p.offsetHeight) - Math.max(0, top);
-      if (seen > h * 0.25) p.classList.add("is-in");
-    });
+    const st = typeof stOverride === "number" ? stOverride : deck.scrollTop;
+    paint(st);
+    cur = nearest(st);
+    const h = dhVal;
+    for (let i = 0; i < panels.length; i++) {
+      const m = panelMetrics[i];
+      if (!m) continue;
+      const top = m.top - st;
+      const seen = Math.min(h, top + m.height) - Math.max(0, top);
+      if (seen > h * 0.25) panels[i].classList.add("is-in");
+    }
   };
 
   deck.addEventListener(
@@ -429,40 +493,54 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
     () => {
       if (!ticking) {
         ticking = true;
-        requestAnimationFrame(paint);
+        requestAnimationFrame(() => paint());
       }
       window.clearTimeout(restT);
-      restT = window.setTimeout(rest, 180);
+      restT = window.setTimeout(() => rest(), 180);
     },
     { passive: true }
   );
 
   if ("onscrollend" in deck) {
-    deck.addEventListener("scrollend", rest);
+    deck.addEventListener("scrollend", () => rest());
   }
 
   const reflow = () => {
     const keep =
       pending !== null && performance.now() - pendingAt < 900 ? pending : cur;
-    buildStops();
-    loosen();
+    let st = measureLayout();
     if (stops.length) {
       const s = stops[clamp(0, keep, stops.length - 1)];
-      if (Math.abs(deck.scrollTop - s.top) > 2 && fits()) {
+      if (Math.abs(st - s.top) > 2 && fits()) {
         jump(s.top);
+        st = s.top;
       }
     }
-    paint();
+    paint(st);
   };
 
-  window.addEventListener("resize", reflow);
-  if ("ResizeObserver" in window) {
-    new ResizeObserver(reflow).observe(deck);
-    const grow = new ResizeObserver(() => {
-      buildStops();
-      loosen();
+  let roRaf = 0;
+  const scheduleReflow = () => {
+    if (roRaf) return;
+    roRaf = requestAnimationFrame(() => {
+      roRaf = 0;
+      reflow();
     });
-    panels.forEach((p) => grow.observe(p));
+  };
+
+  window.addEventListener("resize", scheduleReflow, { passive: true });
+  if ("ResizeObserver" in window) {
+    new ResizeObserver((entries) => {
+      const cr = entries[0]?.contentRect;
+      if (
+        cr &&
+        Math.abs(cr.width - lastDeckW) < 1 &&
+        Math.abs(cr.height - lastDeckH) < 1
+      ) {
+        return;
+      }
+      scheduleReflow();
+    }).observe(deck);
   }
 
   // Deep link jump on initial load
@@ -470,16 +548,22 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
     const linked = panels.findIndex((p) => `#${p.id}` === window.location.hash);
     if (linked > 0) {
       const targetStop = firstStop(linked);
-      if (targetStop >= 0) jump(stops[targetStop].top);
+      if (targetStop >= 0) {
+        userScrolled = true;
+        initialScrollTop = stops[targetStop].top;
+        jump(initialScrollTop);
+      }
     }
   }
-  cur = nearest();
-  rest();
+  cur = nearest(initialScrollTop);
+  rest(initialScrollTop);
 
   return {
     deck,
     panels,
     getStops: () => stops,
+    getPanelTop,
+    getSlicesAreaSize,
     DH,
     flatMQ,
     isReducedMotion,
@@ -491,12 +575,11 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 5 } = {}) {
     updateDotLabels,
     registerSlicesUpdater(fn) {
       slicesUpdater = fn;
-      paint();
+      fn(initialScrollTop);
     },
     refresh() {
-      buildStops();
-      loosen();
-      paint();
+      const st = measureLayout();
+      paint(st);
     }
   };
 }

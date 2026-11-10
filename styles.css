@@ -3,6 +3,33 @@
    Zero-bloat Persona × Bernkastel × Touhou Scroll-Deck & 15° Diagonal Engine
    ========================================================================== */
 
+@font-face {
+  font-family: "Jakarta Fallback";
+  src: local("Arial"), local("Liberation Sans");
+  size-adjust: 101.8%;
+  ascent-override: 97%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Cormorant Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  size-adjust: 94%;
+  ascent-override: 96%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Mono Fallback";
+  src: local("Consolas"), local("Courier New"), local("Liberation Mono");
+  size-adjust: 109.1%;
+  ascent-override: 93%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* Opaque Graphic Obsidian-Ultraviolet Base */
   --ink: #080312;
@@ -39,9 +66,9 @@
   --ease-io: cubic-bezier(0.7, 0, 0.25, 1);
 
   /* Typography */
-  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Plus Jakarta Sans", "Jakarta Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Cormorant Garamond", "Cormorant Fallback", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Mono Fallback", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-cjk: "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
 }
 
@@ -195,6 +222,16 @@ svg use {
   scroll-snap-stop: always;
 }
 
+@media (min-height: 541px) {
+  .work-panel,
+  .manga-panel,
+  .journey-panel,
+  .contact-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: 100svh;
+  }
+}
+
 .wrap {
   position: relative;
   z-index: 3;
@@ -227,37 +264,42 @@ svg use {
   }
 }
 
-/* Right-Edge Stage Dots */
+/* Right-Edge Stage Dots (100% GPU-Composited scaleY + opacity) */
 .dots {
   position: fixed;
-  right: 7px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 70;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 6px;
+  contain: layout style;
 }
 
 .dot {
   position: relative;
-  width: 6px;
-  height: 6px;
-  border-radius: 2px;
-  background: rgba(216, 180, 254, 0.36);
-  transition: height 0.4s var(--ease-io), background 0.25s ease, transform 0.25s ease;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
 }
 
-.dot::before {
+.dot::after {
   content: "";
-  position: absolute;
-  inset: -9px -10px -9px -14px;
+  width: 6px;
+  height: 22px;
+  border-radius: 2px;
+  background: var(--lavender);
+  opacity: 0.36;
+  transform: scaleY(0.28);
+  transition: transform 0.36s var(--ease-io), opacity 0.22s ease;
 }
 
-.dot.is-active {
-  height: 22px;
-  background: var(--lavender);
+.dot.is-active::after {
+  opacity: 1;
+  transform: scaleY(1);
   box-shadow: 2px 2px 0 var(--ink);
 }
 
@@ -267,30 +309,36 @@ svg use {
 
 @media (min-width: 768px) {
   .dots {
-    right: clamp(12px, 1.5vw, 24px);
-    gap: 16px;
+    right: clamp(10px, 1.4vw, 22px);
+    gap: 8px;
   }
 
   .dot {
-    width: 8px;
-    height: 8px;
-    border: 1.5px solid var(--ink);
+    width: 26px;
+    height: 30px;
   }
 
-  .dot.is-active {
+  .dot::after {
+    width: 8px;
     height: 28px;
+    border: 1.5px solid var(--ink);
+    transform: scaleY(0.3);
+  }
+
+  .dot.is-active::after {
     background: var(--amethyst);
     border-color: var(--paper-pure);
+    transform: scaleY(1);
   }
 
-  .dot:hover {
-    background: var(--lavender);
+  .dot:hover::after {
+    opacity: 0.92;
   }
 
   .dot-label {
     display: block;
     position: absolute;
-    right: 22px;
+    right: 26px;
     top: 50%;
     transform: translate(8px, -50%);
     white-space: nowrap;
@@ -335,6 +383,7 @@ svg use {
   z-index: 1;
   overflow: hidden;
   pointer-events: none;
+  contain: strict;
 }
 
 .mote {
@@ -504,7 +553,7 @@ svg use {
   background: var(--ink-raise);
   color: var(--lavender);
   border: 2px solid var(--uv-border);
-  transition: transform 0.18s var(--ease), background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  transition: transform 0.18s var(--ease);
 }
 
 .ib:hover {
@@ -623,7 +672,7 @@ svg use {
   font-size: 15.5px;
   letter-spacing: 0.01em;
   box-shadow: 4px 4px 0 var(--ink);
-  transition: transform 0.18s var(--ease), background 0.18s ease, color 0.18s ease, box-shadow 0.18s var(--ease);
+  transition: transform 0.18s var(--ease);
 }
 
 .btn svg {
@@ -1137,7 +1186,7 @@ svg use {
   overflow: hidden;
   background: var(--ink);
   box-shadow: 6px 6px 0 var(--ink);
-  transition: transform 0.2s var(--ease), border-color 0.2s ease;
+  transition: transform 0.2s var(--ease);
 }
 
 .sl-frame--ink {
@@ -1208,7 +1257,7 @@ svg use {
   color: var(--lavender);
 }
 
-/* Slice 2: Higurashi Video & Trilingual Quote Box */
+/* Slice 2: Higurashi Lite YouTube Facade & Trilingual Quote Box */
 .higu-video {
   position: relative;
   width: min(100%, calc(30vh * 16 / 9));
@@ -1226,6 +1275,87 @@ svg use {
   height: 100%;
   border: 0;
   display: block;
+}
+
+.yt-lite {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--ink);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.yt-lite img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.28s var(--ease), opacity 0.22s ease;
+}
+
+.yt-lite::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 3, 18, 0.72) 0%,
+    rgba(8, 3, 18, 0.08) 38%,
+    rgba(8, 3, 18, 0.38) 100%
+  );
+  pointer-events: none;
+}
+
+.yt-lite__top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--paper-pure);
+  text-shadow: 0 1px 3px var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.yt-lite__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  filter: drop-shadow(0 4px 10px rgba(8, 3, 18, 0.65));
+  transition: transform 0.2s var(--ease);
+  pointer-events: none;
+}
+
+.yt-lite__bg {
+  opacity: 0.92;
+  transition: opacity 0.18s ease;
+}
+
+.yt-lite:hover img,
+.yt-lite:focus-visible img {
+  transform: scale(1.03);
+}
+
+.yt-lite:hover .yt-lite__play,
+.yt-lite:focus-visible .yt-lite__play {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.yt-lite:hover .yt-lite__bg,
+.yt-lite:focus-visible .yt-lite__bg {
+  opacity: 1;
 }
 
 .higu-top {
@@ -1433,8 +1563,13 @@ html:not(.js) .slice-snap {
   position: absolute;
   inset: 0;
   z-index: var(--z, 1);
+  contain: layout style paint;
   clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
   transition: clip-path 0.62s var(--ease-io);
+}
+
+.js .slices-stage[data-step="0"] .sl .body {
+  content-visibility: hidden;
 }
 
 .js .no-tr .sl,
@@ -1611,7 +1746,7 @@ html:not(.js) .slice-snap {
   font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
-  transition: transform 0.16s var(--ease), background 0.18s ease, border-color 0.18s ease;
+  transition: transform 0.16s var(--ease);
 }
 
 .lab-cta:hover {
@@ -1686,7 +1821,7 @@ html:not(.js) .slice-snap {
   background: var(--ink-raise);
   border: 2.5px solid var(--uv-border);
   box-shadow: 6px 6px 0 var(--card-acc, var(--amethyst));
-  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), border-color 0.18s ease;
+  transition: transform 0.18s var(--ease);
 }
 
 .tool-card:hover {
@@ -2009,7 +2144,7 @@ html:not(.js) .slice-snap {
   color: var(--paper-pure);
   border: 2.5px solid var(--lavender);
   box-shadow: 3px 3px 0 var(--violet);
-  transition: transform 0.18s var(--ease), background 0.18s ease, border-color 0.18s ease;
+  transition: transform 0.18s var(--ease);
 }
 
 .car-nav:hover {
@@ -2425,7 +2560,7 @@ html:not(.js) .slice-snap {
   border: 2.5px solid var(--uv-border);
   box-shadow: 5px 5px 0 var(--amethyst);
   text-decoration: none;
-  transition: transform 0.18s var(--ease), background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s var(--ease);
+  transition: transform 0.18s var(--ease);
 }
 
 .social-card:nth-child(2),
@@ -2532,7 +2667,7 @@ html:not(.js) .slice-snap {
   font-weight: 700;
   color: var(--lavender);
   text-decoration: none;
-  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease, transform 0.16s var(--ease);
+  transition: transform 0.16s var(--ease);
 }
 
 .route-pill:hover {

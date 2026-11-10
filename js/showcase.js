@@ -166,6 +166,9 @@ export function initAtmosphere() {
   const coarsePointer = window.matchMedia("(hover: none)").matches;
   if (reduceMotion) return;
 
+  const vw0 = window.innerWidth;
+  const vh0 = window.innerHeight;
+
   // Seed lightweight CSS compositor golden/crimson motes in Hero & Contact
   document.querySelectorAll("[data-motes]").forEach((box, b) => {
     const count = Math.round(
@@ -197,12 +200,16 @@ export function initAtmosphere() {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
 
-  const resize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  };
-  resize();
-  window.addEventListener("resize", resize);
+  canvas.width = vw0;
+  canvas.height = vh0;
+  window.addEventListener(
+    "resize",
+    () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    },
+    { passive: true }
+  );
 
   const MAX = 38;
   const GAP = 42;
