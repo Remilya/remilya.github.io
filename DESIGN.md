@@ -8,9 +8,9 @@ The visual system pairs **Remilya's OC mascot identity (`R / REMILYA` android ca
 ---
 
 ## Core Visual Rules
-1. **Electric Ultraviolet Dark Series (Zero White Washout)**: Every stage and all four `15°` diagonal slices stay in deep, saturated Ultraviolet tones (`#5b21b6` -> `#2e1065` -> `#4c1d95` -> `#7e22ce`) separated by `8px` obsidian-black `#080312` diagonal cuts. Stark white backgrounds and pale pastel fills are avoided.
+1. **Electric Ultraviolet Dark Series (Zero White Washout)**: Every stage and all five `15°` diagonal slices stay in deep, saturated Ultraviolet tones (`#5b21b6` -> `#2e1065` -> `#6b21a8` -> `#4c1d95` -> `#7e22ce`) separated by `8px` obsidian-black `#080312` diagonal cuts. Stark white backgrounds and pale pastel fills are avoided.
 2. **Opaque Graphic Surfaces & Crisp Cuts**: Never use blurry SaaS glassmorphism (`backdrop-filter: blur`). Surfaces use solid opaque fills, `2px-3px solid` ultraviolet borders (`#8b5cf6` / `#c4b5fd`), and `4px-10px` hard offset shadows.
-3. **Authentic Mascot Branding & Bespoke Vector Glyphs**: Hero centerpiece, navbar emblem, favicons (`favicon-64.png`, `favicon.svg`, `apple-touch-icon.png`), and OpenGraph card feature Remilya's custom OC mascot logo; UI icons live in an inline `<svg><symbol>` sprite (`#i-torii`, `#i-quill`, `#i-katana`, `#i-scarlet`, `#i-voice`, `#i-reel`).
+3. **Authentic Mascot Branding & Bespoke Vector Glyphs**: Hero centerpiece, navbar emblem, favicons (`favicon-64.png`, `favicon.svg`, `apple-touch-icon.png`), and OpenGraph card feature Remilya's custom OC mascot logo. UI icons live in an inline `<svg><symbol>` sprite (`#i-torii`, `#i-quill`, `#i-butterfly`, `#i-katana`, `#i-scarlet`, `#i-voice`, `#i-reel`).
 4. **Compositor-Friendly Motion**: Scroll-deck transitions, diagonal `clip-path: polygon(...)` sweeps, timeline line draws (`scaleX`), and `<canvas id="cursorFx">` electric ultraviolet butterflies respect `prefers-reduced-motion: reduce`.
 
 ---
@@ -25,8 +25,9 @@ The visual system pairs **Remilya's OC mascot identity (`R / REMILYA` android ca
 | `--paper` / `--paper-pure` | `#ede9fe` / `#f5f3ff` | Soft Ultraviolet Mist & crisp display typography |
 | `--uv-core` | `#5b21b6` | **Slice 1 (`Gensokyo 1:1`)** Core Electric Violet fill |
 | `--uv-midnight` | `#2e1065` | **Slice 2 (`Higurashi TR`)** Midnight Ultraviolet fill |
-| `--uv-indigo` | `#4c1d95` | **Slice 3 (`RAIDOU TR`)** Royal Indigo Ultraviolet fill |
-| `--uv-electric` | `#7e22ce` | **Slice 4 (`Scarlet Savior`)** Vivid Electric Ultraviolet fill |
+| `--uv-umineko` | `#6b21a8` | **Slice 3 (`Umineko TR`)** Rokkenjima Royal Purple-Amethyst fill |
+| `--uv-indigo` | `#4c1d95` | **Slice 4 (`RAIDOU TR`)** Royal Indigo Ultraviolet fill |
+| `--uv-electric` | `#7e22ce` | **Slice 5 (`Scarlet Savior`)** Vivid Electric Ultraviolet fill |
 | `--violet` / `--amethyst` | `#7c3aed` / `#9333ea` | Primary CTAs, active tabs, and hard offset shadows |
 | `--uv-border` / `--lavender` | `#8b5cf6` / `#c4b5fd` | Card borders, kickers, mono route pills, and `.cap` accents |
 
@@ -34,12 +35,13 @@ The visual system pairs **Remilya's OC mascot identity (`R / REMILYA` android ca
 
 ## Stage Architecture (`100svh` Scroll Deck)
 1. **`#top` - Hero**: Asymmetric two-column poster + Remilya OC Mascot (`assets/remilya-mascot.webp`) over a rotated ultraviolet Persona frame with project chips underneath.
-2. **`#library` - Featured Projects (`5-Stop Sticky 15° Polygon Stage`)**:
+2. **`#library` - Featured Projects (`6-Stop Sticky 15° Polygon Stage`)**:
    - **Stop 1 (`#5b21b6`)**: Gensokyo 1:1 Interactive Atlas (`remilya.dev/Gensokyo/`)
    - **Stop 2 (`#2e1065`)**: Higurashi When They Cry TR (`remilya.dev/Higurashi/`) + embedded YouTube showcase video & live `TR / EN / 日本語` dialogue switcher
-   - **Stop 3 (`#4c1d95`)**: RAIDOU Remastered TR (`100%` PC Turkish patch)
-   - **Stop 4 (`#7e22ce`)**: Scarlet Savior (`itch.io` Ren'Py psychological horror visual novel)
-   - **Stop 5 (`is-comp`)**: Alternating `+15° / -15°` (`/ \ /`) 4-shard Electric Ultraviolet panorama; prior slices fold into clickable `.is-sliver` tabs on steps `2-4`.
+   - **Stop 3 (`#6b21a8`)**: Umineko When They Cry TR (`remilya.dev/Umineko/`) + Special Tea Party trailer preview & live `TR / EN / 日本語` Beatrice Red Truth switcher
+   - **Stop 4 (`#4c1d95`)**: RAIDOU Remastered TR (`100%` PC Turkish patch)
+   - **Stop 5 (`#7e22ce`)**: Scarlet Savior (`itch.io` Ren'Py psychological horror visual novel)
+   - **Stop 6 (`is-comp`)**: Alternating `+15° / -15°` (`/ \ / \`) 5-shard Electric Ultraviolet panorama. Prior slices fold into clickable `.is-sliver` tabs on steps `2-5`.
 3. **`#work` - Open-Source Tools**: Crisp `2×2` graphic cards for `VOICEVOX Expressive TTS`, `Scroll-Hero`, `Watermark-Deksmo`, and `Deksmo WebGrab`.
 4. **`#translations` - Manga Translations**: Interactive 3-volume cover fan + active dossier for *Umineko Episode 1*, *Umineko Episode 2*, and *Re:Zero Arc 1*.
 5. **`#experience` - Background & Tools**: Connected 4-node graphic timeline + core technology strip.

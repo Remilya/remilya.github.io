@@ -1,5 +1,5 @@
 import { clamp } from "./deck.js";
-import { higurashiQuotes } from "./content.js";
+import { higurashiQuotes, uminekoQuotes } from "./content.js";
 
 export function initSlices(deckApi, initialLocale = "en") {
   const panel = document.querySelector("#library");
@@ -121,7 +121,7 @@ export function initSlices(deckApi, initialLocale = "en") {
       const xFrac = widerLeft ? 0.46 : 0.54;
       const tyAt = tl + (tr - tl) * xFrac;
       const byAt = bl + (br - bl) * xFrac;
-      const yBias = c === 0 ? 0.58 : 0.5;
+      const yBias = c === 0 ? 0.61 : 0.5;
       out.push({
         pts: [
           [0, tl],
@@ -151,14 +151,15 @@ export function initSlices(deckApi, initialLocale = "en") {
     const rh = (H - (R - 1) * GAP) / R;
     const sl = [];
     for (let r = 0; r < R; r++) {
+      const cRow = r === R - 1 ? N - sl.length : C;
       const y0 = r * (rh + GAP);
       const y1 = y0 + rh;
-      const fit = fitN(W, rh, C) || {
+      const fit = fitN(W, rh, cRow) || {
         s: rh * T,
         eq: false,
-        m: Math.max(8, (W - (C - 1) * rh * T) / C)
+        m: Math.max(8, (W - (cRow - 1) * rh * T) / cRow)
       };
-      sl.push(...cols(W, y0, y1, C, r, fit));
+      sl.push(...cols(W, y0, y1, cRow, r, fit));
     }
     return { mode: "grid", sl: sl.slice(0, N) };
   };
@@ -368,6 +369,12 @@ export function initSlices(deckApi, initialLocale = "en") {
     step = n;
     stage.dataset.step = String(n);
     stage.classList.toggle("is-comp", n === COMP_STEP);
+    if (n !== 3) {
+      const umiVid = area.querySelector(".umi-video video");
+      if (umiVid && !umiVid.paused) {
+        umiVid.pause();
+      }
+    }
     render();
   };
 
@@ -423,7 +430,7 @@ export function initSlices(deckApi, initialLocale = "en") {
 
   // Click a folded sliver or a composite shard background to focus that slice
   area.addEventListener("click", (e) => {
-    if (e.target.closest("a, button, iframe")) return;
+    if (e.target.closest("a, button, iframe, video")) return;
     const sl = e.target.closest(".sl");
     if (!sl) return;
     if (
@@ -473,13 +480,35 @@ export function initSlices(deckApi, initialLocale = "en") {
     });
   }
 
-  // Interactive Higurashi trilingual quote switcher inside Slice 2
+  // Interactive Higurashi & Umineko trilingual quote switchers inside Slices 2 & 3
+  const umiVideoBtn = document.querySelector("#umi-video-btn");
+  if (umiVideoBtn) {
+    umiVideoBtn.addEventListener("click", () => {
+      const src = umiVideoBtn.dataset.videoSrc;
+      const box = umiVideoBtn.closest(".umi-video");
+      if (!src || !box) return;
+      const video = document.createElement("video");
+      video.src = src;
+      video.poster = "assets/umineko-video.webp";
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      box.replaceChildren(video);
+      video.play().catch(() => {});
+    });
+  }
+
   let siteLocale = initialLocale === "tr" ? "tr" : "en";
   let quoteLang = siteLocale;
+  let umiQuoteLang = siteLocale;
 
   const langBtns = Array.from(document.querySelectorAll("[data-higu-lang]"));
   const speakerEl = document.querySelector("#higu-speaker");
   const lineEl = document.querySelector("#higu-line");
+
+  const umiLangBtns = Array.from(document.querySelectorAll("[data-umi-lang]"));
+  const umiSpeakerEl = document.querySelector("#umi-speaker");
+  const umiLineEl = document.querySelector("#umi-line");
 
   const paintQuote = () => {
     const q = higurashiQuotes[0];
@@ -496,6 +525,21 @@ export function initSlices(deckApi, initialLocale = "en") {
       lineEl.textContent = `${wrap[0]}${q.lines[quoteLang] || q.lines.en}${wrap[1]}`;
       lineEl.lang = quoteLang === "ja" ? "ja" : quoteLang;
     }
+
+    const uq = uminekoQuotes[0];
+    umiLangBtns.forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(btn.dataset.umiLang === umiQuoteLang));
+    });
+
+    if (umiSpeakerEl) {
+      umiSpeakerEl.textContent = uq.speaker[umiQuoteLang] || uq.speaker.en;
+      umiSpeakerEl.lang = umiQuoteLang === "ja" ? "ja" : umiQuoteLang;
+    }
+    if (umiLineEl) {
+      const uWrap = umiQuoteLang === "ja" ? ["「", "」"] : ["“", "”"];
+      umiLineEl.textContent = `${uWrap[0]}${uq.lines[umiQuoteLang] || uq.lines.en}${uWrap[1]}`;
+      umiLineEl.lang = umiQuoteLang === "ja" ? "ja" : umiQuoteLang;
+    }
   };
 
   langBtns.forEach((btn) => {
@@ -508,6 +552,16 @@ export function initSlices(deckApi, initialLocale = "en") {
     });
   });
 
+  umiLangBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const l = btn.dataset.umiLang;
+      if (l === "tr" || l === "en" || l === "ja") {
+        umiQuoteLang = l;
+        paintQuote();
+      }
+    });
+  });
+
   if (quoteLang !== "en") {
     paintQuote();
   }
@@ -515,8 +569,9 @@ export function initSlices(deckApi, initialLocale = "en") {
   return {
     setLocale(nextLocale, syncQuoteLang = false) {
       siteLocale = nextLocale === "tr" ? "tr" : "en";
-      if (syncQuoteLang && quoteLang !== "ja") {
-        quoteLang = siteLocale;
+      if (syncQuoteLang) {
+        if (quoteLang !== "ja") quoteLang = siteLocale;
+        if (umiQuoteLang !== "ja") umiQuoteLang = siteLocale;
       }
       paintQuote();
       instant(() => render());

@@ -41,9 +41,10 @@
   --paper-soft: rgba(237, 233, 254, 0.85);
   --paper-faint: rgba(196, 181, 253, 0.66);
 
-  /* Electric Ultraviolet Dark Series (4 Slices + Glow Accents) */
+  /* Electric Ultraviolet Dark Series (5 Slices + Glow Accents) */
   --uv-core: #5b21b6;
   --uv-midnight: #2e1065;
+  --uv-umineko: #6b21a8;
   --uv-indigo: #4c1d95;
   --uv-electric: #7e22ce;
 
@@ -1092,15 +1093,22 @@ svg use {
   --shadow-c: var(--uv-electric);
 }
 
-/* 03: Royal Indigo Ultraviolet (#4c1d95) */
+/* 03: Rokkenjima Royal Purple-Amethyst (#6b21a8) */
 .sl-3 {
+  --c: var(--uv-umineko);
+  --fg: var(--paper-pure);
+  --shadow-c: var(--ink);
+}
+
+/* 04: Royal Indigo Ultraviolet (#4c1d95) */
+.sl-4 {
   --c: var(--uv-indigo);
   --fg: var(--paper-pure);
   --shadow-c: var(--ink);
 }
 
-/* 04: Vivid Electric Ultraviolet (#7e22ce) */
-.sl-4 {
+/* 05: Vivid Electric Ultraviolet (#7e22ce) */
+.sl-5 {
   --c: var(--uv-electric);
   --fg: var(--paper-pure);
   --shadow-c: var(--ink-panel);
@@ -1270,11 +1278,14 @@ svg use {
   overflow: hidden;
 }
 
-.higu-video iframe {
+.higu-video iframe,
+.higu-video video {
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
+  object-fit: cover;
+  background: #000;
 }
 
 .yt-lite {
@@ -1428,6 +1439,15 @@ svg use {
   font-family: var(--font-cjk);
 }
 
+.umi-speaker {
+  background: #be123c;
+  color: #fff1f2;
+}
+
+.umi-line {
+  color: #fecdd3;
+}
+
 /* Slice 4: Single Accent Badge */
 .flow-chip {
   display: inline-block;
@@ -1513,7 +1533,7 @@ html:not(.js) .slice-snap {
 
 /* With JS: Sticky 15° Diagonal Slice Stage */
 .js .slices {
-  height: 500%;
+  height: 600%;
   display: block;
   overflow: visible;
 }
@@ -1521,12 +1541,12 @@ html:not(.js) .slice-snap {
 .js .slices-stage {
   position: sticky;
   top: 0;
-  height: 20%;
+  height: calc(100% / 6);
   overflow: hidden;
 }
 
 .js .slice-snap {
-  height: 20%;
+  height: calc(100% / 6);
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -1534,17 +1554,17 @@ html:not(.js) .slice-snap {
 /* Coarse touch screens: half-screen swipe per slice */
 @media (hover: none) and (pointer: coarse) and (min-height: 541px) {
   .js .slices {
-    height: 300%;
+    height: 350%;
   }
   .js .slices-stage {
-    height: calc(100% / 3);
+    height: calc(200% / 7);
   }
   .js .slice-snap {
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(var(--k) * 100% / 6);
-    height: calc(100% / 6);
+    top: calc(var(--k) * 100% / 7);
+    height: calc(100% / 7);
     pointer-events: none;
   }
 }
@@ -1594,7 +1614,8 @@ html:not(.js) .slice-snap {
   transition: opacity 0.42s ease 0.26s;
 }
 
-.js .sl:not(.is-active) iframe {
+.js .sl:not(.is-active) iframe,
+.js .sl:not(.is-active) video {
   pointer-events: none;
 }
 

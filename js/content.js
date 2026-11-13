@@ -9,6 +9,7 @@ export const urls = {
   gensokyoAtlas: "https://remilya.dev/Gensokyo/",
   repoGensokyoAssets: "https://github.com/Remilya/gensokyo-assets",
   higurashiArchive: "https://remilya.dev/Higurashi/",
+  uminekoArchive: "https://remilya.dev/Umineko/",
   shortRaidou: "https://remilya.dev/Raidou/",
   shortScarlet: "https://remilya.dev/ScarletSavior/",
   shortVoicevox: "https://remilya.dev/Voicevox/",
@@ -22,6 +23,8 @@ export const urls = {
   itchScarlet: "https://remilya356.itch.io/scarlet-savior",
   repoRaidou: "https://github.com/Remilya/raidou-remastered-tr",
   repoHigurashi: "https://github.com/Remilya/Higurashi",
+  repoUmineko: "https://github.com/Remilya/Umineko",
+  uminekoTrailer: "https://remilya.dev/Umineko/assets/umineko-tr-fragman.mp4",
   mangaEp1:
     "https://manga-tr.com/manga-umineko-no-naku-koro-ni-episode-1-legend-of-the-golden-witch.html",
   mangaEp2:
@@ -46,6 +49,22 @@ export const higurashiQuotes = [
   }
 ];
 
+export const uminekoQuotes = [
+  {
+    id: "red-truth",
+    speaker: {
+      en: "BEATRICE · THE GOLDEN WITCH",
+      tr: "BEATRICE · ALTIN CADI",
+      ja: "ベアトリーチェ ・ 黄金の魔女"
+    },
+    lines: {
+      tr: "Dinle ve hatırla! Kırmızıyla söylediğim her şey mutlak gerçektir! Kanıta ya da tartışmaya asla ihtiyaç duymaz!",
+      en: "Listen closely! Everything I speak in red is the absolute truth! There is zero need for proof or debate!",
+      ja: "よく聞け。妾が赤で語ることは全て真実だ！　証拠も議論も一切不要！"
+    }
+  }
+];
+
 export const stackGroups = [
   "Python",
   "Node.js",
@@ -64,6 +83,7 @@ export const stackGroups = [
 export const shortRoutes = [
   { label: "/Gensokyo", href: urls.gensokyoAtlas, external: false },
   { label: "/Higurashi", href: urls.higurashiArchive, external: false },
+  { label: "/Umineko", href: urls.uminekoArchive, external: false },
   { label: "/Raidou", href: urls.shortRaidou, external: false },
   { label: "/ScarletSavior", href: urls.shortScarlet, external: false },
   { label: "/Voicevox", href: urls.shortVoicevox, external: false },
@@ -77,7 +97,7 @@ export const content = {
     meta: {
       title: "Remilya | Open-Source Tools, Touhou Projects & Turkish Game Patches",
       description:
-        "Independent developer and localizer building local VOICEVOX tools, desktop apps, the 2D/3D Gensokyo 1:1 Atlas, Ren'Py horror visual novel Scarlet Savior, and Turkish game patches for Higurashi and RAIDOU Remastered.",
+        "Independent developer and localizer building local VOICEVOX tools, desktop apps, the 2D/3D Gensokyo 1:1 Atlas, Ren'Py horror visual novel Scarlet Savior, and Turkish game patches for Umineko, Higurashi, and RAIDOU Remastered.",
       ogLocale: "en_US"
     },
     aria: {
@@ -117,10 +137,11 @@ export const content = {
       quickLinks: [
         { label: "Gensokyo 1:1 Atlas", href: urls.gensokyoAtlas, external: false },
         { label: "Higurashi TR", href: urls.higurashiArchive, external: false },
+        { label: "Umineko TR", href: urls.uminekoArchive, external: false },
         { label: "RAIDOU TR Patch", href: urls.repoRaidou, external: true }
       ],
       medallionBadges: [
-        { code: "Higurashi & Raidou", label: "Turkish Patches" },
+        { code: "Umineko & Higurashi", label: "Turkish Patches" },
         { code: "Gensokyo 1:1", label: "2D & 3D Atlas" },
         { code: "Scarlet Savior", label: "Ren'Py VN" }
       ]
@@ -133,6 +154,8 @@ export const content = {
       compLaunchPrefix: "Open",
       ytPlayAria: "Higurashi When They Cry TR - Play YouTube video",
       higuLangLabel: "Script Language",
+      umiPlayAria: "Umineko When They Cry TR - Play Special Tea Party trailer",
+      umiLangLabel: "Script Language",
       items: [
         {
           k: 1,
@@ -175,7 +198,24 @@ export const content = {
         },
         {
           k: 3,
-          eyebrow: "03 // PC · 100% TURKISH PATCH",
+          eyebrow: "03 // EPISODES 1-8 COMPLETE TURKISH PATCH",
+          cap: "U",
+          restTitle: "mineko When They Cry TR",
+          fullTitle: "Umineko When They Cry TR",
+          shortLabel: "Umineko TR",
+          compSub: "All 8 Episodes · TR Patch",
+          desc:
+            "07th-Mod compatible Turkish patch covering Question & Answer Arcs (Episodes 1-8). Includes Kanji-ready fonts, translated UI and puzzles, and a one-click installer.",
+          primaryLabel: "Open remilya.dev/Umineko →",
+          primaryHref: urls.uminekoArchive,
+          primaryExternal: false,
+          secondaryLabel: "GitHub / Installer →",
+          secondaryHref: urls.repoUmineko,
+          secondaryExternal: true
+        },
+        {
+          k: 4,
+          eyebrow: "04 // PC · 100% TURKISH PATCH",
           cap: "R",
           restTitle: "AIDOU Remastered TR",
           fullTitle: "RAIDOU Remastered TR",
@@ -191,8 +231,8 @@ export const content = {
           secondaryExternal: false
         },
         {
-          k: 4,
-          eyebrow: "04 // TOUHOU PSYCHOLOGICAL HORROR VISUAL NOVEL",
+          k: 5,
+          eyebrow: "05 // TOUHOU PSYCHOLOGICAL HORROR VISUAL NOVEL",
           cap: "S",
           restTitle: "carlet Savior",
           fullTitle: "Scarlet Savior",
@@ -355,7 +395,7 @@ export const content = {
           kind: "OSS · Games · Modding",
           title: "Independent Software & Game Localization",
           summary:
-            "Turkish patches for the Higurashi series and RAIDOU Remastered, Scarlet Savior on Ren'Py, the Gensokyo 1:1 Atlas, and open-source desktop tools."
+            "Turkish patches for Umineko, the Higurashi series, and RAIDOU Remastered, Scarlet Savior on Ren'Py, the Gensokyo 1:1 Atlas, and open-source desktop tools."
         }
       ]
     },
@@ -371,7 +411,7 @@ export const content = {
         {
           label: "GitHub",
           handle: "@Remilya",
-          desc: "Higurashi TR, RAIDOU TR & open-source repos",
+          desc: "Umineko TR, Higurashi TR, RAIDOU TR & open-source repos",
           href: urls.github,
           icon: "i-gh"
         },
@@ -403,7 +443,7 @@ export const content = {
     meta: {
       title: "Remilya | Açık Kaynak Araçlar, Touhou Projeleri ve Türkçe Oyun Yamaları",
       description:
-        "Yerel VOICEVOX ses araçları, Python/JS masaüstü uygulamaları, 2D/3D Gensokyo 1:1 Atlası, Ren'Py görsel romanı Scarlet Savior ve Higurashi ile RAIDOU Remastered Türkçe oyun yamaları.",
+        "Yerel VOICEVOX ses araçları, Python/JS masaüstü uygulamaları, 2D/3D Gensokyo 1:1 Atlası, Ren'Py görsel romanı Scarlet Savior ve Umineko, Higurashi ile RAIDOU Remastered Türkçe oyun yamaları.",
       ogLocale: "tr_TR"
     },
     aria: {
@@ -443,10 +483,11 @@ export const content = {
       quickLinks: [
         { label: "Gensokyo 1:1 Atlas", href: urls.gensokyoAtlas, external: false },
         { label: "Higurashi TR", href: urls.higurashiArchive, external: false },
+        { label: "Umineko TR", href: urls.uminekoArchive, external: false },
         { label: "RAIDOU TR Yama", href: urls.repoRaidou, external: true }
       ],
       medallionBadges: [
-        { code: "Higurashi & Raidou", label: "TÜRKÇE YAMA" },
+        { code: "Umineko & Higurashi", label: "TÜRKÇE YAMA" },
         { code: "Gensokyo 1:1", label: "2D & 3D ATLAS" },
         { code: "Scarlet Savior", label: "GÖRSEL ROMAN" }
       ]
@@ -459,6 +500,8 @@ export const content = {
       compLaunchPrefix: "Aç:",
       ytPlayAria: "Higurashi When They Cry TR - YouTube videosunu oynat",
       higuLangLabel: "Metin Dili",
+      umiPlayAria: "Umineko When They Cry TR - Özel Çay Partisi fragmanını oynat",
+      umiLangLabel: "Metin Dili",
       items: [
         {
           k: 1,
@@ -501,7 +544,24 @@ export const content = {
         },
         {
           k: 3,
-          eyebrow: "03 // PC · %100 TÜRKÇE YAMA",
+          eyebrow: "03 // BÖLÜM 1-8 TAM SERİ TÜRKÇE YAMA",
+          cap: "U",
+          restTitle: "mineko When They Cry TR",
+          fullTitle: "Umineko When They Cry TR",
+          shortLabel: "Umineko TR",
+          compSub: "Bölüm 1-8 · Türkçe Yama",
+          desc:
+            "Question ve Answer Arcs (Bölüm 1-8) oyunlarının tamamını Türkçeye çeviren, 07th-Mod uyumlu yama. Kanji destekli fontları, oyun içi arayüz/bulmaca görsellerini ve tek tıkla kurulum aracını içerir.",
+          primaryLabel: "remilya.dev/Umineko →",
+          primaryHref: urls.uminekoArchive,
+          primaryExternal: false,
+          secondaryLabel: "GitHub / Kurulum →",
+          secondaryHref: urls.repoUmineko,
+          secondaryExternal: true
+        },
+        {
+          k: 4,
+          eyebrow: "04 // PC · %100 TÜRKÇE YAMA",
           cap: "R",
           restTitle: "AIDOU Remastered TR",
           fullTitle: "RAIDOU Remastered TR",
@@ -517,8 +577,8 @@ export const content = {
           secondaryExternal: false
         },
         {
-          k: 4,
-          eyebrow: "04 // TOUHOU PSİKOLOJİK KORKU GÖRSEL ROMANI",
+          k: 5,
+          eyebrow: "05 // TOUHOU PSİKOLOJİK KORKU GÖRSEL ROMANI",
           cap: "S",
           restTitle: "carlet Savior",
           fullTitle: "Scarlet Savior",
@@ -681,7 +741,7 @@ export const content = {
           kind: "Açık Kaynak · Oyun · Yama",
           title: "Bağımsız Yazılım ve Oyun Yerelleştirme",
           summary:
-            "Higurashi serisi ve RAIDOU için Türkçe oyun yamaları, Scarlet Savior görsel romanı, Gensokyo atlası ve açık kaynak masaüstü araçları geliştirdim."
+            "Umineko, Higurashi serisi ve RAIDOU için Türkçe oyun yamaları, Scarlet Savior görsel romanı, Gensokyo atlası ve açık kaynak masaüstü araçları geliştirdim."
         }
       ]
     },
@@ -697,7 +757,7 @@ export const content = {
         {
           label: "GitHub",
           handle: "@Remilya",
-          desc: "Higurashi TR, RAIDOU TR ve açık kaynak kodlar",
+          desc: "Umineko TR, Higurashi TR, RAIDOU TR ve açık kaynak kodlar",
           href: urls.github,
           icon: "i-gh"
         },
