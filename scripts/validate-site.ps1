@@ -47,6 +47,10 @@ try {
     "README.md",
     "CNAME",
     "Raidou/index.html",
+    "ScarletSurvivors/index.html",
+    "Scarlet-Survivors/index.html",
+    "privacy/index.html",
+    "privacy/scarlet-survivors/index.html",
     "ScarletSavior/index.html",
     "Scarlet-Savior/index.html",
     "Voicevox/index.html",
@@ -57,6 +61,9 @@ try {
     "assets/favicon.svg",
     "assets/apple-touch-icon.png",
     "assets/remilya-social.jpg",
+    "assets/scarlet-survivors-cover.webp",
+    "assets/scarlet-survivors-video.webp",
+    "assets/scarlet-survivors-icon.webp",
     "assets/gensokyo-cover.webp",
     "assets/scarlet-savior-cover.webp",
     "assets/raidou-cover.webp",
@@ -102,6 +109,9 @@ try {
   Assert-SiteCondition (-not $index.Contains("hero-sequence")) "retired scroll-hero sequence must remain removed"
 
   $fallbackContent = @(
+    "Scarlet Survivors",
+    "https://remilya356.itch.io/scarlet-survivors",
+    "https://remilya.dev/ScarletSurvivors/",
     "Gensokyo 1:1 Interactive Atlas",
     "https://remilya.dev/Gensokyo/",
     "https://remilya.dev/Higurashi/",

@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Scarlet Survivors | Remilya</title>
+    <meta name="description" content="Official privacy policy for Scarlet Survivors (com.remilya.scarletsurvivors). 100% offline, free-to-play, ad-free, and zero personal data collection." />
+    <link rel="canonical" href="https://remilya.dev/privacy/scarlet-survivors/" />
+    <meta property="og:title" content="Privacy Policy — Scarlet Survivors | Remilya" />
+    <meta property="og:description" content="Scarlet Survivors is completely offline, free-to-play, and ad-free. Zero personal or device data is collected, transmitted, or shared." />
+    <meta property="og:url" content="https://remilya.dev/privacy/scarlet-survivors/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://remilya.dev/assets/scarlet-survivors-cover.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Remilya356" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <style>
+      :root {
+        --ink: #080312;
+        --ink-raise: #110622;
+        --ink-panel: #1b0a36;
+        --paper: #ede9fe;
+        --paper-pure: #f5f3ff;
+        --violet: #7c3aed;
+        --amethyst: #9333ea;
+        --lavender: #c4b5fd;
+        --uv-border: #8b5cf6;
+        --crimson: #e11d48;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.65;
+        padding: 1.5rem 1rem 3.5rem;
+      }
+      a {
+        color: var(--lavender);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        font-weight: 600;
+      }
+      a:hover { color: var(--paper-pure); }
+      a:focus-visible {
+        outline: 3px solid var(--paper-pure);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      code {
+        background: var(--ink);
+        color: var(--paper-pure);
+        border: 1px solid var(--uv-border);
+        border-radius: 4px;
+        padding: 0.1rem 0.4rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.88em;
+      }
+      .shell {
+        max-width: 860px;
+        margin: 0 auto;
+        display: grid;
+        gap: 1.25rem;
+      }
+      .topbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+      .nav-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .pill-btn {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 0.4rem 0.9rem;
+        background: var(--ink-panel);
+        color: var(--paper-pure);
+        border: 2px solid var(--uv-border);
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 800;
+        box-shadow: 3px 3px 0 var(--violet);
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      }
+      .pill-btn:hover {
+        transform: translateY(-2px);
+        background: var(--violet);
+        border-color: var(--lavender);
+      }
+      .pill-btn.active-lang {
+        background: var(--violet);
+        border-color: var(--lavender);
+      }
+      .card {
+        background: var(--ink-raise);
+        border: 3px solid var(--lavender);
+        border-radius: 18px;
+        padding: 1.75rem;
+        box-shadow: 8px 8px 0 var(--violet);
+      }
+      .hero-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.1rem;
+        margin-bottom: 1.15rem;
+      }
+      .hero-icon {
+        width: 68px;
+        height: 68px;
+        border: 3px solid var(--lavender);
+        border-radius: 12px;
+        background: var(--ink);
+        box-shadow: 4px 4px 0 var(--amethyst);
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        flex: none;
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-bottom: 0.45rem;
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--paper-pure);
+      }
+      .tag-game {
+        background: var(--crimson);
+        border: 2px solid #fda4af;
+      }
+      .tag-uv {
+        background: var(--ink-panel);
+        border: 2px solid var(--uv-border);
+      }
+      h1 {
+        margin: 0;
+        color: var(--paper-pure);
+        font-size: clamp(1.55rem, 3.6vw, 2.15rem);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+      .meta-item {
+        background: var(--ink-panel);
+        border: 2px solid var(--uv-border);
+        border-radius: 12px;
+        padding: 0.75rem 0.9rem;
+      }
+      .meta-label {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--lavender);
+        margin-bottom: 0.2rem;
+      }
+      .meta-value {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--paper-pure);
+        word-break: break-word;
+      }
+      .lang-section h2 {
+        margin: 0 0 0.85rem;
+        color: var(--paper-pure);
+        font-size: 1.3rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .lang-code {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        background: var(--violet);
+        border: 2px solid var(--lavender);
+        border-radius: 8px;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+      }
+      .summary-box {
+        background: var(--ink-panel);
+        border-left: 5px solid var(--lavender);
+        border-radius: 8px;
+        padding: 0.85rem 1rem;
+        margin: 0 0 1rem;
+        color: var(--paper-pure);
+      }
+      ul {
+        margin: 0;
+        padding-left: 1.25rem;
+        display: grid;
+        gap: 0.65rem;
+      }
+      li strong { color: var(--paper-pure); }
+      .footer-card {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        background: var(--ink-panel);
+        border: 3px solid var(--uv-border);
+        border-radius: 16px;
+        box-shadow: 6px 6px 0 var(--ink-raise);
+      }
+      @media (max-width: 600px) {
+        .card { padding: 1.25rem; box-shadow: 5px 5px 0 var(--violet); }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <nav class="topbar" aria-label="Breadcrumb and languages">
+        <div class="nav-pills">
+          <a class="pill-btn" href="https://remilya.dev/">← remilya.dev</a>
+          <a class="pill-btn" href="/privacy/">All Privacy Policies</a>
+        </div>
+        <div class="nav-pills">
+          <a class="pill-btn active-lang" href="#en">English</a>
+          <a class="pill-btn" href="#tr">Türkçe</a>
+          <a class="pill-btn" href="#ja">日本語</a>
+        </div>
+      </nav>
+
+      <header class="card">
+        <div class="hero-head">
+          <img
+            class="hero-icon"
+            src="/assets/scarlet-survivors-icon.webp"
+            alt="Scarlet Survivors pixel icon"
+            width="68"
+            height="68"
+          />
+          <div>
+            <div class="badges">
+              <span class="tag tag-game">Google Play · Android</span>
+              <span class="tag tag-uv">100% Offline</span>
+            </div>
+            <h1>Privacy Policy — Scarlet Survivors</h1>
+          </div>
+        </div>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Application</span>
+            <span class="meta-value">Scarlet Survivors</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Package ID</span>
+            <span class="meta-value"><code>com.remilya.scarletsurvivors</code></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Developer</span>
+            <span class="meta-value">Remilya (İlker Ağırkaya)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Effective Date</span>
+            <span class="meta-value">2026-11-24</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Data Collected</span>
+            <span class="meta-value">None (Zero Data Collected)</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="en" class="card lang-section" lang="en">
+        <h2><span class="lang-code">EN</span> 1. English Privacy Policy</h2>
+        <p class="summary-box">
+          <strong>Scarlet Survivors</strong> is a completely offline, free-to-play, ad-free fan game.
+          <strong>We do not collect, store on external servers, transmit, sell, or share any personal, usage, or device data.</strong>
+        </p>
+        <ul>
+          <li>
+            <strong>No Network / Internet Permission:</strong>
+            The Google Play release of Scarlet Survivors does not request Android’s <code>INTERNET</code> permission. It contains no analytics SDKs, no crash-reporting telemetry, no advertising networks, and no external backend servers.
+          </li>
+          <li>
+            <strong>Zero Data Collection &amp; Sharing:</strong>
+            We do not collect names, email addresses, precise or approximate location, advertising IDs, device identifiers, diagnostics, or gameplay telemetry. Nothing leaves your device.
+          </li>
+          <li>
+            <strong>Local Save Storage Only:</strong>
+            Your game progress (points, unlocked heroes, PowerUps, settings, and language preference) is saved strictly locally inside your device’s private app sandbox (<code>eosd_save.json</code>).
+          </li>
+          <li>
+            <strong>Data Deletion:</strong>
+            Because all save data resides solely on your device, you can permanently delete it at any time using the in-game Reset button, clearing the app’s storage in Android Settings, or uninstalling the application.
+          </li>
+          <li>
+            <strong>Optional User-Initiated External Links:</strong>
+            The title screen provides optional external buttons (such as <strong>X / Twitter</strong> and Google Play <strong>Rate 5★</strong>). Your device browser or the Google Play Store app is only opened when you explicitly tap those buttons; Scarlet Survivors itself never performs background network requests.
+          </li>
+          <li>
+            <strong>Children’s Privacy:</strong>
+            Because the application collects no personal information or telemetry from any user, no data from children or adults is ever collected, processed, or stored.
+          </li>
+          <li>
+            <strong>Derivative Work Attribution:</strong>
+            Scarlet Survivors is an unofficial, non-commercial fan-made derivative work inspired by <em>Touhou Project</em> (© Team Shanghai Alice / ZUN) and complies with Team Shanghai Alice’s public fan work guidelines.
+          </li>
+          <li>
+            <strong>Developer Contact:</strong>
+            For privacy or support inquiries, reach the developer via
+            <a href="https://remilya.dev/">remilya.dev</a>,
+            <a href="https://x.com/Remilya356" rel="noopener noreferrer">X (@Remilya356)</a>, or
+            <a href="https://github.com/Remilya" rel="noopener noreferrer">GitHub (@Remilya)</a>.
+          </li>
+        </ul>
+      </section>
+
+      <section id="tr" class="card lang-section" lang="tr">
+        <h2><span class="lang-code">TR</span> 2. Türkçe Gizlilik Politikası</h2>
+        <p class="summary-box">
+          <strong>Scarlet Survivors</strong> tamamen çevrimdışı çalışan, %100 ücretsiz ve reklamsız bir hayran oyunudur.
+          <strong>Hiçbir kişisel veri, cihaz kimliği veya kullanım analitiği toplamaz, harici sunuculara göndermez, satmaz ve üçüncü taraflarla paylaşmaz.</strong>
+        </p>
+        <ul>
+          <li>
+            <strong>İnternet İzni Yoktur:</strong>
+            Google Play sürümü Android <code>INTERNET</code> izni istemez. Oyun içinde Google Analytics, reklam SDK’sı, çökme telemetrisi veya uzak sunucu bağlantısı bulunmaz.
+          </li>
+          <li>
+            <strong>Sıfır Veri Toplama ve Paylaşım:</strong>
+            Ad, e-posta, konum, reklam kimliği, cihaz bilgisi veya oyun içi davranış verisi kesinlikle toplanmaz. Cihazınızdan dışarıya hiçbir veri aktarılmaz.
+          </li>
+          <li>
+            <strong>Yalnızca Cihaz İçi Kayıt:</strong>
+            Oyun ilerlemeniz (puanlar, açılan karakterler, PowerUp yükseltmeleri, ayarlar ve dil tercihi) yalnızca cihazınızdaki özel uygulama alanında (<code>eosd_save.json</code>) saklanır.
+          </li>
+          <li>
+            <strong>Veri Silme:</strong>
+            Tüm veriler yalnızca cihazınızda tutulduğu için istediğiniz zaman oyun içi Sıfırla (Reset) seçeneğiyle, Android Uygulama Ayarları → Depolamayı Temizle diyerek veya oyunu kaldırarak tüm kayıtları kalıcı olarak silebilirsiniz.
+          </li>
+          <li>
+            <strong>İsteğe Bağlı Harici Bağlantılar:</strong>
+            Ana menüdeki <strong>X</strong> veya <strong>5★ Puan Ver</strong> butonlarına yalnızca siz dokunduğunuzda cihaz tarayıcısı veya Google Play açılır; uygulama arka planda hiçbir ağ isteği yapmaz.
+          </li>
+          <li>
+            <strong>Çocukların Gizliliği:</strong>
+            Uygulama hiçbir yaş grubundan kişisel veri veya telemetri toplamadığı için çocuklara ait hiçbir veri de toplanmaz veya işlenmez.
+          </li>
+          <li>
+            <strong>Türev Eser Bildirimi:</strong>
+            Scarlet Survivors, Team Shanghai Alice (© ZUN) <em>Touhou Project</em> Türev Eser Kuralları doğrultusunda geliştirilmiş resmi olmayan, ücretsiz bir hayran yapımıdır.
+          </li>
+          <li>
+            <strong>Geliştirici İletişim:</strong>
+            Sorularınız için
+            <a href="https://remilya.dev/">remilya.dev</a>,
+            <a href="https://x.com/Remilya356" rel="noopener noreferrer">X (@Remilya356)</a> veya
+            <a href="https://github.com/Remilya" rel="noopener noreferrer">GitHub (@Remilya)</a> üzerinden ulaşabilirsiniz.
+          </li>
+        </ul>
+      </section>
+
+      <section id="ja" class="card lang-section" lang="ja">
+        <h2><span class="lang-code">JA</span> 3. 日本語 プライバシーポリシー</h2>
+        <p class="summary-box">
+          <strong>Scarlet Survivors</strong> は完全オフライン動作・完全無料・広告なしの二次創作ファンゲームです。
+          <strong>個人データ、端末情報、解析データの収集・外部送信・販売・第三者提供は一切行いません。</strong>
+        </p>
+        <ul>
+          <li>
+            <strong>通信権限なし:</strong>
+            本アプリの Google Play 版は Android の <code>INTERNET</code> 権限を要求しません。アクセス解析ツール、クラッシュ収集 SDK、広告ネットワーク、外部サーバーとの通信機能は一切含まれていません。
+          </li>
+          <li>
+            <strong>データの非収集・非共有:</strong>
+            氏名、メールアドレス、位置情報、広告 ID、端末識別子、プレイログ等の情報は一切取得せず、端末外部へ送信されることはありません。
+          </li>
+          <li>
+            <strong>端末内ローカル保存のみ:</strong>
+            ゲームの進行状況（ポイント、アンロック要素、パワーアップ、各種設定、言語選択）は、お使いの端末内のアプリ専用領域（<code>eosd_save.json</code>）のみに保存されます。
+          </li>
+          <li>
+            <strong>データの削除方法:</strong>
+            すべてのセーブデータは端末内にのみ保存されるため、ゲーム内のリセット機能、Android の「アプリ情報 → ストレージを削除」、またはアプリのアンインストールによりいつでも完全に削除できます。
+          </li>
+          <li>
+            <strong>ユーザー操作による外部リンク:</strong>
+            タイトル画面の <strong>X</strong> または Google Play <strong>★5評価</strong> ボタンは、ユーザーが明示的にタップした場合のみブラウザまたは Google Play ストアを開きます。アプリがバックグラウンドで通信を行うことはありません。
+          </li>
+          <li>
+            <strong>お子様のプライバシー:</strong>
+            本アプリは年齢を問わず個人情報を一切収集しないため、お子様のデータが収集・保存されることもありません。
+          </li>
+          <li>
+            <strong>二次創作表記:</strong>
+            本作は「上海アリス幻樂団」（ZUN 氏）の『東方Project』ガイドラインに基づき制作された非公式・非商用の二次創作ゲームです。
+          </li>
+          <li>
+            <strong>お問い合わせ:</strong>
+            ご質問やご連絡は
+            <a href="https://remilya.dev/">remilya.dev</a>、
+            <a href="https://x.com/Remilya356" rel="noopener noreferrer">X (@Remilya356)</a>、または
+            <a href="https://github.com/Remilya" rel="noopener noreferrer">GitHub (@Remilya)</a> までお願いいたします。
+          </li>
+        </ul>
+      </section>
+
+      <footer class="footer-card">
+        <span>Remilya · Scarlet Survivors (<code>com.remilya.scarletsurvivors</code>)</span>
+        <div class="nav-pills">
+          <a class="pill-btn" href="https://remilya.dev/ScarletSurvivors/">Game Page</a>
+          <a class="pill-btn" href="https://remilya.dev/">remilya.dev</a>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

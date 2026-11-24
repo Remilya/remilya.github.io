@@ -113,6 +113,12 @@ function renderSlicesCopy(dict) {
   setText("#higu-lang-label", dict.slices.higuLangLabel);
   setText("#umi-lang-label", dict.slices.umiLangLabel);
 
+  const scarletYtBtn = $("#scarlet-yt-btn");
+  if (scarletYtBtn && dict.slices.scarletPlayAria) {
+    scarletYtBtn.setAttribute("aria-label", dict.slices.scarletPlayAria);
+  }
+  setText("#scarlet-yt-top", dict.slices.scarletVideoTitle);
+
   const ytBtn = $("#higu-yt-btn");
   if (ytBtn && dict.slices.ytPlayAria) {
     ytBtn.setAttribute("aria-label", dict.slices.ytPlayAria);
@@ -402,7 +408,7 @@ function bootstrap() {
     applyLocale(currentLocale, { announce: false, syncQuoteLang: true });
   }
 
-  deckApi = initDeck({ slicesSectionId: "library", sliceSteps: 6 });
+  deckApi = initDeck({ slicesSectionId: "library", sliceSteps: 7 });
   slicesApi = initSlices(deckApi, currentLocale);
   mangaApi = initMangaShowcase(currentLocale);
   initAtmosphere();

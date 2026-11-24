@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policies | Remilya</title>
+    <meta name="description" content="Official privacy policies for games and tools published by Remilya (remilya.dev), including Scarlet Survivors on Google Play." />
+    <link rel="canonical" href="https://remilya.dev/privacy/" />
+    <meta property="og:title" content="Privacy Policies | Remilya" />
+    <meta property="og:description" content="Privacy policies for Remilya's offline games and applications." />
+    <meta property="og:url" content="https://remilya.dev/privacy/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://remilya.dev/assets/remilya-social.jpg" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <style>
+      :root {
+        --ink: #080312;
+        --ink-raise: #110622;
+        --ink-panel: #1b0a36;
+        --paper: #ede9fe;
+        --paper-pure: #f5f3ff;
+        --violet: #7c3aed;
+        --amethyst: #9333ea;
+        --lavender: #c4b5fd;
+        --uv-border: #8b5cf6;
+        --crimson: #e11d48;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        padding: 1.5rem 1rem 3rem;
+        display: grid;
+        place-items: center;
+      }
+      a { color: var(--lavender); }
+      a:focus-visible {
+        outline: 3px solid var(--paper-pure);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      code {
+        background: var(--ink);
+        color: var(--paper-pure);
+        border: 1px solid var(--uv-border);
+        border-radius: 4px;
+        padding: 0.1rem 0.4rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.88em;
+      }
+      .shell {
+        max-width: 760px;
+        width: 100%;
+        display: grid;
+        gap: 1.25rem;
+      }
+      .topbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .pill-btn {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        padding: 0.45rem 1rem;
+        background: var(--ink-panel);
+        color: var(--paper-pure);
+        border: 2px solid var(--uv-border);
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 800;
+        box-shadow: 4px 4px 0 var(--violet);
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      }
+      .pill-btn.primary {
+        background: var(--violet);
+        border-color: var(--lavender);
+      }
+      .pill-btn:hover {
+        transform: translateY(-2px);
+        background: var(--amethyst);
+        border-color: var(--paper-pure);
+      }
+      .card {
+        background: var(--ink-raise);
+        border: 3px solid var(--lavender);
+        border-radius: 20px;
+        padding: 1.85rem;
+        box-shadow: 8px 8px 0 var(--violet);
+      }
+      .brand-head {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        margin-bottom: 0.85rem;
+      }
+      .brand-head img {
+        width: 54px;
+        height: 54px;
+        object-fit: contain;
+        border: 2px solid var(--lavender);
+        border-radius: 12px;
+        background: var(--ink);
+        padding: 4px;
+      }
+      .kicker {
+        display: inline-block;
+        padding: 0.22rem 0.7rem;
+        background: var(--violet);
+        color: var(--paper-pure);
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border-radius: 999px;
+      }
+      h1 {
+        margin: 0 0 0.55rem;
+        color: var(--paper-pure);
+        font-size: clamp(1.65rem, 3.8vw, 2.2rem);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.12;
+      }
+      .lead {
+        margin: 0;
+        color: var(--paper);
+      }
+      .app-card {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.15rem;
+        background: var(--ink-panel);
+        border: 3px solid var(--lavender);
+        border-radius: 16px;
+        padding: 1.35rem;
+        box-shadow: 6px 6px 0 var(--amethyst);
+      }
+      .app-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex: 1 1 320px;
+      }
+      .app-icon {
+        width: 60px;
+        height: 60px;
+        border: 2px solid var(--lavender);
+        border-radius: 10px;
+        background: var(--ink);
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        flex: none;
+      }
+      .app-title {
+        margin: 0 0 0.2rem;
+        color: var(--paper-pure);
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+      .app-meta {
+        margin: 0;
+        font-size: 0.88rem;
+        color: var(--paper);
+      }
+      .tag-crimson {
+        display: inline-block;
+        padding: 0.14rem 0.5rem;
+        margin-right: 0.35rem;
+        border-radius: 999px;
+        background: var(--crimson);
+        border: 1px solid #fda4af;
+        color: var(--paper-pure);
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      .general-note {
+        background: var(--ink-raise);
+        border: 2px solid var(--uv-border);
+        border-radius: 14px;
+        padding: 1.15rem 1.35rem;
+        font-size: 0.94rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="topbar">
+        <a class="pill-btn" href="https://remilya.dev/">← Back to remilya.dev</a>
+        <div class="topbar">
+          <a class="pill-btn" href="https://x.com/Remilya356" rel="noopener noreferrer">X (@Remilya356)</a>
+          <a class="pill-btn" href="https://github.com/Remilya" rel="noopener noreferrer">GitHub (@Remilya)</a>
+        </div>
+      </div>
+
+      <section class="card">
+        <div class="brand-head">
+          <img src="/assets/remilya-icon.png" alt="Remilya emblem" width="54" height="54" />
+          <span class="kicker">Remilya · Legal &amp; Privacy</span>
+        </div>
+        <h1>Privacy Policies</h1>
+        <p class="lead">
+          Standalone games and utilities published by <strong>Remilya (İlker Ağırkaya)</strong> are built to run offline on your device without analytics trackers, ad networks, or external user-data harvesting.
+        </p>
+      </section>
+
+      <section class="app-card" aria-label="Scarlet Survivors Privacy Policy">
+        <div class="app-info">
+          <img
+            class="app-icon"
+            src="/assets/scarlet-survivors-icon.webp"
+            alt="Scarlet Survivors icon"
+            width="60"
+            height="60"
+          />
+          <div>
+            <p class="app-title">Scarlet Survivors</p>
+            <p class="app-meta">
+              <span class="tag-crimson">Google Play</span>
+              <code>com.remilya.scarletsurvivors</code> · 100% Offline · EN / TR / 日本語
+            </p>
+          </div>
+        </div>
+        <a class="pill-btn primary" href="/privacy/scarlet-survivors/">Read Privacy Policy →</a>
+      </section>
+
+      <section class="general-note">
+        <strong>General Commitment:</strong> Our offline games and open-source tools do not collect, sell, or share personal data with third parties. For questions, contact us at
+        <a href="https://x.com/Remilya356" rel="noopener noreferrer">https://x.com/Remilya356</a> or
+        <a href="https://github.com/Remilya" rel="noopener noreferrer">https://github.com/Remilya</a>.
+      </section>
+    </main>
+  </body>
+</html>

@@ -10,9 +10,27 @@
     <script>
       (function () {
         var rawPath = (window.location.pathname || "").replace(/^\/+|\/+$/g, "");
-        var slug = rawPath.split("/")[0].toLowerCase().replace(/[^a-z0-9]/g, "");
+        var parts = rawPath.split("/");
+        var slug = parts[0].toLowerCase().replace(/[^a-z0-9]/g, "");
+        var sub = (parts[1] || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+
+        if ((slug === "scarletsurvivors" || slug === "survivors" || slug === "thspriteproject") && (sub === "privacy" || sub === "privacypolicy")) {
+          window.location.replace("https://remilya.dev/privacy/scarlet-survivors/");
+          return;
+        }
+        if (slug === "privacy" && (sub === "scarletsurvivors" || sub === "survivors")) {
+          window.location.replace("https://remilya.dev/privacy/scarlet-survivors/");
+          return;
+        }
+        if (slug === "privacypolicy" || slug === "gizlilik") {
+          window.location.replace("https://remilya.dev/privacy/");
+          return;
+        }
 
         var routes = {
+          scarletsurvivors: "https://remilya356.itch.io/scarlet-survivors",
+          survivors: "https://remilya356.itch.io/scarlet-survivors",
+          thspriteproject: "https://remilya356.itch.io/scarlet-survivors",
           gensokyo: "https://remilya.dev/Gensokyo/",
           gensokyoatlas: "https://remilya.dev/Gensokyo/",
           higurashi: "https://remilya.dev/Higurashi/",
@@ -160,6 +178,7 @@
       <p>Aradığın adres taşınmış veya hiç açılmamış olabilir. Aşağıdaki kısayollardan birini seçebilir ya da ana sayfaya dönebilirsin.</p>
       <div class="links">
         <a class="primary" href="https://remilya.dev/">Remilya.dev</a>
+        <a href="https://remilya.dev/ScarletSurvivors/">/ScarletSurvivors</a>
         <a href="https://remilya.dev/Umineko/">/Umineko</a>
         <a href="https://remilya.dev/Higurashi/">/Higurashi</a>
         <a href="https://remilya.dev/Gensokyo/">/Gensokyo</a>

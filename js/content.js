@@ -6,6 +6,9 @@ export const urls = {
   linkedin: "https://tr.linkedin.com/in/ilker-agirkaya",
   twitter: "https://x.com/Remilya356",
   itchProfile: "https://remilya356.itch.io/",
+  scarletSurvivorsItch: "https://remilya356.itch.io/scarlet-survivors",
+  scarletSurvivorsTrailer: "https://youtu.be/Y_lwLCn5oVw",
+  shortScarletSurvivors: "https://remilya.dev/ScarletSurvivors/",
   gensokyoAtlas: "https://remilya.dev/Gensokyo/",
   repoGensokyoAssets: "https://github.com/Remilya/gensokyo-assets",
   higurashiArchive: "https://remilya.dev/Higurashi/",
@@ -66,6 +69,8 @@ export const uminekoQuotes = [
 ];
 
 export const stackGroups = [
+  "Godot 4 (GDScript / C#)",
+  "Android SDK / APK",
   "Python",
   "Node.js",
   "JavaScript (ES6+)",
@@ -81,6 +86,7 @@ export const stackGroups = [
 ];
 
 export const shortRoutes = [
+  { label: "/ScarletSurvivors", href: urls.shortScarletSurvivors, external: false },
   { label: "/Gensokyo", href: urls.gensokyoAtlas, external: false },
   { label: "/Higurashi", href: urls.higurashiArchive, external: false },
   { label: "/Umineko", href: urls.uminekoArchive, external: false },
@@ -95,9 +101,9 @@ export const shortRoutes = [
 export const content = {
   en: {
     meta: {
-      title: "Remilya | Open-Source Tools, Touhou Projects & Turkish Game Patches",
+      title: "Remilya | Scarlet Survivors, Open-Source Tools & Game Localizations",
       description:
-        "Independent developer and localizer building local VOICEVOX tools, desktop apps, the 2D/3D Gensokyo 1:1 Atlas, Ren'Py horror visual novel Scarlet Savior, and Turkish game patches for Umineko, Higurashi, and RAIDOU Remastered.",
+        "Independent software & game developer behind Touhou 6 danmaku fangame Scarlet Survivors (Godot 4, Windows & Android), interactive Gensokyo 1:1 Atlas, VOICEVOX/Python desktop tools, and Turkish game patches.",
       ogLocale: "en_US"
     },
     aria: {
@@ -128,22 +134,22 @@ export const content = {
     hero: {
       kicker: "REMILYA // SOFTWARE · GAMES · LOCALIZATION",
       lead:
-        "Building local voice and desktop tools, Touhou games, and full Turkish game & manga localizations.",
+        "Building indie games in Godot 4, local voice & desktop tools, and full Turkish game & manga localizations.",
       sub:
-        "Turkish game and manga patches, a psychological horror visual novel in Ren'Py, and open-source Python and Node.js tools.",
+        "Creator of Touhou 6 survivors fangame Scarlet Survivors (Windows & Android), Gensokyo 1:1 3D Atlas, Ren'Py VN Scarlet Savior, and open-source utilities.",
       ctaPrimary: "Browse Projects",
       ctaSecondary: "GitHub Profile",
       scrollHint: "Scroll down or press ↓",
       quickLinks: [
+        { label: "Scarlet Survivors", href: urls.scarletSurvivorsItch, external: true },
         { label: "Gensokyo 1:1 Atlas", href: urls.gensokyoAtlas, external: false },
         { label: "Higurashi TR", href: urls.higurashiArchive, external: false },
-        { label: "Umineko TR", href: urls.uminekoArchive, external: false },
-        { label: "RAIDOU TR Patch", href: urls.repoRaidou, external: true }
+        { label: "Umineko TR", href: urls.uminekoArchive, external: false }
       ],
       medallionBadges: [
-        { code: "Umineko & Higurashi", label: "Turkish Patches" },
+        { code: "Scarlet Survivors", label: "Godot 4 · Win / Android" },
         { code: "Gensokyo 1:1", label: "2D & 3D Atlas" },
-        { code: "Scarlet Savior", label: "Ren'Py VN" }
+        { code: "Umineko & Higurashi", label: "Turkish Patches" }
       ]
     },
     slices: {
@@ -152,6 +158,8 @@ export const content = {
       compInspect: "Open Slice",
       compLaunch: "Open ↗",
       compLaunchPrefix: "Open",
+      scarletPlayAria: "Scarlet Survivors - Play official 16:9 YouTube trailer",
+      scarletVideoTitle: "Official 16:9 Trailer",
       ytPlayAria: "Higurashi When They Cry TR - Play YouTube video",
       higuLangLabel: "Script Language",
       umiPlayAria: "Umineko When They Cry TR - Play Special Tea Party trailer",
@@ -159,7 +167,29 @@ export const content = {
       items: [
         {
           k: 1,
-          eyebrow: "01 // 2D MAP & THREE.JS 3D ATLAS",
+          eyebrow: "01 // GODOT 4 DANMAKU SURVIVORS (WINDOWS & ANDROID)",
+          cap: "S",
+          restTitle: "carlet Survivors",
+          fullTitle: "Scarlet Survivors",
+          shortLabel: "Scarlet Survivors",
+          compSub: "Godot 4 · Win / Android",
+          desc:
+            "Portrait bullet-heaven survivors fangame set in Touhou 6 (EoSD), built in Godot 4 with a deterministic Python pixel/voxel pipeline (zero AI art or music), 12 playable heroes, 7 boss stages, 31 Spell Cards, and built-in EN / TR / JP localization.",
+          pills: [
+            "12 Heroes · 7 Stages · 31 Spell Cards",
+            "Godot 4 (GDScript/C#) · Zero-AI Pipeline",
+            "Windows x64 & Android APK (EN / TR / JP)"
+          ],
+          primaryLabel: "Play Free on itch.io →",
+          primaryHref: urls.scarletSurvivorsItch,
+          primaryExternal: true,
+          secondaryLabel: "Watch 16:9 Trailer →",
+          secondaryHref: urls.scarletSurvivorsTrailer,
+          secondaryExternal: true
+        },
+        {
+          k: 2,
+          eyebrow: "02 // 2D MAP & THREE.JS 3D ATLAS",
           cap: "G",
           restTitle: "ensokyo 1:1 Interactive Atlas",
           fullTitle: "Gensokyo 1:1 Interactive Atlas",
@@ -180,8 +210,8 @@ export const content = {
           secondaryExternal: true
         },
         {
-          k: 2,
-          eyebrow: "02 // CHAPTERS 1-10 COMPLETE TURKISH PATCH",
+          k: 3,
+          eyebrow: "03 // CHAPTERS 1-10 COMPLETE TURKISH PATCH",
           cap: "H",
           restTitle: "igurashi When They Cry TR",
           fullTitle: "Higurashi When They Cry TR",
@@ -197,8 +227,8 @@ export const content = {
           secondaryExternal: true
         },
         {
-          k: 3,
-          eyebrow: "03 // EPISODES 1-8 COMPLETE TURKISH PATCH",
+          k: 4,
+          eyebrow: "04 // EPISODES 1-8 COMPLETE TURKISH PATCH",
           cap: "U",
           restTitle: "mineko When They Cry TR",
           fullTitle: "Umineko When They Cry TR",
@@ -214,8 +244,8 @@ export const content = {
           secondaryExternal: true
         },
         {
-          k: 4,
-          eyebrow: "04 // PC · 100% TURKISH PATCH",
+          k: 5,
+          eyebrow: "05 // PC · 100% TURKISH PATCH",
           cap: "R",
           restTitle: "AIDOU Remastered TR",
           fullTitle: "RAIDOU Remastered TR",
@@ -231,8 +261,8 @@ export const content = {
           secondaryExternal: false
         },
         {
-          k: 5,
-          eyebrow: "05 // TOUHOU PSYCHOLOGICAL HORROR VISUAL NOVEL",
+          k: 6,
+          eyebrow: "06 // TOUHOU PSYCHOLOGICAL HORROR VISUAL NOVEL",
           cap: "S",
           restTitle: "carlet Savior",
           fullTitle: "Scarlet Savior",
@@ -395,7 +425,7 @@ export const content = {
           kind: "OSS · Games · Modding",
           title: "Independent Software & Game Localization",
           summary:
-            "Turkish patches for Umineko, the Higurashi series, and RAIDOU Remastered, Scarlet Savior on Ren'Py, the Gensokyo 1:1 Atlas, and open-source desktop tools."
+            "Built Touhou 6 action game Scarlet Survivors (Godot 4, Windows & Android), Gensokyo 1:1 Atlas, Ren'Py VN Scarlet Savior, Turkish patches for Umineko, Higurashi, and RAIDOU Remastered, plus open-source desktop tools."
         }
       ]
     },
@@ -432,7 +462,7 @@ export const content = {
         {
           label: "itch.io",
           handle: "@remilya356",
-          desc: "Scarlet Savior VN & 3D game assets",
+          desc: "Scarlet Survivors (Win/APK), Scarlet Savior VN & 3D assets",
           href: urls.itchProfile,
           icon: "i-game"
         }
@@ -441,9 +471,9 @@ export const content = {
   },
   tr: {
     meta: {
-      title: "Remilya | Açık Kaynak Araçlar, Touhou Projeleri ve Türkçe Oyun Yamaları",
+      title: "Remilya | Scarlet Survivors, Açık Kaynak Araçlar ve Oyun Yerelleştirme",
       description:
-        "Yerel VOICEVOX ses araçları, Python/JS masaüstü uygulamaları, 2D/3D Gensokyo 1:1 Atlası, Ren'Py görsel romanı Scarlet Savior ve Umineko, Higurashi ile RAIDOU Remastered Türkçe oyun yamaları.",
+        "Godot 4 ile geliştirilen Touhou 6 danmaku survivors oyunu Scarlet Survivors (Windows & Android), 2D/3D Gensokyo 1:1 Atlası, yerel VOICEVOX/Python araçları ve Umineko/Higurashi Türkçe oyun yamaları.",
       ogLocale: "tr_TR"
     },
     aria: {
@@ -474,22 +504,22 @@ export const content = {
     hero: {
       kicker: "REMILYA // YAZILIM · OYUN · ÇEVİRİ",
       lead:
-        "Yerel ses ve masaüstü araçları yazıyor, Touhou projeleri geliştirip oyun ve mangaları Türkçeye çeviriyorum.",
+        "Godot 4 ile oyunlar, yerel ses ve masaüstü araçları geliştiriyor; oyun ve mangaları Türkçeye çeviriyorum.",
       sub:
-        "Hazırladığım Türkçe oyun ve manga yamaları, Ren'Py görsel romanım ve açık kaynak Python/Node.js araçlarım burada.",
+        "Windows ve Android için Scarlet Survivors (Touhou 6 fangame), 2D/3D Gensokyo 1:1 Atlası, Scarlet Savior görsel romanı ve açık kaynak araçlar.",
       ctaPrimary: "Projelere Bak",
       ctaSecondary: "GitHub Profili",
       scrollHint: "Aşağı kaydır veya ↓ tuşuna bas",
       quickLinks: [
+        { label: "Scarlet Survivors", href: urls.scarletSurvivorsItch, external: true },
         { label: "Gensokyo 1:1 Atlas", href: urls.gensokyoAtlas, external: false },
         { label: "Higurashi TR", href: urls.higurashiArchive, external: false },
-        { label: "Umineko TR", href: urls.uminekoArchive, external: false },
-        { label: "RAIDOU TR Yama", href: urls.repoRaidou, external: true }
+        { label: "Umineko TR", href: urls.uminekoArchive, external: false }
       ],
       medallionBadges: [
-        { code: "Umineko & Higurashi", label: "TÜRKÇE YAMA" },
+        { code: "Scarlet Survivors", label: "GODOT 4 · WIN / APK" },
         { code: "Gensokyo 1:1", label: "2D & 3D ATLAS" },
-        { code: "Scarlet Savior", label: "GÖRSEL ROMAN" }
+        { code: "Umineko & Higurashi", label: "TÜRKÇE YAMA" }
       ]
     },
     slices: {
@@ -498,6 +528,8 @@ export const content = {
       compInspect: "Dilimi Aç",
       compLaunch: "Aç ↗",
       compLaunchPrefix: "Aç:",
+      scarletPlayAria: "Scarlet Survivors - Resmi 16:9 YouTube fragmanını oynat",
+      scarletVideoTitle: "Resmi 16:9 Fragman",
       ytPlayAria: "Higurashi When They Cry TR - YouTube videosunu oynat",
       higuLangLabel: "Metin Dili",
       umiPlayAria: "Umineko When They Cry TR - Özel Çay Partisi fragmanını oynat",
@@ -505,7 +537,29 @@ export const content = {
       items: [
         {
           k: 1,
-          eyebrow: "01 // 2D HARİTA VE THREE.JS 3D ATLAS",
+          eyebrow: "01 // GODOT 4 DANMAKU SURVIVORS (WINDOWS & ANDROID)",
+          cap: "S",
+          restTitle: "carlet Survivors",
+          fullTitle: "Scarlet Survivors",
+          shortLabel: "Scarlet Survivors",
+          compSub: "Godot 4 · Win / Android",
+          desc:
+            "Godot 4 ve deterministik Python piksel/voxel üretim hattıyla (yapay zeka görseli/müziği olmadan) geliştirdiğim Touhou 6 temalı portre danmaku hayatta kalma oyunu. 12 oynanabilir karakter, 7 bölüm, 31 boss Spell Card, Kourindou dükkanı ve dahili TR / EN / JP dil desteği.",
+          pills: [
+            "12 Karakter · 7 Bölüm · 31 Spell Card",
+            "Godot 4 (GDScript/C#) · Sıfır AI Sanat/Müzik",
+            "Windows x64 & Android APK (TR / EN / JP)"
+          ],
+          primaryLabel: "itch.io'dan Ücretsiz Oyna →",
+          primaryHref: urls.scarletSurvivorsItch,
+          primaryExternal: true,
+          secondaryLabel: "Fragmanı İzle (YouTube) →",
+          secondaryHref: urls.scarletSurvivorsTrailer,
+          secondaryExternal: true
+        },
+        {
+          k: 2,
+          eyebrow: "02 // 2D HARİTA VE THREE.JS 3D ATLAS",
           cap: "G",
           restTitle: "ensokyo 1:1 Interactive Atlas",
           fullTitle: "Gensokyo 1:1 Interactive Atlas",
@@ -526,8 +580,8 @@ export const content = {
           secondaryExternal: true
         },
         {
-          k: 2,
-          eyebrow: "02 // BÖLÜM 1-10 TAM SERİ TÜRKÇE YAMA",
+          k: 3,
+          eyebrow: "03 // BÖLÜM 1-10 TAM SERİ TÜRKÇE YAMA",
           cap: "H",
           restTitle: "igurashi When They Cry TR",
           fullTitle: "Higurashi When They Cry TR",
@@ -543,8 +597,8 @@ export const content = {
           secondaryExternal: true
         },
         {
-          k: 3,
-          eyebrow: "03 // BÖLÜM 1-8 TAM SERİ TÜRKÇE YAMA",
+          k: 4,
+          eyebrow: "04 // BÖLÜM 1-8 TAM SERİ TÜRKÇE YAMA",
           cap: "U",
           restTitle: "mineko When They Cry TR",
           fullTitle: "Umineko When They Cry TR",
@@ -560,8 +614,8 @@ export const content = {
           secondaryExternal: true
         },
         {
-          k: 4,
-          eyebrow: "04 // PC · %100 TÜRKÇE YAMA",
+          k: 5,
+          eyebrow: "05 // PC · %100 TÜRKÇE YAMA",
           cap: "R",
           restTitle: "AIDOU Remastered TR",
           fullTitle: "RAIDOU Remastered TR",
@@ -577,8 +631,8 @@ export const content = {
           secondaryExternal: false
         },
         {
-          k: 5,
-          eyebrow: "05 // TOUHOU PSİKOLOJİK KORKU GÖRSEL ROMANI",
+          k: 6,
+          eyebrow: "06 // TOUHOU PSİKOLOJİK KORKU GÖRSEL ROMANI",
           cap: "S",
           restTitle: "carlet Savior",
           fullTitle: "Scarlet Savior",
@@ -741,7 +795,7 @@ export const content = {
           kind: "Açık Kaynak · Oyun · Yama",
           title: "Bağımsız Yazılım ve Oyun Yerelleştirme",
           summary:
-            "Umineko, Higurashi serisi ve RAIDOU için Türkçe oyun yamaları, Scarlet Savior görsel romanı, Gensokyo atlası ve açık kaynak masaüstü araçları geliştirdim."
+            "Godot 4 ile Scarlet Survivors (Windows & Android), 2D/3D Gensokyo 1:1 atlası, Scarlet Savior görsel romanı, Umineko/Higurashi/RAIDOU Türkçe oyun yamaları ve açık kaynak masaüstü araçları geliştirdim."
         }
       ]
     },
@@ -778,7 +832,7 @@ export const content = {
         {
           label: "itch.io",
           handle: "@remilya356",
-          desc: "Scarlet Savior VN ve 3D oyun modelleri",
+          desc: "Scarlet Survivors (Win/APK), Scarlet Savior VN ve 3D modeller",
           href: urls.itchProfile,
           icon: "i-game"
         }

@@ -44,7 +44,7 @@ export function gesture(min, hold) {
   };
 }
 
-export function initDeck({ slicesSectionId = "library", sliceSteps = 6 } = {}) {
+export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
   const deck = document.querySelector("#deck");
   if (!deck) return null;
 

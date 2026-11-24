@@ -9,11 +9,11 @@ Built with zero runtime framework dependencies using semantic HTML5, modern CSS 
 - **Bilingual (`TR / EN`) UI**: Instant FOUC-free language detection (`?lang=`, `localStorage`, or browser locale) with live metadata and ARIA updates.
 - **6-Stage Full-Screen Scroll Deck (`js/deck.js`)**: Inertia-aware wheel/trackpad step paging, keyboard navigation (`ArrowUp/Down`, `PageUp/Down`, `Space`, `Home`, `End`), right-edge progress dots (`#dots`), and automatic free-scroll fallback on short viewports (`max-height: 540px`).
 - **Persona-Style `15°` Diagonal Slice Stage (`js/slices.js`)**:
-  - Showcases **Gensokyo 1:1 Interactive Atlas** (`2D` scroll + `Three.js 3D`), **Higurashi When They Cry Hou & Hou+ TR** (`Chapters 1-10`, `07th-Mod` compatible), **Umineko When They Cry TR** (`Episodes 1-8`, Question & Answer Arcs, `07th-Mod` compatible), **RAIDOU Remastered TR** (`100%` PC Turkish patch), and **Scarlet Savior** (Touhou psychological horror Ren'Py visual novel for PC & Android).
-  - Folds visited works into clickable `15°` slivers and settles all 5 works into an alternating `/ \ / \` composite overview on Step 6.
+  - Showcases **Scarlet Survivors** (Godot 4 Touhou 6 danmaku survivors for Windows x64 & Android APK with lossless pixel-art showcase and zero-cookie trailer facade), **Gensokyo 1:1 Interactive Atlas** (`2D` scroll + `Three.js 3D`), **Higurashi When They Cry Hou & Hou+ TR** (`Chapters 1-10`, `07th-Mod` compatible), **Umineko When They Cry TR** (`Episodes 1-8`, Question & Answer Arcs, `07th-Mod` compatible), **RAIDOU Remastered TR** (`100%` PC Turkish patch), and **Scarlet Savior** (Touhou psychological horror Ren'Py visual novel for PC & Android).
+  - Folds visited works into clickable `15°` slivers and settles all 6 works into an alternating `/ \ / \ /` composite overview on Step 7.
 - **Open-Source Tools (`#work`)**: Direct links and short routes for `VOICEVOX Expressive TTS` (Node.js bridge + TR/EN Katakana + 430+ anime phrases), `Scroll-Hero` (vanilla JS/ESM + FFmpeg CLI), `Watermark-Deksmo` (Python/CustomTkinter v1.2), and `Deksmo WebGrab` (Manifest V3 v1.3).
 - **Manga Translations (`js/showcase.js`)**: Layered cover fan, keyboard/pointer swipe navigation, and translation notes for *Umineko Episode 1*, *Umineko Episode 2*, and *Re:Zero Arc 1*.
-- **Short Routes**: GitHub Pages sub-sites (`/Gensokyo/`, `/Higurashi/`, `/Umineko/`), dedicated static redirect directories (`/Raidou/`, `/ScarletSavior/`, `/Voicevox/`, `/ScrollHero/`, `/Watermark/`, `/WebGrab/`), and `404.html` slug resolution.
+- **Short Routes**: GitHub Pages sub-sites (`/Gensokyo/`, `/Higurashi/`, `/Umineko/`), dedicated static redirect directories (`/ScarletSurvivors/`, `/Scarlet-Survivors/`, `/Raidou/`, `/ScarletSavior/`, `/Voicevox/`, `/ScrollHero/`, `/Watermark/`, `/WebGrab/`), and `404.html` slug resolution.
 
 ## Project Structure
 

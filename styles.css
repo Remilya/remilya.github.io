@@ -41,7 +41,8 @@
   --paper-soft: rgba(237, 233, 254, 0.85);
   --paper-faint: rgba(196, 181, 253, 0.66);
 
-  /* Electric Ultraviolet Dark Series (5 Slices + Glow Accents) */
+  /* Electric Ultraviolet Dark Series (6 Slices + Glow Accents) */
+  --uv-royal: #3b0764;
   --uv-core: #5b21b6;
   --uv-midnight: #2e1065;
   --uv-umineko: #6b21a8;
@@ -539,8 +540,8 @@ svg use {
   transition: background 0.18s ease, color 0.18s ease;
 }
 
-.locale-button.is-active,
-.locale-button[aria-pressed="true"] {
+html[lang="tr"] .locale-button[data-locale="tr"],
+html:not([lang="tr"]) .locale-button[data-locale="en"] {
   background: var(--violet);
   color: var(--paper-pure);
 }
@@ -1062,8 +1063,8 @@ svg use {
 }
 
 /* ==========================================================================
-   STAGE 2 · THE FOUR ELECTRIC ULTRAVIOLET SLICES + STEP 5 COMPOSITE (#library)
-   #5b21b6 → #2e1065 → #4c1d95 → #7e22ce (Zero white backgrounds)
+   STAGE 2 · THE SIX ELECTRIC ULTRAVIOLET SLICES + STEP 7 COMPOSITE (#library)
+   #3b0764 → #5b21b6 → #2e1065 → #6b21a8 → #4c1d95 → #7e22ce (Zero white backgrounds)
    ========================================================================== */
 
 .slices {
@@ -1079,36 +1080,43 @@ svg use {
   color: var(--fg);
 }
 
-/* 01: Core Electric Violet (#5b21b6) */
+/* 01: Deep Royal Amethyst (#3b0764) — Scarlet Survivors */
 .sl-1 {
+  --c: var(--uv-royal);
+  --fg: var(--paper-pure);
+  --shadow-c: var(--uv-electric);
+}
+
+/* 02: Core Electric Violet (#5b21b6) — Gensokyo 1:1 */
+.sl-2 {
   --c: var(--uv-core);
   --fg: var(--paper-pure);
   --shadow-c: var(--ink);
 }
 
-/* 02: Midnight Ultraviolet (#2e1065) */
-.sl-2 {
+/* 03: Midnight Ultraviolet (#2e1065) — Higurashi TR */
+.sl-3 {
   --c: var(--uv-midnight);
   --fg: var(--paper-pure);
   --shadow-c: var(--uv-electric);
 }
 
-/* 03: Rokkenjima Royal Purple-Amethyst (#6b21a8) */
-.sl-3 {
+/* 04: Rokkenjima Royal Purple-Amethyst (#6b21a8) — Umineko TR */
+.sl-4 {
   --c: var(--uv-umineko);
   --fg: var(--paper-pure);
   --shadow-c: var(--ink);
 }
 
-/* 04: Royal Indigo Ultraviolet (#4c1d95) */
-.sl-4 {
+/* 05: Royal Indigo Ultraviolet (#4c1d95) — RAIDOU TR */
+.sl-5 {
   --c: var(--uv-indigo);
   --fg: var(--paper-pure);
   --shadow-c: var(--ink);
 }
 
-/* 05: Vivid Electric Ultraviolet (#7e22ce) */
-.sl-5 {
+/* 06: Vivid Electric Ultraviolet (#7e22ce) — Scarlet Savior */
+.sl-6 {
   --c: var(--uv-electric);
   --fg: var(--paper-pure);
   --shadow-c: var(--ink-panel);
@@ -1354,9 +1362,46 @@ svg use {
   transition: opacity 0.18s ease;
 }
 
+.is-pixel {
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
 .yt-lite:hover img,
 .yt-lite:focus-visible img {
   transform: scale(1.03);
+}
+
+.yt-lite:hover img.is-pixel,
+.yt-lite:focus-visible img.is-pixel {
+  transform: none;
+  filter: brightness(1.08);
+}
+
+.yt-lite--pixel::after {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(8, 3, 18, 0.24) 0%,
+    rgba(8, 3, 18, 0.04) 55%,
+    rgba(8, 3, 18, 0.22) 100%
+  );
+}
+
+.yt-lite--pixel .yt-lite__top {
+  top: calc(50% + 30px);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  max-width: calc(100% - 20px);
+  padding: 3px 10px;
+  background: var(--ink);
+  border: 2px solid var(--lavender);
+  box-shadow: 3px 3px 0 var(--violet);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: none;
 }
 
 .yt-lite:hover .yt-lite__play,
@@ -1517,7 +1562,7 @@ svg use {
   display: none;
 }
 
-/* No-JS Fallback: Four clean stacked screens */
+/* No-JS Fallback: Six clean stacked screens */
 html:not(.js) .sl {
   min-height: 100vh;
   padding: calc(var(--nav-h) + 24px) var(--gut) 32px;
@@ -1531,9 +1576,9 @@ html:not(.js) .slice-snap {
   display: none;
 }
 
-/* With JS: Sticky 15° Diagonal Slice Stage */
+/* With JS: Sticky 15° Diagonal Slice Stage (6 Slices + Step 7 Composite) */
 .js .slices {
-  height: 600%;
+  height: 700%;
   display: block;
   overflow: visible;
 }
@@ -1541,30 +1586,30 @@ html:not(.js) .slice-snap {
 .js .slices-stage {
   position: sticky;
   top: 0;
-  height: calc(100% / 6);
+  height: calc(100% / 7);
   overflow: hidden;
 }
 
 .js .slice-snap {
-  height: calc(100% / 6);
+  height: calc(100% / 7);
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
-/* Coarse touch screens: half-screen swipe per slice */
+/* Coarse touch screens: half-screen swipe per slice (1 full stage + 6 half-swipes = 400%) */
 @media (hover: none) and (pointer: coarse) and (min-height: 541px) {
   .js .slices {
-    height: 350%;
+    height: 400%;
   }
   .js .slices-stage {
-    height: calc(200% / 7);
+    height: 25%;
   }
   .js .slice-snap {
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(var(--k) * 100% / 7);
-    height: calc(100% / 7);
+    top: calc(var(--k) * 12.5%);
+    height: 12.5%;
     pointer-events: none;
   }
 }
@@ -1778,6 +1823,50 @@ html:not(.js) .slice-snap {
 
 .js .sl .lab[data-a="row"] .lab-cta {
   margin-top: 0;
+}
+
+/* Portrait 3×2 Composite Grid (6 Slices on Mobile: Banner in clean top obsidian strip) */
+.js .slices-stage.m-port.m-grid .comp-banner {
+  top: calc(var(--nav-h) + 8px);
+  padding: 4px 12px;
+  font-size: 10.5px;
+}
+
+.js .slices-stage.m-port.m-grid .sl .lab {
+  gap: 4px;
+  padding: 8px 6px;
+}
+
+.js .slices-stage.m-port.m-grid .lab-idx {
+  font-size: 10.5px;
+}
+
+.js .slices-stage.m-port.m-grid .lab-ico {
+  width: 24px;
+  height: 24px;
+}
+
+.js .slices-stage.m-port.m-grid .lab-title {
+  font-size: clamp(14.5px, 4.1vw, 18px);
+  line-height: 1.08;
+}
+
+.js .slices-stage.m-port.m-grid .lab-sub {
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  line-height: 1.18;
+}
+
+.js .slices-stage.m-port.m-grid .lab-cta {
+  margin-top: 2px;
+  padding: 4px 11px;
+  font-size: 11px;
+}
+
+@media (max-height: 700px) {
+  .js .slices-stage.m-port.m-grid .lab-sub {
+    display: none;
+  }
 }
 
 /* Short viewport fallback (< 540px tall): plain stacked screens */

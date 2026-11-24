@@ -10,8 +10,10 @@ export function initSlices(deckApi, initialLocale = "en") {
   }
 
   const SL = Array.from(area.querySelectorAll(".sl"));
-  const N = SL.length; // 4 flagship slices; step 5 = composite panorama
+  const N = SL.length; // 6 flagship slices; step 7 = composite panorama
   const COMP_STEP = N + 1;
+  const umiStep =
+    Number(area.querySelector(".umi-video")?.closest(".sl")?.dataset.k) || 4;
   const T = Math.tan(Math.PI / 12); // 15 degrees
   const HG = 4 / Math.cos(Math.PI / 12); // 8px perpendicular ink cut
   const GAP = 8;
@@ -144,15 +146,18 @@ export function initSlices(deckApi, initialLocale = "en") {
     const fc = fitN(W, H, N);
     const fr = fitN(H, W, N);
     if (!port && fc) return { mode: "cols", sl: cols(W, 0, H, N, 0, fc) };
-    if (port && fr) return { mode: "rows", sl: bands(W, H, N, fr) };
+    if (port && fr && (fr.eq || fr.m >= 62)) {
+      return { mode: "rows", sl: bands(W, H, N, fr) };
+    }
 
-    const R = 2;
+    const topPad = port ? 48 : 0;
+    const R = port ? Math.ceil(N / 2) : 2;
     const C = Math.ceil(N / R);
-    const rh = (H - (R - 1) * GAP) / R;
+    const rh = (H - topPad - (R - 1) * GAP) / R;
     const sl = [];
     for (let r = 0; r < R; r++) {
       const cRow = r === R - 1 ? N - sl.length : C;
-      const y0 = r * (rh + GAP);
+      const y0 = topPad + r * (rh + GAP);
       const y1 = y0 + rh;
       const fit = fitN(W, rh, cRow) || {
         s: rh * T,
@@ -369,7 +374,7 @@ export function initSlices(deckApi, initialLocale = "en") {
     step = n;
     stage.dataset.step = String(n);
     stage.classList.toggle("is-comp", n === COMP_STEP);
-    if (n !== 3) {
+    if (n !== umiStep) {
       const umiVid = area.querySelector(".umi-video video");
       if (umiVid && !umiVid.paused) {
         umiVid.pause();
@@ -446,19 +451,18 @@ export function initSlices(deckApi, initialLocale = "en") {
 
   deckApi.registerSlicesUpdater(updateFromScroll);
 
-  // Zero-cookie Lite YouTube Facade inside Slice 2 (#higu-yt-btn)
-  const ytBtn = document.querySelector("#higu-yt-btn");
-  if (ytBtn) {
-    let ytWarm = false;
-    const warmYoutube = () => {
-      if (ytWarm) return;
-      ytWarm = true;
-      const link = document.createElement("link");
-      link.rel = "preconnect";
-      link.href = "https://www.youtube-nocookie.com";
-      document.head.appendChild(link);
-    };
+  // Zero-cookie Lite YouTube Facades inside Slices 1 & 3 (#scarlet-yt-btn, #higu-yt-btn)
+  let ytWarm = false;
+  const warmYoutube = () => {
+    if (ytWarm) return;
+    ytWarm = true;
+    const link = document.createElement("link");
+    link.rel = "preconnect";
+    link.href = "https://www.youtube-nocookie.com";
+    document.head.appendChild(link);
+  };
 
+  area.querySelectorAll(".yt-lite[data-yt-id]").forEach((ytBtn) => {
     ytBtn.addEventListener("pointerenter", warmYoutube, { once: true });
     ytBtn.addEventListener("focusin", warmYoutube, { once: true });
 
@@ -471,16 +475,18 @@ export function initSlices(deckApi, initialLocale = "en") {
       iframe.height = "315";
       iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(vid)}?autoplay=1&controls=0&rel=0`;
       iframe.title =
-        ytBtn.dataset.ytTitle || "Higurashi When They Cry TR - YouTube video player";
+        ytBtn.dataset.ytTitle ||
+        ytBtn.getAttribute("aria-label") ||
+        "YouTube video player";
       iframe.allow =
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.allowFullscreen = true;
       box.replaceChildren(iframe);
     });
-  }
+  });
 
-  // Interactive Higurashi & Umineko trilingual quote switchers inside Slices 2 & 3
+  // Interactive Higurashi & Umineko trilingual quote switchers inside Slices 3 & 4
   const umiVideoBtn = document.querySelector("#umi-video-btn");
   if (umiVideoBtn) {
     umiVideoBtn.addEventListener("click", () => {
