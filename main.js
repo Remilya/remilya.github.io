@@ -8,6 +8,7 @@ import {
 import { initDeck } from "./js/deck.js";
 import { initSlices } from "./js/slices.js";
 import { initMangaShowcase, initAtmosphere } from "./js/showcase.js";
+import { initSakugaFx, fxSpark } from "./js/sakuga-fx.js";
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) =>
@@ -24,10 +25,15 @@ function renderLinkAttributes(link) {
   return link.external === false ? "" : ' target="_blank" rel="noopener noreferrer"';
 }
 
+function normalizeLocale(val) {
+  const s = String(val || "").toLowerCase();
+  return s === "jp" ? "ja" : s;
+}
+
 function detectInitialLocale() {
   try {
     const params = new URLSearchParams(window.location.search);
-    const fromQuery = (params.get("lang") || "").toLowerCase();
+    const fromQuery = normalizeLocale(params.get("lang"));
     if (SUPPORTED_LOCALES.includes(fromQuery)) {
       return fromQuery;
     }
@@ -35,13 +41,13 @@ function detectInitialLocale() {
     /* ignore query parse issues */
   }
 
-  const htmlLang = (document.documentElement.lang || "").toLowerCase();
+  const htmlLang = normalizeLocale(document.documentElement.lang);
   if (SUPPORTED_LOCALES.includes(htmlLang)) {
     return htmlLang;
   }
 
   try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
+    const stored = normalizeLocale(window.localStorage.getItem(STORAGE_KEY));
     if (stored && SUPPORTED_LOCALES.includes(stored)) {
       return stored;
     }
@@ -51,11 +57,20 @@ function detectInitialLocale() {
 
   const langs = navigator.languages || [navigator.language || "en"];
   for (const l of langs) {
-    if (String(l).toLowerCase().startsWith("tr")) {
-      return "tr";
-    }
+    const code = String(l).toLowerCase();
+    if (code.startsWith("ja")) return "ja";
+    if (code.startsWith("tr")) return "tr";
+    if (code.startsWith("en")) return "en";
   }
   return "en";
+}
+
+function syncMangaVisibility(locale) {
+  const hideManga = locale === "ja";
+  const mangaSection = document.getElementById("translations");
+  if (mangaSection) mangaSection.hidden = hideManga;
+  const mangaNav = document.getElementById("nav-translations");
+  if (mangaNav) mangaNav.hidden = hideManga;
 }
 
 const $ = (sel) => document.querySelector(sel);
@@ -225,6 +240,7 @@ function renderWorkSection(dict) {
 }
 
 function renderMangaHeader(dict) {
+  if (!dict.manga || !dict.manga.items || !dict.manga.items.length) return;
   setText("#translations-eyebrow", dict.manga.eyebrow);
   const titleEl = $("#translations-title");
   if (titleEl) {
@@ -312,11 +328,13 @@ function renderContactSection(dict) {
 }
 
 function applyLocale(locale, { announce = false, syncQuoteLang = false } = {}) {
-  const next = SUPPORTED_LOCALES.includes(locale) ? locale : "en";
+  const normalized = normalizeLocale(locale);
+  const next = SUPPORTED_LOCALES.includes(normalized) ? normalized : "en";
   currentLocale = next;
   const dict = content[next];
 
   document.documentElement.lang = next;
+  syncMangaVisibility(next);
   document.title = dict.meta.title;
 
   const setMeta = (sel, val) => {
@@ -403,6 +421,8 @@ function bootstrap() {
   const routesEl = $("#short-routes");
   if (routesEl) routesEl.dataset.hydrated = "true";
 
+  syncMangaVisibility(currentLocale);
+
   // If initial locale differs from pre-rendered English, update text before measuring layout
   if (currentLocale !== "en") {
     applyLocale(currentLocale, { announce: false, syncQuoteLang: true });
@@ -412,12 +432,14 @@ function bootstrap() {
   slicesApi = initSlices(deckApi, currentLocale);
   mangaApi = initMangaShowcase(currentLocale);
   initAtmosphere();
+  initSakugaFx();
 
   document.querySelectorAll(".locale-button").forEach((btn) => {
     btn.addEventListener("click", () => {
       const targetLocale = btn.dataset.locale;
       if (targetLocale && targetLocale !== currentLocale) {
         applyLocale(targetLocale, { announce: true, syncQuoteLang: true });
+        fxSpark(btn, "ultraviolet");
       }
     });
   });

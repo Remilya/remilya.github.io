@@ -1,5 +1,6 @@
 import { gesture } from "./deck.js";
 import { content } from "./content.js";
+import { fxMangaTurn } from "./sakuga-fx.js";
 
 const deterministicRand = (seed) => {
   const x = Math.sin(seed * 9301 + 49297) * 233280;
@@ -12,7 +13,8 @@ export function initMangaShowcase(initialLocale = "en") {
     return { setLocale() {} };
   }
 
-  let locale = initialLocale === "tr" ? "tr" : "en";
+  let locale =
+    initialLocale === "tr" || initialLocale === "ja" ? initialLocale : "en";
   let activeIdx = 0;
 
   const cards = Array.from(stageEl.querySelectorAll(".manga-card"));
@@ -31,7 +33,8 @@ export function initMangaShowcase(initialLocale = "en") {
 
   const paint = () => {
     const dict = content[locale] || content.en;
-    const items = dict.manga.items;
+    const items = dict.manga && dict.manga.items;
+    if (!items || !items.length) return;
     const total = items.length;
     activeIdx = ((activeIdx % total) + total) % total;
     const item = items[activeIdx];
@@ -69,9 +72,21 @@ export function initMangaShowcase(initialLocale = "en") {
     if (nextBtn) nextBtn.setAttribute("aria-label", dict.manga.nextAria);
   };
 
-  const turn = (next) => {
-    activeIdx = next;
+  const turn = (next, dirHint) => {
+    const prev = activeIdx;
+    const total = cards.length || 3;
+    const resolved = ((next % total) + total) % total;
+    activeIdx = resolved;
     paint();
+    if (resolved !== prev) {
+      const dir =
+        typeof dirHint === "number"
+          ? dirHint
+          : next > prev
+            ? 1
+            : -1;
+      fxMangaTurn(stageEl, dir);
+    }
   };
 
   cards.forEach((card, idx) => {
@@ -153,7 +168,8 @@ export function initMangaShowcase(initialLocale = "en") {
 
   return {
     setLocale(nextLocale) {
-      locale = nextLocale === "tr" ? "tr" : "en";
+      locale =
+        nextLocale === "tr" || nextLocale === "ja" ? nextLocale : "en";
       paint();
     }
   };

@@ -1,5 +1,6 @@
 import { clamp } from "./deck.js";
 import { higurashiQuotes, uminekoQuotes } from "./content.js";
+import { fxRedTruth, fxQuoteSwitch, fxDanmaku, fxSpark } from "./sakuga-fx.js";
 
 export function initSlices(deckApi, initialLocale = "en") {
   const panel = document.querySelector("#library");
@@ -444,6 +445,9 @@ export function initSlices(deckApi, initialLocale = "en") {
     ) {
       const k = Number(sl.dataset.k);
       if (k >= 1 && k <= N) {
+        const pt =
+          e.clientX || e.clientY ? { x: e.clientX, y: e.clientY } : undefined;
+        fxSpark(sl, k === 1 ? "scarlet" : "ultraviolet", pt);
         deckApi.goToSlice(k);
       }
     }
@@ -470,6 +474,11 @@ export function initSlices(deckApi, initialLocale = "en") {
       const vid = ytBtn.dataset.ytId;
       const box = ytBtn.closest(".higu-video");
       if (!vid || !box) return;
+      if (ytBtn.id === "scarlet-yt-btn") {
+        fxDanmaku(ytBtn);
+      } else {
+        fxSpark(ytBtn, "ultraviolet");
+      }
       const iframe = document.createElement("iframe");
       iframe.width = "560";
       iframe.height = "315";
@@ -493,6 +502,7 @@ export function initSlices(deckApi, initialLocale = "en") {
       const src = umiVideoBtn.dataset.videoSrc;
       const box = umiVideoBtn.closest(".umi-video");
       if (!src || !box) return;
+      fxSpark(umiVideoBtn, "crimson");
       const video = document.createElement("video");
       video.src = src;
       video.poster = "assets/umineko-video.webp";
@@ -504,7 +514,8 @@ export function initSlices(deckApi, initialLocale = "en") {
     });
   }
 
-  let siteLocale = initialLocale === "tr" ? "tr" : "en";
+  let siteLocale =
+    initialLocale === "tr" || initialLocale === "ja" ? initialLocale : "en";
   let quoteLang = siteLocale;
   let umiQuoteLang = siteLocale;
 
@@ -554,6 +565,7 @@ export function initSlices(deckApi, initialLocale = "en") {
       if (l === "tr" || l === "en" || l === "ja") {
         quoteLang = l;
         paintQuote();
+        fxQuoteSwitch(btn);
       }
     });
   });
@@ -564,6 +576,7 @@ export function initSlices(deckApi, initialLocale = "en") {
       if (l === "tr" || l === "en" || l === "ja") {
         umiQuoteLang = l;
         paintQuote();
+        fxRedTruth(btn, umiLineEl ? umiLineEl.closest(".higu-box") : null);
       }
     });
   });
@@ -574,10 +587,11 @@ export function initSlices(deckApi, initialLocale = "en") {
 
   return {
     setLocale(nextLocale, syncQuoteLang = false) {
-      siteLocale = nextLocale === "tr" ? "tr" : "en";
+      siteLocale =
+        nextLocale === "tr" || nextLocale === "ja" ? nextLocale : "en";
       if (syncQuoteLang) {
-        if (quoteLang !== "ja") quoteLang = siteLocale;
-        if (umiQuoteLang !== "ja") umiQuoteLang = siteLocale;
+        quoteLang = siteLocale;
+        umiQuoteLang = siteLocale;
       }
       paintQuote();
       instant(() => render());

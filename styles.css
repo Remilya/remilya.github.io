@@ -109,6 +109,23 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+html[lang="ja"] body {
+  font-family: var(--font-display), var(--font-cjk);
+}
+
+html[lang="ja"] #translations,
+html[lang="ja"] #nav-translations {
+  display: none !important;
+}
+
+html[lang="ja"] .hero-sub {
+  font-family: var(--font-display), var(--font-cjk);
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(15px, min(1.3vw, 2.3vh), 18px);
+  line-height: 1.55;
+}
+
 img,
 svg,
 canvas {
@@ -379,6 +396,43 @@ svg use {
   z-index: 9998;
 }
 
+#sakugaFx {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.btn:active,
+.locale-button:active,
+.higu-langs button:active,
+.car-nav:active,
+.manga-tab:active,
+.lab-cta:active {
+  transform: scale(1.06, 0.88);
+}
+
+@keyframes sakuga-pop {
+  0% {
+    transform: scale(1.08, 0.88);
+  }
+  45% {
+    transform: scale(0.95, 1.07);
+  }
+  78% {
+    transform: scale(1.02, 0.99);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.is-sakuga-pop {
+  animation: sakuga-pop 0.34s var(--ease) both;
+}
+
 .motes {
   position: absolute;
   inset: 0;
@@ -541,7 +595,8 @@ svg use {
 }
 
 html[lang="tr"] .locale-button[data-locale="tr"],
-html:not([lang="tr"]) .locale-button[data-locale="en"] {
+html[lang="ja"] .locale-button[data-locale="ja"],
+html:not([lang="tr"]):not([lang="ja"]) .locale-button[data-locale="en"] {
   background: var(--violet);
   color: var(--paper-pure);
 }
@@ -591,6 +646,11 @@ html:not([lang="tr"]) .locale-button[data-locale="en"] {
   }
   .brand-name {
     font-size: 14px;
+  }
+  .locale-button {
+    min-width: 30px;
+    padding: 0 7px;
+    font-size: 11px;
   }
   .ib {
     width: 31px;
@@ -2864,23 +2924,40 @@ html:not(.js) .slice-snap {
   }
 
   .motes,
-  #cursorFx {
+  #cursorFx,
+  #sakugaFx {
     display: none !important;
   }
 
   .btn,
+  .btn:active,
   .ib,
   .dot,
   .mascot-img,
   .tool-card,
   .manga-card,
   .car-nav,
+  .car-nav:active,
+  .manga-tab:active,
+  .locale-button:active,
+  .higu-langs button:active,
+  .lab-cta:active,
+  .is-sakuga-pop,
   .social-card,
   .route-pill,
   .js .sl,
   .js .sl * {
     transition: none !important;
     animation: none !important;
+  }
+
+  .btn:active,
+  .locale-button:active,
+  .higu-langs button:active,
+  .car-nav:active,
+  .manga-tab:active,
+  .lab-cta:active {
+    transform: none !important;
   }
 
   .js .tl-node__card,

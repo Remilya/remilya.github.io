@@ -98,13 +98,17 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
     const areaW = slicesArea ? slicesArea.clientWidth : 0;
     const areaH = slicesArea ? slicesArea.clientHeight : 0;
 
-    const metrics = panels.map((p) => ({
-      top: p.offsetTop,
-      height: p.offsetHeight
-    }));
+    const metrics = panels.map((p) =>
+      p.hidden
+        ? null
+        : {
+            top: p.offsetTop,
+            height: p.offsetHeight
+          }
+    );
 
     const sliceOffsets = [];
-    if (slicesIdx >= 0 && slicesPanel) {
+    if (slicesIdx >= 0 && slicesPanel && !slicesPanel.hidden) {
       const sl = Array.from(slicesPanel.querySelectorAll(".sl"));
       const snaps = Array.from(slicesPanel.querySelectorAll(".slice-snap"));
       const count = flat ? sl.length : sliceSteps;
@@ -127,7 +131,8 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
     panelMetrics = metrics;
 
     const nextStops = [];
-    panels.forEach((_, pi) => {
+    panels.forEach((p, pi) => {
+      if (p.hidden || !metrics[pi]) return;
       const baseTop = metrics[pi].top;
       if (pi === slicesIdx) {
         sliceOffsets.forEach(({ k, offset }) => {
@@ -141,7 +146,7 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
 
     doesFit =
       !flat &&
-      metrics.every((m, idx) => idx === slicesIdx || m.height <= h + 2);
+      metrics.every((m, idx) => !m || idx === slicesIdx || m.height <= h + 2);
 
     if (Math.abs(h - dhVal) > 0.5) {
       dhVal = h;
@@ -163,17 +168,25 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
   // Build right-side stage dots AFTER initial geometry read (contained in .dots)
   if (dotsEl) {
     const frag = document.createDocumentFragment();
+    let visibleNum = 0;
     panels.forEach((p, i) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "dot";
+      btn.hidden = Boolean(p.hidden);
       const labelText = p.dataset.label || p.id;
-      btn.setAttribute("aria-label", `${i + 1}. ${labelText}`);
+      if (!p.hidden) {
+        visibleNum += 1;
+        btn.setAttribute("aria-label", `${visibleNum}. ${labelText}`);
+      }
       const span = document.createElement("span");
       span.className = "dot-label";
       span.textContent = labelText;
       btn.appendChild(span);
-      btn.addEventListener("click", () => go(firstStop(i)));
+      btn.addEventListener("click", () => {
+        const target = firstStop(i);
+        if (target >= 0) go(target);
+      });
       frag.appendChild(btn);
       dots.push(btn);
     });
@@ -227,14 +240,20 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
     pending !== null && performance.now() - pendingAt < 900 ? pending : nearest();
 
   const updateDotLabels = (labelMap = {}) => {
+    let visibleNum = 0;
     panels.forEach((p, i) => {
+      const hidden = Boolean(p.hidden);
       const nextLabel = labelMap[p.id] || p.dataset.label || p.id;
       p.dataset.label = nextLabel;
       const btn = dots[i];
       if (btn) {
-        btn.setAttribute("aria-label", `${i + 1}. ${nextLabel}`);
-        const lbl = btn.querySelector(".dot-label");
-        if (lbl) lbl.textContent = nextLabel;
+        btn.hidden = hidden;
+        if (!hidden) {
+          visibleNum += 1;
+          btn.setAttribute("aria-label", `${visibleNum}. ${nextLabel}`);
+          const lbl = btn.querySelector(".dot-label");
+          if (lbl) lbl.textContent = nextLabel;
+        }
       }
     });
   };
@@ -245,9 +264,11 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
     if (!a || a.classList.contains("skip")) return;
     const href = a.getAttribute("href");
     const targetPanel = panels.find((x) => `#${x.id}` === href);
-    if (!targetPanel) return;
+    if (!targetPanel || targetPanel.hidden) return;
+    const stopIdx = firstStop(panels.indexOf(targetPanel));
+    if (stopIdx < 0) return;
     e.preventDefault();
-    go(firstStop(panels.indexOf(targetPanel)));
+    go(stopIdx);
     const heading = targetPanel.querySelector("h1, h2");
     if (heading) {
       heading.tabIndex = -1;
@@ -356,7 +377,7 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
   // Active section tracking & post-scroll lazy image warming
   const near = new Set();
   const warm = (p) => {
-    if (!p || near.has(p)) return;
+    if (!p || p.hidden || near.has(p)) return;
     near.add(p);
     p.querySelectorAll('img[loading="lazy"]').forEach((img) => {
       img.loading = "eager";
@@ -364,12 +385,12 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
   };
 
   const setActive = (i) => {
-    if (i === activePanelIdx || i < 0 || i >= panels.length) return;
+    if (i === activePanelIdx || i < 0 || i >= panels.length || panels[i].hidden) return;
     activePanelIdx = i;
 
     panels.forEach((p, k) => p.classList.toggle("is-active", k === i));
     dots.forEach((d, k) => {
-      const on = k === i;
+      const on = k === i && !panels[k].hidden;
       d.classList.toggle("is-active", on);
       if (on) d.setAttribute("aria-current", "true");
       else d.removeAttribute("aria-current");
@@ -384,7 +405,9 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
 
     // Keep offscreen images strictly lazy on initial Hero load so Hero LCP gets 100% bandwidth
     if (i > 0 || userScrolled) {
-      [i - 1, i, i + 1].forEach((k) => warm(panels[k]));
+      [i - 1, i, i + 1].forEach((k) => {
+        if (panels[k] && !panels[k].hidden) warm(panels[k]);
+      });
     }
 
     const url =
@@ -401,7 +424,7 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
   const activeIO = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !entry.target.hidden) {
           setActive(panels.indexOf(entry.target));
         }
       }
@@ -578,8 +601,16 @@ export function initDeck({ slicesSectionId = "library", sliceSteps = 7 } = {}) {
       fn(initialScrollTop);
     },
     refresh() {
-      const st = measureLayout();
-      paint(st);
+      const wasHidden = activePanelIdx >= 0 && panels[activePanelIdx]?.hidden;
+      let st = measureLayout();
+      if (wasHidden && stops.length) {
+        const nextIdx = clamp(0, cur, stops.length - 1);
+        cur = nextIdx;
+        st = stops[nextIdx].top;
+        jump(st);
+        setActive(stops[nextIdx].pi);
+      }
+      rest(st);
     }
   };
 }

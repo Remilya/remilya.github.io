@@ -64,20 +64,31 @@
         var root = document.documentElement;
         root.classList.add("js");
         try {
-          var q = new URLSearchParams(window.location.search).get("lang");
-          if (q === "tr" || q === "en") {
+          var q = (new URLSearchParams(window.location.search).get("lang") || "").toLowerCase();
+          if (q === "jp") q = "ja";
+          if (q === "tr" || q === "en" || q === "ja") {
             root.lang = q;
             return;
           }
-          var saved = window.localStorage.getItem("remilya-locale");
-          if (saved === "tr" || saved === "en") {
+          var saved = (window.localStorage.getItem("remilya-locale") || "").toLowerCase();
+          if (saved === "jp") saved = "ja";
+          if (saved === "tr" || saved === "en" || saved === "ja") {
             root.lang = saved;
             return;
           }
           var nav = navigator.languages || [navigator.language || "en"];
           for (var i = 0; i < nav.length; i++) {
-            if (String(nav[i]).toLowerCase().indexOf("tr") === 0) {
+            var code = String(nav[i]).toLowerCase();
+            if (code.indexOf("ja") === 0) {
+              root.lang = "ja";
+              return;
+            }
+            if (code.indexOf("tr") === 0) {
               root.lang = "tr";
+              return;
+            }
+            if (code.indexOf("en") === 0) {
+              root.lang = "en";
               return;
             }
           }
@@ -101,6 +112,7 @@
     <link rel="modulepreload" href="js/deck.js" />
     <link rel="modulepreload" href="js/slices.js" />
     <link rel="modulepreload" href="js/showcase.js" />
+    <link rel="modulepreload" href="js/sakuga-fx.js" />
     <link
       rel="preload"
       as="style"
@@ -269,6 +281,7 @@
           <div class="lang-switch" id="locale-switcher" role="group" aria-label="Site language">
             <button type="button" class="locale-button" data-locale="tr" aria-pressed="false">TR</button>
             <button type="button" class="locale-button is-active" data-locale="en" aria-pressed="true">EN</button>
+            <button type="button" class="locale-button" data-locale="ja" aria-pressed="false">JP</button>
           </div>
           <span id="locale-status" class="sr-only" aria-live="polite"></span>
           <a

@@ -29,7 +29,8 @@ try {
     "js/content.js",
     "js/deck.js",
     "js/slices.js",
-    "js/showcase.js"
+    "js/showcase.js",
+    "js/sakuga-fx.js"
   )
 
   foreach ($jsFile in $jsModules) {
@@ -182,6 +183,7 @@ try {
     "js/deck.js",
     "js/slices.js",
     "js/showcase.js",
+    "js/sakuga-fx.js",
     "assets/favicon.svg",
     "assets/apple-touch-icon.png"
   )

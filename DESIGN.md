@@ -11,7 +11,7 @@ The visual system pairs **Remilya's OC mascot identity (`R / REMILYA` android ca
 1. **Electric Ultraviolet Dark Series (Zero White Washout)**: Every stage and all six `15°` diagonal slices stay in deep, saturated Ultraviolet tones (`#3b0764` -> `#5b21b6` -> `#2e1065` -> `#6b21a8` -> `#4c1d95` -> `#7e22ce`) separated by `8px` obsidian-black `#080312` diagonal cuts. Stark white backgrounds and pale pastel fills are avoided.
 2. **Opaque Graphic Surfaces & Crisp Cuts**: Never use blurry SaaS glassmorphism (`backdrop-filter: blur`). Surfaces use solid opaque fills, `2px-3px solid` ultraviolet borders (`#8b5cf6` / `#c4b5fd`), and `4px-10px` hard offset shadows. Pixel-art showcases use lossless WebP assets with `image-rendering: pixelated` (`.is-pixel`).
 3. **Authentic Mascot Branding & Bespoke Vector Glyphs**: Hero centerpiece, navbar emblem, favicons (`favicon-64.png`, `favicon.svg`, `apple-touch-icon.png`), and OpenGraph card feature Remilya's custom OC mascot logo. UI icons live in an inline `<svg><symbol>` sprite (`#i-danmaku`, `#i-torii`, `#i-quill`, `#i-butterfly`, `#i-katana`, `#i-scarlet`, `#i-voice`, `#i-reel`).
-4. **Compositor-Friendly Motion**: Scroll-deck transitions, diagonal `clip-path: polygon(...)` sweeps, timeline line draws (`scaleX`), and `<canvas id="cursorFx">` electric ultraviolet butterflies respect `prefers-reduced-motion: reduce`.
+4. **Compositor-Friendly Motion**: Scroll-deck transitions, diagonal `clip-path: polygon(...)` sweeps, timeline line draws (`scaleX`), `<canvas id="cursorFx">` electric ultraviolet butterflies, and `<canvas id="sakugaFx">` procedural anime micro-interactions (`js/sakuga-fx.js`, adapted from MIT-licensed `sakuga-vfx`) respect `prefers-reduced-motion: reduce`.
 
 ---
 

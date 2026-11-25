@@ -6,7 +6,7 @@ Built with zero runtime framework dependencies using semantic HTML5, modern CSS 
 
 ## Architecture & Features
 
-- **Bilingual (`TR / EN`) UI**: Instant FOUC-free language detection (`?lang=`, `localStorage`, or browser locale) with live metadata and ARIA updates.
+- **Trilingual (`TR / EN / JP`) UI**: Instant FOUC-free language detection (`?lang=`, `localStorage`, or browser locale) with live metadata, ARIA updates, and locale-aware section visibility.
 - **6-Stage Full-Screen Scroll Deck (`js/deck.js`)**: Inertia-aware wheel/trackpad step paging, keyboard navigation (`ArrowUp/Down`, `PageUp/Down`, `Space`, `Home`, `End`), right-edge progress dots (`#dots`), and automatic free-scroll fallback on short viewports (`max-height: 540px`).
 - **Persona-Style `15°` Diagonal Slice Stage (`js/slices.js`)**:
   - Showcases **Scarlet Survivors** (Godot 4 Touhou 6 danmaku survivors for Windows x64 & Android APK with lossless pixel-art showcase and zero-cookie trailer facade), **Gensokyo 1:1 Interactive Atlas** (`2D` scroll + `Three.js 3D`), **Higurashi When They Cry Hou & Hou+ TR** (`Chapters 1-10`, `07th-Mod` compatible), **Umineko When They Cry TR** (`Episodes 1-8`, Question & Answer Arcs, `07th-Mod` compatible), **RAIDOU Remastered TR** (`100%` PC Turkish patch), and **Scarlet Savior** (Touhou psychological horror Ren'Py visual novel for PC & Android).
@@ -24,6 +24,7 @@ Built with zero runtime framework dependencies using semantic HTML5, modern CSS 
 - `js/deck.js` - Scroll-deck stop table, wheel inertia filter, keyboard/focus sync, and resize observer.
 - `js/slices.js` - `15°` polygon slice geometry engine, trailer facades, and Higurashi & Umineko quote switchers.
 - `js/showcase.js` - Interactive Manga cover fan and subtle ambient `<canvas>` layer.
+- `js/sakuga-fx.js` - Zero-dependency procedural Canvas 2D anime micro-interactions (Electric Ultraviolet, Scarlet, and Red Truth Crimson palettes; adapted from MIT-licensed `finktheartist/sakuga-vfx`).
 - `scripts/validate-site.ps1` - Automated syntax, asset, link, accessibility, and transfer-budget validator.
 
 ## Local Development

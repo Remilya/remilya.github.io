@@ -1,5 +1,5 @@
 export const STORAGE_KEY = "remilya-locale";
-export const SUPPORTED_LOCALES = ["en", "tr"];
+export const SUPPORTED_LOCALES = ["en", "tr", "ja"];
 
 export const urls = {
   github: "https://github.com/Remilya",
@@ -833,6 +833,341 @@ export const content = {
           label: "itch.io",
           handle: "@remilya356",
           desc: "Scarlet Survivors (Win/APK), Scarlet Savior VN ve 3D modeller",
+          href: urls.itchProfile,
+          icon: "i-game"
+        }
+      ]
+    }
+  },
+  ja: {
+    meta: {
+      title: "Remilya | Scarlet Survivors・オープンソース開発・ゲームローカライズ",
+      description:
+        "Godot 4で制作した東方紅魔郷二次創作弾幕サバイバー『Scarlet Survivors』（Windows・Android）、幻想郷1:1 2D/3Dアトラス、ローカルVOICEVOXツール、ゲームローカライズを手掛ける個人開発者Remilyaのポートフォリオ。",
+      ogLocale: "ja_JP"
+    },
+    aria: {
+      skipLink: "メインコンテンツへ移動",
+      brandLink: "トップへ戻る",
+      primaryNav: "メインナビゲーション",
+      dotsNav: "ページセクション",
+      localeSwitcher: "表示言語",
+      languageChanged: "表示言語を日本語に切り替えました"
+    },
+    brandSubtitle: "開発 · ゲーム · ローカライズ",
+    nav: {
+      top: "ホーム",
+      library: "作品",
+      work: "ツール",
+      translations: "",
+      experience: "経歴",
+      contact: "連絡先"
+    },
+    panelLabels: {
+      top: "ホーム",
+      library: "作品",
+      work: "ツール",
+      translations: "",
+      experience: "経歴",
+      contact: "連絡先"
+    },
+    hero: {
+      kicker: "REMILYA // ソフトウェア · ゲーム · ローカライズ",
+      lead:
+        "Godot 4によるインディーゲーム、ローカル音声・デスクトップツール、ゲームローカライズを制作しています。",
+      sub:
+        "東方紅魔郷二次創作『Scarlet Survivors』（Windows / Android）、幻想郷 1:1 3Dアトラス、Ren'Py作品『Scarlet Savior』、オープンソースツールを開発。",
+      ctaPrimary: "作品を見る",
+      ctaSecondary: "GitHub",
+      scrollHint: "スクロール または ↓ キーで進む",
+      quickLinks: [
+        { label: "Scarlet Survivors", href: urls.scarletSurvivorsItch, external: true },
+        { label: "幻想郷 1:1 アトラス", href: urls.gensokyoAtlas, external: false },
+        { label: "ひぐらし TR", href: urls.higurashiArchive, external: false },
+        { label: "うみねこ TR", href: urls.uminekoArchive, external: false }
+      ],
+      medallionBadges: [
+        { code: "Scarlet Survivors", label: "GODOT 4 · WIN / APK" },
+        { code: "Gensokyo 1:1", label: "2D & 3D アトラス" },
+        { code: "ひぐらし・うみねこ", label: "トルコ語ローカライズ" }
+      ]
+    },
+    slices: {
+      srTitle: "主要プロジェクト",
+      compBanner: "プロジェクト一覧 // スライスを選択",
+      compInspect: "開く",
+      compLaunch: "開く ↗",
+      compLaunchPrefix: "開く:",
+      scarletPlayAria: "Scarlet Survivors - 公式16:9トレーラーを再生",
+      scarletVideoTitle: "公式 16:9 トレーラー",
+      ytPlayAria: "ひぐらしのなく頃に トルコ語パッチ - YouTube動画を再生",
+      higuLangLabel: "テキスト言語",
+      umiPlayAria: "うみねこのなく頃に トルコ語パッチ - 特別お茶会トレーラーを再生",
+      umiLangLabel: "テキスト言語",
+      items: [
+        {
+          k: 1,
+          eyebrow: "01 // GODOT 4 弾幕サバイバー（WINDOWS & ANDROID）",
+          cap: "S",
+          restTitle: "carlet Survivors",
+          fullTitle: "Scarlet Survivors",
+          shortLabel: "Scarlet Survivors",
+          compSub: "Godot 4 · Win / Android",
+          desc:
+            "東方紅魔郷を題材にGodot 4でゼロから制作した縦画面弾幕サバイバー二次創作ゲーム。Pythonによる決定論的ピクセル/ボクセル生成（AI画像・音楽不使用）、プレイアブル12キャラ、全7ステージ、31種のスペルカード、日本語・英語・トルコ語に標準対応。",
+          pills: [
+            "12キャラ · 全7面 · 31スペルカード",
+            "Godot 4 (GDScript/C#) · AI素材不使用",
+            "Windows x64 & Android APK (JP / EN / TR)"
+          ],
+          primaryLabel: "itch.ioで無料プレイ →",
+          primaryHref: urls.scarletSurvivorsItch,
+          primaryExternal: true,
+          secondaryLabel: "16:9トレーラーを見る →",
+          secondaryHref: urls.scarletSurvivorsTrailer,
+          secondaryExternal: true
+        },
+        {
+          k: 2,
+          eyebrow: "02 // 2D地図 & THREE.JS 3Dアトラス",
+          cap: "G",
+          restTitle: "ensokyo 1:1 Interactive Atlas",
+          fullTitle: "Gensokyo 1:1 Interactive Atlas",
+          shortLabel: "Gensokyo 1:1",
+          compSub: "2D & 3D マップ",
+          desc:
+            "東方Projectの幻想郷を2D絵巻マップとThree.js 3D地形の両方で探索できるインタラクティブ・アトラス。各スポット解説、キャラクター図鑑、二点間の移動ルート・所要時間計算機能を搭載。",
+          pills: [
+            "2Dスクロール & Three.js 3D",
+            "114+エリア & 143キャラ収録",
+            "ルート・移動時間計算"
+          ],
+          primaryLabel: "remilya.dev/Gensokyo を開く →",
+          primaryHref: urls.gensokyoAtlas,
+          primaryExternal: false,
+          secondaryLabel: "素材リポジトリ (GitHub) →",
+          secondaryHref: urls.repoGensokyoAssets,
+          secondaryExternal: true
+        },
+        {
+          k: 3,
+          eyebrow: "03 // 全10作対応 トルコ語ローカライズ",
+          cap: "H",
+          restTitle: "igurashi When They Cry TR",
+          fullTitle: "Higurashi When They Cry TR",
+          shortLabel: "Higurashi TR",
+          compSub: "全10作 · トルコ語パッチ",
+          desc:
+            "『ひぐらしのなく頃に 奉・礼・奉+』全10作品をカバーする07th-Mod互換のトルコ語パッチ。ゲーム内画像ローカライズとワンクリック導入インストーラーを同梱。",
+          primaryLabel: "remilya.dev/Higurashi を開く →",
+          primaryHref: urls.higurashiArchive,
+          primaryExternal: false,
+          secondaryLabel: "GitHub / インストーラー →",
+          secondaryHref: urls.repoHigurashi,
+          secondaryExternal: true
+        },
+        {
+          k: 4,
+          eyebrow: "04 // EP1〜8 完全対応 トルコ語ローカライズ",
+          cap: "U",
+          restTitle: "mineko When They Cry TR",
+          fullTitle: "Umineko When They Cry TR",
+          shortLabel: "Umineko TR",
+          compSub: "全8エピソード · トルコ語パッチ",
+          desc:
+            "『うみねこのなく頃に』出題編・展開編（EP1〜8）を完全翻訳した07th-Mod互換トルコ語パッチ。漢字対応フォント、UI・謎解き画像翻訳、ワンクリック導入ツールを搭載。",
+          primaryLabel: "remilya.dev/Umineko を開く →",
+          primaryHref: urls.uminekoArchive,
+          primaryExternal: false,
+          secondaryLabel: "GitHub / インストーラー →",
+          secondaryHref: urls.repoUmineko,
+          secondaryExternal: true
+        },
+        {
+          k: 5,
+          eyebrow: "05 // PC版 · 100% トルコ語ローカライズ",
+          cap: "R",
+          restTitle: "AIDOU Remastered TR",
+          fullTitle: "RAIDOU Remastered TR",
+          shortLabel: "RAIDOU TR",
+          compSub: "100% トルコ語パッチ",
+          desc:
+            "PC版向けの100%トルコ語ローカライズパッチ。専用フォントと全ゲームテキストをワンクリックで導入できます。",
+          primaryLabel: "GitHub / ダウンロード →",
+          primaryHref: urls.repoRaidou,
+          primaryExternal: true,
+          secondaryLabel: "/Raidou 短縮リンク",
+          secondaryHref: urls.shortRaidou,
+          secondaryExternal: false
+        },
+        {
+          k: 6,
+          eyebrow: "06 // 東方サイコロジカルホラー ノベルゲーム",
+          cap: "S",
+          restTitle: "carlet Savior",
+          fullTitle: "Scarlet Savior",
+          shortLabel: "Scarlet Savior",
+          compSub: "Ren'Py ノベルゲーム",
+          badge: "Ren'Py ノベルゲーム",
+          desc:
+            "紅魔館を舞台にRen'Pyで制作したサイコロジカルホラー・ビジュアルノベル。日本語フルボイスに加え、日本語・英語・トルコ語の字幕切替に対応。",
+          primaryLabel: "itch.ioでダウンロード →",
+          primaryHref: urls.itchScarlet,
+          primaryExternal: true,
+          secondaryLabel: "3Dゲーム素材を見る →",
+          secondaryHref: urls.itchProfile,
+          secondaryExternal: true
+        }
+      ]
+    },
+    work: {
+      eyebrow: "オープンソース // GITHUB リポジトリ",
+      cap: "オ",
+      restTitle: "ープンソースツール",
+      copy:
+        "ローカルNode.js音声ブリッジ、バニラJSライブラリ、Pythonデスクトップユーティリティ、ブラウザ拡張機能。",
+      projects: [
+        {
+          index: "01",
+          accent: "amethyst",
+          title: "VOICEVOX Expressive TTS",
+          type: "NODE.JS · ローカル TTS ブリッジ",
+          summary:
+            "ローカルVOICEVOXをSillyTavern・Project AIRI・AIVTuber向けのOpenAI互換TTSエンドポイントとして公開するブリッジ。英語・トルコ語のカタカナ変換と430種以上の表現フレーズに対応。",
+          stack: ["Node.js", "VOICEVOX", "TR/EN カタカナ変換", "SillyTavern & AIRI"],
+          icon: "i-voice",
+          links: [
+            { label: "GitHub →", href: urls.repoVoicevox, external: true },
+            { label: "/Voicevox", href: urls.shortVoicevox, external: false }
+          ]
+        },
+        {
+          index: "02",
+          accent: "lavender",
+          title: "Scroll-Hero",
+          type: "VANILLA JS/ESM · CANVAS プレイヤー",
+          summary:
+            "FFmpegで抽出したWebP連番フレームを、スクロール連動のHTML5 Canvasバナーとして再生する軽量ライブラリ。外部依存なしの純JavaScript製で、視覚効果の軽減設定にも対応。",
+          stack: ["JavaScript (ESM)", "HTML5 Canvas", "WebP連番", "FFmpeg CLI"],
+          icon: "i-reel",
+          links: [
+            { label: "GitHub →", href: urls.repoScrollHero, external: true },
+            { label: "/ScrollHero", href: urls.shortScrollHero, external: false }
+          ]
+        },
+        {
+          index: "03",
+          accent: "violet",
+          title: "Watermark-Deksmo",
+          type: "PYTHON · デスクトップアプリ (v1.2)",
+          summary:
+            "大量の画像フォルダへ一括で透かし（ウォーターマーク）を配置できるPython製デスクトップアプリ。プレビュー上で位置をクリック指定し、ページごとのサイズ設定をJSONで保存できます。",
+          stack: ["Python 3.10+", "CustomTkinter", "Pillow", "PyInstaller"],
+          logo: "assets/logos/watermark-deksmo.webp",
+          links: [
+            { label: "GitHub →", href: urls.repoWatermark, external: true },
+            { label: "/Watermark", href: urls.shortWatermark, external: false }
+          ]
+        },
+        {
+          index: "04",
+          accent: "orchid",
+          title: "Deksmo WebGrab",
+          type: "MANIFEST V3 · ブラウザ拡張機能 (v1.3)",
+          summary:
+            "Webギャラリーの画像を高解像度でフィルタリングし、ドラッグ＆ドロップで並び替えてPDFやZIPアーカイブとして整理できるChrome/Edge向け拡張機能。",
+          stack: ["JavaScript", "Manifest V3", "PDF整理", "ZIP一括出力"],
+          logo: "assets/logos/deksmo-webgrab.png",
+          links: [
+            { label: "GitHub →", href: urls.repoScrap, external: true },
+            { label: "/WebGrab", href: urls.shortWebGrab, external: false }
+          ]
+        }
+      ]
+    },
+    manga: {
+      eyebrow: "",
+      cap: "",
+      restTitle: "",
+      copy: "",
+      readLabel: "",
+      roleLabel: "",
+      prevAria: "",
+      nextAria: "",
+      items: []
+    },
+    experience: {
+      eyebrow: "経歴 // 実績と使用技術",
+      cap: "経",
+      restTitle: "歴・使用技術",
+      copy:
+        "学歴・実務経験と、開発で日常的に使用している言語・エンジン・ツール。",
+      stackLabel: "使用言語・エンジン・ツール",
+      timeline: [
+        {
+          period: "学士 · 英語 C1",
+          kind: "学歴",
+          title: "ニューメディア＆コミュニケーション学科",
+          summary:
+            "デジタルパブリッシング、ビジュアルデザイン、メディア制作を専攻。英語（C1レベル）での業務に対応。"
+        },
+        {
+          period: "2024-2025",
+          kind: "ポストプロダクション",
+          title: "映像制作・字幕インターン",
+          summary:
+            "スタジオでの映像編集ワークフロー補助および英語〜トルコ語の字幕翻訳を担当。"
+        },
+        {
+          period: "2025-現在",
+          kind: "Web & SEO",
+          title: "フリーランス Web・デジタルPM",
+          summary:
+            "クライアント向けに高速な静的・フロントエンドサイトを構築し、テクニカルSEOを運用。"
+        },
+        {
+          period: "進行中",
+          kind: "OSS · ゲーム · ローカライズ",
+          title: "個人ゲーム開発・ソフトウェア・ローカライズ",
+          summary:
+            "Godot 4による東方二次創作『Scarlet Survivors』（Windows / Android）、幻想郷1:1アトラス、Ren'Py作品『Scarlet Savior』、ひぐらし・うみねこ・RAIDOUのトルコ語パッチおよびOSSツールを開発。"
+        }
+      ]
+    },
+    contact: {
+      eyebrow: "連絡先 // リンク & 短縮URL",
+      title: "お問い合わせ",
+      copy:
+        "ソフトウェア開発、ゲーム制作、ローカライズに関するご相談やご連絡は下記アカウントよりお気軽にどうぞ。",
+      routesTitle: "短縮リンク (REMILYA.DEV)",
+      footerNote: "REMILYA · 個人ソフトウェア・ゲーム開発・ローカライズ",
+      backTop: "トップへ戻る ↑",
+      socials: [
+        {
+          label: "GitHub",
+          handle: "@Remilya",
+          desc: "ひぐらしTR・うみねこTR・RAIDOU TR・OSSリポジトリ",
+          href: urls.github,
+          icon: "i-gh"
+        },
+        {
+          label: "X / Twitter",
+          handle: "@Remilya356",
+          desc: "開発進捗・アップデート情報",
+          href: urls.twitter,
+          icon: "i-x-social"
+        },
+        {
+          label: "LinkedIn",
+          handle: "İlker Ağırkaya",
+          desc: "Web制作・メディア・SEO",
+          href: urls.linkedin,
+          icon: "i-in"
+        },
+        {
+          label: "itch.io",
+          handle: "@remilya356",
+          desc: "Scarlet Survivors (Win/APK)・Scarlet Savior VN・3D素材",
           href: urls.itchProfile,
           icon: "i-game"
         }
