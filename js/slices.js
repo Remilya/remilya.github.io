@@ -1,6 +1,6 @@
-import { clamp } from "./deck.js";
-import { higurashiQuotes, uminekoQuotes } from "./content.js";
-import { fxRedTruth, fxQuoteSwitch, fxDanmaku, fxSpark } from "./sakuga-fx.js";
+import { clamp } from "./deck.js?v=20261125";
+import { higurashiQuotes, uminekoQuotes } from "./content.js?v=20261125";
+import { fxRedTruth, fxQuoteSwitch, fxDanmaku, fxSpark } from "./sakuga-fx.js?v=20261125";
 
 export function initSlices(deckApi, initialLocale = "en") {
   const panel = document.querySelector("#library");

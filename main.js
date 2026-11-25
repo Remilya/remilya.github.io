@@ -4,11 +4,11 @@ import {
   content,
   stackGroups,
   shortRoutes
-} from "./js/content.js";
-import { initDeck } from "./js/deck.js";
-import { initSlices } from "./js/slices.js";
-import { initMangaShowcase, initAtmosphere } from "./js/showcase.js";
-import { initSakugaFx, fxSpark } from "./js/sakuga-fx.js";
+} from "./js/content.js?v=20261125";
+import { initDeck } from "./js/deck.js?v=20261125";
+import { initSlices } from "./js/slices.js?v=20261125";
+import { initMangaShowcase, initAtmosphere } from "./js/showcase.js?v=20261125";
+import { initSakugaFx, fxSpark } from "./js/sakuga-fx.js?v=20261125";
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) =>

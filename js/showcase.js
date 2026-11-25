@@ -1,6 +1,6 @@
-import { gesture } from "./deck.js";
-import { content } from "./content.js";
-import { fxMangaTurn } from "./sakuga-fx.js";
+import { gesture } from "./deck.js?v=20261125";
+import { content } from "./content.js?v=20261125";
+import { fxMangaTurn } from "./sakuga-fx.js?v=20261125";
 
 const deterministicRand = (seed) => {
   const x = Math.sin(seed * 9301 + 49297) * 233280;
